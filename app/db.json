@@ -50,12 +50,11 @@
   "orders": [
     {
       "id": "YY-ORD-39907",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "customer_name": "Dhwaragan Dhwaragan",
       "items": [
         {
           "product": {
             "id": "prod-7",
+            "mrp": 120,
             "name": "Minimalist Suede Mules",
             "price": 10,
             "images": [
@@ -76,26 +75,25 @@
             },
             "is_published": true,
             "is_best_seller": false,
-            "is_new_arrival": true,
-            "mrp": 120
+            "is_new_arrival": true
           },
           "quantity": 7,
           "selectedSize": "7"
         }
       ],
       "total": 632,
-      "status": "Pending",
+      "status": "Delivered",
       "address": "vinayagapuram, frist street",
-      "razorpay_order_id": "order_TCDFvk7j3TffJq",
-      "razorpay_payment_id": "pay_TCDG9GFQ54FbDT",
-      "buyback_requested": false,
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-11T13:31:43.097Z",
+      "customer_name": "Dhwaragan Dhwaragan",
       "buyback_details": null,
-      "created_at": "2026-07-11T13:31:43.097Z"
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TCDFvk7j3TffJq",
+      "razorpay_payment_id": "pay_TCDG9GFQ54FbDT"
     },
     {
       "id": "YY-ORD-50547",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "customer_name": "Dhwaragan Dhwaragan",
       "items": [
         {
           "product": {
@@ -119,11 +117,13 @@
       "total": 85,
       "status": "Pending",
       "address": "vinayagapuram, frist street",
-      "razorpay_order_id": "order_TCCn3dkh8Rx6lD",
-      "razorpay_payment_id": "pay_TCCoHeJc72jOQk",
-      "buyback_requested": false,
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-11T13:05:25.000Z",
+      "customer_name": "Dhwaragan Dhwaragan",
       "buyback_details": null,
-      "created_at": "2026-07-11T13:05:25.000Z"
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TCCn3dkh8Rx6lD",
+      "razorpay_payment_id": "pay_TCCoHeJc72jOQk"
     },
     {
       "id": "YY-ORD-70015",

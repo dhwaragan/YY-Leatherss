@@ -1,0 +1,12 @@
+{
+  "name": "yy-leathers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd app && npm run build",
+    "dev": "cd app && npm run dev"
+  },
+  "dependencies": {
+    "serverless-http": "^4.0.0"
+  }
+}

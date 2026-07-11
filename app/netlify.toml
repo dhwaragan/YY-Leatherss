@@ -1,0 +1,43 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+
+[[redirects]]
+  from = "/api/razorpay/create-order"
+  to = "/.netlify/functions/razorpay-create-order"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/razorpay/verify-payment"
+  to = "/.netlify/functions/razorpay-verify-payment"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/razorpay/webhook"
+  to = "/.netlify/functions/razorpay-webhook"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/orders"
+  to = "/.netlify/functions/orders"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

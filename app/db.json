@@ -1,0 +1,1057 @@
+{
+  "profiles": [
+    {
+      "id": "admin-id",
+      "name": "Sriram Srinivasan (Admin)",
+      "role": "admin",
+      "email": "sriramsriram0105@gmail.com",
+      "phone": "+91 98765 43210",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+      "address": "YY Leathers, Khader Nawaz Khan Road, Nungambakkam, Chennai, Tamil Nadu - 600006",
+      "created_at": "2026-07-01T14:05:56.206Z"
+    },
+    {
+      "id": "customer-id",
+      "name": "Rajesh Kumar",
+      "role": "customer",
+      "email": "customer@example.com",
+      "phone": "+91 98400 12345",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+      "address": "12, TTK Road, Alwarpet, Chennai, Tamil Nadu - 600018",
+      "created_at": "2026-07-01T14:05:56.207Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-7",
+      "name": "Minimalist Suede Mules",
+      "price": 9500,
+      "images": [
+        "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=600&auto=format&fit=crop"
+      ],
+      "category": "MULES",
+      "sizeMRPs": {
+        "7": 120
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-11T12:54:20.349Z",
+      "sizePrices": {
+        "7": 10
+      },
+      "description": "Handcrafted suede mules for effortless style.",
+      "sizeWeights": {
+        "7": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": true
+    }
+  ],
+  "orders": [
+    {
+      "id": "YY-ORD-39907",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "items": [
+        {
+          "product": {
+            "id": "prod-7",
+            "name": "Minimalist Suede Mules",
+            "price": 10,
+            "images": [
+              "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "MULES",
+            "sizeMRPs": {
+              "7": 120
+            },
+            "weight_kg": 1,
+            "created_at": "2026-07-11T12:54:20.349Z",
+            "sizePrices": {
+              "7": 10
+            },
+            "description": "Handcrafted suede mules for effortless style.",
+            "sizeWeights": {
+              "7": 1
+            },
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": true,
+            "mrp": 120
+          },
+          "quantity": 7,
+          "selectedSize": "7"
+        }
+      ],
+      "total": 632,
+      "status": "Pending",
+      "address": "vinayagapuram, frist street",
+      "razorpay_order_id": "order_TCDFvk7j3TffJq",
+      "razorpay_payment_id": "pay_TCDG9GFQ54FbDT",
+      "buyback_requested": false,
+      "buyback_details": null,
+      "created_at": "2026-07-11T13:31:43.097Z"
+    },
+    {
+      "id": "YY-ORD-50547",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 85,
+      "status": "Pending",
+      "address": "vinayagapuram, frist street",
+      "razorpay_order_id": "order_TCCn3dkh8Rx6lD",
+      "razorpay_payment_id": "pay_TCCoHeJc72jOQk",
+      "buyback_requested": false,
+      "buyback_details": null,
+      "created_at": "2026-07-11T13:05:25.000Z"
+    },
+    {
+      "id": "YY-ORD-70015",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 6,
+          "selectedSize": "9"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 18500,
+              "6": 18500
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 2,
+          "selectedSize": "5"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 1000,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "sizeMRPs": {
+              "5": 5999,
+              "6": 900
+            },
+            "weight_kg": 19.9,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10000,
+              "6": 1000
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "sizeWeights": {
+              "5": 10,
+              "6": 19.9
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 5,
+          "selectedSize": "6"
+        },
+        {
+          "product": {
+            "id": "prod-1021",
+            "mrp": 546456546,
+            "name": "Leather Chelsea Boot for Men's - 1021",
+            "price": 10,
+            "images": [
+              "https://images.unsplash.com/photo-1634825212488-8b9f713e7104?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Boots",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10,
+              "6": 234324234324,
+              "7": 546546
+            },
+            "description": "VOGUISH Masterpiece. Hand-crafted premium high-ankle Chelsea boot featuring premium full-grain leather upper, sweat-wicking leather lining, durable double elasticated side gussets, front and back leather pull tabs, and a supportive cushioned heel step with dynamic anti-slip sole. Chennai's ultimate style icon.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": true
+          },
+          "quantity": 7,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 18500,
+      "status": "Confirmed",
+      "address": "chennai\n",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-10T12:02:27.323Z",
+      "applied_offer": "none",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "student_discount_details": {
+        "status": "Pending",
+        "college_name": "godson",
+        "student_id_number": "9120012",
+        "student_id_photo_url": "data:image/jpeg;base64,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"
+      },
+      "birthday_benefit_requested": false,
+      "student_discount_requested": true
+    },
+    {
+      "id": "YY-ORD-88157",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 7,
+          "selectedSize": "9"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 18500,
+              "6": 18500
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 3,
+          "selectedSize": "5"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 1000,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "sizeMRPs": {
+              "5": 5999,
+              "6": 900
+            },
+            "weight_kg": 19.9,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10000,
+              "6": 1000
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "sizeWeights": {
+              "5": 10,
+              "6": 19.9
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 5,
+          "selectedSize": "6"
+        },
+        {
+          "product": {
+            "id": "prod-1021",
+            "mrp": 546456546,
+            "name": "Leather Chelsea Boot for Men's - 1021",
+            "price": 10,
+            "images": [
+              "https://images.unsplash.com/photo-1634825212488-8b9f713e7104?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Boots",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10,
+              "6": 234324234324,
+              "7": 546546
+            },
+            "description": "VOGUISH Masterpiece. Hand-crafted premium high-ankle Chelsea boot featuring premium full-grain leather upper, sweat-wicking leather lining, durable double elasticated side gussets, front and back leather pull tabs, and a supportive cushioned heel step with dynamic anti-slip sole. Chennai's ultimate style icon.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": true
+          },
+          "quantity": 6,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 10,
+      "status": "Cancelled",
+      "address": "chennai",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-05T05:45:41.848Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-86852",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 7,
+          "selectedSize": "9"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 18500,
+              "6": 18500
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 3,
+          "selectedSize": "5"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 1000,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "sizeMRPs": {
+              "5": 5999,
+              "6": 900
+            },
+            "weight_kg": 19.9,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10000,
+              "6": 1000
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "sizeWeights": {
+              "5": 10,
+              "6": 19.9
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 5,
+          "selectedSize": "6"
+        },
+        {
+          "product": {
+            "id": "prod-1021",
+            "mrp": 546456546,
+            "name": "Leather Chelsea Boot for Men's - 1021",
+            "price": 10,
+            "images": [
+              "https://images.unsplash.com/photo-1634825212488-8b9f713e7104?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Boots",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10,
+              "6": 234324234324,
+              "7": 546546
+            },
+            "description": "VOGUISH Masterpiece. Hand-crafted premium high-ankle Chelsea boot featuring premium full-grain leather upper, sweat-wicking leather lining, durable double elasticated side gussets, front and back leather pull tabs, and a supportive cushioned heel step with dynamic anti-slip sole. Chennai's ultimate style icon.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": true
+          },
+          "quantity": 4,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 10,
+      "status": "Cancelled",
+      "address": "chennai",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-05T05:45:28.178Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-68578",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 7,
+          "selectedSize": "9"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 18500,
+              "6": 18500
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 3,
+          "selectedSize": "5"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 1000,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "sizeMRPs": {
+              "5": 5999,
+              "6": 900
+            },
+            "weight_kg": 19.9,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 10000,
+              "6": 1000
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "sizeWeights": {
+              "5": 10,
+              "6": 19.9
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 4,
+          "selectedSize": "6"
+        }
+      ],
+      "phone": "+91 98765 43210",
+      "total": 5000,
+      "status": "Cancelled",
+      "address": "chennai",
+      "user_id": "admin-id",
+      "created_at": "2026-07-05T05:33:07.222Z",
+      "customer_name": "Sriram Srinivasan (Admin)",
+      "customer_email": "guest@example.com",
+      "buyback_details": {
+        "status": "Confirmed",
+        "bill_no": "1002",
+        "photo_url": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk8BDg4OExETJhUVJk81LTVPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT//AABEIAKQA9gMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAEBQMGAAIHAQj/xABGEAACAQMDAQUGAggCCQIHAAABAgMABBEFEiExEyJBUWEGFHGBkaEywRUjQlJisdHhB/AkM2NygpKTovEWsjRDRVWDo8L/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAIBEBAQEAAgICAwEAAAAAAAAAAAERAiExQQMSFFFhE//aAAwDAQACEQMRAD8A5wslSiU0MDW+a6TlYxeEokTsPGp4rt1IIY/Kl2aljNbnzWMX4pTBb51P+sb60QuqzAYWVh86Tse9Xqkk0/3rH43Gm0uq3LLjt5MeW6gpLuR/xSMfiaibOzmoN3OBWL8lrc+DjPRhbCNg0kwZoVHeKnnPhQDyEEhDW8ZO4BuR5ZqFvxGue9uv1mPCSTzRuh8a5Yn/AG6fzoNRR+krt1eyP+3T+dLWs6fQ3jXN/wDF0c6WfV/yrpHjXOf8Xh+r0s/xyfyFEUc6pLJbtC+SjDBGT9uete2t37szGFpY9/DFWHI8vvS5T51KhrIYvcxzztNcB5JGxuYtycDHl6VPHJbZ/wBU/wD1KWox8zR1kbdriNLq5EUbHnLYOPy+NRMOtKtjfSFbW1kcIMuTJgIPM8Uz1axePRnCIJI5O6w3EHHpRcF1BEVh051WNcY28j4jxz6nPxqzadi6t9s2zPRtuMGt8ZxTLHNItMtoLGSVYElXbucTDe0XGTzkZA+taWsenv3JYrZZPHHx56vXSb3Q0I32hEbDoKqWsabdwuxtS0ZOT2eRhP4l4OceVLGi2eGxjBQ21kjjJUhl5/8A2eYqeG2tnjEgttNxjkZTg+I/HSuODVim/wDSSqoUEYjAwPL8PFGQW2tJNhNXCEj/AFiop68Hw9F+1QHxRWSyPG8Fio2li/cPOeg7/wDEOvPHpU0Gk2iLGyXa88tmWPgY46H4UHGmrqzzjWssDgsAoJxnxx8fvR1tHqCSNv1YbiwLcjvHoD9qDedhGpRMkAYySDn6VU/aRv8ARrD1ec/+wflVzu0bDmWTtWx+LrVI9qDg2KjptlP/AH/2oE4b1Ne7vU1EDXoPNB4571ZUbnvVlEwODWwNPG9jPaNeumSf86/1rw+yPtAnXTnGP41/rWtXCXkmiD2RYiEv8Gxn7Ux/9L60Dg2Dg+e9f61kfs9rMZDGycHOQQ6/1qauAVgY3CwuGRyQvIxjPn9akmg93ZkYFtnUqeKe21rq1zrUFxqlvuG1llkYg7htIG7z8KVx2SLriQAk2zyEKWPhzxmoPLHT5dSidoiI0Q4LNzz18KHk06SIFxIHQftDI+1PtVt59DtQlmoFtM25mzkg4A2jy6fel5vozbnaWZsHA29PjQ0pK4YASAjzFRuuCTmireaNnzcRh8kYyq+fOTjNNX9njeXEKaWFLTd3Y8mADjIwfWmLpJCEP4iBRlg0Y1Wz2tn9cv8AOm4/w99ojyLeD/rChm0G50jfLef/ABEUgRRG2VU9SSftip/V307Rqur2GkwiW/uEiDcKp/E3wHjXO/bHWdO9o4IAFuUFuzFNm0ls45IJ46UhW6S4v0uNV7a8XOZQZSGceW7w+X2pgtrod22LS7ns36hLlNy/8w/Pmrus4QSWlouTEbvj95U/rW0Olz3EbtbZYryVbAPyPSmGo6dJZTCFpYZe1XumM54Nbu08duiRzSjY5YIEwE9S3r5VKExiliOJY2Q/xDFYbYTOWVsbj06irAs7T6dv1DRrWWNjsS4jPYs7eHIP3AxXg060t4pmuWZG2h4z2vdCsoZcYG5sZx4cinoDaLYSXK7rDUYnI/Eh6/Jevzq16Xc3mnT7pimSMF2XkfOuYrbzoR2ccm7HVATg/EVara0vZLaN7e9uA8uBsc71U45BB5BFXqHl1BdZhmsxIEcnowxnB9PA0Si213CU4ZsZIYYYfI1yq1ub3Tr1Y7tnSPtMF4evBxnb5Ajp6VZYPbCxvNttfy7JEbaLu3OCCP2iKqPdf0e5s5DPYRxODw6PIyKo8SMUijnvzCRtssd4kC6fLePAFXhri7gjK6gq3NvjIuYl5A695fzFIZ7A3p960m4uJYW7zRCeYMh/3Q4wvjx0oEKazdqu42TRgYPekmUAdPP/ADimunatdTY7OAnwLLJI2fv/AJ+dLdRvLq1vMPOyMnWKSV5Pmd5J/wDAqfTbuGXUoJrdmti2fe4oXbs28UYYIPPPjxioHc7O8DNISzkYJPWqF7VE+8Wa/wCxYj/naug3xDRuy5IYE855+pJrnvtOGk1C2SNSxW3HT1JNAlBr3NbPBNF/rI2X41H41Rox5NZWrdayg75OeaXy5+1Hz9aDlrLYRxySfOld/qVjZHbdXUaMOq5y3TyFNbiaC2TtbmaOGPONztgZrnfteum+/C406WGXtsvM0cxbv58s8CmalG3/ALURLNssIldRjMshI+OB+f8AOkssmyRleQuEfO9OcA4pdaxtcXEUSlELsFDN0586c6lpq6ZrFtaWrly0a7yRw5LEHgeHFXMQ6v7+O+9l5O2CoysdoySDgkcE9T9ar1nILczh4Y5RLE0eG42FgBuHHp6VJqZkgSLTZ4RHFAzMpA72WPOT49Bg+VN9F/Q7WaRa2jIJHPu11EC2emUYDy6g+pqylVzsX4GwHHQjr/f50wsZb6BoxAGyrBlPTkHIFW2DQPZ6a57NNUhJPIBkw2PPFE6l7I6dbWnbW988mTjCsDRFz064W7s4bgDG9QSMdDjpXLNf1S2m9oNSizmyaXMb4ztlAxkY8DyOaISXUbKyvv0bfXSrEFVl3ZBDEjOPDw59aVWVlPLDKkAUFlCl3HCfxE/b51L+lCTMsQOOT5LyaiMmUQ5EICncU5Y+pzwKbrb2EcXuE9u05c7u3iOJw3iR4MP4T9qA1G0kjKIbWO2QqFUM2JJT+/jPX0HjjrWfBeUafpC67skEhUOhXtS26THQgsefkMD0oiJrq9ZbaD3m7YHKopYlM/DgfPNF6SulpaSNqN3cSII+9awRcH0ZyOD8PPrTQalem0KWKW+j6fjLC3wZCPHLeB+Oa0hfJqVrpU0tnqOnJe3Sd1mnIKr6DqR8PHzoyPXo76NYIrSb3IAKpGAI1Hgo4LY/iY48qSXdhEklxcWytI0KrIz3GGEjM3Hd/azz18vnQWZHvEQ3SyQxv2ZeQhY0z1wCMAY9KoealfKk0UyxFrORWWGReHyDgsSCQ3POBjNBLqMt26RzCN+xbPbjK7h4AYwwPz+lCNrU89n7iux4AQVDxjch8hjH3qOV5rGTsn7PtIzu2bVO058cHrUINuNQW26uXeRu8W7568nnr40mt5mhukeNipVwVOPWo5ZN7NIUKMzFjgkgfDPNG6Npt1qN4qWsDSle8R0AHqTSK6NP7Uajbi3a8hg7JxkTRd5WHyOQfn8q1tdVt59QSe2uEgvOFO3iOYfP8Lenj6UvsPZTVOyKS3FrbZ/Z3Fz88DFBaj7J6zaZZY4LiLwaBuPocUQ59obnSr+/7PUE3SJgLKgMb/7jeJHiDxWujjSbSV1sotoJG4spYk+WTzj+p86rD3ssCG11e2lkj2lY2cbZYjx+BmHI46dDRemaxa6eWE8XviTMvZzKdrxgA5BU+OSD1xj7tFtv2Bicp+HqOKqd86Qzmd07qwJhyOM4qySXVvd6eZrZt0bDywR6GqJ7UzzC+FoX/VLEhx8QD+VFE28ceoxK7qkpHJB/Cp/Op5NHspY+/biM4/HEdh+nTHyqrw3NxAGEMzoGxu2nGcVLBNNcXCRzTSMHbaSSTj1piNb+1htZCIrpZlzjAGCPjWUbaWjop7JYnbxkeMOD6AHjHrWUHZZxQbjnmj56CfrWW4pX+Ikm3SrOLON0276L/eqDtJJ2gn5V1rWtK0zUI45tV3dnbZwQ5Ud7Gc4+VUNpILKe7iW3WITZTskfeIk+J6k4z6fatM0N7Kxdr7QW2RwmXOfh/Wnuvjb7W6a/TKAfRj/Wluly/orUVvcCSEgqeDkg+A8m+PHrU2v6gLnVLW6toi0cK5jctxLz9seXWoLFrWlfpK2/VBfeE6bujj90nwqp6hpWo2uU9zu1tFO5RIAdhI55HHz8fSmcPtuySAXOnjb4mOTkfIirbo2u6bqy4trjv4y8Mo2t68dD8s08L1XOYtSvbJdgkG09VZQ6n4g0+sNS07Uwltcdlo19jEd3bDbBIf3ZE6D4j7dK19pLHR7Zry905J3YOqAIwEUMhIJPm2RgbQOOTnpQNnDpG0W+t211A557aF8OnoyHII+/xrTI26trnS7kW+pvukkGQiN+rYeBzjveY/lU9rJNcsYotoCcM5HciPh8T5D+VSD9G3EMWki8lvYbNmkSaOZe0ZGHQAg9DwQPj8JrGDU7WF7pLaOGyt0z2aSq8ig+JjP48+RwT55rFt3IxeV3IXXWu2+my+66QoluW4kuW5yfIdMn4cDoPOodKSaGDUddmLTzqphtmk7x3kcv/wAK/wAzRl/pelanGL+zkhsLlcuGQMbebHhjGY2/hI+vWnl5o9i9rbQTXf6iJCZIbNP9Y55OCPDjwH0rN68MXrqeXN0nu1jWGC4kZRlyqAkD1PnVgsLe4gsvf9ZKWtsMGPdGO0kI8FTg59SQPHmm2r+0R0SH3HR9MW3ULtFxKAxI8QP7n5VSbq4ub64M93NJNK37TnJ/tXTXaRbbfX9LggmIhO8tlYApZXP77P8At48u76VX9X1N9RuO0kXftJ2h+OPDurgD4c/E0MzyzRQxyyApCu2MeQzXohjO3eTjPJxyKmrgQsSeOPTpivNx48ccc0Zcw26SSLFcrJGGwrlcEjzx4ULsG4BG3EnAAGc0g04PX6A4pppd/a2sTd6+t7nOUuLdweP3TGcZHqCKDS3Bi3PKgfOFiUFnPx8B8z8qlhsWP4gfhV0k1YLT2p1qNj2d3bXkSjcWkjwceo4OaWarq+qX0gefVFcE4EIOxV/4agnijtEDz4z+ymOTSya4MzZZVx4DHSkDePWNUgjKEmVDxjO4fTkfap5JbUiO5t1WKQcl0HZ48+M48+gHxpLaIGf8TL6KetWXQbGzutWhSaVXWEbggTIJznB5569fTFAf7PWt7Fp91dXAMdvOB2UR6nHRj5ccDzzVb9pm3a/crn8AVftXSdVx7sw6HBHAwK5p7R8+0N6f4x/7RVAMMbSuFVGbnBwcfenOmaViNnnZQDw5zjA6kA/5/rBp8lqbIG6dFFu5YDby7Y7vHlkkn4etHaXrFpGJojFKzud/fIPaHy9D446cVEEPcW9tAjMrRq34VRcn/wAV7Vdvb6e4nLq4RegAaspi67lPQb9aLnNBSHmstQg9q5I30eSy7QLNccxqf2gvJ+3jXPJpA5TIVZlB3YXG/nOSc8nrVy9tUaGS2vynaQL+rkUrkDJz09f6VVbnEyFuzQROxkUquCuegHpz0oVNppUrtcBkPLKa2uIuxhieLGyVSSp5wwJGcfDH3qFZo4Y0IQKREQxGTvboc+X+evWjYRJPAixruVEbfgE8HGPD0rTKGXT4brT7efj3mZ+yjjTJdzkjpjBHB5zxU2nez12kvaNa4aDqkzBSSPDaPzIoSKFrfVLeaFwXjG8iRdmGA6dTn06eHSn1/qzXWp6ZdW10bb3peyuHKb1BUjDFcjnDAdfAVUKDrlvE4j0rTbeymLEvcXJ7Qg+nHH3oWezkuZJ7mTV7G5n5OztX3y9Om5QPlx6Var/2SvLa4aQGyvCO+zIhRiCfEc49CPIjI8QdS9nLmxt4tV01luokkBf3VcNH4EEEk/5OcVAT7B2TQJqN7KOxkMaWsTyLxuY88f8ALU2l6DqMGt3F4idtbTBkyynL8jBI5AAIyDnwFT27wWenGESIIe098a47Q5LgDarAgc5BJA6BR51atCaG80t7tdQilcr3mgfKx4z1HzrE72s8Lu1V9a046DPc6lYALFd5wM4UOfH49SMjz9Krdre2gt+xuTeI0bki6tgqMM8gHcwB+NNtY9qrqfTuwWWzuImdgzICSRnIJDAYGPLyPNVKa+JnLKibD+yBWsayG94izWshsdSmmYLuEE9oc48cOpZc0gUoiOJ4Jdy9HRsYPr1H8vjTiKe2u9Jlsltbd7lnDI803Z7fDAz3fE+Nafo2VLCSO4S4t7gnIBBMTj0IyCePTOeKoWljge7yBw3kmCKhkVtxEnJB572a3lXDEGMoR1UjGD8K0xUGd0DLBmPkOKntVkNxHLDiMxsGVh4Ecg+taW0BmfgHFO7eKOGMM7BV6Zxyfh51L/Go1t7IGQlu8zksT4k+dZqKwWVzE8zdrI6bfdw7Kw8A2R0x5H6VLdaktrZt2EbpM/CEjPHr5HnpVYZ5HkMjsxcnJJ6k+dakTRjGB5e0vZZpcnadow/3BGOvr6CnOkaHaatFLLCs8EEWN01xOqjk4GAIyfn0qvtdFmYuiEGXtNpH2+FNdL9pprBpQ1ukkU0fZSKGKnbgDjyPGaYg+y0KBpVaGKeVGkMat2ikZHOeQvHTqflTpfZkWl9ZXcDNZXJ70kDESIOeoIPj19M4pNpetaYl2kzvdQnbtKBfxeAO9TnOeeRVp066F06u9xNLs4BYA4Gc4zuNMIK1TmLBzyfCuY6++7Xr1v8Aa4+1dN1HkJ6uPua5XqhJ1a8J69u4/wC40i0PuHjUiIXkjjYHLN5eFQjrVgngitNFtRcs3vOO0XBwUB6D+X38KqFepW+y4AhBK4x5msrb9bczbLJpHYLny48fyrKDt1waCkPNEzt8aCkPNYbQzxxTxtFPGkkbDDKwyCK5tqIgtdYvbOz/AFaxzMiq5yDiukk1y/2iTsfaa/HgZ2f/AJufzpmpajckKVcbB5EUdot/7pKySFhG4w20cj1HnSm1uWH6mQ5Q8DIyRR9uFgnYutvIEO0qr7hyPTkf1qxKfSWsUwEkmHjkHdkXO1h8/LyPI8RSbVrB7WImEEw7tw5/Af6UXbXbWTNJasexcZkikAP18/iOR408tprK9t9ryJA/8eSp+Y61RJ7L+18F1DaWWpELcxcK0hwGPhhvA+njR2uatDYaytrp8Ekc07NLJFGdm5xhQR4ZOCOeMetJIPZrS01cSm/gaDoY8MoSQ9MkgYGOc54JXzqTW79LK5t4o4Eu7wEbLxTuKMpOFX7/AFpoD1u9lS1DGNkDQKI9+M94Z/M+nFJNM1O5065eW2kKiRDHIvg6kdD8KY+0/vNxJby3LZk2MMlAoJySVGOD4H51r7Oey97rc7EbIrdASXZgSxxwoHWs8fDPHwUSyibDIgiMce0Nzh8eHkKHX9bKGEZcsSSicfIU41fS20adbSZ+0Z+9sLYCD1HgT61N7OaIuq30kjyQw2sTLuExxvbkhR0yeMn5VpSs2UizQ2k/+jySMFJmwioD4knpxWsOoS2EzDTL2ZUztyO6HHnt9frTvW70W0tytpcvKm5SBLFhPXCsO6ORjGKVpcWE+wXenNFggs9udh+G05GKAaeeW8uGnnYGVupH96ZJpVtLp4lg1SH3kKS1u6MpwD4NjGfnS9+wMn+iszR8YzyRWxdYxjxI6edZ9tZ0nC3UBMUdi7lR+yQ4PzXORXk100JVpRvuQSphdT+rPTDDw56AVBNclEAJ5z3fQ+lTWC/pCFreIL7+MujtwXHiM+Y6/WtYjaYPLZMTuMhAl7w72fH86XNbvtVlVhkA4Yc4Izn4f1qwR2dlapHGupxK0PfcydHyOdgAyQcY9c56UqtYbe4EzB5xs3MiIm4lM85OeAPzpFoAKOO6WbPHkaOhtxNa7jZFcctOzHbjPl09KltZJll220MUKtldzcnj15J+VaXkZhvAnaRXUm0NJt7qox/Z5xkjj+XxamGej2OjvtN5qFuA525din2Ix96b6kdM0jsX0vW7a4LcBVJJH/EOAPiQKpalJsLIxjnXgEng+Q9KsPs9puk3LlNUMjPjAUMQB8a1qLUz3MltEbuNVfIxtIO4cc8EiuY6g2dRuT5zOf8AuNdCj7KwjihiZvdAQVDHOz51zm7ObuZvORj96i1rE+yRXABKnODW89xNcMWmcsx8c1DXp6URNa3b2qsIiVZjyw8vKsoesoL2+k6sP/r96fizf1qE6Xq//wB8ufnn+tWeUt50O2a4fau31hANL1fPGuzD5H+tIdfsbm0uI5Lm4Nw0q8yEYyRxj6Yq7TXSQAGTqegHWk3tBd2l9p5hLBZ1O+PcQOfKtcbfacpM6VS3ZVuo2OcA5wBkk+H3xTOIbbae3hZGuyA7HOVGDynqT+WPWlAAIx96L0+5WFhHMcIG3Ajhs+h8K6uQ3tI45o4wGHaoroCM7sjoPUHI+VSrC8bfq2KMDko34c/Dwoi9uLO7sFaAKtzbNvQ5HXOSMDwzzjpnOOteyPe32tyMchhGokjXvBTjp8Rx0qKE1W/vZ0SKWVk2g5VuS2cePj0H0p/o1te2dkzXt0q3E1uWtWln3ohUjjIbxDLyPw4pRdPAuxZmYc90jmj5LgPY24ilEbxb2jkDDgns9jDnJ5Vh9ahhLetdak89w26fs41eUiRX2DpuO08eFH+xcsia5BH70ERldyobvHbztA65OMY9c+FZq1wbsQSzW8XvDHBkEe0nCnjI4I5B+lAaZe3OlXy3ISJpk6FlGUbwbp4ZP1qmPZLu51DUJL+8neOWXJDOm8Y/d+A/vXt5NcTWaWTNHJbxtu3iPG0nxOenHHlxRo0+6vJ5JZpUe4kQynu7fEDjPDZ3KM0Tpehz3Fz2SSdk8fUN3do88GgrUc0Kn/SG7QR90LtyHwetGotrNbTvbpszG2UU9MAkGr/ef4eW9zpcvY3Ci+K911XCHxwf61SdOsH0/VLmyv8A/Rjt2SLI4VsnoV/eHr60qykKMUkJU8ZqZXDSGRztHp4CpLzTZ7K4mikQ4hfYzeAPr8ccVEsQkkjRiVWQhc9SB549OtEaxxPdzFUZFGOMnhR6Uy0xhp1nLfZ7/wCGMjg8HqPicVJp1tbfpLURI6tDCs+2QPgMRnac9D0+9QSFOz0+CQSFCcsF4PxH1pogv7lZdQaWFiBKFZ9rdCygso9A2foKGSRoJX7JtvgQpxkeI+FNE0iF9TtUOpIqXR3I8yMpznjOfAnI3c8g1rJYY9oXs5VEbCQggt5fsk+dLcmkm3AyuX092RDvjcMzZ/Z8vqR968t7aSXvWu1mwf1fQ/CnuuaTaJZQva2qQujmMlHzu46n6GlWmXP6MvALy0EsbjGGXvKOOV/z9Kx8fOc+O8W/k4XhcpSQdzbhg55FHWd26OAW769D5+lP9ftLacm/s02T2xAuFKZVhxhuPHkfEZPhVdndpR7xlGYMOV4Ofh5VthYo9RNxCASN3j8KRa3bqkwuI/wucN6GtobgAh/BhmpW/wBJtnTG7AwTjpzwT5c8fOgS1hrMeGOfGsPHWqjysrBWUHW5GGOo+NKru/xlYBk/vHwqO5neRlRQx3Hakaclz5Dzo+00JQqy6iA7dRBnKj/e8/h0+Ncpxx0vL9FVlYS357d2Kwtz2h6v8PMevSnMcMMEQjijUKPEjJPxoqZu9QruM85rSKt7Q6IzSve2ik55ljHn+8P6VWCM88HNX+/1CCyhMkxPJ7qjqxqmaneR3d0ZUgWHPXb1b1PrWozYHj3lgEOOeD0A9as+majZaPp7rEPeLt+WPOB8T41U+2Yeopnov6LmnK6s8qg424OEPxPWlIN0nTbj2h1IySki3Vsyv4f7o9f5U8hs7NPb02XusQtnt+YguAe4TnjxyBzT+0WCKBEtlRIQO6qcDHpSSQ7f8RbWTwa3x/2moo/XPZG1urWH3FJg8ROUV1JYN497rjA+VVaXR7+1LLcXfYIhwBfQsqH4MQw+ldPhfpTGBxjB6eVCuU2Ntfx9lAq2PZzTAQMkwaLtNp6AZIJAx0wc+tNtXsr5Iy0IjnhtxucwOoe3Yj8sZ4xV9k0fSZnMsmm2ryZ3E9kuSR0J8zzVe/xFgddBsoLVY7eH3gAkdwRnacdOnjUw1VLP2q1/TnWO3mhvUC72DjBUZxhjnGc0L7T+0U+sxbLrSlivUcFZN4fYviBx0P8A4qftr2wMUsmk6feJGwQOYFJlHX8QyOMZ5FHNNo15GAtppvvG7ewMvYSYx4FRjNXtCi+t7m90K21UBkkVTbXDEEbsDuk/LH0FAXqiKVo2jJjTqu3ofL58cV0C2Vru1WzSzitrJW3SNLJGyeuSGPh5AfEVStWureXUrl7aQybpSwfw+X1rPetANNtncXMsgAaTcAm3GTjOR9a3s4FuNTtoycYDID4Z6Yo6ycmRcnpjFLLma5029d7eTZIjEcgEMD5g8EdDzWkMPaKCe41N4nSONbWFQE/DtOOVOT6cDyx58rGvxqDw++7/AHiKPZHNF+OQjGwMT5dM9cY8qZof03AL26Ylw+1o4sIFI6Y+I8zwelRSNpOnylil0LmE5TaAueOuc55Hjj1qxKWX19qLAW17NIzxufxEHnx5HU+tDJcznsR2rYg5j3HhTnPHzp3rEOk21xHL7wbt9vMSSbj4/icjryPkKV2sEFzIQkqwFUZ8v3hxnu/TFJJPCbp9ouqSXgmW4WIlMIBjACHqOfDP86WahbRRzTQDfOEcL7wwwEJ/ZY4++aL0qaBbbsvdtk2Ms238aluOev8A4FFXWpRdlc6eu4uZmEnHdCZ3Ek+XQUVWkG0MhwdrEcHNERSFFZQzDeMsAeOCCPvzUcwb3q47QsW3A94EH6Hn61oBhs5xRG6W5nmKRjvHJ+NR3cPYAZByfMVPbs63MRjxv3Bhn4ijNaaGecNGpYc5wOM1QoMLdmrgZDeIrKmSYQw7GyveyAayg7HZ6Tb6bGShMs7DDzMOT/CB4L6D55qOfrXPm/xB15+vun/R/vULe3OsN+JLQ/8A4sfyNTK1sXebrQNxKkMUksvCIpJqpn2y1Nj3obXH+4R+dD3ev3d9aSQypEqtgdwEHr6mplNgPUL2W+u3uJSe8e6v7ooTjxGfhWOfAVNETCrqy57ReK0y0GD+dY0XG6M1JDbTOjSIjGNMBnA4XPmfyom1ijdW7+1sd0AAj5+nWgY+zGutZXC2t25NrIcDd/8ALPmPTzp/dnb7Z6XOuGR0KhlOQeP7iq1HpO6BJo3iuJD+KBXCsvXr41YNNNkdMt3lF7b3lmziJSqmMHavODzjgdT51Kq5RSk48KPt3Jxya52/tJf2suz3i1n45CR9Dnp1qRPbu4tw3aQxOf2QF8fXnyzWMrWuow9Kq3+Jtzbp7OLbvMiyvOpCZ72AD4URpS6p7Q6dBdy6h7haTpuEVmP1h+MjZx/wgfGlP+IWj2Gm+ygaztgrvdR9pIxLu/DdWJJPXzrcjNc9vDiCEhcBuvPp40KimVwmQNxGT5AdT8hz8qKuUj92B3ESibBB8ti8/Wool2W0kpH4v1a/P8X24+ZojWSUzSs54DYwvkOgH0xUsXUVCoqeMUU0sfxr8a99prULDBdpj9b+rYeoGf5D7CvLL8Yor2oONJsz/tv/AOTQI9B1BNPvCl5uNpKNsoAzgeDAelWvVfZWS+Xdp08Esc7iZn3YPCkBl8weePSqY6JMh2MpZfEUdp2s3+mxFNva2We/Cx7oP8JP4aDW404q88EtqY7qOXBCsAigcMMeeea0GnG2uVaeGaS3LlAyKQDgjOT8+lOF16xnJYkQu42t2id5gMfiYfi5H9q8l1eGQFBd5TO4qOhPqOnp8qaIbZLW1ed4STGhzknrjoB9cfOiLOzMNvc6nqcmbVD23Zt1d893g9MDjz5I6UNqWo2Bsoo7G4nSbI7cFFKycgg5HkQOPvnkr9W1W51h+8BDao2VjUkjcepyeSePHpQDI8l1NJNJy8rl2/z86x0IcAden+fpTPT9PYwdsy7VxwT5VFHEnvSF2O0HJPmaCDsCGUlsFT5fatLmXsww2/iXg48QadFUuZI+0iDd7aSvBIzwaG161idgLYlWjGSoyBj0FBW2JPXmsolYUcYeZEYfvjgj0NeVUGtYwWrOuoduGA7oiA6+uaWMozimmt6m2pX01y4A7RiwAHSlRNawZit0GENaDk0TDbdpZz3HaIpix3CeWyccUA7rgL6jNM42ilEYn4jde0VsfhYcMvwPX5ilwIGwspI6EA4zg9KaR2tzeKwlEdtaxIWBJG1B9yxP1rIyTUJotMeKJTFFOTHGmfwpwW+bZGT8aXIx3bgAPhRSorQrbuFE8W4Kjg8qec/Hn/PiO2wRjIAkB5+FBJ20gGQw+BGaY2sksljFIzlnNyyCMqGB7gOSD16+PHpSuNWc4CmmVnJ7paRTlEZ47vIRjkEdn0PpRQUUVzcsohQojcBsYFMH0b3MLLdJKynnLRNs+ZHA+tRX+oPJHG+2FS/PZwxhEUDIwAPHpTfQPai6sI0hjuopkkyXilB/V+gzwc/H6Vm2qsfs97TT6fp8NssFrLbQrhSpZCAPDq277UH7Z+1djrns8bKGGaO5Myvhl7uBnPIoC81+KUSi6tbWCaZlXtooNrInO58g949ABnz60Bd6HJNKk2jze9QvnYCeQB4HpzWZatwquWXlO8H3g89CuxajyxUKfwjoPKmAi1KVvdVilcq3dVfD4fI/ahbfT7ycZjgOP3iwAresolFTxjmsuLS4s2IuYmjx4kcfWtogfKiD7Md4Vv7UP/oFmp8GZvt/evLNe9WvtMGK2agH8D/lUEzIJYRFIspCYAYckEceIHlQIiaGbbFIkcpGGifayuPgcj5fehLvUs70t0RUJ/GUAJ58PIUGYXl7xDc9DtP86oLntJS7AWfYHqQBlPiM8j6mhlst6iSSdIyecFWJ+1GQXd4sAhW9WSMHHZSjP8+lFnVJo4lE+gWUoA4kEOcj70CtbLtW7OFpJm/gQgf1p/pPs4TiW8IRF5CH86BPtXOqbYbOCEDoF4H0GKZ+zlw2tNdPqCqRDsCRrkJzuznnnp8KK31i6Y27R2ZHYxgbyq4zyB656+GKRq2M/wA6sOqLC3apIp2BAAF453rjikiWublkY4RSMnxFIPFlKEFRx5edbyXQ95QSL3tvdfxIqc6cpIKT+oytKr+Ka2uiZl3xADo38vKg0v7do37SAbkfqoGcGsouCKQxiSyuMofB1rKBH161lZWV0jFegVIBx8aysrSPABtf0Oa8hYhZAOhQg15WVxbFtI0ijtDuHZjGfDgePXxqWFzFgJjuNvGQDyR/asrKDfJAyOpFHPbodOtmycyXSg/Rh+VZWUAl3CqRyY6LKVA49OfjxW1pbwysiPGCHYZrKylWOgr7MaTapIbeBk38ECRunTz9TWsvsrpdxEpdZV2A7dj7cZPNZWVy9us8NP0XBFbpbFmkRCVjLhSyAgjAOOfgc1WNcvrvSL73SCYSwNEpMc0aEHdnIwAOOKysrc8MVZba6f8A9FTa3Gqx3KNtKDJjYZA5ViR4+GKo7XRubvcYoYt3JWJNoz54rKyjJpZjvVD7VtteyjHRkbJ8eorKyrPKJLCyt7fSortIg07w9oXbkg+Q8hWdkZ9Lgu2lkDypuIGMD4ZGa8rK0FSXDCRoZY4plcEfrEBI9QfCi75Dp4ga1kkVZ4t7KWyB8PH61lZRSq9jVlEp/EeaY+yd5LHfG2XHZygswx4gcVlZRDjUiQ0zeOV/nQNwxETSj8XArKyooJdQuOVDKuPEKM0rvZHedmdyx8yayspB5a3U1tkxNjPUYzWVlZUo/9k=",
+        "bought_date": "2026-07-14",
+        "shoe_details": "yy"
+      },
+      "buyback_requested": true,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-17501",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 6,
+          "selectedSize": "9"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 18500,
+              "6": 18500
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 3,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 5,
+      "status": "Cancelled",
+      "address": "loading",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-03T12:35:26.835Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-95490",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 5,
+          "selectedSize": "9"
+        },
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Derby",
+            "weight_kg": 1,
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 18500,
+              "6": 18500
+            },
+            "description": "Masterpiece derby crafted from full-grain French calfskin with hand-bushed mahogany patina. Hand-stitched wingtip brogue detailing, Blake welted construction with single-layer oak bark tanned leather sole. Chennai's peak bespoke shoe.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 2,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "+91 98765 43210",
+      "total": 18500,
+      "status": "Cancelled",
+      "address": "terduyvjn",
+      "user_id": "admin-id",
+      "created_at": "2026-07-03T12:33:25.573Z",
+      "customer_name": "Sriram Srinivasan (Admin)",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-97625",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782920180129",
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eg4zxfbadx9-1782920173317.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:36:20.129Z",
+            "description": "great\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 5,
+          "selectedSize": "9"
+        }
+      ],
+      "phone": "+91 98765 43210",
+      "total": 18500,
+      "status": "Cancelled",
+      "address": "wetwefsefwgwef",
+      "user_id": "admin-id",
+      "created_at": "2026-07-03T12:33:06.937Z",
+      "customer_name": "Sriram Srinivasan (Admin)",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-13673",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782918585585",
+            "mrp": 10,
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b7iib6od198-1782918575249.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:09:45.585Z",
+            "sizePrices": {
+              "5": 5
+            },
+            "description": "super bike\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": true
+          },
+          "quantity": 6,
+          "selectedSize": "5"
+        },
+        {
+          "product": {
+            "id": "prod-1021",
+            "mrp": 546456546,
+            "name": "Leather Chelsea Boot for Men's - 1021",
+            "price": 493434,
+            "images": [
+              "https://images.unsplash.com/photo-1634825212488-8b9f713e7104?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Boots",
+            "created_at": "2026-07-01T14:05:56.207Z",
+            "sizePrices": {
+              "5": 493434,
+              "6": 234324234324,
+              "7": 546546
+            },
+            "description": "VOGUISH Masterpiece. Hand-crafted premium high-ankle Chelsea boot featuring premium full-grain leather upper, sweat-wicking leather lining, durable double elasticated side gussets, front and back leather pull tabs, and a supportive cushioned heel step with dynamic anti-slip sole. Chennai's ultimate style icon.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": true
+          },
+          "quantity": 1,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 5,
+      "status": "Cancelled",
+      "address": "chennai\n",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-01T15:35:26.785Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-54826",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782918585585",
+            "mrp": 10,
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b7iib6od198-1782918575249.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:09:45.585Z",
+            "sizePrices": {
+              "5": 5
+            },
+            "description": "super bike\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": true
+          },
+          "quantity": 4,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 5,
+      "status": "Cancelled",
+      "address": "chennai\n",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-01T15:10:29.515Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-78323",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1782918585585",
+            "mrp": 10,
+            "name": "bike",
+            "price": 5,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b7iib6od198-1782918575249.jpg"
+            ],
+            "category": "FORMAL - DERBY",
+            "created_at": "2026-07-01T15:09:45.585Z",
+            "sizePrices": {
+              "5": 5
+            },
+            "description": "super bike\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": true
+          },
+          "quantity": 2,
+          "selectedSize": "5"
+        }
+      ],
+      "phone": "",
+      "total": 5,
+      "status": "Cancelled",
+      "address": "chennai\n",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-01T15:10:21.679Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "guest@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": null,
+      "birthday_benefit_requested": false
+    },
+    {
+      "id": "YY-ORD-34336",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "Test Shoe",
+            "price": 1000,
+            "images": []
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "phone": "+919999999999",
+      "total": 1080,
+      "status": "Cancelled",
+      "address": "Test Address",
+      "user_id": "test-user",
+      "created_at": "2026-07-01T15:06:37.705Z",
+      "customer_name": "Test Customer",
+      "customer_email": "test@example.com",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "birthday_benefit_details": {
+        "dob": "2000-01-01",
+        "status": "Pending",
+        "gov_id_number": "ABC123",
+        "gov_id_photo_url": "https://example.com/id.jpg"
+      },
+      "birthday_benefit_requested": true
+    },
+    {
+      "id": "YY-ORD-94812",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "The Imperial Wingtip Derby",
+            "price": 18500,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
+            ]
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 18500,
+      "status": "Delivered",
+      "address": "12, TTK Road, Alwarpet, Chennai, Tamil Nadu - 600018",
+      "user_id": "customer-id",
+      "created_at": "2026-06-26T14:05:56.207Z",
+      "customer_name": "Rajesh Kumar",
+      "customer_email": "customer@example.com",
+      "razorpay_order_id": "order_mock_112233",
+      "razorpay_payment_id": "pay_mock_223344"
+    },
+    {
+      "id": "YY-ORD-67791",
+      "items": [
+        {
+          "product": {
+            "id": "prod-2",
+            "name": "The Royal Chelsea Boot",
+            "price": 24000,
+            "images": [
+              "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1634825212488-8b9f713e7104?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "Boots",
+            "created_at": "2026-06-17T12:00:06.262Z",
+            "description": "Sleek, continuous single-piece leather cut Chelsea boot in rich Italian tan leather. Generous elasticated gussets, leather pull tabs, and robust storm-welted leather soles. Epitomizes royal elegance combined with modern durable craft.",
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": true
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 24000,
+      "status": "Dispatched",
+      "address": "wdqewvew",
+      "user_id": "776ae697-6be3-44be-b031-c4fdca8001a1",
+      "created_at": "2026-07-05T18:09:16.461Z",
+      "customer_name": "sriram sriram",
+      "customer_email": "sriramsriram0105@gmail.com",
+      "razorpay_order_id": "order_mock_1783274956461",
+      "razorpay_payment_id": "pay_capture_local_1783274956461"
+    }
+  ],
+  "preorders": [
+    {
+      "id": "YY-PRE-8105",
+      "name": "Rajesh Kumar",
+      "size": "10",
+      "sole": "Double Red Dainite Rubber Sole",
+      "color": "Royal Forest Green & Mahogany",
+      "email": "customer@example.com",
+      "notes": "Please add extra memory foam premium inner cushions. Ensure fitting matches wide-toes sizing.",
+      "phone": "+91 98400 12345",
+      "status": "Confirmed",
+      "user_id": "customer-id",
+      "admin_note": "Sourcing premium full-grain Italian calf crust. Confirmed to build onto custom extra-wide last. Hand dye process assigned.",
+      "created_at": "2026-06-29T14:05:56.207Z",
+      "image_urls": [
+        "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop"
+      ],
+      "style_desc": "Custom Crocodile-Embossed Wingtip Boots. Royal dark green color wanted with golden buckles.",
+      "budget_range": "₹25,000 - ₹35,000",
+      "estimated_delivery": "2026-07-15"
+    }
+  ],
+  "buybacks": [
+    {
+      "id": "YY-BB-0418",
+      "photos": [
+        "https://images.unsplash.com/photo-1449505278894-297fdb3edbc1?q=80&w=600&auto=format&fit=crop"
+      ],
+      "status": "Approved",
+      "contact": "+91 98400 12345",
+      "user_id": "customer-id",
+      "condition": "Good",
+      "admin_note": "Evaluated by Senior Shoe Maker. Leather condition validated as structurally pristine. Approved for ₹4,500 upgrade exchange coupon.",
+      "created_at": "2026-06-02T14:42:28.615Z",
+      "offer_type": "Discount Code",
+      "offer_amount": 4500,
+      "product_desc": "2-year old Estate Tan Oxford shoes. Worn occasionally, slight creases on vamp but stitching and Goodyear structure is immaculate.",
+      "original_price": 15000
+    }
+  ],
+  "offers": [
+    {
+      "id": "off-1",
+      "title": "Royal Mid-Summer Sovereign Offer",
+      "is_active": true,
+      "banner_url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200&auto=format&fit=crop",
+      "description": "Acquire our royal leather masterpiece footwear series with premium customization options. Earn complimentary aromatic cedar shoe trees with every order.",
+      "valid_until": "2026-07-11",
+      "discount_percent": 15
+    },
+    {
+      "id": "off-2",
+      "title": "Heritage Collection Early Access",
+      "is_active": true,
+      "banner_url": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=1200&auto=format&fit=crop",
+      "description": "First look at our new handmade collection. Sign up now and enjoy an exclusive discount on your next full-price purchase.",
+      "valid_until": "2026-07-06",
+      "discount_percent": 25
+    }
+  ],
+  "content_blocks": [
+    {
+      "id": "cb-about",
+      "key": "about",
+      "value": "{\"title\":\"The Legacy of YY Leathers\",\"tagline\":\"Where Leather Meets Legacy — Bespoke Shoemakers\",\"paragraphs\":[\"Nestled in the historical center of premium leather processing in Chennai, India, YY Leathers began as a humble atelier with a singular vision: to preserve the delicate art of hand-crafted footwear. Every pair that enters our workshop goes through 150 meticulous steps, from selecting pristine full-grain calf skins to the precise, patient double stitches of leather welt.\",\"We synthesize time-honored European Cordwaining techniques with native Indian shoe construction wisdom, fashioning masterwork shoes that last generations. Under the stewardship of master craftsmen, YY Leathers forms an iconic emblem of style, confidence, and uncompromising Indian heritage.\"],\"founder\":\"Yogesh & Yashwanth (Master Shoemakers)\",\"mission\":\"To offer Chennai the world's finest premium hand-crafted leather shoes, built strictly customized, and backed by our lifetime-grade circular Buy Back guarantee.\"}"
+    },
+    {
+      "id": "cb-history",
+      "key": "history",
+      "value": "[{\"year\":\"Founding\",\"title\":\"Atelier Foundation\",\"desc\":\"First custom workshop opened in Chennai, offering bespoke fitting for royal dignitaries.\"},{\"year\":\"2002\",\"title\":\"Masters' Union Creation\",\"desc\":\"Built our Master Guild uniting third-generation shoemakers to define bespoke Indian design standards.\"},{\"year\":\"2010\",\"title\":\"The Blake Handwelt Launch\",\"desc\":\"Introduced our signature Blake-stitched single oak-bark sole model, bringing ultimate flexibility.\"},{\"year\":\"2018\",\"title\":\"Circular Buy Back Scheme\",\"desc\":\"Pioneered India's first organic shoe recycling pledge, buy-backs that refurbish worn items.\"},{\"year\":\"2026\",\"title\":\"Digital Luxury Experience\",\"desc\":\"Bringing bespoke royal ordering and premium pre-orders directly to national connoisseurs.\"}]"
+    },
+    {
+      "id": "cb-policies",
+      "key": "policies",
+      "value": "{\"returns\":\"If your customized ready-to-wear shoe doesn't fit beautifully, we provide a complimentary re-sizing and fit adjustment services within 14 days of delivery. For orders custom crafted to individual measures, returns are not eligible but full bespoke scaling and alteration support is provided by our Chennai shop.\",\"privacy\":\"YY Leathers protects customer fit records and billing information under stringent data privacy. We do not distribute foot measurement blueprints or contact info to any marketing partner.\",\"shipping\":\"Within Chennai, courier deliveries are scheduled with white-gloved specialists. For other tier-1 metros in India, standard shipping completes securely within 3-5 working days.\",\"buyback\":\"Every authentic YY Leather pair qualifies for our circular restoration ecosystem. Depending on leather depth and structural preservation, we grant up to 30% of original price as store-credit coupon codes or instant cash support.\",\"preorders\":\"Pre-order items represent bespoke crafting allocated individually. Handcraft cycles require 15-25 days from confirmation of physical sizing. Standard token non-refundable down-payment of 30% binds the reservation.\"}"
+    },
+    {
+      "id": "cb-top_slider",
+      "key": "top_slider",
+      "value": "[]"
+    }
+  ]
+}

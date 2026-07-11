@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-body: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-leather: #5C3317;
+  --color-leather-dark: #361904;
+  --color-leather-light: #8B5A2B;
+  --color-gold: #C9A84C;
+  --color-gold-dark: #A68532;
+  --color-gold-light: #E5CD82;
+}
+
+@layer base {
+  body {
+    @apply bg-neutral-50 text-neutral-900 font-body antialiased selection:bg-gold/30;
+    cursor: default;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-wide;
+  }
+}
+
+/* Custom scrollbar matching premium theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #5C3317;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A84C;
+}
+
+/* Custom animations and scroll styles */
+.text-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.text-reveal-char {
+  display: inline-block;
+  transform: translateY(100%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-reveal:hover .text-reveal-char {
+  transform: translateY(0);
+}
+

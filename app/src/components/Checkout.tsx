@@ -67,7 +67,7 @@ export const Checkout: React.FC = () => {
     
     // ₹60 Per KG - Chennai
     if (stateLower === 'chennai') {
-      return 1 * weightKg;
+      return 60 * weightKg;
     }
     
     // ₹80 Per KG - Tamil Nadu (Except Chennai)
@@ -100,7 +100,8 @@ export const Checkout: React.FC = () => {
       return 0; // Will trigger manual quote
     }
     
-    return 0;
+    // Default: ₹1 for testing (any other states)
+    return 1 * weightKg;
   };
 
   const deliveryRates = [

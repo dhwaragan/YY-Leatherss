@@ -27,6 +27,8 @@ export interface Product {
   sizeMRPs?: Record<string, number>;
   // per-size weight overrides for shipping and packaging
   sizeWeights?: Record<string, number>;
+  // per-size stock quantity (admin-only, hidden from users)
+  sizeQuantities?: Record<string, number>;
   category: string;
   images: string[];
   is_new_arrival: boolean;
@@ -46,10 +48,14 @@ export interface Order {
   user_id: string;
   customer_name: string;
   customer_email: string;
+  phone?: string;
+  address: string;
+  delivery_region?: string;
+  delivery_charge?: number;
+  estimated_weight_kg?: number;
   items: CartItem[];
   total: number;
   status: 'Pending' | 'Confirmed' | 'Dispatched' | 'Delivered' | 'Cancelled';
-  address: string;
   razorpay_order_id: string;
   razorpay_payment_id?: string;
   buyback_requested?: boolean;

@@ -23,31 +23,2784 @@
   ],
   "products": [
     {
-      "id": "prod-7",
-      "name": "Minimalist Suede Mules",
-      "price": 9500,
+      "id": "prod-1783966382666",
+      "mrp": 2999,
+      "name": "Black - Mafia Italian Chelsea",
+      "price": 1899,
       "images": [
-        "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=600&auto=format&fit=crop"
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
       ],
-      "category": "MULES",
+      "category": "CHELSEA BOOT",
       "sizeMRPs": {
-        "7": 120
+        "7": 2999,
+        "8": 2999,
+        "9": 2999
       },
-      "weight_kg": 1,
-      "created_at": "2026-07-11T12:54:20.349Z",
+      "weight_kg": 2,
+      "created_at": "2026-07-13T18:13:02.666Z",
       "sizePrices": {
-        "7": 10
+        "7": 1899,
+        "8": 1899,
+        "9": 1899
       },
-      "description": "Handcrafted suede mules for effortless style.",
+      "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
       "sizeWeights": {
-        "7": 1
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 10,
+        "8": 10,
+        "9": 10
+      }
+    },
+    {
+      "id": "prod-1783966657891",
+      "mrp": 2999,
+      "name": "Black - Wide Toe Chelsea",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/1th8r11ovfm-1783966645947.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/dd06f2a3w1v-1783966647099.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/mxa9czeynni-1783966647675.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/x9weaosvn1d-1783966648167.jpg"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "8": 2999,
+        "9": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-13T18:17:37.891Z",
+      "sizePrices": {
+        "8": 1899,
+        "9": 1999
+      },
+      "description": "Italian Chelsea Crust Leather Boot – Black Patina\n\nCrafted from premium Italian crust leather, this Chelsea Boot combines timeless craftsmanship with modern elegance. The naturally finished crust leather develops a rich patina over time, making every pair uniquely yours. Featuring a clean, streamlined silhouette with a refined round toe, it delivers effortless sophistication for both formal and smart-casual occasions.\n\nThe elastic side panels and pull tabs ensure easy slip-on convenience, while the soft leather lining and cushioned footbed provide exceptional comfort throughout the day. Finished with a durable anti-slip outsole, this boot is designed to offer lasting performance without compromising on style.\n\nKey Features\nPremium Italian crust leather upper\nRich hand-finished surface that develops a unique patina\nClassic Chelsea boot with stretch elastic side panels\nSoft genuine leather lining for breathability\nCushioned leather footbed for all-day comfort\nDurable anti-slip outsole for reliable traction\nRear pull tabs for easy wear\nRefined round-toe silhouette for versatile styling\nPerfect for business, formal, and smart-casual wear",
+      "sizeWeights": {
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "8": 10
+      }
+    },
+    {
+      "id": "prod-1783967140930",
+      "mrp": 2999,
+      "name": "Wine - Wide Toe Chelsea",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/es99hc0qxsq-1783967095136.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/lbjc5yvvhl-1783967095609.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/h7q6p77lxwa-1783967096144.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k6k3edn7f3-1783967096688.jpg"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-13T18:25:40.930Z",
+      "sizePrices": {
+        "6": 1899,
+        "7": 1899,
+        "8": 1899
+      },
+      "description": "Italian Chelsea Crust Leather Boot – Burgundy Patina\n\nElevate your footwear collection with this handcrafted Italian Chelsea Boot, made from premium crust leather and finished with a rich hand-burnished burgundy patina. Designed for those who appreciate refined craftsmanship, the leather develops a deeper character over time, making each pair truly one of a kind.\n\nThe sleek Chelsea silhouette is paired with stretch elastic side panels and pull tabs for effortless wear, while the soft leather lining ensures superior comfort throughout the day. A rugged anti-slip rubber outsole provides exceptional grip and stability, making this boot as practical as it is elegant.\n\nWhether paired with tailored trousers, chinos, or premium denim, this versatile boot delivers timeless sophistication for every occasion.\n\nKey Features\nPremium Italian crust leather upper\nHand-burnished burgundy patina finish\nClassic Chelsea boot design with elastic side gussets\nSoft genuine leather lining for enhanced comfort\nCushioned footbed for all-day support\nHeavy-duty anti-slip rubber outsole with deep traction pattern\nDurable Goodyear-style welt construction look\nRear pull tabs for easy slip-on convenience\nPerfect for formal, business, and smart-casual wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": true
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10,
+        "8": 10
+      }
+    },
+    {
+      "id": "prod-1783970443917",
+      "mrp": 2999,
+      "name": "TAN - Mafia Boot",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/idtredltlti-1783970432184.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sw0o1cu20c-1783970433088.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/v8phjrkqy5-1783970434343.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gc2dxczq7kw-1783970435039.jpg"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-13T19:20:43.917Z",
+      "sizePrices": {
+        "6": 1899,
+        "7": 1899,
+        "8": 1899
+      },
+      "description": "Italian Chelsea Crust Leather Boot – Tan\n\nExperience timeless elegance with our Italian Chelsea Crust Leather Boot in Tan, expertly handcrafted from premium Italian crust leather. Featuring a rich hand-finished tan patina, each pair showcases unique depth and character that becomes even more beautiful with wear. The sleek, minimalist silhouette is enhanced with a convenient side zipper, offering effortless wear while maintaining a refined, contemporary look.\n\nDesigned with a soft leather lining, cushioned footbed, and a durable outsole, this boot delivers exceptional comfort and lasting performance for every occasion—from business meetings to evening outings.\n\nKey Features\nPremium Italian crust leather upper\nHand-burnished tan patina finish\nElegant side zipper for easy on-and-off\nSoft genuine leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable, anti-slip outsole for superior grip\nSleek almond-toe silhouette\nLightweight construction for everyday wear\nPerfect for formal, business, and smart-casual styling",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1,
+        "8": 1
+      }
+    },
+    {
+      "id": "prod-1783970701180",
+      "mrp": 2999,
+      "name": "Burgundy - Snake Texture Chelsea",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0n6cppxjjgb-1783970671413.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/fv35tck42lo-1783970682810.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ctrj0ds0qpk-1783970683949.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zytpmxnwy5p-1783970688775.jpg"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "8": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-13T19:25:01.180Z",
+      "sizePrices": {
+        "8": 1899
+      },
+      "description": "Italian Chelsea Crust Leather Boot – Snake Texture Burgundy\n\nMake a bold statement with our Italian Chelsea Crust Leather Boot – Snake Texture Burgundy, where premium craftsmanship meets distinctive luxury. Handcrafted from high-quality Italian crust leather, this boot features an elegant snake-textured embossed finish enhanced by a rich hand-burnished burgundy patina, creating a sophisticated look with exceptional depth and character.\n\nDesigned with a sleek silhouette and convenient side zipper, it offers effortless wear while maintaining a refined profile. The soft leather lining, cushioned footbed, and durable anti-slip outsole ensure lasting comfort and stability, making it the perfect choice for both formal occasions and elevated everyday style.\n\nKey Features\nPremium Italian crust leather upper\nLuxurious embossed snake-texture finish\nHand-burnished burgundy patina for a unique look\nSmooth side zipper for easy wear\nSoft genuine leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable anti-slip rubber outsole\nSleek almond-toe silhouette\nLightweight construction with premium craftsmanship\nIdeal for formal, business, evening, and smart-casual wear",
+      "sizeWeights": {
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "8": 1
+      }
+    },
+    {
+      "id": "prod-1783973438387",
+      "mrp": 4999,
+      "name": "White - Luxury Chelsea/ Leather Sole",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/yev7j3m4ul-1783973428198.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/my5k2e6v7b-1783973429602.jpg"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999,
+        "8": 4999,
+        "9": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-13T20:10:38.387Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500,
+        "8": 3500,
+        "9": 3500
+      },
+      "description": "Key Features\nPremium Italian crust leather upper\nElegant white hand-finished leather\nGenuine leather sole for superior comfort and durability\nRefined square-toe silhouette\nSmooth side zipper for easy on-and-off\nSoft genuine leather lining for breathable comfort\nCushioned leather footbed for all-day support\nStacked leather heel with anti-slip rubber heel cap\nHandcrafted with premium Italian craftsmanship\nIdeal for weddings, formal events, business attire, and luxury smart-casual styling",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784098999108",
+      "mrp": 1999,
+      "name": "Black - Wholecut Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/l8u1yi3y8p-1784098971660.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zww0j6h9j9k-1784098974591.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7srn767oet3-1784098975362.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/khky7g847o-1784098976209.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k9apjszmqsq-1784098977151.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:03:19.108Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Wholecut Black Formal Leather Shoe\n\nCrafted from a single piece of premium genuine leather, this Wholecut Black Formal Shoe showcases timeless elegance and exceptional craftsmanship. Its seamless upper creates a sleek, refined silhouette, making it the perfect choice for business meetings, weddings, black-tie events, and other formal occasions.\n\nDesigned for both style and comfort, the shoe features a soft leather lining, cushioned insole, and a durable outsole that provides lasting support throughout the day. The polished black finish complements suits, tuxedos, and formal attire, delivering a sophisticated look with every step.\n\nKey Features:\n\nPremium genuine leather upper\nElegant wholecut design with a seamless finish\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day wear\nDurable outsole with excellent grip\nClassic black color for versatile formal styling\nIdeal for office wear, weddings, parties, and special occasions",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784099361604",
+      "mrp": 1999,
+      "name": "Black- Apron Toe Derby",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sht1oi21hx-1784099339733.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/41gmjskfqds-1784099342023.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/1zzfoc3q6ao-1784099342636.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bm9lqc8uue6-1784099343136.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/iifret94jsj-1784099343693.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ie0z55qek0h-1784099344412.JPG"
+      ],
+      "category": "DERBY",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:09:21.604Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
+      },
+      "description": "Apron Toe Derby Black Formal Leather Shoe\n\nRefined, versatile, and crafted for lasting comfort, the Apron Toe Derby Black Formal Leather Shoe is a timeless addition to any gentleman's wardrobe. Made from premium genuine leather, it features a classic apron toe design with an open-lace Derby construction, offering a sophisticated look and a comfortable fit for all foot types.\n\nThe sleek black finish makes it an ideal choice for business meetings, office wear, weddings, and formal occasions. A soft inner lining, cushioned footbed, and durable outsole ensure all-day comfort without compromising on style.\n\nKey Features:\n\nPremium genuine leather upper\nClassic apron toe detailing\nOpen-lace Derby design for a comfortable fit\nSoft leather lining for enhanced comfort\nCushioned insole for all-day support\nDurable outsole with reliable grip\nElegant black finish for versatile formal styling\nPerfect for office wear, business meetings, weddings, and special occasions",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784099602399",
+      "mrp": 1999,
+      "name": "Black - Designer Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/a94ctzasrd-1784099572635.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/qw19ngayd5-1784099573416.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/lp4z5oawka-1784099574140.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/wd8qq3wdyz-1784099651025.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:13:22.399Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Key Features:\n\nPremium genuine leather upper\nDesigner cap toe Oxford with textured leather detailing\nElegant brogue perforation accents\nClosed-lace construction for a refined fit\nSoft leather lining for superior comfort\nCushioned insole for all-day support\nDurable outsole with excellent grip\nClassic black finish for versatile formal styling\nIdeal for business meetings, office wear, weddings, and formal events\n\nStyle: Contemporary Formal | Color: Black | Material: Genuine Leather",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784100298429",
+      "mrp": 1999,
+      "name": "Brown - Designer Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/z3xoy4o1fmr-1784100281888.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gj6ql9q3lqf-1784100283080.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/c8yht27ppj-1784100284005.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/70fb92y3f1v-1784100285373.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/qfau07tcuwf-1784100286270.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:24:58.429Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599
+      },
+      "description": "Key Features:\n\nPremium genuine leather upper\nDesigner cap toe Oxford with textured leather detailing\nElegant brogue perforation accents\nClosed-lace construction for a refined fit\nSoft leather lining for superior comfort\nCushioned insole for all-day support\nDurable outsole with excellent grip\nClassic black finish for versatile formal styling\nIdeal for business meetings, office wear, weddings, and formal events\n\nStyle: Contemporary Formal | Color: Brown | Material: Genuine Leather",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784101046109",
+      "mrp": 1999,
+      "name": "Black - Italian Nose Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/epgf41o7kqm-1784101027801.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/hdn5f8mbdfb-1784101031177.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/uanebn70fh-1784101032022.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/wku5lkd3v6-1784101032774.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/mbo8ggmde1j-1784101033399.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tvx4scxo8rr-1784101034405.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:37:26.109Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "10": 1599
+      },
+      "description": "Key Features:\n\nPremium genuine leather upper\nElegant Italian-inspired pointed toe design\nClassic plain-toe Oxford silhouette\nClosed-lace construction for a sleek, refined fit\nSoft leather lining for enhanced comfort\nCushioned insole for all-day support\nDurable outsole with excellent grip\nHigh-gloss black finish for a sophisticated appearance\nPerfect for business meetings, office wear, weddings, parties, and formal occasions\n\nStyle: Italian Pointed Toe Oxford\nColor: Black\nMaterial: Genuine Leather\nOccasion: Business, Formal, Wedding & Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784101286590",
+      "mrp": 1999,
+      "name": "Black - Brogue Foemal Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7ed62830gj-1784101257873.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/82nlr3p3709-1784101259642.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/j0qjgby7vml-1784101260272.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nysurxdhak-1784101261624.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9s3c2gb3ryq-1784101262284.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:41:26.590Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599
+      },
+      "description": "Key Features\nPremium genuine leather upper\nClassic wingtip brogue perforation detailing\nElegant Oxford lace-up design\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day wear\nDurable outsole with excellent grip\nIdeal for business meetings, weddings, office wear, and formal occasions\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Brogue Oxford Formal Shoe\nOccasion: Formal | Business | Wedding | Office | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784101538523",
+      "mrp": 1999,
+      "name": "Black - Designer Monk",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0aof24ksp9gt-1784101529471.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4mdh1lm96yh-1784101531141.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/v4f9cgvvi7r-1784101532507.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0b9xfpstb6f-1784101533096.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/695nzum38x6-1784101533715.JPG"
+      ],
+      "category": "MONKS",
+      "sizeMRPs": {
+        "5": 1999,
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:45:38.523Z",
+      "sizePrices": {
+        "5": 1599,
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Key Features\nPremium genuine leather upper\nElegant double monk strap with polished metal buckles\nUnique woven-texture leather detailing for a luxurious finish\nSoft leather lining for superior comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nPerfect for office wear, business meetings, weddings, and formal events\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Double Monk Strap Formal Shoe\nOccasion: Formal | Business | Wedding | Smart Casual",
+      "sizeWeights": {
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784101715971",
+      "mrp": 1999,
+      "name": "Black - Designer Monk",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0h6wixx67dtt-1784101691103.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/hvfji07nyak-1784101692662.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/i10r43fdmt-1784101693760.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/460ukndm74p-1784101694464.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pz5cvs78k9n-1784101695053.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/58w4dq7kycf-1784101695683.JPG"
+      ],
+      "category": "MONKS",
+      "sizeMRPs": {
+        "7": 1999,
+        "8": 1999,
+        "9": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:48:35.971Z",
+      "sizePrices": {
+        "7": 1599,
+        "8": 1599,
+        "9": 1599
+      },
+      "description": "Key Features\nPremium genuine leather construction\nLuxurious crocodile-embossed leather detailing\nElegant double monk strap with premium metal buckles\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole for enhanced grip and longevity\nHandcrafted finish with a sophisticated modern design\nPerfect for business wear, weddings, formal events, and luxury occasions\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Croc-Embossed Double Monk Strap Formal Shoe\nOccasion: Formal | Business | Wedding | Evening | Luxury Wear",
+      "sizeWeights": {
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784102071623",
+      "mrp": 1999,
+      "name": "Black - Pointed Penny Loafer",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tprk56vf2l-1784102141831.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/o7k1x7jizwi-1784102143887.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/18affxf0jq7-1784102144480.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2zrehv4kt0o-1784102145179.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/h253afgk0aq-1784102145757.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ev7dyuim9xp-1784102146443.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "5": 1999,
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:54:31.623Z",
+      "sizePrices": {
+        "5": 1499,
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499
+      },
+      "description": "Key Features\nPremium genuine leather upper\nClassic penny strap design\nHand-stitched apron toe detailing\nSlip-on style for effortless wear\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nPerfect for office wear, business meetings, weddings, and smart-casual occasions\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Penny Loafer\nOccasion: Formal | Business | Smart Casual | Office | Evening Wear",
+      "sizeWeights": {
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "5": 10,
+        "6": 10,
+        "7": 10,
+        "8": 10,
+        "9": 10
+      }
+    },
+    {
+      "id": "prod-1784102323183",
+      "mrp": 1999,
+      "name": "Black - Designer Penny Loafer",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/cm4citxxe6p-1784102303574.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/l9pj9bxz4l-1784102304438.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ulbwasl5zug-1784102305338.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9aafkwpxlbw-1784102317236.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T07:58:43.183Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499
+      },
+      "description": "Key Features\nPremium genuine leather upper\nExclusive embossed designer pattern for a luxurious look\nClassic penny strap with a modern twist\nSlip-on construction for effortless wear\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole for enhanced grip and longevity\nHandcrafted finish with premium attention to detail\nIdeal for office wear, business meetings, weddings, parties, and smart-casual occasions\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Designer Penny Loafer\nOccasion: Formal | Business | Smart Casual | Wedding | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10,
+        "8": 10
+      }
+    },
+    {
+      "id": "prod-1784102575923",
+      "mrp": 4999,
+      "name": "Black - Luxury  Chelsea Soft",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/59pm94l87e9-1784102568333.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/oh3kx6itdr-1784102569300.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999,
+        "8": 4999,
+        "9": 4999,
+        "10": 4999,
+        "11": 5999,
+        "12": 5999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:02:55.923Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500,
+        "8": 3500,
+        "9": 3500,
+        "10": 3500,
+        "11": 3999,
+        "12": 3999
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nHand-finished leather with a rich, luxurious appearance\nPremium gold-tone YKK side zipper for durability and convenience\nSleek Chelsea boot silhouette with side zip design\nSoft leather lining for breathable, all-day comfort\nCushioned footbed for enhanced support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nExpertly handcrafted with superior attention to detail\n\nColor: Black\nMaterial: Premium Full-Grain Crust Leather\nClosure: Gold YKK Side Zipper\nStyle: Luxury Chelsea Boot\nOccasion: Formal | Business | Smart Casual | Evening | Luxury Wear\n\nA timeless Chelsea boot that blends premium craftsmanship, modern sophistication, and everyday comfort for the gentleman who demands nothing but the best.",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784102824639",
+      "mrp": 4999,
+      "name": "Black - Luxury Chelsea Texture Pointed",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sv8neteb7cg-1784102816036.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pzpfkhfcr2q-1784102817476.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999,
+        "8": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:07:04.639Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500,
+        "8": 3500
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nElegant reptile-embossed leather texture\nSophisticated pointed toe design\nPremium gold-tone YKK side zipper for smooth, durable closure\nSoft leather lining for breathable all-day comfort\nCushioned footbed for enhanced support\nDurable outsole with excellent grip and longevity\nRear pull tab for easy wear\nHandcrafted with precision and premium finishing\n\nColor: Black\nMaterial: Premium Full-Grain Crust Leather\nClosure: Gold YKK Side Zipper\nStyle: Pointed Chelsea Boot\nOccasion: Formal | Business | Evening | Wedding | Luxury Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784102955730",
+      "mrp": 4999,
+      "name": "Brown - Luxury Brogue Chelsea",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rzsiq384uxf-1784102996467.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/53kkslids1t-1784102997551.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:09:15.730Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nHand-finished brown leather with a rich vintage patina\nClassic brogue perforation detailing for timeless elegance\nPremium gold-tone YKK side zipper for smooth, durable closure\nSoft leather lining for breathable all-day comfort\nCushioned footbed for superior support\nDurable outsole with excellent grip and longevity\nRear pull tab for easy on and off\nExpertly handcrafted with premium attention to detail\n\nColor: Brown\nMaterial: Premium Full-Grain Crust Leather\nClosure: Gold YKK Side Zipper\nStyle: Brogue Chelsea Boot\nOccasion: Formal | Business | Smart Casual | Wedding | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784103145169",
+      "mrp": 4999,
+      "name": "Black - Luxury Brogue Chelsea",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/jhmpvr9ifrj-1784103133649.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/q79cybcq5po-1784103134941.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:12:25.169Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nHand-finished brown leather with a rich vintage patina\nClassic brogue perforation detailing for timeless elegance\nPremium gold-tone YKK side zipper for smooth, durable closure\nSoft leather lining for breathable all-day comfort\nCushioned footbed for superior support\nDurable outsole with excellent grip and longevity\nRear pull tab for easy on and off\nExpertly handcrafted with premium attention to detail\n\nColor: Black\nMaterial: Premium Full-Grain Crust Leather\nClosure: Gold YKK Side Zipper\nStyle: Brogue Chelsea Boot\nOccasion: Formal | Business | Smart Casual | Wedding | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784103330074",
+      "mrp": 4999,
+      "name": "Burgundy - Luxury Chelsea Texture",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/g794gdlau3n-1784103301408.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ux0xbt9jjha-1784103325374.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:15:30.074Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nRich burgundy hand-finished leather with crocodile-embossed texture\nPremium gold-tone YKK side zipper for smooth and durable closure\nSleek Chelsea boot silhouette with a modern square toe\nSoft leather lining for breathable, all-day comfort\nCushioned footbed for enhanced support\nDurable outsole with excellent grip and longevity\nRear pull tab for easy on and off\nExpertly handcrafted with exceptional attention to detail\n\nColor: Burgundy\nMaterial: Premium Full-Grain Crust Leather\nTexture: Crocodile Embossed\nClosure: Gold YKK Side Zipper\nStyle: Luxury Chelsea Boot\nOccasion: Formal | Business | Wedding | Evening | Smart Casual | Luxury Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784103507142",
+      "mrp": 4999,
+      "name": "Black- Luxury Chelsea Belt Texture",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5gaurzowf2y-1784103498745.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4j8r1ipvkkj-1784103502608.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/aay2lfkn2kt-1784103503338.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999,
+        "8": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:18:27.142Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500,
+        "8": 3500
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nElegant reptile-embossed textured finish\nStylish side buckle accent for a refined look\nPremium gold-tone YKK side zipper for smooth and durable closure\nSleek square toe design with a modern silhouette\nSoft leather lining for breathable, all-day comfort\nCushioned footbed for superior support\nDurable outsole with excellent grip and longevity\nRear pull tab for easy on and off\nExpertly handcrafted with premium attention to detail\n\nColor: Black\nMaterial: Premium Full-Grain Crust Leather\nTexture: Reptile Embossed\nClosure: Gold YKK Side Zipper\nStyle: Textured Buckle Chelsea Boot\nOccasion: Formal | Business | Smart Casual | Evening | Luxury Wear",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784103650496",
+      "mrp": 4999,
+      "name": "Black - Luxury Chelsea Crocodile texture",
+      "price": 3500,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pdjlhia8yw-1784103645456.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/353skngc6dd-1784103692082.JPG"
+      ],
+      "category": "LUXURY",
+      "sizeMRPs": {
+        "6": 4999,
+        "7": 4999,
+        "8": 4999,
+        "9": 4999,
+        "10": 4999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-15T08:20:50.496Z",
+      "sizePrices": {
+        "6": 3500,
+        "7": 3500,
+        "8": 3500,
+        "9": 3500,
+        "10": 3500
+      },
+      "description": "Key Features\nPremium full-grain crust leather upper\nLuxurious crocodile-embossed texture\nSleek square-toe Chelsea boot silhouette\nPremium gold-tone YKK side zipper for smooth and durable closure\nSoft leather lining for breathable, all-day comfort\nCushioned footbed for superior support\nDurable outsole with excellent grip and long-lasting performance\nRear pull tab for easy on and off\nExpertly handcrafted with exceptional attention to detail\n\nColor: Black\nMaterial: Premium Full-Grain Crust Leather\nTexture: Crocodile Embossed\nClosure: Gold YKK Side Zipper\nStyle: Luxury Chelsea Boot\nOccasion: Formal | Business | Smart Casual | Evening | Wedding | Luxury Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784178804437",
+      "mrp": 1999,
+      "name": "Black - Export Formals Derby",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/f26jq8t2a1-1784178793823.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ckl58nhds5b-1784178795676.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/u5szn2g1oa-1784178796378.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/s595qq72sq-1784178796918.JPG"
+      ],
+      "category": "DERBY",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T05:13:24.437Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Key Features\nPremium genuine leather upper\nClassic Derby open-lace design\nSmooth polished finish for a refined appearance\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nLightweight construction for enhanced walking comfort\nExpertly crafted to export-quality standards\n\nColor: Black\nMaterial: Premium Genuine Leather\nStyle: Derby Formal Shoe\nClosure: Lace-Up\nOccasion: Office | Business | Formal | Wedding | Corporate | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784178906594",
+      "mrp": 1999,
+      "name": "Brown - Export Formal Derby",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/42fxrxios9a-1784178891425.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ossr29m69np-1784178893165.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8qunqssmn2r-1784178894399.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pqikvid1qo-1784178894999.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/357pzbagr09-1784178895640.JPG"
+      ],
+      "category": "DERBY",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T05:15:06.594Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599
+      },
+      "description": "Key Features\nPremium genuine leather upper\nClassic Derby open-lace design\nSmooth polished finish for a refined appearance\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nLightweight construction for enhanced walking comfort\nExpertly crafted to export-quality standards\n\nColor: Brown\nMaterial: Premium Genuine Leather\nStyle: Derby Formal Shoe\nClosure: Lace-Up\nOccasion: Office | Business | Formal | Wedding | Corporate | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784178968658",
+      "mrp": 1999,
+      "name": "Burgundy - Export Formal Derby",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p1gacvfvdxf-1784178962126.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4r7xo2dyuls-1784178963229.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0xpbj12x5irm-1784178963857.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/viu9wuwefm-1784178964455.JPG"
+      ],
+      "category": "DERBY",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T05:16:08.658Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Key Features\nPremium genuine leather upper\nClassic Derby open-lace design\nSmooth polished finish for a refined appearance\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nLightweight construction for enhanced walking comfort\nExpertly crafted to export-quality standards\n\nColor: Burgundy\nMaterial: Premium Genuine Leather\nStyle: Derby Formal Shoe\nClosure: Lace-Up\nOccasion: Office | Business | Formal | Wedding | Corporate | Evening Wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784207227550",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Texture Non Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/cnjsb3ohab-1784207200912.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/88ebwqtw8y5-1784207208704.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rj51zt91y8-1784207219797.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/aeuizusng5-1784207220756.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:07:07.550Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper-free Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Non-Zip)\nClosure: Slip-On with Elastic Side Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784207370450",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Texture Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/shyw7lmkrng-1784207358945.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gxjgdc2zr3g-1784207360337.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/03mqzvej3pfb-1784207360905.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/lhinpmv79t-1784207361452.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:09:30.450Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Zip)\nClosure: Slip-On with Zip Side Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784207556625",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Texture Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5909zcm8a5-1784207497440.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/6f2g5rjfwzj-1784207527755.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/m7oty6tr7i-1784207529031.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/g399rtkvpvk-1784207529535.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:12:36.625Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1499
+      },
+      "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Zip)\nClosure: Slip-On with Zip Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10,
+        "8": 10,
+        "9": 10,
+        "10": 10,
+        "11": 10
+      }
+    },
+    {
+      "id": "prod-1784207742525",
+      "mrp": 1999,
+      "name": "Brown - Italian Chelsea Texture Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rww32l371p-1784207731208.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7clyo777fu3-1784207732698.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gk5yxqw42ek-1784207733269.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/phsdwph2xim-1784207733925.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:15:42.525Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Brown\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Zip)\nClosure: Slip-On with Zip Side Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784207886556",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Croc Texture Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b258nmcl7e8-1784207948159.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/fuf6si6t5kh-1784207949676.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/lq2jjbcmbo-1784207950323.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/42c1npnwk9w-1784207951013.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7ucees0ppqk-1784207951752.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:18:06.556Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Zip)\nClosure: Slip-On with Zip Side Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784208150443",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Croc Texture Non- Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5noylun7iy6-1784208142105.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/g7dljlfafcs-1784208143548.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/3s2amonl8nm-1784208144138.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nbpc8r61xo-1784208144790.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/vnilajwhlm-1784208145336.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:22:30.443Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper-free Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Non-Zip)\nClosure: Slip-On with Elastic Side Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784208452050",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Plain Hook with Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7hb70pjs52r-1784208442411.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rnironstj5j-1784208443677.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/88wvdxo922s-1784208444243.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/wxnlzs7i3ab-1784208444962.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:27:32.050Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features:\nPremium Italian soft leather upper\nElegant square-toe Chelsea boot design\nSmooth, minimalist finish\nPremium side zipper for effortless wear\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole\nPerfect for formal, business, and smart-casual styling\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot with Side Zipper\nClosure: Premium Side Zipper\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784208549526",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Plain with Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/wm7ld79zud-1784208537996.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b0d4v6pgv9v-1784208538937.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gyx41t60xc-1784208539673.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/wsf12t8esh8-1784208540275.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:29:09.526Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features:\nPremium Italian soft leather upper\nElegant square-toe Chelsea boot design\nSmooth, minimalist finish\nPremium side zipper for effortless wear\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole\nPerfect for formal, business, and smart-casual styling\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot with Side Zipper\nClosure: Premium Side Zipper\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784208781132",
+      "mrp": 1999,
+      "name": "Brown - Italian Chelsea Soft with Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/06hrxia4s5cp-1784208767750.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9ckjck3s61b-1784208769284.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2x4zd0ik098-1784208769832.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p7te1id4wln-1784208770490.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/qam212kyw1-1784208771019.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:33:01.132Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features:\nPremium Italian soft leather upper\nElegant square-toe Chelsea boot design\nSmooth, minimalist finish\nPremium side zipper for effortless wear\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole\nPerfect for formal, business, and smart-casual styling\n\nColor: Brown\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot with Side Zipper\nClosure: Premium Side Zipper\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784208879332",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Croc Texture with Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9yqgoysreka-1784208894092.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/f61abyyjwnp-1784208895400.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k30zv64hxkp-1784208896537.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zkn3tjhyvzd-1784208897114.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:34:39.332Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features:\nPremium Italian soft leather upper\nElegant square-toe Chelsea boot design\nSmooth, minimalist finish\nPremium side zipper for effortless wear\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole\nPerfect for formal, business, and smart-casual styling\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot with Side Zipper\nClosure: Premium Side Zipper\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784209054852",
+      "mrp": 1999,
+      "name": "Black - Italian Chelsea Soft Hook Non-Zip",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9lxu8fhyu69-1784209035889.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9w3vsqhbz-1784209043311.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/3al5nnebfvl-1784209043962.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0gy1yhrw3miw-1784209044867.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/dbthfy8ymx-1784209045549.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999,
+        "11": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T13:37:34.852Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499,
+        "11": 1599
+      },
+      "description": "Key Features:\nPremium Italian soft leather upper\nElegant square-toe Chelsea boot design\nSmooth, minimalist finish\nPremium side Elastic for effortless wear\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole\nPerfect for formal, business, and smart-casual styling\n\nColor: Black\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot with Side Elastic\nClosure: Premium Side Elastic\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784230676524",
+      "mrp": 2999,
+      "name": "Old Money Loafer - Burgundy Brown With White",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8g8brvavaai-1784230663060.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0pcxie9mntlm-1784230664450.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ge0tq99xrx-1784230664998.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/cheldhwr2cl-1784230665549.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bre899r9eup-1784230666238.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 3499
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T19:37:56.524Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1999
+      },
+      "description": "Old Money Burgundy Brown & White Penny Loafer\n\nTimeless elegance meets modern sophistication with the Old Money Burgundy Brown & White Penny Loafer. Crafted from premium genuine leather, this luxurious loafer features a striking two-tone combination of rich burgundy brown and crisp white, inspired by classic European fashion. The iconic penny strap and hand-finished leather deliver a refined, vintage aesthetic, making it the perfect choice for those who appreciate understated luxury and effortless style.\n\nDesigned with a cushioned leather-lined interior and a durable outsole, this loafer offers exceptional comfort without compromising on elegance. Whether paired with tailored trousers, linen suits, chinos, or premium denim, it adds a distinguished old-money charm to every outfit.\n\nProduct Details:\nColor: Burgundy Brown & White\nMaterial: Premium Genuine Leather\nStyle: Old Money Penny Loafer\nDesign: Classic Two-Tone Contrast\nClosure: Slip-On\nToe Shape: Almond Toe\nLining: Soft Leather Lining\nFootbed: Cushioned for All-Day Comfort\nOutsole: Durable Anti-Slip Sole\nFit: Regular Fit\nOccasion: Business | Smart Casual | Resort Wear | Evening | Luxury Events | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784230821790",
+      "mrp": 2999,
+      "name": "Old Money Loafer - Burgundy Brown with Beige",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zg1hjkk6ieb-1784230804584.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/vp9wacadhvn-1784230805997.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/an92xu7og2a-1784230806446.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/6jdtroffgch-1784230806940.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/91p6zben2wg-1784230807689.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 3499
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T19:40:21.790Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1999
+      },
+      "description": "Old Money Burgundy Brown & Beige Penny Loafer\n\nInspired by timeless European elegance, the Old Money Burgundy Brown & Beige Penny Loafer is a refined expression of luxury and sophistication. Expertly crafted from premium genuine leather, this two-tone loafer blends a rich burgundy brown frame with a soft beige vamp, creating a distinguished look that embodies classic old-money style. The iconic penny strap, smooth hand-finished leather, and clean silhouette make it an essential addition to any gentleman's wardrobe.\n\nDesigned for both style and comfort, the loafer features a soft leather lining, cushioned footbed, and durable outsole for effortless all-day wear. Whether styled with tailored trousers, linen suits, chinos, or premium denim, it delivers an elegant statement suitable for every occasion.\n\nProduct Details:\nColor: Burgundy Brown & Beige\nMaterial: Premium Genuine Leather\nStyle: Old Money Penny Loafer\nDesign: Classic Two-Tone Contrast\nClosure: Slip-On\nToe Shape: Almond Toe\nLining: Soft Leather Lining\nFootbed: Cushioned for All-Day Comfort\nOutsole: Durable Anti-Slip Sole\nFit: Regular Fit\nOccasion: Business | Smart Casual | Resort Wear | Evening | Luxury Events | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784231211173",
+      "mrp": 2999,
+      "name": "Old Money Loafer - Chocolate Espresso Brown",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/3yvbfzzm403-1784231192803.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eo1avhmcjnr-1784231193774.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bqw7xam6hys-1784231194359.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kcu1stc3us-1784231195053.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/10c2nyu79l5a-1784231195597.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 3499
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T19:46:51.173Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1999
+      },
+      "description": "Old Money Chocolate Espresso Brown Penny Loafer\n\nEmbrace timeless sophistication with the Old Money Chocolate Espresso Brown Penny Loafer, a perfect blend of heritage craftsmanship and contemporary refinement. Expertly crafted from premium genuine leather, this loafer features a rich chocolate espresso brown finish with a hand-burnished sheen that exudes understated luxury. Its classic penny strap, sleek silhouette, and impeccable detailing make it a versatile essential for the modern gentleman.\n\nDesigned for effortless comfort, the soft leather lining and cushioned footbed provide all-day support, while the durable outsole ensures lasting performance. Whether paired with tailored suits, pleated trousers, chinos, or premium denim, this loafer embodies the elegance and confidence of classic old-money style.\n\nProduct Details:\nColor: Chocolate Espresso Brown\nMaterial: Premium Genuine Leather\nStyle: Old Money Penny Loafer\nFinish: Hand-Burnished Gloss\nClosure: Slip-On\nToe Shape: Round Almond Toe\nLining: Soft Leather Lining\nFootbed: Cushioned for All-Day Comfort\nOutsole: Durable Anti-Slip Sole\nFit: Regular Fit\nOccasion: Business | Formal | Smart Casual | Evening | Luxury Events | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784231358825",
+      "mrp": 2999,
+      "name": "Old Money Loafer - Shimmering Black ",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tgfkuwkeiz-1784231378905.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ubvkgde9s3-1784231380241.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/v8hoxnghhu-1784231380814.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5jux9gws3mx-1784231382013.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/259oq8wjjach-1784231382597.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 3499
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T19:49:18.826Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1999
+      },
+      "description": "Old Money Shimmering Black Penny Loafer\n\nMake a lasting impression with the Old Money Shimmering Black Penny Loafer, a timeless symbol of elegance and refined craftsmanship. Expertly crafted from premium genuine leather, this loafer showcases a deep shimmering black finish with a sophisticated hand-polished sheen, embodying the understated luxury of classic old-money style. Its iconic penny strap, sleek silhouette, and flawless construction make it a versatile essential for the modern gentleman.\n\nDesigned for superior comfort, the soft leather lining and cushioned footbed provide effortless all-day wear, while the durable outsole ensures excellent grip and long-lasting performance. Whether styled with a tailored suit, tuxedo, chinos, or premium denim, this loafer delivers a polished look that never goes out of style.\n\nProduct Details:\nColor: Shimmering Black\nMaterial: Premium Genuine Leather\nStyle: Old Money Penny Loafer\nFinish: Hand-Polished Gloss\nClosure: Slip-On\nToe Shape: Round Almond Toe\nLining: Soft Leather Lining\nFootbed: Cushioned for All-Day Comfort\nOutsole: Durable Anti-Slip Sole\nFit: Regular Fit\nOccasion: Business | Formal | Smart Casual | Evening | Weddings | Luxury Events | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784232623651",
+      "mrp": 2999,
+      "name": "Black - Laced Boot",
+      "price": 1999,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8b04jfnulmy-1784232681999.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/av13n8wjtah-1784232689470.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7l6i7pdgmmo-1784232690043.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9qim21xirhc-1784232690592.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k36bwp4l3f-1784232691138.JPG"
+      ],
+      "category": "TRAVEL - BOOTS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T20:10:23.651Z",
+      "sizePrices": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "description": "Specifications\nColor: Black\nMaterial: Premium Genuine Leather\nStyle: Rugged Lace-Up Boot\nClosure: 6-Eyelet Lace-Up\nUpper: Smooth Full-Grain Leather with Reinforced Stitching\nCollar: Soft Padded Collar for Extra Comfort\nOutsole: Durable Anti-Slip Rubber Sole\nHeel: Stacked Heel with Contrast Welt\nToe Shape: Classic Rounded Toe\nFit: Comfortable Regular Fit\nOccasion: Casual | Smart Casual | Outdoor | Travel | Everyday Wear\nKey Features\nPremium genuine leather for long-lasting durability.\nRugged lace-up construction ensures a secure and adjustable fit.\nPadded ankle collar provides superior comfort during extended wear.\nContrast welt detailing adds a refined handcrafted touch.\nLightweight yet durable rubber outsole offers excellent grip and stability.\nCushioned footbed for enhanced all-day support.\nVersatile design that pairs effortlessly with jeans, chinos, or rugged casual outfits.",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784232835691",
+      "mrp": 2999,
+      "name": "Tan - Laced Boot",
+      "price": 1999,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/mbjms9w7p2-1784232808564.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/golyyb3yuko-1784232852053.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/qekt9qjzdtl-1784232852622.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/n9o1l1titsq-1784232853136.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p5insq8tun-1784232853643.JPG"
+      ],
+      "category": "TRAVEL - BOOTS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T20:13:55.691Z",
+      "sizePrices": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "description": "Specifications\nColor: Tan\nMaterial: Premium Genuine Leather\nStyle: Rugged Lace-Up Boot\nClosure: 6-Eyelet Lace-Up\nUpper: Smooth Full-Grain Leather with Reinforced Stitching\nCollar: Soft Padded Collar for Extra Comfort\nOutsole: Durable Anti-Slip Rubber Sole\nHeel: Stacked Heel with Contrast Welt\nToe Shape: Classic Rounded Toe\nFit: Comfortable Regular Fit\nOccasion: Casual | Smart Casual | Outdoor | Travel | Everyday Wear\nKey Features\nPremium genuine leather for long-lasting durability.\nRugged lace-up construction ensures a secure and adjustable fit.\nPadded ankle collar provides superior comfort during extended wear.\nContrast welt detailing adds a refined handcrafted touch.\nLightweight yet durable rubber outsole offers excellent grip and stability.\nCushioned footbed for enhanced all-day support.\nVersatile design that pairs effortlessly with jeans, chinos, or rugged casual outfits.",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784233769409",
+      "mrp": 2999,
+      "name": "Dark Tan - Stitched Pointed Chelsea",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/anfw6k1nebo-1784233759117.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ksu8f90s4i-1784233760253.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/mcybvn7n06-1784233760890.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xy5hu2p8t4i-1784233761595.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/1vx5if67rvd-1784233762232.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "5": 2999,
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T20:29:29.409Z",
+      "sizePrices": {
+        "5": 1899,
+        "6": 1899,
+        "7": 1899,
+        "8": 1899,
+        "9": 1899
+      },
+      "description": "Italian Leather Snake Texture Elastic Chelsea Boot – Cognac Brown\n\nCrafted for the modern gentleman, this Italian Leather Snake Texture Elastic Chelsea Boot blends timeless sophistication with bold character. Made from premium genuine Italian leather, it features an elegant snake-textured finish in a rich cognac brown tone, complemented by classic elastic side panels for effortless slip-on comfort. The sleek square toe and handcrafted silhouette make it a versatile choice for both formal occasions and refined casual wear.\n\nSpecifications\nColor: Cognac Brown\nMaterial: Premium Italian Genuine Leather\nTexture: Embossed Snake Texture\nStyle: Classic Chelsea Boot (Non-Zip)\nClosure: Slip-On with Elastic Side Panels\nToe Shape: Modern Square Toe\nHeel: Stacked Leather Heel\nOutsole: Durable Anti-Slip Rubber Sole\nFit: Comfortable Regular Fit\nOccasion: Business | Formal | Smart Casual | Evening | Travel\nKey Features\nPremium Italian genuine leather with an elegant snake-textured finish.\nClassic elastic side panels provide easy slip-on convenience and a secure fit.\nRefined square-toe silhouette delivers a sophisticated contemporary look.\nSoft leather lining and cushioned footbed ensure lasting comfort throughout the day.\nLightweight yet durable anti-slip outsole for confident everyday wear.\nRich cognac brown finish pairs effortlessly with tailored suits, chinos, denim, and smart-casual outfits.\nHandcrafted construction for superior durability and timeless style.",
+      "sizeWeights": {
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "5": 10,
+        "6": 10,
+        "7": 10,
+        "8": 10,
+        "9": 10
+      }
+    },
+    {
+      "id": "prod-1784235262241",
+      "mrp": 2999,
+      "name": "Black - Chelsea Sanke Texture",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ho3dbw4eqrd-1784235230515.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tcit9cfg08r-1784235238258.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/we7msz07el8-1784235245597.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eik4jrku9vq-1784235250518.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ucsxrz6k6xm-1784235256924.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-16T20:54:22.241Z",
+      "sizePrices": {
+        "6": 1899,
+        "7": 1899,
+        "8": 1899,
+        "9": 1899
+      },
+      "description": "Italian Leather Snake Texture Elastic Chelsea Boot – Black\n\nElevate your wardrobe with the timeless appeal of this Italian Leather Snake Texture Elastic Chelsea Boot. Expertly crafted from premium genuine Italian leather, this boot features an elegant black snake-textured finish that blends luxury with modern sophistication. Designed with classic elastic side panels for effortless slip-on wear, its sleek square-toe silhouette and handcrafted construction make it the perfect choice for business, formal occasions, and refined everyday style.\n\nSpecifications\nColor: Black\nMaterial: Premium Italian Genuine Leather\nTexture: Embossed Snake Texture\nStyle: Classic Chelsea Boot (Non-Zip)\nClosure: Slip-On with Elastic Side Panels\nToe Shape: Modern Square Toe\nHeel: Stacked Leather Heel\nOutsole: Durable Anti-Slip Rubber Sole\nFit: Comfortable Regular Fit\nOccasion: Business | Formal | Smart Casual | Evening | Travel\nKey Features\nCrafted from premium Italian genuine leather with a luxurious snake-textured finish.\nClassic elastic side panels provide a secure fit and effortless slip-on convenience.\nSleek square-toe design delivers a sophisticated, contemporary look.\nSoft leather lining and cushioned footbed offer exceptional all-day comfort.\nDurable anti-slip rubber outsole ensures reliable traction and stability.\nElegant black finish complements tailored suits, formal trousers, chinos, and premium denim.\nHandcrafted with attention to detail for lasting durability and refined style.\n\nDesigned for men who appreciate Italian craftsmanship, understated luxury, and timeless elegance, this Chelsea boot is the perfect blend of premium comfort, versatility, and old-money sophistication.",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10,
+        "8": 10,
+        "9": 10
+      }
+    },
+    {
+      "id": "prod-1784273070875",
+      "mrp": 1999,
+      "name": "Camel Brown - Sude Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pgfdjfkg66s-1784273091220.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/cen47xdjx6-1784273092558.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gjuia892ist-1784273093182.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/d0tw62tktl5-1784273093826.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "7": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:24:30.875Z",
+      "sizePrices": {
+        "7": 1299
+      },
+      "description": "Premium Suede Leather Loafers – Camel Brown\n\nExperience effortless sophistication with these Premium Suede Leather Loafers, crafted for men who appreciate understated luxury and all-day comfort. Finished in a rich camel brown suede, these loafers feature a soft velvety texture, clean hand-stitched apron detailing, and a lightweight slip-on design that transitions seamlessly from casual outings to refined smart-casual occasions.\n\nSpecifications\nColor: Camel Brown\nMaterial: Premium Genuine Suede Leather\nStyle: Classic Slip-On Loafers\nClosure: Slip-On\nUpper: Soft Italian Suede Leather\nToe Shape: Rounded Moc Toe\nOutsole: Lightweight Anti-Slip Rubber Sole\nInsole: Cushioned Comfort Footbed\nFit: Comfortable Regular Fit\nOccasion: Casual | Smart Casual | Weekend | Travel | Resort Wear\nKey Features\nCrafted from premium genuine suede leather with a rich, velvety finish.\nLightweight slip-on design for effortless everyday wear.\nHand-stitched moc toe enhances the timeless loafer silhouette.\nSoft cushioned footbed provides exceptional comfort throughout the day.\nFlexible anti-slip rubber outsole ensures stability and durability.\nVersatile camel brown shade pairs perfectly with chinos, linen trousers, jeans, and shorts.\nBreathable construction keeps your feet comfortable in every season.\nHandcrafted with attention to detail for a refined, premium finish.\n\nPerfect for the modern gentleman, these suede loafers deliver the ideal balance of luxury, comfort, and timeless elegance, making them an essential addition to any smart-casual wardrobe.",
+      "sizeWeights": {
+        "7": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784273321021",
+      "mrp": 1599,
+      "name": "Soft Grey - Suede Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/apcokqtt7v4-1784273204465.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p6j822bvcco-1784273205822.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/vt7mmhk0xe-1784273207073.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xymkfmcjisl-1784273208503.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "7": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:28:41.021Z",
+      "sizePrices": {
+        "7": 1299
+      },
+      "description": "Premium Suede Leather Loafers – Soft Grey\n\nExperience effortless sophistication with these Premium Suede Leather Loafers, crafted for men who appreciate understated luxury and all-day comfort. Finished in a rich camel brown suede, these loafers feature a soft velvety texture, clean hand-stitched apron detailing, and a lightweight slip-on design that transitions seamlessly from casual outings to refined smart-casual occasions.\n\nSpecifications\nColor: Soft Grey\nMaterial: Premium Genuine Suede Leather\nStyle: Classic Slip-On Loafers\nClosure: Slip-On\nUpper: Soft Italian Suede Leather\nToe Shape: Rounded Moc Toe\nOutsole: Lightweight Anti-Slip Rubber Sole\nInsole: Cushioned Comfort Footbed\nFit: Comfortable Regular Fit\nOccasion: Casual | Smart Casual | Weekend | Travel | Resort Wear\nKey Features\nCrafted from premium genuine suede leather with a rich, velvety finish.\nLightweight slip-on design for effortless everyday wear.\nHand-stitched moc toe enhances the timeless loafer silhouette.\nSoft cushioned footbed provides exceptional comfort throughout the day.\nFlexible anti-slip rubber outsole ensures stability and durability.\nVersatile Soft grey shade pairs perfectly with chinos, linen trousers, jeans, and shorts.\nBreathable construction keeps your feet comfortable in every season.\nHandcrafted with attention to detail for a refined, premium finish.\n\nPerfect for the modern gentleman, these suede loafers deliver the ideal balance of luxury, comfort, and timeless elegance, making them an essential addition to any smart-casual wardrobe.",
+      "sizeWeights": {
+        "7": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784273429024",
+      "mrp": 1599,
+      "name": "Ash Grey - Suede Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xl6zbb8u2zj-1784273422618.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/08p05aw1553r-1784273423961.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2vlat57f7s6-1784273424743.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9akv2uvcyfe-1784273425348.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "7": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:30:29.024Z",
+      "sizePrices": {
+        "7": 1299
+      },
+      "description": "Italian Suede Loafers – Ash Grey\n\nExperience understated luxury with these Italian Suede Loafers in a refined Ash Grey finish. Crafted from premium genuine suede leather, these loafers showcase a soft, velvety texture that adds depth and sophistication to any outfit. Their clean, minimalist silhouette and lightweight construction embody timeless European craftsmanship, making them the perfect choice for effortless elegance.\n\nDesigned for all-day comfort, the cushioned insole and flexible sole provide a smooth walking experience, while the versatile grey tone pairs seamlessly with both casual and semi-formal attire. Whether you're dressing for a weekend brunch, office meetings, vacations, or evening gatherings, these loafers deliver comfort with a refined old-money aesthetic.\n\nSpecifications:\n\nColor: Ash Grey\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Suede Loafers\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nSole: Lightweight Flexible Rubber Sole\nFit: Cushioned Footbed for All-Day Comfort\nOccasion: Smart Casual | Business Casual | Travel | Weekend | Evening Wear\n\nKey Features:\n\nPremium Italian suede leather with a rich, velvety finish\nElegant minimalist design inspired by timeless European style\nLightweight and breathable for everyday comfort\nSoft cushioned insole for superior support\nDurable, flexible sole with excellent grip\nVersatile ash grey shade that complements both light and dark outfits\nPerfect blend of luxury, comfort, and effortless sophistication",
+      "sizeWeights": {
+        "7": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784273541178",
+      "mrp": 1599,
+      "name": "Midnight Black - Suede Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/91hqfgn0lsg-1784273841123.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/hjakn3igutc-1784273841837.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zuqru9um0i-1784273842391.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/6xo72kf3x3j-1784273842994.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:32:21.178Z",
+      "sizePrices": {
+        "6": 1299,
+        "7": 1299,
+        "8": 1299,
+        "9": 1299
+      },
+      "description": "Italian Premium Suede Penny Loafers – Midnight Black\n\nCrafted for the modern gentleman who appreciates understated luxury, these Italian Premium Suede Penny Loafers in Midnight Black embody timeless elegance with a contemporary edge. Made from rich, velvety suede leather, they offer a soft, refined texture that complements both smart-casual and semi-formal wardrobes. The classic penny strap, clean moc-toe stitching, and lightweight contrasting sole create a sophisticated \"old money\" aesthetic that's effortlessly stylish.\n\nDesigned for all-day comfort and versatility, these loafers pair perfectly with tailored trousers, chinos, linen pants, or premium denim—making them an essential addition to every wardrobe.\n\nSpecifications\nColor: Midnight Black\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Penny Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Business Casual | Smart Casual | Weekend | Travel | Evening | Resort Wear\nKey Features\nPremium Italian suede with a luxurious matte finish\nTimeless penny strap inspired by classic European craftsmanship\nSoft leather lining for enhanced comfort and breathability\nLightweight, flexible sole for effortless walking\nElegant minimalist silhouette suitable for year-round styling\nPerfect balance of comfort, sophistication, and everyday versatility",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784273626255",
+      "mrp": 1599,
+      "name": "Wallnut Brown - Suede Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2v6j421sytn-1784273619380.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/s9ede6hzzbj-1784273620727.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4g9up34h98y-1784273621970.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/f98l85q5k0m-1784273622666.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "7": 1599,
+        "9": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:33:46.255Z",
+      "sizePrices": {
+        "7": 1299,
+        "9": 1299
+      },
+      "description": "Italian Premium Suede Loafers – Walnut Brown\n\nExperience effortless sophistication with these Italian Premium Suede Loafers in a rich Walnut Brown finish. Crafted from luxurious genuine suede leather, these loafers offer a soft, velvety texture that embodies timeless elegance. Their clean, minimalist silhouette and hand-stitched moc-toe design make them a versatile choice for men who appreciate refined style with everyday comfort.\n\nDesigned for modern living, these slip-on loafers pair seamlessly with chinos, linen trousers, tailored pants, or premium denim, making them the perfect companion for business casual, weekend outings, and travel.\n\nSpecifications\nColor: Walnut Brown\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Suede Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Smart Casual | Business Casual | Weekend | Travel | Resort Wear | Everyday Luxury\nKey Features\nPremium Italian suede with a rich, velvety finish\nElegant minimalist design for a timeless old-money aesthetic\nHandcrafted moc-toe stitching for refined detailing\nSoft leather lining ensures breathability and lasting comfort\nLightweight, flexible sole for effortless movement\nEasy slip-on construction for convenience and style\nVersatile color that complements both light and dark outfits",
+      "sizeWeights": {
+        "7": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784273716137",
+      "mrp": 1599,
+      "name": "Olive Green - Suede Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ftoupmjr9s-1784273709444.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/v5eb51opue-1784273710927.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9clfpg70qut-1784273711596.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7bmh3z1uxjk-1784273712240.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:35:16.137Z",
+      "sizePrices": {
+        "6": 1299,
+        "7": 1299,
+        "8": 1299
+      },
+      "description": "Italian Premium Suede Loafers – Olive Green\n\nElevate your everyday wardrobe with these Italian Premium Suede Loafers in an elegant Olive Green finish. Crafted from luxurious genuine Italian suede leather, these loafers feature a rich velvety texture and a clean, minimalist silhouette that exudes effortless sophistication. The refined moc-toe stitching and lightweight slip-on design make them the perfect blend of timeless craftsmanship and modern comfort.\n\nWhether paired with linen trousers, chinos, tailored pants, or denim, these loafers bring a distinctive old-money aesthetic that transitions seamlessly from casual afternoons to refined evening occasions.\n\nSpecifications\nColor: Olive Green\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Suede Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Smart Casual | Business Casual | Weekend | Travel | Resort Wear | Everyday Luxury\nKey Features\nCrafted from premium Italian genuine suede leather\nRich olive green finish for a sophisticated, versatile look\nElegant minimalist design inspired by timeless European style\nHandcrafted moc-toe stitching for a refined appearance\nSoft leather lining for enhanced comfort and breathability\nLightweight, flexible sole for effortless walking\nEasy slip-on construction for everyday convenience\nPerfect balance of luxury, comfort, and versatility",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784273799167",
+      "mrp": 1599,
+      "name": "Midnight Navy - Suede Loafer",
+      "price": 1299,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2gbj5kw9bkc-1784273789212.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bcktvgytoal-1784273793464.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/hlxfpgirrvv-1784273794123.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ybq6jp6ka0r-1784273794750.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-17T07:36:39.167Z",
+      "sizePrices": {
+        "6": 1299,
+        "7": 1299,
+        "8": 1299
+      },
+      "description": "Italian Premium Suede Penny Loafers – Midnight Navy\n\nRefined, timeless, and effortlessly sophisticated, these Italian Premium Suede Penny Loafers in Midnight Navy are crafted for the gentleman who values understated luxury. Made from premium Italian genuine suede leather, they feature a rich velvety texture, classic penny strap detailing, and elegant moc-toe stitching that perfectly captures the essence of old-money style.\n\nThe sleek slip-on silhouette offers exceptional comfort and versatility, making these loafers ideal for everything from business casual meetings to weekend getaways and evening occasions. Their deep navy tone pairs effortlessly with both light and dark outfits, delivering a polished look with minimal effort.\n\nSpecifications\nColor: Midnight Navy\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Penny Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Business Casual | Smart Casual | Weekend | Travel | Evening | Resort Wear\nKey Features\nCrafted from premium Italian genuine suede leather\nLuxurious velvet-like texture with a sophisticated matte finish\nTimeless penny strap inspired by classic European craftsmanship\nHand-stitched moc-toe detailing for an elegant finish\nSoft leather lining for enhanced comfort and breathability\nLightweight, flexible sole for effortless all-day wear\nSlip-on design for convenience without compromising style\nPerfect blend of classic elegance, modern comfort, and everyday versatility",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784538200563",
+      "mrp": 2999,
+      "name": "Dark Brown - Mafia Chelsea Elastic",
+      "price": 1899,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/la2cn2uroxk-1784538149195.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/f0znvbu7ump-1784538150582.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/dtyf4g0m1jh-1784538151940.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/evcgz3crc3v-1784538152606.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rh36iw8tktp-1784538153154.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T09:03:20.563Z",
+      "sizePrices": {
+        "6": 1899,
+        "7": 1899,
+        "8": 1899,
+        "9": 1899
+      },
+      "description": "Italian Chelsea Leather Boot\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full-grain leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian grain crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 2,
+        "8": 1,
+        "9": 1
+      }
+    },
+    {
+      "id": "prod-1784538499480",
+      "mrp": 1999,
+      "name": "Black Croc - Italian Penny Loafer",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/wz1p86eruoe-1784538469733.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/co5554jqvkm-1784538471276.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/w6kx3p7lrzh-1784538471863.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/le0pf6wkri-1784538472504.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T09:08:19.480Z",
+      "sizePrices": {
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
+      },
+      "description": "Croc Texture Buckle Penny Loafer – Italian Crust Leather\n\nElevate your style with the Croc Texture Buckle Penny Loafer, expertly handcrafted from premium Italian crust leather. Featuring a luxurious crocodile-embossed texture and an elegant metallic horsebit buckle, this loafer is designed for the modern gentleman who appreciates refined craftsmanship and timeless sophistication.\n\nThe rich hand-finished crust leather develops a unique character over time, while the sleek square-toe silhouette offers a contemporary edge. A soft leather lining and cushioned footbed provide exceptional comfort, making it the perfect choice for long business days, formal occasions, or evening events.\n\nKey Features\nPremium Italian crust leather upper\nLuxury crocodile-embossed texture\nElegant metallic horsebit buckle detailing\nHand-finished leather with a rich, premium sheen\nSoft genuine leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole for enhanced grip\nModern square-toe silhouette\nLightweight construction with superior craftsmanship\nIdeal for business, formal, wedding, party, and smart-casual wear",
+      "sizeWeights": {
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 10,
+        "8": 10,
+        "9": 10,
+        "10": 10
+      }
+    },
+    {
+      "id": "prod-1784539359569",
+      "mrp": 2999,
+      "name": "Burgundy - Penny Loafer Flat Heel",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8zkkz4g2zue-1784539351662.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/1wo812mzt4m-1784539352989.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t7wsucy4cak-1784539353620.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/illqr9yc0ya-1784539354153.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "9": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T09:22:39.569Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "9": 1799
+      },
+      "description": "Burgundy Flat Penny Loafers – Italian Crust Leather\n\nTimeless elegance meets exceptional craftsmanship in our Burgundy Flat Penny Loafers, handcrafted from premium Italian crust leather. Featuring a rich hand-burnished burgundy finish, these loafers develop a unique patina over time, giving every pair its own distinctive character.\n\nDesigned with the iconic penny strap and a sleek apron-toe silhouette, they offer a refined yet versatile look suitable for every occasion. The soft genuine leather lining and cushioned footbed provide superior comfort, while the lightweight flat outsole ensures flexibility and confident everyday wear.\n\nWhether paired with a tailored suit, chinos, or premium denim, these loafers deliver effortless sophistication from the office to evening events.\n\nKey Features\nPremium Italian crust leather upper\nHand-burnished burgundy finish with a rich natural patina\nClassic penny strap design\nRefined apron-toe construction\nSoft genuine leather lining for breathable comfort\nCushioned footbed for all-day support\nLightweight, durable flat outsole with anti-slip grip\nSlip-on design for effortless wear\nHandcrafted with premium Italian craftsmanship\nPerfect for business, formal, wedding, smart-casual, and evening wear",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1,
+        "9": 2
+      }
+    },
+    {
+      "id": "prod-1784545811134",
+      "mrp": 2999,
+      "name": "Burgundy - Wholecut Oxford",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/if2xv8spdlo-1784545793223.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kgbbm4skyz7-1784545794468.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/y98efmnbc6-1784545795449.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/12asg27gq5we-1784545796018.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/43amcssq0ao-1784545796882.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T11:10:11.134Z",
+      "sizePrices": {
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799
+      },
+      "description": "Burgundy Wholecut Oxford – Italian Crust Leather\n\nExperience the pinnacle of minimalist luxury with our Burgundy Wholecut Oxford, handcrafted from a single piece of premium Italian crust leather. Designed with a seamless wholecut construction, this masterpiece showcases exceptional craftsmanship and a rich hand-burnished burgundy patina that develops a unique character over time.\n\nIts sleek closed-lace Oxford design and refined square-toe silhouette create a sophisticated profile, making it the perfect choice for business professionals, formal occasions, and gentlemen who appreciate timeless elegance. Finished with a soft leather lining, cushioned footbed, and durable outsole, it offers superior comfort without compromising on style.\n\nKey Features\nPremium Italian crust leather upper\nSeamless wholecut construction crafted from a single piece of leather\nRich hand-burnished burgundy patina with a natural depth of color\nClassic closed-lace Oxford design\nElegant square-toe silhouette\nSoft genuine leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable anti-slip outsole for reliable grip\nHandcrafted with premium Italian craftsmanship\nIdeal for business, formal events, weddings, and executive wear",
+      "sizeWeights": {
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 4,
+        "8": 4,
+        "9": 5,
+        "10": 5
+      }
+    },
+    {
+      "id": "prod-1784547478890",
+      "mrp": 1999,
+      "name": "Burgundy - Pointed Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/g1cq5dujv2t-1784547462314.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pvzcks1pla9-1784547463552.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/biipzrlduz-1784547464120.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/yxldnk9deir-1784547464662.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/08ii39d2lirj-1784547465200.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "5": 1999,
+        "6": 1999,
+        "7": 1999,
+        "8": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T11:37:58.890Z",
+      "sizePrices": {
+        "5": 1599,
+        "6": 1599,
+        "7": 1599,
+        "8": 1599
+      },
+      "description": "Burgundy Oxford Formal Shoes – Italian Crust Leather\n\nRefined, timeless, and meticulously handcrafted, our Burgundy Oxford Formal Shoes are crafted from premium Italian crust leather to deliver an exceptional blend of luxury and elegance. The rich hand-burnished burgundy finish enhances the natural beauty of the leather, creating a sophisticated patina that becomes more distinctive with every wear.\n\nFeaturing a classic closed-lace Oxford design with a sleek almond-toe silhouette, these shoes offer a clean and polished look that's perfect for professional, formal, and ceremonial occasions. The supple leather lining, cushioned footbed, and durable outsole provide lasting comfort and stability, ensuring you look and feel your best throughout the day.\n\nKey Features\nPremium Italian crust leather upper\nRich hand-burnished burgundy finish\nClassic closed-lace Oxford construction\nSleek almond-toe silhouette\nSoft genuine leather lining for enhanced breathability\nCushioned footbed for superior all-day comfort\nDurable anti-slip outsole for reliable grip\nLightweight and flexible construction\nHandcrafted with premium Italian craftsmanship\nIdeal for business meetings, weddings, formal events, and executive wear",
+      "sizeWeights": {
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2
+      }
+    },
+    {
+      "id": "prod-1784547727085",
+      "mrp": 1999,
+      "name": "Light Tan - Pointed Texture Oxford",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/17idunxn4k7h-1784547670119.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/uob0yoor3d-1784547672074.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2uilpbrix09-1784547672712.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ak0ahe1s0bb-1784547673252.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gcnh2nc5ev-1784547673838.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T11:42:07.085Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Italian Tan Textured Oxford Formal Leather Shoes\n\nElevate your formal wardrobe with these Italian Tan Textured Oxford Shoes, crafted for men who appreciate timeless elegance with a modern edge. Featuring a premium smooth leather vamp paired with a finely textured quarter panel, this Oxford delivers a sophisticated contrast that sets it apart from ordinary dress shoes. The rich tan hand-finished patina enhances the natural beauty of the leather, making every pair uniquely distinctive.\n\nDesigned with a sleek closed-lace Oxford silhouette, these shoes offer a refined fit that's perfect for business meetings, weddings, corporate events, and evening occasions. The cushioned leather lining ensures lasting comfort, while the durable outsole provides stability and confidence with every step.\n\nFeatures\nPremium Italian genuine leather upper\nElegant dual-finish design with textured quarter panels\nRich hand-finished tan patina\nClassic Oxford closed-lace construction\nSoft leather lining for all-day comfort\nDurable anti-slip outsole\nLightweight and breathable construction\nHandcrafted for exceptional quality and durability\nPerfect For\nBusiness & Office Wear\nWeddings & Formal Events\nExecutive Meetings\nSmart Casual Styling\nEvening Occasions",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784547937324",
+      "mrp": 1999,
+      "name": "Black - Italian Cut Shoe",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/hs8zrrmpbiq-1784547928418.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kdsfvlckdvg-1784547929881.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kld4spr3i98-1784547930401.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/vjta3m2wmx8-1784547930996.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T11:45:37.324Z",
+      "sizePrices": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499
+      },
+      "description": "Black Formal Cut Shoe – Premium Cow Softy Leather\n\nDesigned for the modern gentleman, this Black Formal Cut Shoe combines timeless elegance with all-day comfort. Crafted from premium Cow Softy Leather, it offers a naturally smooth finish, exceptional flexibility, and a luxurious feel that adapts to your feet with every wear. The sleek one-piece upper and minimalist silhouette make it a versatile choice for business meetings, formal occasions, and everyday office wear.\n\nThe soft leather construction ensures superior comfort, while the lightweight, anti-slip sole provides stability and confident footing throughout the day. Whether paired with a tailored suit or smart formal attire, this shoe delivers effortless sophistication.\n\nKey Features\nPremium Cow Softy Leather upper for a soft, supple feel.\nElegant one-piece cut design with a clean, modern finish.\nLightweight construction for enhanced walking comfort.\nCushioned footbed for long-lasting support.\nDurable anti-slip outsole for reliable grip.\nClassic black finish that complements any formal wardrobe.\nIdeal for office wear, business meetings, weddings, and special occasions.",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 1,
+        "9": 1
+      }
+    },
+    {
+      "id": "prod-1784548105460",
+      "mrp": 1999,
+      "name": "Dark Tan - Oxford Texture Design",
+      "price": 1499,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/fyn64f6aaob-1784548098081.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8bpfn7az6sr-1784548099653.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/jcd1f05qtxd-1784548100531.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bydkh1ir5n-1784548101201.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/exxt4o7z14o-1784548101805.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T11:48:25.460Z",
+      "sizePrices": {
+        "6": 1599,
+        "10": 1599
+      },
+      "description": "Dark Tan Oxford Texture Formal Leather Shoes\n\nRefined, versatile, and crafted for the modern gentleman, these Light Tan Oxford Texture Formal Shoes blend timeless Oxford styling with a sophisticated textured leather finish. The smooth vamp paired with a finely textured quarter creates a distinctive contrast, making this pair an elegant choice for business wear, weddings, and formal occasions.\n\nMade from premium genuine leather, these shoes offer exceptional comfort, durability, and a luxurious feel. The closed-lace Oxford construction delivers a sleek silhouette, while the cushioned footbed and durable outsole ensure lasting comfort from morning meetings to evening events.\n\nKey Features\nPremium genuine leather upper in a sophisticated Light Tan finish.\nElegant textured leather quarter for a refined, modern look.\nClassic Oxford closed-lace construction for a timeless formal appearance.\nSoft leather lining for enhanced breathability and all-day comfort.\nCushioned insole for superior support during extended wear.\nDurable, lightweight outsole with excellent grip and stability.\nPerfect for business meetings, office wear, weddings, parties, and formal occasions.",
+      "sizeWeights": {
+        "6": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784550833048",
+      "mrp": 2999,
+      "name": "Black - Italian Double Monk",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tth94letmvc-1784550825553.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/i7cuh20yei-1784550827513.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p9yuo4pz8po-1784550828065.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pvzrxypqg9f-1784550828681.JPG"
+      ],
+      "category": "MONKS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T12:33:53.048Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799
+      },
+      "description": "Key Features\nPremium Italian Crust Leather with a hand-finished black patina.\nSignature Double Monk Strap design with premium metal buckles.\nSleek Italian cut silhouette for a refined, contemporary look.\nSoft leather lining for breathability and superior comfort.\nCushioned insole for all-day support.\nDurable, lightweight outsole with excellent grip and longevity.\nHandcrafted with precision for exceptional quality and finish.\nPerfect For\nBusiness meetings and executive wear\nWeddings and formal celebrations\nCorporate events and evening occasions\nPremium smart-casual styling",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 5,
+        "7": 5,
+        "8": 5,
+        "9": 4
+      }
+    },
+    {
+      "id": "prod-1784551158305",
+      "mrp": 1999,
+      "name": "Black - Suede Penny Loafer Buckle",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/dg21tcs9smg-1784551136882.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0rbbxqyjxbyo-1784551152828.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/aw2b6jygjq-1784551153847.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/l58u5bwk23o-1784551155052.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/uxy721jcgmh-1784551155654.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T12:39:18.305Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Key Features\nPremium Genuine Suede Leather upper with a soft, luxurious finish.\nElegant horsebit metal accent for a sophisticated touch.\nSlip-on design for convenience and a comfortable fit.\nSoft leather lining for enhanced breathability.\nCushioned footbed for all-day comfort and support.\nLightweight, durable outsole with excellent grip.\nClassic black color that pairs effortlessly with formal and smart-casual outfits.\nPerfect For\nBusiness casual and office wear\nEvening parties and special occasions\nWeddings and celebrations\nSmart-casual everyday styling",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 2,
+        "8": 3,
+        "9": 3,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784562793168",
+      "name": "test",
+      "price": 1,
+      "images": [
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
+      ],
+      "category": "FORMAL - DERBY",
+      "weight_kg": 0.1,
+      "created_at": "2026-07-20T15:53:13.168Z",
+      "description": "test",
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false
     }
   ],
   "orders": [
+    {
+      "id": "YY-ORD-37903",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1783966382666",
+            "mrp": 2999,
+            "name": "Black - Mafia Italian Chelsea",
+            "price": 1999,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
+            ],
+            "category": "CHELSEA BOOT",
+            "sizeMRPs": {
+              "6": 2999,
+              "7": 2999,
+              "8": 2999,
+              "9": 2999,
+              "10": 2999,
+              "11": 2999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-13T18:13:02.666Z",
+            "sizePrices": {
+              "6": 1999,
+              "7": 1999,
+              "8": 1999,
+              "9": 1999,
+              "10": 1999,
+              "11": 1999
+            },
+            "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
+            "sizeWeights": {
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 2,
+              "10": 2,
+              "11": 2
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 2189,
+      "status": "Confirmed",
+      "address": "vinayagapuram, frist street",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-19T10:01:31.120Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TFJwz9OsipXh3Z",
+      "razorpay_payment_id": "pay_TFJx6O5scv1KuG"
+    },
+    {
+      "id": "YY-ORD-46261",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1784102071623",
+            "mrp": 1999,
+            "name": "Black - Pointed Penny Loafer",
+            "price": 1599,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tprk56vf2l-1784102141831.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/o7k1x7jizwi-1784102143887.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/18affxf0jq7-1784102144480.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2zrehv4kt0o-1784102145179.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/h253afgk0aq-1784102145757.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ev7dyuim9xp-1784102146443.JPG"
+            ],
+            "category": "PENNY - LOAFERS",
+            "sizeMRPs": {
+              "5": 1999,
+              "6": 1999,
+              "7": 1999,
+              "8": 1999,
+              "9": 1999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-15T07:54:31.623Z",
+            "sizePrices": {
+              "5": 1599,
+              "6": 1599,
+              "7": 1599,
+              "8": 1599,
+              "9": 1599
+            },
+            "description": "Key Features\nPremium genuine leather upper\nClassic penny strap design\nHand-stitched apron toe detailing\nSlip-on style for effortless wear\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nPerfect for office wear, business meetings, weddings, and smart-casual occasions\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Penny Loafer\nOccasion: Formal | Business | Smart Casual | Office | Evening Wear",
+            "sizeWeights": {
+              "5": 2,
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 2
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 1783,
+      "status": "Pending",
+      "address": "vinayagapuram, frist street",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-19T09:48:53.314Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TFJjRrHjtEiJnK",
+      "razorpay_payment_id": "pay_TFJjiAWmBufJO0"
+    },
+    {
+      "id": "YY-ORD-13895",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1783966382666",
+            "mrp": 2999,
+            "name": "Black - Mafia Italian Chelsea",
+            "price": 1999,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
+            ],
+            "category": "CHELSEA BOOT",
+            "sizeMRPs": {
+              "5": 2999,
+              "6": 2999,
+              "7": 2999,
+              "8": 2999,
+              "9": 2999,
+              "10": 2999,
+              "11": 2999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-13T18:13:02.666Z",
+            "sizePrices": {
+              "5": 1999,
+              "6": 1999,
+              "7": 1999,
+              "8": 1999,
+              "9": 1999,
+              "10": 1999,
+              "11": 1999
+            },
+            "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
+            "sizeWeights": {
+              "5": 2,
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 2,
+              "10": 2,
+              "11": 2
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": true,
+            "is_new_arrival": false,
+            "sizeQuantities": {
+              "5": 0,
+              "6": 0,
+              "7": 1
+            }
+          },
+          "quantity": 1,
+          "selectedSize": "7"
+        }
+      ],
+      "total": 1989.1,
+      "status": "Pending",
+      "address": "vinayagapuram, frist street",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-19T09:40:59.151Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": {
+        "status": "Pending"
+      },
+      "buyback_requested": true,
+      "razorpay_order_id": "order_TFJbC5AWqwcPpr",
+      "razorpay_payment_id": "pay_TFJbPkMEs6PLY2"
+    },
+    {
+      "id": "YY-ORD-41052",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1783966382666",
+            "mrp": 3000,
+            "name": "Black - Mafia Italian Chelsea",
+            "price": 2000,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
+            ],
+            "category": "CHELSEA BOOT",
+            "sizeMRPs": {
+              "6": 3000,
+              "7": 3000,
+              "8": 3000,
+              "9": 3000,
+              "10": 3000,
+              "11": 3000
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-13T18:13:02.666Z",
+            "sizePrices": {
+              "6": 2000,
+              "7": 2000,
+              "8": 2000,
+              "9": 2000,
+              "10": 2000,
+              "11": 2000
+            },
+            "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
+            "sizeWeights": {
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 2,
+              "10": 2,
+              "11": 2
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "6"
+        }
+      ],
+      "total": 2190,
+      "status": "Cancelled",
+      "address": "vinayagapuram, frist street",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-18T12:58:23.099Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TEyQJbvYDubsKD",
+      "rejection_comment": "it is not nice",
+      "razorpay_payment_id": "pay_TEyQhGvDfwNkRr"
+    },
+    {
+      "id": "YY-ORD-86720",
+      "items": [
+        {
+          "product": {
+            "id": "prod-7",
+            "mrp": 120,
+            "name": "Minimalist Suede Mules",
+            "price": 10,
+            "images": [
+              "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "MULES",
+            "sizeMRPs": {
+              "7": 120
+            },
+            "weight_kg": 1,
+            "created_at": "2026-07-11T12:54:20.349Z",
+            "sizePrices": {
+              "7": 10
+            },
+            "description": "Handcrafted suede mules for effortless style.",
+            "sizeWeights": {
+              "7": 1
+            },
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": true
+          },
+          "quantity": 5,
+          "selectedSize": "7"
+        }
+      ],
+      "total": 451,
+      "status": "Cancelled",
+      "address": "vinayagapuram, frist street",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-11T16:18:53.664Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TCG63Cs2Tey3Pk",
+      "razorpay_payment_id": "pay_TCG6gDqGKUrbqY"
+    },
     {
       "id": "YY-ORD-39907",
       "items": [
@@ -82,7 +2835,7 @@
         }
       ],
       "total": 632,
-      "status": "Delivered",
+      "status": "Cancelled",
       "address": "vinayagapuram, frist street",
       "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
       "created_at": "2026-07-11T13:31:43.097Z",
@@ -115,7 +2868,7 @@
         }
       ],
       "total": 85,
-      "status": "Pending",
+      "status": "Cancelled",
       "address": "vinayagapuram, frist street",
       "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
       "created_at": "2026-07-11T13:05:25.000Z",
@@ -232,7 +2985,7 @@
       ],
       "phone": "",
       "total": 18500,
-      "status": "Confirmed",
+      "status": "Cancelled",
       "address": "chennai\n",
       "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
       "created_at": "2026-07-10T12:02:27.323Z",
@@ -929,7 +3682,7 @@
         }
       ],
       "total": 18500,
-      "status": "Delivered",
+      "status": "Cancelled",
       "address": "12, TTK Road, Alwarpet, Chennai, Tamil Nadu - 600018",
       "user_id": "customer-id",
       "created_at": "2026-06-26T14:05:56.207Z",
@@ -962,7 +3715,7 @@
         }
       ],
       "total": 24000,
-      "status": "Dispatched",
+      "status": "Cancelled",
       "address": "wdqewvew",
       "user_id": "776ae697-6be3-44be-b031-c4fdca8001a1",
       "created_at": "2026-07-05T18:09:16.461Z",
@@ -1014,22 +3767,13 @@
   ],
   "offers": [
     {
-      "id": "off-1",
-      "title": "Royal Mid-Summer Sovereign Offer",
+      "id": "off-1784488190647",
+      "title": "Website Launch",
       "is_active": true,
-      "banner_url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200&auto=format&fit=crop",
-      "description": "Acquire our royal leather masterpiece footwear series with premium customization options. Earn complimentary aromatic cedar shoe trees with every order.",
-      "valid_until": "2026-07-11",
-      "discount_percent": 15
-    },
-    {
-      "id": "off-2",
-      "title": "Heritage Collection Early Access",
-      "is_active": true,
-      "banner_url": "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=1200&auto=format&fit=crop",
-      "description": "First look at our new handmade collection. Sign up now and enjoy an exclusive discount on your next full-price purchase.",
-      "valid_until": "2026-07-06",
-      "discount_percent": 25
+      "banner_url": "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/banners/1784488185966-5z8pqq7bf14.PNG",
+      "description": "Addtional 5% off with the other Benefits of YY leathers.",
+      "valid_until": "2026-07-31",
+      "discount_percent": 5
     }
   ],
   "content_blocks": [
@@ -1051,7 +3795,27 @@
     {
       "id": "cb-top_slider",
       "key": "top_slider",
-      "value": "[]"
+      "value": "[\"website offer is going on grab your shoe\"]"
+    },
+    {
+      "id": "cb-sitewide_discount",
+      "key": "sitewide_discount",
+      "value": "50"
+    },
+    {
+      "id": "cb-festival_combine_with_offers",
+      "key": "festival_combine_with_offers",
+      "value": "true"
+    },
+    {
+      "id": "cb-festival_active",
+      "key": "festival_active",
+      "value": "true"
+    },
+    {
+      "id": "cb-festival_name",
+      "key": "festival_name",
+      "value": "\"Website Launch Offer\""
     }
   ]
 }

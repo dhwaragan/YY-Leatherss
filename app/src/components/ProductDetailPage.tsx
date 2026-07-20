@@ -15,7 +15,7 @@ interface ProductDetailPageProps {
 }
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, onClose }) => {
-  const { addToCart, navigateTo, user, checkout, updateProduct } = useApp();
+  const { addToCart, navigateTo, user, checkout, updateProduct, sitewideDiscount } = useApp();
   
   const [activeImage, setActiveImage] = useState(product.images[0]);
   const [selectedSize, setSelectedSize] = useState<string>(() => (product.sizePrices ? Object.keys(product.sizePrices)[0] : '9'));
@@ -38,16 +38,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
   const [accordionTab, setAccordionTab] = useState<string | null>("features");
 
   // Buy back offer states
-  const [includeBuyBack, setIncludeBuyBack] = useState(false);
+  const [includeBuyBack, setIncludeBuyBack] = useState<boolean | undefined>(undefined);
   const [bbShoeDetails, setBbShoeDetails] = useState('');
   const [bbBillNo, setBbBillNo] = useState('');
   const [bbBoughtDate, setBbBoughtDate] = useState('');
   const [bbPhotoUrl, setBbPhotoUrl] = useState('');
-  const [includeBirthdayBenefit, setIncludeBirthdayBenefit] = useState(false);
+  const [includeBirthdayBenefit, setIncludeBirthdayBenefit] = useState<boolean | undefined>(undefined);
   const [birthdayGovIdNumber, setBirthdayGovIdNumber] = useState('');
   const [birthdayDob, setBirthdayDob] = useState('');
   const [birthdayGovIdPhotoUrl, setBirthdayGovIdPhotoUrl] = useState('');
-  const [includeStudentDiscount, setIncludeStudentDiscount] = useState(false);
+  const [includeStudentDiscount, setIncludeStudentDiscount] = useState<boolean | undefined>(undefined);
   const [studentCollegeName, setStudentCollegeName] = useState('');
   const [studentIdNumber, setStudentIdNumber] = useState('');
   const [studentIdPhotoUrl, setStudentIdPhotoUrl] = useState('');
@@ -199,14 +199,18 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
   };
 
   const shoesSizes = product.sizePrices ? Object.keys(product.sizePrices) : ["7", "8", "9", "10", "11", "12"];
+  const getSizeQuantity = (size: string) => {
+    return (product as any).sizeQuantities?.[size] ?? Infinity; // Infinity means unlimited stock
+  };
   const currentPrice = product.sizePrices && selectedSize ? (product.sizePrices as any)[selectedSize] ?? product.price : product.price;
   const currentMRP = product.sizeMRPs && selectedSize ? (product.sizeMRPs as any)[selectedSize] ?? product.mrp : product.mrp;
   const showMRP = currentMRP != null && currentMRP > currentPrice;
   const totalValue = currentPrice * qty;
+  const sitewideDiscountedPrice = sitewideDiscount > 0 ? Math.round(currentPrice * (1 - sitewideDiscount / 100)) : currentPrice;
   const totalValueWithBuyback = includeBuyBack
     ? Math.round(totalValue * 0.9)
     : includeBirthdayBenefit
-    ? Math.max(0, totalValue - 200)
+    ? Math.max(0, totalValue - 250)
     : totalValue;
 
   const [isEditingDescription, setIsEditingDescription] = useState(false);
@@ -295,19 +299,27 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
               <div className="space-y-2">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Select Size (UK)</label>
                 <div className="flex flex-wrap gap-2">
-                  {shoesSizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`min-w-[48px] py-2.5 px-3 text-sm font-bold rounded-lg border-2 transition-all cursor-pointer ${
-                        selectedSize === size
-                          ? 'bg-leather text-white border-leather shadow-md'
-                          : 'bg-white text-neutral-700 border-neutral-200 hover:border-leather hover:text-leather'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
+                  {shoesSizes.map((size) => {
+                    const qty = getSizeQuantity(size);
+                    const isSoldOut = qty === 0;
+                    return (
+                      <button
+                        key={size}
+                        onClick={() => !isSoldOut && setSelectedSize(size)}
+                        disabled={isSoldOut}
+                        className={`min-w-[48px] py-2.5 px-3 text-sm font-bold rounded-lg border-2 transition-all cursor-pointer ${
+                          isSoldOut
+                            ? 'bg-neutral-100 text-neutral-400 border-neutral-200 cursor-not-allowed line-through'
+                            : selectedSize === size
+                            ? 'bg-leather text-white border-leather shadow-md'
+                            : 'bg-white text-neutral-700 border-neutral-200 hover:border-leather hover:text-leather'
+                        }`}
+                        title={isSoldOut ? 'Sold out' : `Size ${size} (${qty === Infinity ? 'In stock' : qty + ' left'})`}
+                      >
+                        {size}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -321,94 +333,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
                 </div>
               </div>
 
-              {/* Offer Toggles */}
-              <div className="space-y-2.5 bg-neutral-50 p-4 rounded-xl">
-                <h4 className="text-xs font-bold text-neutral-600 uppercase tracking-wider flex items-center gap-2 mb-2">
-                  <Sparkles className="w-3.5 h-3.5 text-gold" />
-                  Exclusive Offers
-                </h4>
-                
-                {/* Buyback Toggle */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-neutral-600">♻️ Buyback (10% off up to ₹500)</span>
-                  <button
-                    onClick={() => { setIncludeBuyBack(!includeBuyBack); setIncludeBirthdayBenefit(false); setIncludeStudentDiscount(false); }}
-                    className={`text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors cursor-pointer ${includeBuyBack ? 'bg-amber-600 text-white' : 'bg-neutral-200 text-neutral-500'}`}
-                  >
-                    {includeBuyBack ? 'ON' : 'OFF'}
-                  </button>
-                </div>
-                {includeBuyBack && (
-                  <div className="space-y-2 ml-2 p-2 border-l-2 border-amber-400 bg-white rounded">
-                    <input type="text" placeholder="Shoe details (model, year)" value={bbShoeDetails} onChange={(e) => setBbShoeDetails(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                    <div className="grid grid-cols-3 gap-2">
-                      <input type="text" placeholder="Bill No" value={bbBillNo} onChange={(e) => setBbBillNo(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                      <input type="date" placeholder="Purchase Date" value={bbBoughtDate} onChange={(e) => setBbBoughtDate(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                      <div className="flex items-center">
-                        <label className="text-[9px] font-medium text-neutral-500 cursor-pointer bg-neutral-100 p-2 rounded w-full text-center" title="Upload photo">
-                          📷 Photo
-                          <input type="file" accept="image/*" onChange={handleBbPhotoChange} className="hidden" required />
-                        </label>
-                      </div>
-                    </div>
-                    {bbPhotoUrl && <img src={bbPhotoUrl} alt="Shoe" className="h-20 w-full object-contain rounded border" />}
-                  </div>
-                )}
-
-                {/* Birthday Benefit Toggle */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-neutral-600">🎂 Birthday Benefit (₹200 OFF)</span>
-                  <button
-                    onClick={() => { setIncludeBirthdayBenefit(!includeBirthdayBenefit); setIncludeBuyBack(false); setIncludeStudentDiscount(false); }}
-                    className={`text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors cursor-pointer ${includeBirthdayBenefit ? 'bg-pink-600 text-white' : 'bg-neutral-200 text-neutral-500'}`}
-                  >
-                    {includeBirthdayBenefit ? 'ON' : 'OFF'}
-                  </button>
-                </div>
-                {includeBirthdayBenefit && (
-                  <div className="space-y-2 ml-2 p-2 border-l-2 border-pink-400 bg-white rounded">
-                    <input type="text" placeholder="Govt ID number" value={birthdayGovIdNumber} onChange={(e) => setBirthdayGovIdNumber(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                    <input type="date" title="Date of Birth" value={birthdayDob} onChange={(e) => setBirthdayDob(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                    <label className="text-[9px] font-medium text-neutral-500 cursor-pointer bg-neutral-100 p-2 rounded w-full text-center block" title="Upload ID photo">
-                      📷 Upload ID photo
-                      <input type="file" accept="image/*" onChange={handleBirthdayPhotoChange} className="hidden" required />
-                    </label>
-                    {birthdayGovIdPhotoUrl && <img src={birthdayGovIdPhotoUrl} alt="ID" className="h-20 w-full object-contain rounded border" />}
-                  </div>
-                )}
-
-                {/* Student Discount Toggle */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold text-neutral-600">🎓 Student Discount (Flat ₹100 OFF)</span>
-                  <button
-                    onClick={() => { setIncludeStudentDiscount(!includeStudentDiscount); setIncludeBuyBack(false); setIncludeBirthdayBenefit(false); }}
-                    className={`text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors cursor-pointer ${includeStudentDiscount ? 'bg-blue-600 text-white' : 'bg-neutral-200 text-neutral-500'}`}
-                  >
-                    {includeStudentDiscount ? 'ON' : 'OFF'}
-                  </button>
-                </div>
-                {includeStudentDiscount && (
-                  <div className="space-y-2 ml-2 p-2 border-l-2 border-blue-400 bg-white rounded">
-                    <input type="text" placeholder="College Name" value={studentCollegeName} onChange={(e) => setStudentCollegeName(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                    <div className="grid grid-cols-2 gap-2">
-                      <input type="text" placeholder="Student ID Number" value={studentIdNumber} onChange={(e) => setStudentIdNumber(e.target.value)} className="w-full text-xs p-2 border rounded" required />
-                      <label className="text-[9px] font-medium text-neutral-500 cursor-pointer bg-neutral-100 p-2 rounded w-full text-center" title="Upload College ID">
-                        📷 Upload College ID
-                        <input type="file" accept="image/*" onChange={handleStudentPhotoChange} className="hidden" required />
-                      </label>
-                    </div>
-                    {studentIdPhotoUrl && <img src={studentIdPhotoUrl} alt="Student ID" className="h-20 w-full object-contain rounded border" />}
-                  </div>
-                )}
-              </div>
-
-              {/* Description */}
+              {/* Description - Made larger and more visible, shown FIRST before offers */}
               <div className="space-y-2">
-                <h4 className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Artisan Description</h4>
+                <h4 className="text-sm font-bold uppercase tracking-wider text-leather-dark">Artisan Description</h4>
                 {user?.role === 'admin' ? (
                   isEditingDescription ? (
                     <div className="space-y-2">
-                      <textarea value={editedDescription} onChange={(e) => setEditedDescription(e.target.value)} rows={4} className="w-full text-xs p-3 border border-neutral-200 rounded-lg focus:outline-none focus:border-gold" />
+                      <textarea value={editedDescription} onChange={(e) => setEditedDescription(e.target.value)} rows={4} className="w-full text-sm p-3 border border-neutral-200 rounded-lg focus:outline-none focus:border-gold" />
                       <div className="flex gap-2">
                         <button onClick={handleSaveDescription} className="text-xs bg-leather text-white px-4 py-2 rounded-lg font-bold">Save</button>
                         <button onClick={() => { setIsEditingDescription(false); setEditedDescription(product.description); }} className="text-xs bg-neutral-100 text-neutral-600 px-4 py-2 rounded-lg font-bold">Cancel</button>
@@ -416,13 +347,36 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
                     </div>
                   ) : (
                     <div onClick={() => setIsEditingDescription(true)} className="cursor-pointer group">
-                      <p className="text-xs text-neutral-600 leading-relaxed">{product.description}</p>
+                      <p className="text-sm text-neutral-700 leading-relaxed whitespace-pre-line">{product.description}</p>
                       <span className="text-[10px] text-gold opacity-0 group-hover:opacity-100 transition-opacity">Click to edit</span>
                     </div>
                   )
                 ) : (
-                  <p className="text-xs text-neutral-600 leading-relaxed">{product.description}</p>
+                  <p className="text-sm text-neutral-700 leading-relaxed whitespace-pre-line">{product.description}</p>
                 )}
+              </div>
+
+              {/* Offer Toggles - simplified to show only titles without detailed text */}
+              <div className="space-y-2.5 bg-neutral-50 p-4 rounded-xl">
+                <h4 className="text-xs font-bold text-neutral-600 uppercase tracking-wider flex items-center gap-2 mb-2">
+                  <Sparkles className="w-3.5 h-3.5 text-gold" />
+                  Offers & Benefits
+                </h4>
+                
+                {/* Buyback Benefit - title only */}
+                <div className="space-y-0 ml-2 p-2 border-l-2 border-amber-400 bg-amber-50/50 rounded">
+                  <p className="text-[11px] font-semibold text-neutral-700">♻️ Buyback / Upgrade Benefit</p>
+                </div>
+
+                {/* Birthday Benefit - title only */}
+                <div className="space-y-0 ml-2 p-2 border-l-2 border-pink-400 bg-pink-50/50 rounded">
+                  <p className="text-[11px] font-semibold text-neutral-700">🎂 Birthday Benefit</p>
+                </div>
+
+                {/* Student Discount - title only */}
+                <div className="space-y-0 ml-2 p-2 border-l-2 border-blue-400 bg-blue-50/50 rounded">
+                  <p className="text-[11px] font-semibold text-neutral-700">🎓 Student Discount</p>
+                </div>
               </div>
             </div>
 
@@ -467,7 +421,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
                       </>
                     ) : (
                       <>
-                        🔥 Buy Now — ₹{(includeBuyBack ? totalValueWithBuyback : totalValue).toLocaleString('en-IN')}
+                        🔥 Buy Now — ₹{(includeBuyBack ? totalValueWithBuyback : (sitewideDiscount > 0 ? Math.round(totalValue * (1 - sitewideDiscount / 100)) : totalValue)).toLocaleString('en-IN')}
                       </>
                     )}
                   </button>

@@ -99,6 +99,15 @@ interface AppContextType {
 
   // Refetch Helpers
   refreshAllData: () => Promise<void>;
+
+  // Sitewide Discount
+  sitewideDiscount: number;
+  setSitewideDiscount: (discount: number) => void;
+  
+  // Festival Settings
+  festivalName: string;
+  festivalCombineWithOffers: boolean;
+  isFestivalActive: boolean;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -117,6 +126,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const [selectedProductDetail, setSelectedProductDetail] =
     useState<Product | null>(null);
+  const [sitewideDiscount, setSitewideDiscount] = useState<number>(() => {
+    if (typeof window === "undefined") return 0;
+    return Number(localStorage.getItem("yy_sitewide_discount") || "0");
+  });
+  const [festivalName, setFestivalName] = useState<string>(() => {
+    if (typeof window === "undefined") return '';
+    return localStorage.getItem("yy_festival_name") || '';
+  });
+  const [festivalCombineWithOffers, setFestivalCombineWithOffers] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    return localStorage.getItem("yy_festival_combine") !== "false";
+  });
+  const [isFestivalActive, setIsFestivalActive] = useState<boolean>(() => {
+    if (typeof window === "undefined") return true;
+    return localStorage.getItem("yy_festival_active") !== "false";
+  });
   const getInitialPage = () => {
     if (typeof window === "undefined") return "home";
     const savedPage = window.localStorage.getItem("yy_current_page");
@@ -142,6 +167,45 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       window.localStorage.setItem("yy_current_page", currentPage);
     }
   }, [currentPage]);
+
+  // Load festival settings from content blocks
+  useEffect(() => {
+    const loadFestivalSettings = async () => {
+      try {
+        const { data } = await supabase
+          .from('yy_store_sync')
+          .select('value')
+          .eq('key', 'content_blocks')
+          .single();
+        
+        if (data?.value) {
+          const blocks = data.value as ContentBlock[];
+          const festivalNameBlock = blocks.find((b: any) => b.key === 'festival_name');
+          const festivalCombineBlock = blocks.find((b: any) => b.key === 'festival_combine_with_offers');
+          
+          if (festivalNameBlock) {
+            const name = JSON.parse(festivalNameBlock.value);
+            setFestivalName(name);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("yy_festival_name", name);
+            }
+          }
+          
+          if (festivalCombineBlock) {
+            const combine = JSON.parse(festivalCombineBlock.value);
+            setFestivalCombineWithOffers(combine);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("yy_festival_combine", String(combine));
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Error loading festival settings:", e);
+      }
+    };
+    
+    loadFestivalSettings();
+  }, []);
 
   // Initialize and load default active session
   useEffect(() => {
@@ -191,7 +255,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       }
     }).catch(e => {
       console.warn("Supabase session check failed:", e);
-      // Clean up in case of a fatal token error (like chunk extraction failures)
       setUser(null); 
       localStorage.removeItem("yy_user");
     });
@@ -216,19 +279,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setUser(profile);
         localStorage.setItem("yy_user", JSON.stringify(profile));
 
-        // Navigate to profile if just signed in (e.g. from OAuth callback)
         if (event === "SIGNED_IN") {
           const isAdmin = session.user.email === "sriramsriram0105@gmail.com";
           setCurrentPage(isAdmin ? "admin" : "home");
         }
       } else {
-        // Only clear if logout was explicitly called or token expired
         setUser(null);
         localStorage.removeItem("yy_user");
       }
     });
 
-    // Check localStorage for cart
     const savedCart = localStorage.getItem("yy_cart");
     if (savedCart) {
       try {
@@ -257,7 +317,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       "PREMIUM CHELSEA", "WALLET", "BELT"
     ];
     try {
-      // Fetch from Supabase directly
       const { data: syncData, error } = await supabase
         .from('yy_store_sync')
         .select('key, value');
@@ -267,24 +326,73 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           const row = syncData.find((r: any) => r.key === key);
           return row ? row.value : [];
         };
-        setProducts(getVal('products') || []);
+        const productsData = (getVal('products') || []) as any[];
+        setProducts(productsData.map((p: any): Product => {
+          const sizePrices: Record<string, number> = {};
+          if (p.sizePrices) {
+            Object.entries(p.sizePrices).forEach(([k, v]: [string, any]) => {
+              if (v !== undefined && v !== null) sizePrices[k] = Number(v);
+            });
+          } else if (p.sizeMRPs) {
+            Object.entries(p.sizeMRPs).forEach(([k, v]: [string, any]) => {
+              if (v !== undefined && v !== null) sizePrices[k] = Number(v);
+            });
+          }
+          return {
+            ...p,
+            sizePrices,
+            customer_email: p.customer_email || ''
+          };
+        }));
         setOffers(getVal('offers') || []);
         setContentBlocks(getVal('content_blocks') || []);
-        setOrders(getVal('orders') || []);
-        setPreorders(getVal('preorders') || []);
+        const ordersData = (getVal('orders') || []) as any[];
+        setOrders(ordersData.map((o: any): Order => ({
+          ...o,
+          customer_email: o.customer_email || ''
+        })));
+        const preordersData = (getVal('preorders') || []) as any[];
+        setPreorders(preordersData.map((p: any) => ({
+          ...p,
+          status: (p.status === 'Confirmed' || p.status === 'Rejected' || p.status === 'Under Review' ? p.status : 'Under Review') as Preorder['status']
+        })));
         setHeroSlides(getVal('hero_slides') || []);
         
         const hasCustomCategories = syncData.some((r: any) => r.key === 'custom_categories');
         let cc = hasCustomCategories ? getVal('custom_categories') : DEFAULT_CATEGORIES;
         setCustomCategories(cc);
       } else {
-        // Fallback to local db.json if Supabase fails or is empty
         const fallback = await import('../../db.json');
-        setProducts(fallback.products || []);
+        const productsData = (fallback.products || []) as any[];
+        setProducts(productsData.map((p: any): Product => {
+          const sizePrices: Record<string, number> = {};
+          if (p.sizePrices) {
+            Object.entries(p.sizePrices).forEach(([k, v]: [string, any]) => {
+              if (v !== undefined && v !== null) sizePrices[k] = Number(v);
+            });
+          } else if (p.sizeMRPs) {
+            Object.entries(p.sizeMRPs).forEach(([k, v]: [string, any]) => {
+              if (v !== undefined && v !== null) sizePrices[k] = Number(v);
+            });
+          }
+          return {
+            ...p,
+            sizePrices,
+            customer_email: p.customer_email || ''
+          };
+        }));
         setOffers(fallback.offers || []);
         setContentBlocks(fallback.content_blocks || []);
-        setOrders(fallback.orders || []);
-        setPreorders(fallback.preorders || []);
+        const ordersData = (fallback.orders || []) as any[];
+        setOrders(ordersData.map((o: any): Order => ({
+          ...o,
+          customer_email: o.customer_email || ''
+        })));
+        const preordersData = (fallback.preorders || []) as any[];
+        setPreorders(preordersData.map((p: any) => ({
+          ...p,
+          status: (p.status === 'Confirmed' || p.status === 'Rejected' || p.status === 'Under Review' ? p.status : 'Under Review') as Preorder['status']
+        })));
         setHeroSlides([]);
         setCustomCategories(DEFAULT_CATEGORIES);
       }
@@ -292,11 +400,36 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error("Error loading seed database", e);
       try {
         const fallback = await import('../../db.json');
-        setProducts(fallback.products || []);
+        const productsData = (fallback.products || []) as any[];
+        setProducts(productsData.map((p: any): Product => {
+          const sizePrices: Record<string, number> = {};
+          if (p.sizePrices) {
+            Object.entries(p.sizePrices).forEach(([k, v]: [string, any]) => {
+              if (v !== undefined && v !== null) sizePrices[k] = Number(v);
+            });
+          } else if (p.sizeMRPs) {
+            Object.entries(p.sizeMRPs).forEach(([k, v]: [string, any]) => {
+              if (v !== undefined && v !== null) sizePrices[k] = Number(v);
+            });
+          }
+          return {
+            ...p,
+            sizePrices,
+            customer_email: p.customer_email || ''
+          };
+        }));
         setOffers(fallback.offers || []);
         setContentBlocks(fallback.content_blocks || []);
-        setOrders(fallback.orders || []);
-        setPreorders(fallback.preorders || []);
+        const ordersData = (fallback.orders || []) as any[];
+        setOrders(ordersData.map((o: any): Order => ({
+          ...o,
+          customer_email: o.customer_email || ''
+        })));
+        const preordersData = (fallback.preorders || []) as any[];
+        setPreorders(preordersData.map((p: any) => ({
+          ...p,
+          status: (p.status === 'Confirmed' || p.status === 'Rejected' || p.status === 'Under Review' ? p.status : 'Under Review') as Preorder['status']
+        })));
         setHeroSlides([]);
         setCustomCategories(DEFAULT_CATEGORIES);
       } catch (err) {
@@ -321,7 +454,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       if (profileData && !error) {
           profile = profileData as Profile;
       } else {
-          // Fallback profile if not in Supabase yet
           profile = {
               id: "temp-id-" + Date.now(),
               name: email.split('@')[0],
@@ -347,9 +479,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const bypassAdminLogin = async (password: string) => {
     try {
-      const adminPass = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD || "chennaileather2026";
+      const envPass = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD || "chennaileather2026";
+      const customPass = localStorage.getItem('yy_admin_pass');
+      const adminPass = customPass || envPass;
       
-      if (password === adminPass || password === "admin" || password === "yyleather@2026") {
+      // Only check against the configured password - no extra fallback passwords
+      if (password === adminPass) {
         const adminProfile: Profile = {
           id: "admin-id",
           name: "Sriram Srinivasan (Admin)",
@@ -464,7 +599,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.removeItem("yy_cart");
   };
 
-  // Checkout (simulate Razorpay Gateway Integration)
   const checkout = async (
     address: string,
     phone: string,
@@ -531,9 +665,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         };
       }
 
-      // Save order details to localStorage for the checkout page to use
       localStorage.setItem('yy_pending_order', JSON.stringify(reqBody));
-      // Navigate to the checkout page
       return { success: true, redirectUrl: '/checkout', orderId: undefined };
     } catch (e) {
       console.error(e);
@@ -541,7 +673,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  // Submissions
   const submitPreorder = async (preorderData: any): Promise<string | false> => {
     if (!user) return false;
     try {
@@ -704,7 +835,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const updateContentBlock = async (key: string, value: any) => {
     try {
-      // First get current content blocks to update the array
       const currentBlocks = [...contentBlocks];
       const existingIdx = currentBlocks.findIndex(cb => cb.key === key);
       const newBlock = { id: `cb-${key}`, key, value: JSON.stringify(value) };
@@ -745,6 +875,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     currentPage,
     shopCategory,
     isLoading,
+    sitewideDiscount,
     navigateTo,
     setShopCategory,
     setSelectedProductDetail,
@@ -767,6 +898,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     deleteOffer,
     updateContentBlock,
     refreshAllData,
+    setSitewideDiscount,
+    festivalName,
+    festivalCombineWithOffers,
+    isFestivalActive,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

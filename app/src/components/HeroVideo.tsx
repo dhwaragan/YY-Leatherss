@@ -255,22 +255,20 @@ export const HeroSection: React.FC = () => {
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-700 ease-in-out"></div>
                 <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6 relative z-10" />
-                <span className="relative z-10 whitespace-nowrap">Explore More</span>
+                <span className="relative z-10 whitespace-nowrap">EXPLORE MORE</span>
               </button>
             </motion.div>
 
           </div>
 
-          {/* Right Column: Premium showcase video player replacing empty placeholder */}
-          {/* Mobile: absolute positioned behind text. Desktop: static column flow */}
+          {/* Right Column: Premium showcase video player - shoe visible clearly and fully */}
           <motion.div
             initial={{ opacity: 0, x: 100, y: 50, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
             transition={{ duration: 1.4, delay: dBase + 0.3, type: "spring", bounce: 0.4 }}
             className="absolute lg:static top-0 sm:top-[-3%] left-0 w-full h-full lg:col-span-6 xl:col-span-5 flex justify-center lg:items-center z-0 pointer-events-none lg:pointer-events-auto opacity-100 lg:translate-x-8 xl:translate-x-0"
           >
-            {/* Centered directly on mobile so the shoe rotates fully in view */}
-            <div className="relative w-full max-w-lg aspect-[1/1] flex items-center justify-center translate-x-0 lg:translate-x-0 lg:-mt-12 mt-[120px] sm:mt-10">
+            <div className="relative w-full max-w-lg aspect-[1/1] flex items-center justify-center translate-x-0 lg:translate-x-0 lg:-mt-12 mt-0 sm:mt-0">
                
                {/* Mobile: Warm Amber & Gold Radial Gradient Spotlight */}
                <div className="absolute inset-0 rounded-full lg:hidden bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#e5cd82]/60 via-[#8b5a2b]/30 to-transparent blur-[40px] scale-[1.7]" />
@@ -285,12 +283,11 @@ export const HeroSection: React.FC = () => {
                <div className="absolute bottom-[25%] right-[5%] w-3.5 h-3.5 bg-gold/50 rounded-full hidden lg:block blur-[1.5px] animate-[pulse_4s_ease-in-out_infinite_1s]" />
                <div className="absolute top-[45%] right-[-5%] w-1.5 h-1.5 bg-[#8b5a2b]/80 rounded-full hidden lg:block animate-[pulse_2.5s_ease-in-out_infinite_0.5s]" />
 
-               {/* Premium floating effect with up-down animation */}
-               {/* Mobile: scale 155%, opacity ~40%. Desktop: scale 150%, opacity 100% */}
+               {/* Shoe video - properly scaled so the shoe is fully visible and clear */}
                <motion.div 
-                 className="w-full h-full relative bg-transparent scale-[1.5] lg:scale-[1.5] opacity-100 transition-all duration-700 pointer-events-auto"
-                 animate={{ y: [-15, 15, -15] }}
-                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                 className="w-full h-full relative bg-transparent scale-[1.0] lg:scale-[0.85] opacity-100 transition-all duration-700 pointer-events-auto"
+                 animate={{ y: [-8, 8, -8] }}
+                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                >
                  <video
                    src="https://res.cloudinary.com/domuelr1f/video/upload/v1781184045/animate_202606101949_202606102216-Picsart-BackgroundRemover_wdifyz.webm"
@@ -299,10 +296,9 @@ export const HeroSection: React.FC = () => {
                    muted
                    playsInline
                    style={{
-                     maskImage: "radial-gradient(ellipse at center, black 85%, transparent 100%)",
-                     WebkitMaskImage: "radial-gradient(ellipse at center, black 85%, transparent 100%)"
+                     maskImage: "radial-gradient(ellipse at center, black 95%, transparent 100%)",
+                     WebkitMaskImage: "radial-gradient(ellipse at center, black 95%, transparent 100%)"
                    }}
-                   // Soft shadow underneath shoe for desktop with gold hint
                    className="w-full h-full object-contain filter drop-shadow-none lg:drop-shadow-[0_45px_35px_rgba(229,205,130,0.25)]"
                  />
                  {/* Desktop: Subtle golden glow around edges */}
@@ -313,7 +309,7 @@ export const HeroSection: React.FC = () => {
 
         </div>
 
-        {/* Full Width Slider */}
+        {/* Full Width Slider - Explore Silhouettes: larger product images */}
         {products.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -336,7 +332,7 @@ export const HeroSection: React.FC = () => {
                 heroSlides.map((slide) => (
                   <div key={slide.id} onClick={() => handleCategoryClick(slide.category)} className="flex flex-col items-center gap-3 snap-center sm:snap-start flex-shrink-0 group cursor-pointer">
                     <div 
-                      className="w-[160px] h-[100px] sm:w-[220px] sm:h-[130px] bg-white rounded-[100px] border border-leather/10 flex items-center justify-center hover:border-gold hover:shadow-[0_15px_30px_rgba(212,175,55,0.2)] transition-all relative overflow-hidden duration-300 transform group-hover:-translate-y-2 shadow-md"
+                      className="w-[200px] h-[160px] sm:w-[260px] sm:h-[200px] bg-white rounded-2xl border border-leather/10 flex items-center justify-center hover:border-gold hover:shadow-[0_15px_30px_rgba(212,175,55,0.2)] transition-all relative overflow-hidden duration-300 transform group-hover:-translate-y-2 shadow-md"
                     >
                       <img 
                         src={slide.image_url} 
@@ -354,7 +350,7 @@ export const HeroSection: React.FC = () => {
                       navigateTo('shop');
                     }} className="flex flex-col items-center gap-3 snap-center sm:snap-start flex-shrink-0 group cursor-pointer">
                     <div 
-                      className="w-[160px] h-[100px] sm:w-[220px] sm:h-[130px] bg-white rounded-[100px] border border-leather/10 flex items-center justify-center hover:border-gold hover:shadow-[0_15px_30px_rgba(212,175,55,0.2)] transition-all relative overflow-hidden duration-300 transform group-hover:-translate-y-2 shadow-md"
+                      className="w-[200px] h-[160px] sm:w-[260px] sm:h-[200px] bg-white rounded-2xl border border-leather/10 flex items-center justify-center hover:border-gold hover:shadow-[0_15px_30px_rgba(212,175,55,0.2)] transition-all relative overflow-hidden duration-300 transform group-hover:-translate-y-2 shadow-md"
                     >
                       <img 
                         src={prod.images[0] || 'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=200&auto=format&fit=crop'} 
@@ -369,7 +365,7 @@ export const HeroSection: React.FC = () => {
               
               <div onClick={() => navigateTo('shop')} className="flex flex-col items-center gap-3 snap-center sm:snap-start flex-shrink-0 group cursor-pointer">
                 <div 
-                    className="w-[160px] h-[100px] sm:w-[220px] sm:h-[130px] rounded-[100px] border-2 border-dashed border-leather/30 bg-leather/5 flex-shrink-0 cursor-pointer group-hover:border-gold group-hover:text-gold group-hover:bg-gold/10 text-leather transition-all flex flex-col items-center justify-center gap-2 duration-300 transform group-hover:-translate-y-2"
+                    className="w-[200px] h-[160px] sm:w-[260px] sm:h-[200px] rounded-2xl border-2 border-dashed border-leather/30 bg-leather/5 flex-shrink-0 cursor-pointer group-hover:border-gold group-hover:text-gold group-hover:bg-gold/10 text-leather transition-all flex flex-col items-center justify-center gap-2 duration-300 transform group-hover:-translate-y-2"
                 >
                    <ArrowRight className="w-6 h-6" />
                 </div>

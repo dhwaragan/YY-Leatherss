@@ -590,7 +590,7 @@ const initialDB: Database = {
         returns: "If your customized ready-to-wear shoe doesn't fit beautifully, we provide a complimentary re-sizing and fit adjustment services within 14 days of delivery. For orders custom crafted to individual measures, returns are not eligible but full bespoke scaling and alteration support is provided by our Chennai shop.",
         privacy: "YY Leathers protects customer fit records and billing information under stringent data privacy. We do not distribute foot measurement blueprints or contact info to any marketing partner.",
         shipping: "Within Chennai, courier deliveries are scheduled with white-gloved specialists. For other tier-1 metros in India, standard shipping completes securely within 3-5 working days.",
-        buyback: "Every authentic YY Leather pair qualifies for our circular restoration ecosystem. Depending on leather depth and structural preservation, we grant up to 30% of original price as store-credit coupon codes or instant cash support.",
+        buyback: "Every authentic YY Leather pair qualifies for our circular restoration ecosystem. Depending on leather depth and structural preservation, we grant up to 20% of original price as store-credit coupon codes or instant cash support.",
         preorders: "Pre-order items represent bespoke crafting allocated individually. Handcraft cycles require 15-25 days from confirmation of physical sizing. Standard token non-refundable down-payment of 30% binds the reservation."
       })
     }

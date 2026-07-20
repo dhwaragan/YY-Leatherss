@@ -19,7 +19,8 @@ import {
   RefreshCw,
   X,
   User,
-  Clock
+  Clock,
+  MessageSquare
 } from 'lucide-react';
 
 export const UserProfile: React.FC = () => {
@@ -264,9 +265,19 @@ export const UserProfile: React.FC = () => {
                                 </div>
                                 <div className="flex flex-col text-right">
                                   <span className="text-neutral-400 text-[9px] uppercase tracking-wide font-medium mb-1">Status</span>
-                                  <span className="font-bold text-[#5ce147] text-xs">{['Pending','Confirmed'].includes(ord.status) ? 'Processing' : ord.status}</span>
+                                  <span className={`font-bold text-xs ${ord.status === 'Cancelled' ? 'text-red-600' : ['Pending','Confirmed'].includes(ord.status) ? 'text-[#5ce147]' : 'text-neutral-800'}`}>{['Pending','Confirmed'].includes(ord.status) ? 'Processing' : ord.status}</span>
                                 </div>
                             </div>
+
+                            {/* Show rejection reason if order was cancelled */}
+                            {ord.status === 'Cancelled' && (ord as any).rejection_comment && (
+                              <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl">
+                                <p className="font-bold text-red-700 uppercase tracking-wider text-[10px] flex items-center gap-1 mb-1">
+                                  <MessageSquare className="w-3 h-3" /> Cancellation Reason
+                                </p>
+                                <p className="text-red-600 text-xs leading-relaxed">{(ord as any).rejection_comment}</p>
+                              </div>
+                            )}
 
                             {/* Buttons */}
                             <div className="grid grid-cols-2 gap-3">

@@ -2490,6 +2490,194 @@
       "is_published": true,
       "is_best_seller": false,
       "is_new_arrival": false
+    },
+    {
+      "id": "prod-1784563711350",
+      "mrp": 1999,
+      "name": "Black - Wholecut Dotted Design",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/1rw3klfgp1yh-1784563772893.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/l5pybrqpkw-1784563780643.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xosgx929ecr-1784563781630.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/u2o0ieyvos-1784563782513.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/o1g9q8swl1r-1784563783397.JPG"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T16:08:31.350Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Dotted Black Wholecut Formal Shoes – Premium Cow Soft Leather\n\nKey Features\nUpper Material: Premium Cow Soft Leather\nDesign: Wholecut Oxford with elegant dotted detailing\nColor: Classic Black\nClosure: Closed lace-up\nComfort: Soft leather construction with cushioned insole\nOutsole: Lightweight, durable, and anti-slip sole\nFit: Comfortable for extended wear\nOccasion: Office Wear, Business Meetings, Weddings, Corporate Events, Evening Functions",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784564015909",
+      "mrp": 1999,
+      "name": "Brown - Wholecut Dotted Design",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k2z9xhj78rq-1784564086015.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/a8pfhwdc6n-1784564095414.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ks0h4dz00sc-1784564096280.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/inzto5us44d-1784564096853.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k478hyz5k78-1784564097550.jpg"
+      ],
+      "category": "FORMAL-OXFORD",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T16:13:35.909Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Dotted Dark Brown Wholecut Formal Shoes – Premium Cow Soft Leather\n\nProduct Features\nUpper Material: Premium Cow Soft Leather\nStyle: Wholecut Oxford Formal Shoes\nDesign: Minimalist wholecut construction with elegant dotted detailing\nColor: Dark Brown\nClosure: Closed lace-up\nInsole: Soft cushioned footbed for enhanced comfort\nOutsole: Lightweight, durable, and anti-slip TPR sole\nFit: Comfortable for all-day wear\nIdeal For: Office Wear, Business Meetings, Weddings, Corporate Events, Receptions, and Evening Functions",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784564591418",
+      "mrp": 1999,
+      "name": "Black - Chunky Derby",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/fchrfcxq16p-1784564584175.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/qjvknytx1ta-1784564585632.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7ktv8m85j7-1784564586228.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ok9jip4orl-1784564586895.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/np39beunv2q-1784564587538.JPG"
+      ],
+      "category": "DERBY",
+      "sizeMRPs": {
+        "5": 1999,
+        "6": 1999,
+        "7": 1999,
+        "8": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T16:23:11.418Z",
+      "sizePrices": {
+        "5": 1599,
+        "6": 1599,
+        "7": 1599,
+        "8": 1599
+      },
+      "description": "Black Apron Derby Shoes – Premium Cow Soft Leather\n\nProduct Features\nUpper Material: Premium Cow Soft Leather\nStyle: Apron Toe Derby Shoes\nColor: Classic Black\nClosure: Open lace-up Derby\nDesign: Hand-stitched apron toe with a clean, modern silhouette\nInsole: Soft cushioned footbed for enhanced comfort\nOutsole: Lightweight anti-slip chunky lug sole\nFit: Comfortable for extended daily wear\nIdeal For: Office Wear, Business Casual, Smart Casual, Weekend Outings, Travel, and Everyday Use",
+      "sizeWeights": {
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "5": 1,
+        "6": 1,
+        "7": 1,
+        "8": 1
+      }
+    },
+    {
+      "id": "prod-1784564768263",
+      "mrp": 1999,
+      "name": "Blacl - Tassel Loafer",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7223pek6hhx-1784564756812.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kwus8laqgza-1784564758159.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/6fjk8bzzjxu-1784564759146.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/fxgoa3qtrf-1784564760252.jpg",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/91fiyxuh328-1784564761298.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T16:26:08.263Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Black Textured Tassel Loafers – Premium Cow Soft Leather\n\nProduct Features\nUpper Material: Premium Cow Soft Leather\nStyle: Tassel Loafers\nColor: Classic Black\nDesign: Embossed textured leather with handcrafted tassel detailing\nClosure: Slip-on\nInsole: Soft cushioned footbed for superior comfort\nOutsole: Lightweight, durable, and anti-slip sole\nFit: Comfortable for all-day wear\nIdeal For: Business Meetings, Weddings, Parties, Office Wear, Smart Casual, and Evening Events",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
     }
   ],
   "orders": [
@@ -3800,7 +3988,7 @@
     {
       "id": "cb-sitewide_discount",
       "key": "sitewide_discount",
-      "value": "50"
+      "value": "5"
     },
     {
       "id": "cb-festival_combine_with_offers",

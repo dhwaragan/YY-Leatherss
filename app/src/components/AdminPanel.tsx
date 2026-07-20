@@ -880,7 +880,7 @@ export const AdminPanel: React.FC = () => {
   const calculatedRevenue = orders.filter(o => o.status === 'Delivered').reduce((a, o) => a + o.total, 0);
   const pendingOrdersCount = orders.filter(o => o.status === 'Pending').length;
   const processingOrdersCount = orders.filter(o => o.status === 'Confirmed' || o.status === 'Dispatched').length;
-  const filteredOrders = orders.filter(o => orderFilter === 'All' ? o.status !== 'Pending' : o.status === orderFilter);
+  const filteredOrders = orders.filter(o => orderFilter === 'All' ? true : o.status === orderFilter);
 
   // Get admin first name for greeting
   const adminFirstName = (user as any)?.name?.split(' ')[0] || 'Admin';

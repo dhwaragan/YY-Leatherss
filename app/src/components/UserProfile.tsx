@@ -263,10 +263,12 @@ export const UserProfile: React.FC = () => {
                                   <span className="text-neutral-400 text-[9px] uppercase tracking-wide font-medium mb-1">Estimated Arrival</span>
                                   <span className="font-bold text-neutral-800 text-xs">{ord.status === 'Cancelled' ? '-' : (ord.status === 'Delivered' ? 'Delivered' : '3-5 Days')}</span>
                                 </div>
-                                <div className="flex flex-col text-right">
-                                  <span className="text-neutral-400 text-[9px] uppercase tracking-wide font-medium mb-1">Status</span>
-                                  <span className={`font-bold text-xs ${ord.status === 'Cancelled' ? 'text-red-600' : ['Pending','Confirmed'].includes(ord.status) ? 'text-[#5ce147]' : 'text-neutral-800'}`}>{['Pending','Confirmed'].includes(ord.status) ? 'Processing' : ord.status}</span>
-                                </div>
+                                 <div className="flex flex-col text-right">
+                                   <span className="text-neutral-400 text-[9px] uppercase tracking-wide font-medium mb-1">Status</span>
+                                   <span className={`font-bold text-xs ${ord.status === 'Cancelled' ? 'text-red-600' : ord.status === 'Pending' ? 'text-amber-500' : ord.status === 'Confirmed' ? 'text-blue-600' : ord.status === 'Dispatched' ? 'text-purple-600' : 'text-green-600'}`}>
+                                     {ord.status === 'Pending' ? 'Pending' : ord.status === 'Confirmed' ? 'Processing' : ord.status === 'Dispatched' ? 'Shipped' : ord.status}
+                                   </span>
+                                 </div>
                             </div>
 
                             {/* Show rejection reason if order was cancelled */}

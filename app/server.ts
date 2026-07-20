@@ -814,7 +814,16 @@ app.get('/api/orders/user/:userId', (req, res) => {
 });
 
 app.post('/api/orders', (req, res) => {
-  const { user_id, items, total, address, customer_name, customer_email, razorpay_order_id, razorpay_payment_id, buyback_requested, buyback_details } = req.body;
+  const { 
+    user_id, items, total, address, customer_name, customer_email, 
+    razorpay_order_id, razorpay_payment_id, 
+    delivery_region, delivery_charge, estimated_weight_kg,
+    student_discount_requested, student_discount_details,
+    birthday_benefit_requested, birthday_benefit_details,
+    buyback_requested, buyback_details,
+    applied_offer
+  } = req.body;
+  
   const newOrder = {
     id: `YY-ORD-${Math.floor(10000 + Math.random() * 90000)}`,
     user_id,
@@ -826,10 +835,19 @@ app.post('/api/orders', (req, res) => {
     address,
     razorpay_order_id: razorpay_order_id || `order_rp_${Date.now()}`,
     razorpay_payment_id: razorpay_payment_id || `pay_rp_${Date.now()}`,
+    delivery_region: delivery_region || 'TN',
+    delivery_charge: delivery_charge || 0,
+    estimated_weight_kg: estimated_weight_kg || 1,
+    student_discount_requested: student_discount_requested || false,
+    student_discount_details: student_discount_details || null,
+    birthday_benefit_requested: birthday_benefit_requested || false,
+    birthday_benefit_details: birthday_benefit_details || null,
     buyback_requested: buyback_requested || false,
     buyback_details: buyback_details || null,
+    applied_offer: applied_offer || 'none',
     created_at: new Date().toISOString()
   };
+  
   db.orders.unshift(newOrder);
   saveDatabase(db);
   res.json({ success: true, order: newOrder });

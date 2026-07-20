@@ -2431,7 +2431,7 @@
     {
       "id": "prod-1784551158305",
       "mrp": 1999,
-      "name": "Black - Suede Penny Loafer Buckle",
+      "name": "Black - Horsebit Loafers Buckle",
       "price": 1599,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/dg21tcs9smg-1784551136882.JPG",
@@ -2440,7 +2440,7 @@
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/l58u5bwk23o-1784551155052.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/uxy721jcgmh-1784551155654.JPG"
       ],
-      "category": "PENNY - LOAFERS",
+      "category": "SUEDES",
       "sizeMRPs": {
         "6": 1999,
         "7": 1999,
@@ -2634,7 +2634,7 @@
     {
       "id": "prod-1784564768263",
       "mrp": 1999,
-      "name": "Blacl - Tassel Loafer",
+      "name": "Black - Tassel Loafer",
       "price": 1599,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7223pek6hhx-1784564756812.JPG",
@@ -2677,6 +2677,52 @@
         "8": 2,
         "9": 2,
         "10": 1
+      }
+    },
+    {
+      "id": "prod-1784570495175",
+      "mrp": 1999,
+      "name": "Black - Horsebit Loafer",
+      "price": 1599,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rqqewonwn4d-1784570491280.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/oshaslr37z-1784570566628.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/92anqtg106i-1784570575725.JPG"
+      ],
+      "category": "SUEDES",
+      "sizeMRPs": {
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999,
+        "10": 1999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-20T18:01:35.175Z",
+      "sizePrices": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "description": "Black Suede Leather Horsebit Loafers\n\nExperience timeless sophistication with these Black Suede Leather Horsebit Loafers, designed for men who appreciate understated luxury. Crafted from premium genuine suede leather, these loafers feature a soft velvety finish complemented by an elegant antique silver horsebit ornament, creating a refined statement for every occasion. The sleek silhouette, cushioned insole, and lightweight construction ensure exceptional comfort from morning meetings to evening outings.\n\nWhether paired with tailored trousers, chinos, or smart casual denim, these loafers effortlessly elevate your style with a touch of modern elegance.\n\nFeatures:\nPremium Genuine Suede Leather Upper\nClassic Horsebit Metal Ornament with Antique Silver Finish\nSoft Cushioned Footbed for Superior Comfort\nBreathable Leather Lining\nLightweight & Flexible Rubber Sole\nSlip-On Design for Easy Wear\nElegant Round Toe Silhouette\nIdeal for Business, Smart Casual & Evening Wear\n\nColor: Black\nMaterial: Premium Genuine Suede Leather\nStyle: Horsebit Loafer\nClosure: Slip-On\nOccasion: Business | Smart Casual | Party | Evening | Travel",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 2,
+        "8": 3,
+        "9": 3,
+        "10": 2
       }
     }
   ],

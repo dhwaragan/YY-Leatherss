@@ -18,7 +18,7 @@ export const Checkout: React.FC = () => {
   
   const [address, setAddress] = useState(user?.address || '');
   const [phoneNumber, setPhoneNumber] = useState(user?.phone || '');
-  const [selectedRegion, setSelectedRegion] = useState('TN');
+  const [selectedState, setSelectedState] = useState('Tamil Nadu');
   
   // Birthday Benefit state
   const [includeBirthdayBenefit, setIncludeBirthdayBenefit] = useState<boolean | undefined>(undefined);
@@ -62,43 +62,87 @@ export const Checkout: React.FC = () => {
   const subtotalAfterSitewide = effectiveSitewideDiscount > 0 ? Math.round(subtotal * (1 - effectiveSitewideDiscount / 100)) : subtotal;
   const processingFee = Math.round(subtotalAfterSitewide * 0.015);
 
-  const getDeliveryCharge = (region: string, weightKg: number) => {
-    switch (region) {
-      case 'Chennai':
-        return 60 * weightKg;
-      case 'TN':
-        return 80 * weightKg;
-      case 'South':
-        return 100 * weightKg;
-      case 'North':
-        return 180 * weightKg;
-      case 'North East':
-        return 250 * weightKg;
-      case 'North West':
-        return 200 * weightKg;
-      case 'Himachal':
-        return 200 * weightKg;
-      default:
-        return 0;
+  const getDeliveryCharge = (state: string, weightKg: number) => {
+    const stateLower = state.toLowerCase();
+    
+    // ₹60 Per KG - Chennai
+    if (stateLower === 'chennai') {
+      return 60 * weightKg;
     }
+    
+    // ₹80 Per KG - Tamil Nadu (Except Chennai)
+    if (stateLower === 'tamil nadu') {
+      return 80 * weightKg;
+    }
+    
+    // ₹100 Per KG - Andhra Pradesh, Goa, Karnataka, Kerala, Odisha, Telangana, Puducherry
+    if (['andhra pradesh', 'goa', 'karnataka', 'kerala', 'odisha', 'telangana', 'puducherry'].includes(stateLower)) {
+      return 100 * weightKg;
+    }
+    
+    // ₹180 Per KG - New Delhi, Bihar, Chhattisgarh, Gujarat, Jharkhand, Madhya Pradesh, Maharashtra, Uttar Pradesh
+    if (['new delhi', 'delhi', 'bihar', 'chhattisgarh', 'gujarat', 'jharkhand', 'madhya pradesh', 'maharashtra', 'uttar pradesh'].includes(stateLower)) {
+      return 180 * weightKg;
+    }
+    
+    // ₹200 Per KG - Haryana, Himachal Pradesh, Punjab, Rajasthan, Uttarakhand, West Bengal
+    if (['haryana', 'himachal pradesh', 'punjab', 'rajasthan', 'uttarakhand', 'west bengal'].includes(stateLower)) {
+      return 200 * weightKg;
+    }
+    
+    // ₹250 Per KG - Arunachal Pradesh, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, Tripura
+    if (['arunachal pradesh', 'assam', 'manipur', 'meghalaya', 'mizoram', 'nagaland', 'sikkim', 'tripura'].includes(stateLower)) {
+      return 250 * weightKg;
+    }
+    
+    // Contact Us - Jammu & Kashmir, Andaman & Nicobar Islands
+    if (['jammu & kashmir', 'jammu and kashmir', 'andaman & nicobar islands', 'andaman and nicobar islands'].includes(stateLower)) {
+      return 0; // Will trigger manual quote
+    }
+    
+    return 0;
   };
 
   const deliveryRates = [
-    { region: 'Chennai', rate: 60 },
-    { region: 'TN', rate: 80 },
-    { region: 'South', rate: 100 },
-    { region: 'North', rate: 180 },
-    { region: 'North East', rate: 250 },
-    { region: 'North West', rate: 200 },
-    { region: 'Himachal', rate: 200 },
-    { region: 'Others', rate: null, contact: true },
-    { region: 'Special Destination', rate: null, contact: true, phone: '09344178585' },
+    { state: 'Chennai', rate: 60, color: 'bg-purple-100 border-purple-300' },
+    { state: 'Tamil Nadu', rate: 80, color: 'bg-blue-100 border-blue-300' },
+    { state: 'Andhra Pradesh', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'Goa', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'Karnataka', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'Kerala', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'Odisha', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'Telangana', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'Puducherry', rate: 100, color: 'bg-green-100 border-green-300' },
+    { state: 'New Delhi', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Bihar', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Chhattisgarh', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Gujarat', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Jharkhand', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Madhya Pradesh', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Maharashtra', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Uttar Pradesh', rate: 180, color: 'bg-yellow-100 border-yellow-300' },
+    { state: 'Haryana', rate: 200, color: 'bg-orange-100 border-orange-300' },
+    { state: 'Himachal Pradesh', rate: 200, color: 'bg-orange-100 border-orange-300' },
+    { state: 'Punjab', rate: 200, color: 'bg-orange-100 border-orange-300' },
+    { state: 'Rajasthan', rate: 200, color: 'bg-orange-100 border-orange-300' },
+    { state: 'Uttarakhand', rate: 200, color: 'bg-orange-100 border-orange-300' },
+    { state: 'West Bengal', rate: 200, color: 'bg-orange-100 border-orange-300' },
+    { state: 'Arunachal Pradesh', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Assam', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Manipur', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Meghalaya', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Mizoram', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Nagaland', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Sikkim', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Tripura', rate: 250, color: 'bg-red-100 border-red-300' },
+    { state: 'Jammu & Kashmir', rate: null, contact: true, color: 'bg-gray-100 border-gray-300' },
+    { state: 'Andaman & Nicobar Islands', rate: null, contact: true, color: 'bg-gray-100 border-gray-300' },
   ];
 
   const estimatedWeightKg = cart.reduce((acc, item) => acc + (item.product.weight_kg ?? 1) * item.quantity, 0) || 1;
-  const selectedDeliveryRate = deliveryRates.find((item) => item.region === selectedRegion);
-  const deliveryCharge = getDeliveryCharge(selectedRegion, estimatedWeightKg);
-  const requiresManualQuote = selectedRegion === 'Others' || selectedRegion === 'Special Destination';
+  const selectedDeliveryRate = deliveryRates.find((item) => item.state === selectedState);
+  const deliveryCharge = getDeliveryCharge(selectedState, estimatedWeightKg);
+  const requiresManualQuote = selectedDeliveryRate?.rate === null;
 
   // ----- OFFER LOGIC: Buyback and Student discount can apply simultaneously -----
   
@@ -244,7 +288,7 @@ export const Checkout: React.FC = () => {
         user_id: user.id,
         items: cart,
         total: orderTotal,
-        delivery_region: selectedRegion,
+        delivery_region: selectedState,
         delivery_charge: deliveryCharge,
         estimated_weight_kg: estimatedWeightKg,
         student_discount_requested: includeStudentDiscount,
@@ -321,6 +365,7 @@ export const Checkout: React.FC = () => {
             ...orderBody,
             razorpay_order_id: rzpOrderId,
             razorpay_payment_id: paymentId,
+            delivery_state: selectedState,
             status: 'Pending', // Order starts as Pending until admin approval
           }),
         });
@@ -448,17 +493,16 @@ export const Checkout: React.FC = () => {
                 </div>
 
                 <div className="space-y-1 text-xs">
-                  <label className="font-bold text-neutral-600 uppercase tracking-wide">Delivery Region *</label>
-                  <select value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)} className="w-full p-3 border border-neutral-200 rounded-lg focus:outline-none focus:border-gold text-xs">
-                    {deliveryRates.map((item) => (<option key={item.region} value={item.region}>{item.region} {typeof item.rate === 'number' ? `(₹${item.rate}/Kg)` : item.contact ? '(Contact for rate)' : ''}</option>))}
+                  <label className="font-bold text-neutral-600 uppercase tracking-wide">Delivery State *</label>
+                  <select value={selectedState} onChange={(e) => setSelectedState(e.target.value)} className="w-full p-3 border border-neutral-200 rounded-lg focus:outline-none focus:border-gold text-xs">
+                    {deliveryRates.map((item) => (<option key={item.state} value={item.state}>{item.state} {typeof item.rate === 'number' ? `(₹${item.rate}/Kg)` : item.contact ? '(Contact for rate)' : ''}</option>))}
                   </select>
-                  {selectedRegion === 'Special Destination' && (
+                  {requiresManualQuote && (
                     <div className="text-[10px] text-blue-700 bg-blue-50 border border-blue-200 rounded p-2 mt-2">
                       📞 Special Destination Delivery: Please contact us at <strong>09344178585</strong> for custom shipping rates to your location.
                     </div>
                   )}
-                  {requiresManualQuote && selectedRegion !== 'Special Destination' && (<p className="text-[10px] text-amber-700 bg-amber-50 border border-amber-200 rounded p-2 mt-2">Please contact us for shipping rates for this region.</p>)}
-                  {!requiresManualQuote && (<p className="text-[10px] text-neutral-500 mt-2">Estimated weight: {estimatedWeightKg.toFixed(1)} kg. Delivery fee = {selectedDeliveryRate?.rate ?? 0} × {estimatedWeightKg.toFixed(1)} = ₹{deliveryCharge.toLocaleString('en-IN')}.</p>)}
+                  {!requiresManualQuote && (<p className="text-[10px] text-neutral-500 mt-2">Estimated weight: {estimatedWeightKg.toFixed(1)} kg. Delivery fee = ₹{selectedDeliveryRate?.rate ?? 0} × {estimatedWeightKg.toFixed(1)} = ₹{deliveryCharge.toLocaleString('en-IN')}.</p>)}
                 </div>
 
                  {/* --- OFFER 1: BUYBACK --- */}
@@ -543,7 +587,7 @@ export const Checkout: React.FC = () => {
 
               {isPaymentReady && razorpayOrderId ? (
                 <div className="border-t border-neutral-100 bg-neutral-50 p-6">
-                  <RazorpayPaymentForm amount={orderTotal} orderId={razorpayOrderId} razorpayKeyId={razorpayKeyId} customerName={user?.name || 'Customer'} customerEmail={user?.email || ''} customerPhone={phoneNumber} notes={{ user_id: user?.id || '', address, customer_name: user?.name || '', delivery_region: selectedRegion, delivery_charge: String(deliveryCharge), estimated_weight_kg: String(estimatedWeightKg), items: JSON.stringify(cart), phone: phoneNumber, applied_offer: appliedOffer }} onSuccess={handlePaymentSuccess} onError={handlePaymentError} onCancel={handlePaymentCancel} />
+                  <RazorpayPaymentForm amount={orderTotal} orderId={razorpayOrderId} razorpayKeyId={razorpayKeyId} customerName={user?.name || 'Customer'} customerEmail={user?.email || ''} customerPhone={phoneNumber} notes={{ user_id: user?.id || '', address, customer_name: user?.name || '', delivery_region: selectedState, delivery_charge: String(deliveryCharge), estimated_weight_kg: String(estimatedWeightKg), items: JSON.stringify(cart), phone: phoneNumber, applied_offer: appliedOffer }} onSuccess={handlePaymentSuccess} onError={handlePaymentError} onCancel={handlePaymentCancel} />
                 </div>
               ) : (
                 <div className="bg-neutral-50 px-6 py-4 border-t border-neutral-100 flex items-center justify-between">
@@ -585,10 +629,10 @@ export const Checkout: React.FC = () => {
                   <span>Processing Fee (1.5%)</span>
                   <span className="font-bold text-neutral-800">₹{processingFee.toLocaleString('en-IN')}</span>
                 </div>
-                <div className="flex justify-between text-neutral-500">
-                  <span>Delivery Charge ({selectedRegion})</span>
-                  <span className="font-bold text-neutral-800">{requiresManualQuote ? 'Contact' : `₹${deliveryCharge.toLocaleString('en-IN')}`}</span>
-                </div>
+                  <div className="flex justify-between text-neutral-500">
+                    <span>Delivery Charge ({selectedState})</span>
+                    <span className="font-bold text-neutral-800">{requiresManualQuote ? 'Contact' : `₹${deliveryCharge.toLocaleString('en-IN')}`}</span>
+                  </div>
 
                 {includeStudentDiscount && (<div className="flex justify-between text-blue-600"><span>🎓 Student Discount</span><span className="font-bold">-₹{studentDiscountAmount.toLocaleString('en-IN')}</span></div>)}
                 {includeBirthdayBenefit && (<div className="flex justify-between text-pink-600"><span>🎂 Birthday Benefit Discount</span><span className="font-bold">-₹{birthdayDiscount.toLocaleString('en-IN')}</span></div>)}
@@ -615,14 +659,54 @@ export const Checkout: React.FC = () => {
                   <h4 className="font-serif text-sm font-bold text-neutral-800">India Delivery Fee Rates</h4>
                   <span className="text-[10px] text-neutral-500 uppercase tracking-[0.2em]">Per Kg</span>
                 </div>
-                <div className="grid grid-cols-2 gap-3 text-xs text-neutral-700">
-                  {deliveryRates.filter(item => item.region !== 'Special Destination').map((item) => (<div key={item.region} className="rounded-xl border border-neutral-150 p-3 bg-neutral-50"><div className="font-semibold text-neutral-900">{item.region}</div><div className="mt-1 text-sm font-bold text-leather">{typeof item.rate === 'number' ? `₹${item.rate}` : 'Contact'}</div></div>))}
+                
+                {/* Chennai - Purple */}
+                <div className="mb-3 p-3 rounded-xl border-2 border-purple-300 bg-purple-50">
+                  <div className="text-xs font-bold text-purple-900 mb-1">🟣 Chennai</div>
+                  <div className="text-sm font-bold text-purple-700">₹60 Per KG</div>
                 </div>
+                
+                {/* Tamil Nadu - Blue */}
+                <div className="mb-3 p-3 rounded-xl border-2 border-blue-300 bg-blue-50">
+                  <div className="text-xs font-bold text-blue-900 mb-1">🔵 Tamil Nadu (Except Chennai)</div>
+                  <div className="text-sm font-bold text-blue-700">₹80 Per KG</div>
+                </div>
+                
+                {/* South States - Green */}
+                <div className="mb-3 p-3 rounded-xl border-2 border-green-300 bg-green-50">
+                  <div className="text-xs font-bold text-green-900 mb-1">🟢 Andhra Pradesh, Goa, Karnataka, Kerala, Odisha, Telangana, Puducherry</div>
+                  <div className="text-sm font-bold text-green-700">₹100 Per KG</div>
+                </div>
+                
+                {/* North States - Yellow */}
+                <div className="mb-3 p-3 rounded-xl border-2 border-yellow-300 bg-yellow-50">
+                  <div className="text-xs font-bold text-yellow-900 mb-1">🟡 New Delhi, Bihar, Chhattisgarh, Gujarat, Jharkhand, Madhya Pradesh, Maharashtra, Uttar Pradesh</div>
+                  <div className="text-sm font-bold text-yellow-700">₹180 Per KG</div>
+                </div>
+                
+                {/* North West & Himachal - Orange */}
+                <div className="mb-3 p-3 rounded-xl border-2 border-orange-300 bg-orange-50">
+                  <div className="text-xs font-bold text-orange-900 mb-1">🟠 Haryana, Himachal Pradesh, Punjab, Rajasthan, Uttarakhand, West Bengal</div>
+                  <div className="text-sm font-bold text-orange-700">₹200 Per KG</div>
+                </div>
+                
+                {/* North East - Red */}
+                <div className="mb-3 p-3 rounded-xl border-2 border-red-300 bg-red-50">
+                  <div className="text-xs font-bold text-red-900 mb-1">🔴 Arunachal Pradesh, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, Tripura</div>
+                  <div className="text-sm font-bold text-red-700">₹250 Per KG</div>
+                </div>
+                
+                {/* Contact Us - Black */}
+                <div className="p-3 rounded-xl border-2 border-gray-300 bg-gray-50">
+                  <div className="text-xs font-bold text-gray-900 mb-1">⚫ Jammu & Kashmir, Andaman & Nicobar Islands</div>
+                  <div className="text-sm font-bold text-gray-700">Contact Us</div>
+                </div>
+                
                 <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                   <p className="text-[10px] text-blue-800 font-semibold">📞 Special Destination?</p>
-                  <p className="text-[10px] text-blue-700 mt-1">For locations not listed above, please contact us directly at <strong>09344178585</strong> for custom delivery rates.</p>
+                  <p className="text-[10px] text-blue-700 mt-1">For Jammu & Kashmir and Andaman & Nicobar Islands, please contact us directly at <strong>09344178585</strong> for custom delivery rates.</p>
                 </div>
-                <p className="mt-2 text-[10px] text-neutral-500">Delivery is charged per kilogram. For special destinations, contact customer support.</p>
+                <p className="mt-2 text-[10px] text-neutral-500">Delivery is charged per kilogram. Rates are final and include insurance coverage.</p>
               </div>
             </div>
           </div>

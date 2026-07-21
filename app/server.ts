@@ -832,7 +832,7 @@ app.post('/api/orders', (req, res) => {
     phone: phone || '',
     items,
     total,
-    status: "Pending",
+    status: "Ordered",
     address,
     razorpay_order_id: razorpay_order_id || `order_rp_${Date.now()}`,
     razorpay_payment_id: razorpay_payment_id || `pay_rp_${Date.now()}`,

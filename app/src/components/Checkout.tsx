@@ -14,7 +14,7 @@ const razorpayKeyId = import.meta.env.VITE_RAZORPAY_KEY_ID || '';
 type AppliedOffer = 'none' | 'student' | 'birthday' | 'buyback' | 'both';
 
 export const Checkout: React.FC = () => {
-  const { cart, user, navigateTo, clearCart, sitewideDiscount, festivalCombineWithOffers, festivalName, isFestivalActive } = useApp();
+  const { cart, user, navigateTo, clearCart, sitewideDiscount, festivalCombineWithOffers, festivalName, isFestivalActive, refreshAllData } = useApp();
   
   const [address, setAddress] = useState(user?.address || '');
   const [phoneNumber, setPhoneNumber] = useState(user?.phone || '');
@@ -67,7 +67,7 @@ export const Checkout: React.FC = () => {
     
     // ₹60 Per KG - Chennai
     if (stateLower === 'chennai') {
-      return 60 * weightKg;
+      return 1 * weightKg;
     }
     
     // ₹80 Per KG - Tamil Nadu (Except Chennai)
@@ -358,7 +358,7 @@ export const Checkout: React.FC = () => {
       }
 
       if (orderBody) {
-        // Save order with Pending status - admin will approve it
+        // Save order with Ordered status - user sees it immediately, admin can approve to Pending
         const saveOrderResponse = await fetch('/api/orders', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -367,13 +367,17 @@ export const Checkout: React.FC = () => {
             razorpay_order_id: rzpOrderId,
             razorpay_payment_id: paymentId,
             delivery_state: selectedState,
-            status: 'Pending', // Order starts as Pending until admin approval
+            status: 'Ordered', // Order starts as Ordered, admin approves to Pending
+            phone: orderBody.phone || phoneNumber, // Ensure phone is saved
           }),
         });
 
         if (!saveOrderResponse.ok) {
           console.error('Failed to save order after payment, but payment was successful.');
         }
+        
+        // Refresh orders instantly so user can see it in "My Orders"
+        refreshAllData();
       }
 
       setOrderId(paymentId);

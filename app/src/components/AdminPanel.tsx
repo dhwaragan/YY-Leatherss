@@ -878,7 +878,7 @@ export const AdminPanel: React.FC = () => {
   };
 
   const calculatedRevenue = orders.filter(o => o.status === 'Delivered').reduce((a, o) => a + o.total, 0);
-  const pendingOrdersCount = orders.filter(o => o.status === 'Pending').length;
+  const pendingOrdersCount = orders.filter(o => o.status === 'Ordered').length;
   const processingOrdersCount = orders.filter(o => o.status === 'Confirmed' || o.status === 'Dispatched').length;
   const filteredOrders = orders.filter(o => orderFilter === 'All' ? true : o.status === orderFilter);
 
@@ -1488,7 +1488,7 @@ export const AdminPanel: React.FC = () => {
                     <p className="text-xs text-neutral-400">Review incoming pending orders. Accept or decline them to move them to the Orders page.</p>
                   </div>
                   <div className="space-y-4">
-                    {orders.filter(o => o.status === 'Pending').length === 0 ? <p className="text-xs text-neutral-400 text-center py-12">No new pending orders right now.</p> : orders.filter(o => o.status === 'Pending').map((ord) => (
+                    {orders.filter(o => o.status === 'Ordered').length === 0 ? <p className="text-xs text-neutral-400 text-center py-12">No new orders right now.</p> : orders.filter(o => o.status === 'Ordered').map((ord) => (
                       <div key={ord.id} className="p-5 border rounded-xl space-y-4 bg-white shadow-sm">
                         <div className="flex justify-between items-center text-xs">
                           <span className="font-bold text-leather-dark">ID: {ord.id}</span>
@@ -1547,7 +1547,7 @@ export const AdminPanel: React.FC = () => {
 
                         <div className="bg-neutral-50 p-4 rounded-lg flex flex-col md:flex-row gap-3 items-end text-xs mt-3">
                           <div className="flex gap-2 ml-auto w-full md:w-auto mt-2 md:mt-0">
-                            <button onClick={() => handleUpdateOrderStatus(ord.id, 'Confirmed')} className="flex-1 md:flex-none justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded text-[10px] uppercase cursor-pointer flex items-center gap-2"><Check className="w-3.5 h-3.5" /> Accept Order</button>
+                            <button onClick={() => handleUpdateOrderStatus(ord.id, 'Pending')} className="flex-1 md:flex-none justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded text-[10px] uppercase cursor-pointer flex items-center gap-2"><Check className="w-3.5 h-3.5" /> Accept Order</button>
                             <button onClick={() => handleRejectOrderWithComment(ord)} className="flex-1 md:flex-none justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded text-[10px] uppercase cursor-pointer flex items-center gap-2"><X className="w-3.5 h-3.5" /> Reject with Reason</button>
                           </div>
                         </div>

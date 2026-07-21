@@ -216,7 +216,7 @@ export const UserProfile: React.FC = () => {
                         const userOrders = orders.filter(o => o.user_id === user?.id);
                         let filteredOrders = userOrders;
                         if (orderFilter === 'Active') {
-                          filteredOrders = userOrders.filter(o => ['Pending', 'Confirmed', 'Dispatched'].includes(o.status));
+                          filteredOrders = userOrders.filter(o => ['Ordered', 'Pending', 'Confirmed', 'Dispatched'].includes(o.status));
                         } else if (orderFilter === 'Cancelled') {
                           filteredOrders = userOrders.filter(o => o.status === 'Cancelled');
                         }
@@ -249,11 +249,16 @@ export const UserProfile: React.FC = () => {
                                     <h4 className="font-bold text-neutral-800 text-sm truncate">{ord.items[0]?.product.name || 'Custom Order'}</h4>
                                     <span className="text-neutral-500 font-medium text-[11px] shrink-0">#{ord.id.substring(0, 6)}</span>
                                   </div>
-                                  <div className="text-neutral-500 text-[11px] font-medium flex items-center gap-1.5 mt-1">
+                                                          <div className="text-neutral-500 text-[11px] font-medium flex items-center gap-1.5 mt-1">
                                     <span>Rs. {ord.total.toLocaleString('en-IN')}</span>
                                     <span className="text-neutral-300">|</span>
                                     <span>{ord.items.length} {ord.items.length === 1 ? 'Item' : 'Items'}</span>
                                   </div>
+                                  {ord.phone && (
+                                    <div className="text-neutral-500 text-[10px] font-medium flex items-center gap-1 mt-1">
+                                      <span>📞 {ord.phone}</span>
+                                    </div>
+                                  )}
                                 </div>
                             </div>
                             
@@ -265,8 +270,8 @@ export const UserProfile: React.FC = () => {
                                 </div>
                                  <div className="flex flex-col text-right">
                                    <span className="text-neutral-400 text-[9px] uppercase tracking-wide font-medium mb-1">Status</span>
-                                   <span className={`font-bold text-xs ${ord.status === 'Cancelled' ? 'text-red-600' : ord.status === 'Pending' ? 'text-amber-500' : ord.status === 'Confirmed' ? 'text-blue-600' : ord.status === 'Dispatched' ? 'text-purple-600' : 'text-green-600'}`}>
-                                     {ord.status === 'Pending' ? 'Pending' : ord.status === 'Confirmed' ? 'Processing' : ord.status === 'Dispatched' ? 'Shipped' : ord.status}
+                                   <span className={`font-bold text-xs ${ord.status === 'Cancelled' ? 'text-red-600' : ord.status === 'Ordered' ? 'text-indigo-500' : ord.status === 'Pending' ? 'text-amber-500' : ord.status === 'Confirmed' ? 'text-blue-600' : ord.status === 'Dispatched' ? 'text-purple-600' : 'text-green-600'}`}>
+                                     {ord.status === 'Ordered' ? 'Ordered' : ord.status === 'Pending' ? 'Pending' : ord.status === 'Confirmed' ? 'Processing' : ord.status === 'Dispatched' ? 'Shipped' : ord.status}
                                    </span>
                                  </div>
                             </div>

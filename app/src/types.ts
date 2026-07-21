@@ -55,7 +55,7 @@ export interface Order {
   estimated_weight_kg?: number;
   items: CartItem[];
   total: number;
-  status: 'Pending' | 'Confirmed' | 'Dispatched' | 'Delivered' | 'Cancelled';
+  status: 'Ordered' | 'Pending' | 'Confirmed' | 'Dispatched' | 'Delivered' | 'Cancelled';
   razorpay_order_id: string;
   razorpay_payment_id?: string;
   buyback_requested?: boolean;

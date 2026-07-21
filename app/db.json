@@ -2839,6 +2839,52 @@
   ],
   "orders": [
     {
+      "id": "YY-ORD-20036",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "phone": "+918248500780",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1784572399512",
+            "mrp": 1,
+            "name": "test 1",
+            "price": 1,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/uq3jqa2tnlp-1784572391350.jpeg"
+            ],
+            "category": "FORMAL - DERBY",
+            "weight_kg": 1,
+            "created_at": "2026-07-20T18:33:19.512Z",
+            "description": "super\n",
+            "is_published": true,
+            "is_best_seller": false,
+            "is_new_arrival": false,
+            "sizePrices": {},
+            "customer_email": ""
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 2,
+      "status": "Ordered",
+      "address": "vinayagapuram, frist street",
+      "razorpay_order_id": "order_TGAXBCCUoaUNil",
+      "razorpay_payment_id": "pay_TGAY5wFpd8F8Ou",
+      "delivery_region": "Chennai",
+      "delivery_charge": 1,
+      "estimated_weight_kg": 1,
+      "student_discount_requested": false,
+      "student_discount_details": null,
+      "birthday_benefit_requested": false,
+      "birthday_benefit_details": null,
+      "buyback_requested": false,
+      "buyback_details": null,
+      "applied_offer": "none",
+      "created_at": "2026-07-21T13:28:37.238Z"
+    },
+    {
       "id": "YY-ORD-44271",
       "items": [
         {

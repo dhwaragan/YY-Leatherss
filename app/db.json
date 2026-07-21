@@ -2819,30 +2819,11 @@
         "9": 3,
         "10": 2
       }
-    },
-    {
-      "id": "prod-1784572399512",
-      "mrp": 1,
-      "name": "test 1",
-      "price": 1,
-      "images": [
-        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/uq3jqa2tnlp-1784572391350.jpeg"
-      ],
-      "category": "FORMAL - DERBY",
-      "weight_kg": 1,
-      "created_at": "2026-07-20T18:33:19.512Z",
-      "description": "super\n",
-      "is_published": true,
-      "is_best_seller": false,
-      "is_new_arrival": false
     }
   ],
   "orders": [
     {
       "id": "YY-ORD-20036",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "customer_name": "Dhwaragan Dhwaragan",
-      "phone": "+918248500780",
       "items": [
         {
           "product": {
@@ -2856,33 +2837,36 @@
             "category": "FORMAL - DERBY",
             "weight_kg": 1,
             "created_at": "2026-07-20T18:33:19.512Z",
+            "sizePrices": {},
             "description": "super\n",
             "is_published": true,
+            "customer_email": "",
             "is_best_seller": false,
-            "is_new_arrival": false,
-            "sizePrices": {},
-            "customer_email": ""
+            "is_new_arrival": false
           },
           "quantity": 1,
           "selectedSize": "9"
         }
       ],
+      "phone": "+918248500780",
       "total": 2,
-      "status": "Ordered",
+      "status": "Pending",
       "address": "vinayagapuram, frist street",
-      "razorpay_order_id": "order_TGAXBCCUoaUNil",
-      "razorpay_payment_id": "pay_TGAY5wFpd8F8Ou",
-      "delivery_region": "Chennai",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-21T13:28:37.238Z",
+      "applied_offer": "none",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
       "delivery_charge": 1,
+      "delivery_region": "Chennai",
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TGAXBCCUoaUNil",
       "estimated_weight_kg": 1,
-      "student_discount_requested": false,
+      "razorpay_payment_id": "pay_TGAY5wFpd8F8Ou",
+      "birthday_benefit_details": null,
       "student_discount_details": null,
       "birthday_benefit_requested": false,
-      "birthday_benefit_details": null,
-      "buyback_requested": false,
-      "buyback_details": null,
-      "applied_offer": "none",
-      "created_at": "2026-07-21T13:28:37.238Z"
+      "student_discount_requested": false
     },
     {
       "id": "YY-ORD-44271",

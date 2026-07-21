@@ -815,7 +815,7 @@ app.get('/api/orders/user/:userId', (req, res) => {
 
 app.post('/api/orders', (req, res) => {
   const { 
-    user_id, items, total, address, customer_name, customer_email, 
+    user_id, items, total, address, phone, customer_name, customer_email, 
     razorpay_order_id, razorpay_payment_id, 
     delivery_region, delivery_charge, estimated_weight_kg,
     student_discount_requested, student_discount_details,
@@ -829,6 +829,7 @@ app.post('/api/orders', (req, res) => {
     user_id,
     customer_name,
     customer_email,
+    phone: phone || '',
     items,
     total,
     status: "Pending",

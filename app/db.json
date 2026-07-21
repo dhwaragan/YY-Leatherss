@@ -130,9 +130,9 @@
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
-        "6": 10,
-        "7": 10,
-        "8": 10
+        "6": 4,
+        "7": 4,
+        "8": 2
       }
     },
     {
@@ -238,7 +238,13 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      }
     },
     {
       "id": "prod-1784098999108",
@@ -257,7 +263,6 @@
         "6": 1999,
         "7": 1999,
         "8": 1999,
-        "9": 1999,
         "10": 1999
       },
       "weight_kg": 2,
@@ -266,7 +271,6 @@
         "6": 1599,
         "7": 1599,
         "8": 1599,
-        "9": 1599,
         "10": 1599
       },
       "description": "Wholecut Black Formal Leather Shoe\n\nCrafted from a single piece of premium genuine leather, this Wholecut Black Formal Shoe showcases timeless elegance and exceptional craftsmanship. Its seamless upper creates a sleek, refined silhouette, making it the perfect choice for business meetings, weddings, black-tie events, and other formal occasions.\n\nDesigned for both style and comfort, the shoe features a soft leather lining, cushioned insole, and a durable outsole that provides lasting support throughout the day. The polished black finish complements suits, tuxedos, and formal attire, delivering a sophisticated look with every step.\n\nKey Features:\n\nPremium genuine leather upper\nElegant wholecut design with a seamless finish\nSoft leather lining for enhanced comfort\nCushioned footbed for all-day wear\nDurable outsole with excellent grip\nClassic black color for versatile formal styling\nIdeal for office wear, weddings, parties, and special occasions",
@@ -274,12 +278,17 @@
         "6": 2,
         "7": 2,
         "8": 2,
-        "9": 2,
         "10": 2
       },
       "is_published": true,
       "is_best_seller": true,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 1,
+        "10": 1
+      }
     },
     {
       "id": "prod-1784099361604",
@@ -321,7 +330,14 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
     },
     {
       "id": "prod-1784099602399",
@@ -361,7 +377,14 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 2
+      }
     },
     {
       "id": "prod-1784100298429",
@@ -378,25 +401,26 @@
       "category": "FORMAL-OXFORD",
       "sizeMRPs": {
         "6": 1999,
-        "7": 1999,
         "8": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-15T07:24:58.429Z",
       "sizePrices": {
         "6": 1599,
-        "7": 1599,
         "8": 1599
       },
       "description": "Key Features:\n\nPremium genuine leather upper\nDesigner cap toe Oxford with textured leather detailing\nElegant brogue perforation accents\nClosed-lace construction for a refined fit\nSoft leather lining for superior comfort\nCushioned insole for all-day support\nDurable outsole with excellent grip\nClassic black finish for versatile formal styling\nIdeal for business meetings, office wear, weddings, and formal events\n\nStyle: Contemporary Formal | Color: Brown | Material: Genuine Leather",
       "sizeWeights": {
         "6": 2,
-        "7": 2,
         "8": 2
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "8": 1
+      }
     },
     {
       "id": "prod-1784101046109",
@@ -414,25 +438,26 @@
       "category": "FORMAL-OXFORD",
       "sizeMRPs": {
         "6": 1999,
-        "7": 1999,
-        "10": 1999
+        "7": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-15T07:37:26.109Z",
       "sizePrices": {
         "6": 1599,
-        "7": 1599,
-        "10": 1599
+        "7": 1599
       },
       "description": "Key Features:\n\nPremium genuine leather upper\nElegant Italian-inspired pointed toe design\nClassic plain-toe Oxford silhouette\nClosed-lace construction for a sleek, refined fit\nSoft leather lining for enhanced comfort\nCushioned insole for all-day support\nDurable outsole with excellent grip\nHigh-gloss black finish for a sophisticated appearance\nPerfect for business meetings, office wear, weddings, parties, and formal occasions\n\nStyle: Italian Pointed Toe Oxford\nColor: Black\nMaterial: Genuine Leather\nOccasion: Business, Formal, Wedding & Evening Wear",
       "sizeWeights": {
         "6": 2,
-        "7": 2,
-        "10": 2
+        "7": 2
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2
+      }
     },
     {
       "id": "prod-1784101286590",
@@ -470,7 +495,13 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1
+      }
     },
     {
       "id": "prod-1784101538523",
@@ -488,33 +519,29 @@
       "sizeMRPs": {
         "5": 1999,
         "6": 1999,
-        "7": 1999,
-        "8": 1999,
-        "9": 1999,
-        "10": 1999
+        "7": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-15T07:45:38.523Z",
       "sizePrices": {
         "5": 1599,
         "6": 1599,
-        "7": 1599,
-        "8": 1599,
-        "9": 1599,
-        "10": 1599
+        "7": 1599
       },
       "description": "Key Features\nPremium genuine leather upper\nElegant double monk strap with polished metal buckles\nUnique woven-texture leather detailing for a luxurious finish\nSoft leather lining for superior comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nPerfect for office wear, business meetings, weddings, and formal events\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Double Monk Strap Formal Shoe\nOccasion: Formal | Business | Wedding | Smart Casual",
       "sizeWeights": {
         "5": 2,
         "6": 2,
-        "7": 2,
-        "8": 2,
-        "9": 2,
-        "10": 2
+        "7": 2
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "5": 2,
+        "6": 2,
+        "7": 1
+      }
     },
     {
       "id": "prod-1784101715971",
@@ -532,25 +559,26 @@
       "category": "MONKS",
       "sizeMRPs": {
         "7": 1999,
-        "8": 1999,
-        "9": 1999
+        "8": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-15T07:48:35.971Z",
       "sizePrices": {
         "7": 1599,
-        "8": 1599,
-        "9": 1599
+        "8": 1599
       },
       "description": "Key Features\nPremium genuine leather construction\nLuxurious crocodile-embossed leather detailing\nElegant double monk strap with premium metal buckles\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole for enhanced grip and longevity\nHandcrafted finish with a sophisticated modern design\nPerfect for business wear, weddings, formal events, and luxury occasions\n\nColor: Black\nMaterial: Genuine Leather\nStyle: Croc-Embossed Double Monk Strap Formal Shoe\nOccasion: Formal | Business | Wedding | Evening | Luxury Wear",
       "sizeWeights": {
         "7": 2,
-        "8": 2,
-        "9": 2
+        "8": 2
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 1,
+        "8": 1
+      }
     },
     {
       "id": "prod-1784102071623",
@@ -594,11 +622,11 @@
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
-        "5": 10,
-        "6": 10,
-        "7": 10,
-        "8": 10,
-        "9": 10
+        "5": 1,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 1
       }
     },
     {
@@ -635,9 +663,9 @@
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
-        "6": 10,
-        "7": 10,
-        "8": 10
+        "6": 2,
+        "7": 2,
+        "8": 1
       }
     },
     {
@@ -682,7 +710,16 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 3,
+        "7": 5,
+        "8": 4,
+        "9": 4,
+        "10": 0,
+        "11": 4,
+        "12": 4
+      }
     },
     {
       "id": "prod-1784102824639",
@@ -714,7 +751,12 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1,
+        "8": 1
+      }
     },
     {
       "id": "prod-1784102955730",
@@ -743,7 +785,11 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1
+      }
     },
     {
       "id": "prod-1784103145169",
@@ -772,7 +818,11 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1
+      }
     },
     {
       "id": "prod-1784103330074",
@@ -801,7 +851,11 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 1
+      }
     },
     {
       "id": "prod-1784103507142",
@@ -834,7 +888,12 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2
+      }
     },
     {
       "id": "prod-1784103650496",
@@ -872,7 +931,14 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 4,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
     },
     {
       "id": "prod-1784178804437",
@@ -912,13 +978,20 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 5,
+        "7": 6,
+        "8": 6,
+        "9": 6,
+        "10": 4
+      }
     },
     {
       "id": "prod-1784178906594",
       "mrp": 1999,
       "name": "Brown - Export Formal Derby",
-      "price": 1599,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/42fxrxios9a-1784178891425.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ossr29m69np-1784178893165.JPG",
@@ -929,31 +1002,32 @@
       "category": "DERBY",
       "sizeMRPs": {
         "6": 1999,
-        "7": 1999,
-        "8": 1999
+        "7": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-16T05:15:06.594Z",
       "sizePrices": {
-        "6": 1599,
-        "7": 1599,
-        "8": 1599
+        "6": 1499,
+        "7": 1499
       },
       "description": "Key Features\nPremium genuine leather upper\nClassic Derby open-lace design\nSmooth polished finish for a refined appearance\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nLightweight construction for enhanced walking comfort\nExpertly crafted to export-quality standards\n\nColor: Brown\nMaterial: Premium Genuine Leather\nStyle: Derby Formal Shoe\nClosure: Lace-Up\nOccasion: Office | Business | Formal | Wedding | Corporate | Evening Wear",
       "sizeWeights": {
         "6": 2,
-        "7": 2,
-        "8": 2
+        "7": 2
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10
+      }
     },
     {
       "id": "prod-1784178968658",
       "mrp": 1999,
       "name": "Burgundy - Export Formal Derby",
-      "price": 1599,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p1gacvfvdxf-1784178962126.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4r7xo2dyuls-1784178963229.JPG",
@@ -971,11 +1045,11 @@
       "weight_kg": 2,
       "created_at": "2026-07-16T05:16:08.658Z",
       "sizePrices": {
-        "6": 1599,
-        "7": 1599,
-        "8": 1599,
-        "9": 1599,
-        "10": 1599
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
       },
       "description": "Key Features\nPremium genuine leather upper\nClassic Derby open-lace design\nSmooth polished finish for a refined appearance\nSoft leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable outsole with excellent grip and stability\nLightweight construction for enhanced walking comfort\nExpertly crafted to export-quality standards\n\nColor: Burgundy\nMaterial: Premium Genuine Leather\nStyle: Derby Formal Shoe\nClosure: Lace-Up\nOccasion: Office | Business | Formal | Wedding | Corporate | Evening Wear",
       "sizeWeights": {
@@ -987,7 +1061,14 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10,
+        "8": 10,
+        "9": 10,
+        "10": 10
+      }
     },
     {
       "id": "prod-1784207227550",
@@ -1828,7 +1909,7 @@
       "id": "prod-1784273070875",
       "mrp": 1999,
       "name": "Camel Brown - Sude Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pgfdjfkg66s-1784273091220.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/cen47xdjx6-1784273092558.JPG",
@@ -1837,12 +1918,12 @@
       ],
       "category": "SUEDES",
       "sizeMRPs": {
-        "7": 1599
+        "7": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-17T07:24:30.875Z",
       "sizePrices": {
-        "7": 1299
+        "7": 1499
       },
       "description": "Premium Suede Leather Loafers – Camel Brown\n\nExperience effortless sophistication with these Premium Suede Leather Loafers, crafted for men who appreciate understated luxury and all-day comfort. Finished in a rich camel brown suede, these loafers feature a soft velvety texture, clean hand-stitched apron detailing, and a lightweight slip-on design that transitions seamlessly from casual outings to refined smart-casual occasions.\n\nSpecifications\nColor: Camel Brown\nMaterial: Premium Genuine Suede Leather\nStyle: Classic Slip-On Loafers\nClosure: Slip-On\nUpper: Soft Italian Suede Leather\nToe Shape: Rounded Moc Toe\nOutsole: Lightweight Anti-Slip Rubber Sole\nInsole: Cushioned Comfort Footbed\nFit: Comfortable Regular Fit\nOccasion: Casual | Smart Casual | Weekend | Travel | Resort Wear\nKey Features\nCrafted from premium genuine suede leather with a rich, velvety finish.\nLightweight slip-on design for effortless everyday wear.\nHand-stitched moc toe enhances the timeless loafer silhouette.\nSoft cushioned footbed provides exceptional comfort throughout the day.\nFlexible anti-slip rubber outsole ensures stability and durability.\nVersatile camel brown shade pairs perfectly with chinos, linen trousers, jeans, and shorts.\nBreathable construction keeps your feet comfortable in every season.\nHandcrafted with attention to detail for a refined, premium finish.\n\nPerfect for the modern gentleman, these suede loafers deliver the ideal balance of luxury, comfort, and timeless elegance, making them an essential addition to any smart-casual wardrobe.",
       "sizeWeights": {
@@ -1850,13 +1931,16 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 1
+      }
     },
     {
       "id": "prod-1784273321021",
-      "mrp": 1599,
+      "mrp": 1999,
       "name": "Soft Grey - Suede Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/apcokqtt7v4-1784273204465.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/p6j822bvcco-1784273205822.JPG",
@@ -1865,12 +1949,12 @@
       ],
       "category": "SUEDES",
       "sizeMRPs": {
-        "7": 1599
+        "7": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-17T07:28:41.021Z",
       "sizePrices": {
-        "7": 1299
+        "7": 1499
       },
       "description": "Premium Suede Leather Loafers – Soft Grey\n\nExperience effortless sophistication with these Premium Suede Leather Loafers, crafted for men who appreciate understated luxury and all-day comfort. Finished in a rich camel brown suede, these loafers feature a soft velvety texture, clean hand-stitched apron detailing, and a lightweight slip-on design that transitions seamlessly from casual outings to refined smart-casual occasions.\n\nSpecifications\nColor: Soft Grey\nMaterial: Premium Genuine Suede Leather\nStyle: Classic Slip-On Loafers\nClosure: Slip-On\nUpper: Soft Italian Suede Leather\nToe Shape: Rounded Moc Toe\nOutsole: Lightweight Anti-Slip Rubber Sole\nInsole: Cushioned Comfort Footbed\nFit: Comfortable Regular Fit\nOccasion: Casual | Smart Casual | Weekend | Travel | Resort Wear\nKey Features\nCrafted from premium genuine suede leather with a rich, velvety finish.\nLightweight slip-on design for effortless everyday wear.\nHand-stitched moc toe enhances the timeless loafer silhouette.\nSoft cushioned footbed provides exceptional comfort throughout the day.\nFlexible anti-slip rubber outsole ensures stability and durability.\nVersatile Soft grey shade pairs perfectly with chinos, linen trousers, jeans, and shorts.\nBreathable construction keeps your feet comfortable in every season.\nHandcrafted with attention to detail for a refined, premium finish.\n\nPerfect for the modern gentleman, these suede loafers deliver the ideal balance of luxury, comfort, and timeless elegance, making them an essential addition to any smart-casual wardrobe.",
       "sizeWeights": {
@@ -1878,13 +1962,16 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 10
+      }
     },
     {
       "id": "prod-1784273429024",
-      "mrp": 1599,
+      "mrp": 1999,
       "name": "Ash Grey - Suede Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xl6zbb8u2zj-1784273422618.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/08p05aw1553r-1784273423961.JPG",
@@ -1893,12 +1980,12 @@
       ],
       "category": "SUEDES",
       "sizeMRPs": {
-        "7": 1599
+        "7": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-17T07:30:29.024Z",
       "sizePrices": {
-        "7": 1299
+        "7": 1499
       },
       "description": "Italian Suede Loafers – Ash Grey\n\nExperience understated luxury with these Italian Suede Loafers in a refined Ash Grey finish. Crafted from premium genuine suede leather, these loafers showcase a soft, velvety texture that adds depth and sophistication to any outfit. Their clean, minimalist silhouette and lightweight construction embody timeless European craftsmanship, making them the perfect choice for effortless elegance.\n\nDesigned for all-day comfort, the cushioned insole and flexible sole provide a smooth walking experience, while the versatile grey tone pairs seamlessly with both casual and semi-formal attire. Whether you're dressing for a weekend brunch, office meetings, vacations, or evening gatherings, these loafers deliver comfort with a refined old-money aesthetic.\n\nSpecifications:\n\nColor: Ash Grey\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Suede Loafers\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nSole: Lightweight Flexible Rubber Sole\nFit: Cushioned Footbed for All-Day Comfort\nOccasion: Smart Casual | Business Casual | Travel | Weekend | Evening Wear\n\nKey Features:\n\nPremium Italian suede leather with a rich, velvety finish\nElegant minimalist design inspired by timeless European style\nLightweight and breathable for everyday comfort\nSoft cushioned insole for superior support\nDurable, flexible sole with excellent grip\nVersatile ash grey shade that complements both light and dark outfits\nPerfect blend of luxury, comfort, and effortless sophistication",
       "sizeWeights": {
@@ -1906,13 +1993,16 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 10
+      }
     },
     {
       "id": "prod-1784273541178",
-      "mrp": 1599,
+      "mrp": 1999,
       "name": "Midnight Black - Suede Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/91hqfgn0lsg-1784273841123.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/hjakn3igutc-1784273841837.JPG",
@@ -1921,18 +2011,18 @@
       ],
       "category": "SUEDES",
       "sizeMRPs": {
-        "6": 1599,
-        "7": 1599,
-        "8": 1599,
-        "9": 1599
+        "6": 1999,
+        "7": 1999,
+        "8": 1999,
+        "9": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-17T07:32:21.178Z",
       "sizePrices": {
-        "6": 1299,
-        "7": 1299,
-        "8": 1299,
-        "9": 1299
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499
       },
       "description": "Italian Premium Suede Penny Loafers – Midnight Black\n\nCrafted for the modern gentleman who appreciates understated luxury, these Italian Premium Suede Penny Loafers in Midnight Black embody timeless elegance with a contemporary edge. Made from rich, velvety suede leather, they offer a soft, refined texture that complements both smart-casual and semi-formal wardrobes. The classic penny strap, clean moc-toe stitching, and lightweight contrasting sole create a sophisticated \"old money\" aesthetic that's effortlessly stylish.\n\nDesigned for all-day comfort and versatility, these loafers pair perfectly with tailored trousers, chinos, linen pants, or premium denim—making them an essential addition to every wardrobe.\n\nSpecifications\nColor: Midnight Black\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Penny Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Business Casual | Smart Casual | Weekend | Travel | Evening | Resort Wear\nKey Features\nPremium Italian suede with a luxurious matte finish\nTimeless penny strap inspired by classic European craftsmanship\nSoft leather lining for enhanced comfort and breathability\nLightweight, flexible sole for effortless walking\nElegant minimalist silhouette suitable for year-round styling\nPerfect balance of comfort, sophistication, and everyday versatility",
       "sizeWeights": {
@@ -1943,13 +2033,19 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 1,
+        "8": 4,
+        "9": 2
+      }
     },
     {
       "id": "prod-1784273626255",
-      "mrp": 1599,
+      "mrp": 1999,
       "name": "Wallnut Brown - Suede Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2v6j421sytn-1784273619380.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/s9ede6hzzbj-1784273620727.JPG",
@@ -1958,14 +2054,14 @@
       ],
       "category": "SUEDES",
       "sizeMRPs": {
-        "7": 1599,
-        "9": 1599
+        "7": 1999,
+        "9": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-17T07:33:46.255Z",
       "sizePrices": {
-        "7": 1299,
-        "9": 1299
+        "7": 1499,
+        "9": 1499
       },
       "description": "Italian Premium Suede Loafers – Walnut Brown\n\nExperience effortless sophistication with these Italian Premium Suede Loafers in a rich Walnut Brown finish. Crafted from luxurious genuine suede leather, these loafers offer a soft, velvety texture that embodies timeless elegance. Their clean, minimalist silhouette and hand-stitched moc-toe design make them a versatile choice for men who appreciate refined style with everyday comfort.\n\nDesigned for modern living, these slip-on loafers pair seamlessly with chinos, linen trousers, tailored pants, or premium denim, making them the perfect companion for business casual, weekend outings, and travel.\n\nSpecifications\nColor: Walnut Brown\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Suede Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Smart Casual | Business Casual | Weekend | Travel | Resort Wear | Everyday Luxury\nKey Features\nPremium Italian suede with a rich, velvety finish\nElegant minimalist design for a timeless old-money aesthetic\nHandcrafted moc-toe stitching for refined detailing\nSoft leather lining ensures breathability and lasting comfort\nLightweight, flexible sole for effortless movement\nEasy slip-on construction for convenience and style\nVersatile color that complements both light and dark outfits",
       "sizeWeights": {
@@ -1974,13 +2070,17 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 10,
+        "9": 10
+      }
     },
     {
       "id": "prod-1784273716137",
-      "mrp": 1599,
+      "mrp": 1999,
       "name": "Olive Green - Suede Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ftoupmjr9s-1784273709444.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/v5eb51opue-1784273710927.JPG",
@@ -1989,16 +2089,16 @@
       ],
       "category": "SUEDES",
       "sizeMRPs": {
-        "6": 1599,
-        "7": 1599,
-        "8": 1599
+        "6": 1999,
+        "7": 1999,
+        "8": 1999
       },
       "weight_kg": 2,
       "created_at": "2026-07-17T07:35:16.137Z",
       "sizePrices": {
-        "6": 1299,
-        "7": 1299,
-        "8": 1299
+        "6": 1499,
+        "7": 1499,
+        "8": 1499
       },
       "description": "Italian Premium Suede Loafers – Olive Green\n\nElevate your everyday wardrobe with these Italian Premium Suede Loafers in an elegant Olive Green finish. Crafted from luxurious genuine Italian suede leather, these loafers feature a rich velvety texture and a clean, minimalist silhouette that exudes effortless sophistication. The refined moc-toe stitching and lightweight slip-on design make them the perfect blend of timeless craftsmanship and modern comfort.\n\nWhether paired with linen trousers, chinos, tailored pants, or denim, these loafers bring a distinctive old-money aesthetic that transitions seamlessly from casual afternoons to refined evening occasions.\n\nSpecifications\nColor: Olive Green\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Suede Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Smart Casual | Business Casual | Weekend | Travel | Resort Wear | Everyday Luxury\nKey Features\nCrafted from premium Italian genuine suede leather\nRich olive green finish for a sophisticated, versatile look\nElegant minimalist design inspired by timeless European style\nHandcrafted moc-toe stitching for a refined appearance\nSoft leather lining for enhanced comfort and breathability\nLightweight, flexible sole for effortless walking\nEasy slip-on construction for everyday convenience\nPerfect balance of luxury, comfort, and versatility",
       "sizeWeights": {
@@ -2008,13 +2108,18 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 10,
+        "7": 10,
+        "8": 10
+      }
     },
     {
       "id": "prod-1784273799167",
-      "mrp": 1599,
+      "mrp": 1999,
       "name": "Midnight Navy - Suede Loafer",
-      "price": 1299,
+      "price": 1499,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2gbj5kw9bkc-1784273789212.JPG",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bcktvgytoal-1784273793464.JPG",
@@ -2030,9 +2135,9 @@
       "weight_kg": 2,
       "created_at": "2026-07-17T07:36:39.167Z",
       "sizePrices": {
-        "6": 1299,
-        "7": 1299,
-        "8": 1299
+        "6": 1499,
+        "7": 1499,
+        "8": 1499
       },
       "description": "Italian Premium Suede Penny Loafers – Midnight Navy\n\nRefined, timeless, and effortlessly sophisticated, these Italian Premium Suede Penny Loafers in Midnight Navy are crafted for the gentleman who values understated luxury. Made from premium Italian genuine suede leather, they feature a rich velvety texture, classic penny strap detailing, and elegant moc-toe stitching that perfectly captures the essence of old-money style.\n\nThe sleek slip-on silhouette offers exceptional comfort and versatility, making these loafers ideal for everything from business casual meetings to weekend getaways and evening occasions. Their deep navy tone pairs effortlessly with both light and dark outfits, delivering a polished look with minimal effort.\n\nSpecifications\nColor: Midnight Navy\nMaterial: Premium Italian Genuine Suede Leather\nStyle: Classic Penny Loafer\nClosure: Slip-On\nTexture: Soft Velvet Suede Finish\nToe Shape: Rounded Moc Toe\nSole: Lightweight Comfort Sole with Contrast White Edge\nComfort: Cushioned Footbed for Superior All-Day Wear\nOccasion: Business Casual | Smart Casual | Weekend | Travel | Evening | Resort Wear\nKey Features\nCrafted from premium Italian genuine suede leather\nLuxurious velvet-like texture with a sophisticated matte finish\nTimeless penny strap inspired by classic European craftsmanship\nHand-stitched moc-toe detailing for an elegant finish\nSoft leather lining for enhanced comfort and breathability\nLightweight, flexible sole for effortless all-day wear\nSlip-on design for convenience without compromising style\nPerfect blend of classic elegance, modern comfort, and everyday versatility",
       "sizeWeights": {
@@ -2042,7 +2147,12 @@
       },
       "is_published": true,
       "is_best_seller": false,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 1
+      }
     },
     {
       "id": "prod-1784538200563",
@@ -2477,21 +2587,6 @@
       }
     },
     {
-      "id": "prod-1784562793168",
-      "name": "test",
-      "price": 1,
-      "images": [
-        "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
-      ],
-      "category": "FORMAL - DERBY",
-      "weight_kg": 0.1,
-      "created_at": "2026-07-20T15:53:13.168Z",
-      "description": "test",
-      "is_published": true,
-      "is_best_seller": false,
-      "is_new_arrival": false
-    },
-    {
       "id": "prod-1784563711350",
       "mrp": 1999,
       "name": "Black - Wholecut Dotted Design",
@@ -2745,8 +2840,6 @@
   "orders": [
     {
       "id": "YY-ORD-44271",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "customer_name": "Dhwaragan Dhwaragan",
       "items": [
         {
           "product": {
@@ -2759,37 +2852,37 @@
             "category": "FORMAL - DERBY",
             "weight_kg": 0.1,
             "created_at": "2026-07-20T15:53:13.168Z",
+            "sizePrices": {},
             "description": "test",
             "is_published": true,
+            "customer_email": "",
             "is_best_seller": false,
-            "is_new_arrival": false,
-            "sizePrices": {},
-            "customer_email": ""
+            "is_new_arrival": false
           },
           "quantity": 1
         }
       ],
       "total": 1.1,
-      "status": "Pending",
+      "status": "Confirmed",
       "address": "vinayagapuram, frist street",
-      "razorpay_order_id": "order_TFriYfEc1te3sL",
-      "razorpay_payment_id": "pay_TFrirCn6228Wbd",
-      "delivery_region": "Chennai",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-20T19:03:35.644Z",
+      "applied_offer": "none",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
       "delivery_charge": 0.1,
+      "delivery_region": "Chennai",
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TFriYfEc1te3sL",
       "estimated_weight_kg": 0.1,
-      "student_discount_requested": false,
+      "razorpay_payment_id": "pay_TFrirCn6228Wbd",
+      "birthday_benefit_details": null,
       "student_discount_details": null,
       "birthday_benefit_requested": false,
-      "birthday_benefit_details": null,
-      "buyback_requested": false,
-      "buyback_details": null,
-      "applied_offer": "none",
-      "created_at": "2026-07-20T19:03:35.644Z"
+      "student_discount_requested": false
     },
     {
       "id": "YY-ORD-90540",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "customer_name": "Dhwaragan Dhwaragan",
       "items": [
         {
           "product": {
@@ -2802,32 +2895,34 @@
             "category": "FORMAL - DERBY",
             "weight_kg": 0.1,
             "created_at": "2026-07-20T15:53:13.168Z",
+            "sizePrices": {},
             "description": "test",
             "is_published": true,
+            "customer_email": "",
             "is_best_seller": false,
-            "is_new_arrival": false,
-            "sizePrices": {},
-            "customer_email": ""
+            "is_new_arrival": false
           },
           "quantity": 1
         }
       ],
       "total": 1.1,
-      "status": "Pending",
+      "status": "Confirmed",
       "address": "vinayagapuram, frist street",
-      "razorpay_order_id": "order_TFrPhawsG5TUsi",
-      "razorpay_payment_id": "pay_TFrQ8IiifS0sWR",
-      "delivery_region": "Chennai",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-20T18:45:52.532Z",
+      "applied_offer": "none",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "buyback_details": null,
       "delivery_charge": 0.1,
+      "delivery_region": "Chennai",
+      "buyback_requested": false,
+      "razorpay_order_id": "order_TFrPhawsG5TUsi",
       "estimated_weight_kg": 0.1,
-      "student_discount_requested": false,
+      "razorpay_payment_id": "pay_TFrQ8IiifS0sWR",
+      "birthday_benefit_details": null,
       "student_discount_details": null,
       "birthday_benefit_requested": false,
-      "birthday_benefit_details": null,
-      "buyback_requested": false,
-      "buyback_details": null,
-      "applied_offer": "none",
-      "created_at": "2026-07-20T18:45:52.532Z"
+      "student_discount_requested": false
     },
     {
       "id": "YY-ORD-37903",
@@ -4101,17 +4196,7 @@
       "original_price": 15000
     }
   ],
-  "offers": [
-    {
-      "id": "off-1784488190647",
-      "title": "Website Launch",
-      "is_active": true,
-      "banner_url": "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/banners/1784488185966-5z8pqq7bf14.PNG",
-      "description": "Addtional 5% off with the other Benefits of YY leathers.",
-      "valid_until": "2026-07-31",
-      "discount_percent": 5
-    }
-  ],
+  "offers": [],
   "content_blocks": [
     {
       "id": "cb-about",
@@ -4131,12 +4216,12 @@
     {
       "id": "cb-top_slider",
       "key": "top_slider",
-      "value": "[\"website offer is going on grab your shoe\"]"
+      "value": "[]"
     },
     {
       "id": "cb-sitewide_discount",
       "key": "sitewide_discount",
-      "value": "50"
+      "value": "4"
     },
     {
       "id": "cb-festival_combine_with_offers",
@@ -4146,7 +4231,7 @@
     {
       "id": "cb-festival_active",
       "key": "festival_active",
-      "value": "true"
+      "value": "false"
     },
     {
       "id": "cb-festival_name",

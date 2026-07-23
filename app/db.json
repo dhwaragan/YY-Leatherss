@@ -26,7 +26,7 @@
       "id": "prod-1783966382666",
       "mrp": 2999,
       "name": "Black - Mafia Italian Chelsea",
-      "price": 1899,
+      "price": 1999,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
@@ -43,9 +43,9 @@
       "weight_kg": 2,
       "created_at": "2026-07-13T18:13:02.666Z",
       "sizePrices": {
-        "7": 1899,
-        "8": 1899,
-        "9": 1899
+        "7": 1999,
+        "8": 1999,
+        "9": 1999
       },
       "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
       "sizeWeights": {
@@ -57,16 +57,16 @@
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
-        "7": 10,
-        "8": 10,
-        "9": 10
+        "7": 0,
+        "8": 5,
+        "9": 5
       }
     },
     {
       "id": "prod-1783966657891",
       "mrp": 2999,
       "name": "Black - Wide Toe Chelsea",
-      "price": 1899,
+      "price": 1799,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/1th8r11ovfm-1783966645947.jpg",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/dd06f2a3w1v-1783966647099.jpg",
@@ -81,8 +81,8 @@
       "weight_kg": 2,
       "created_at": "2026-07-13T18:17:37.891Z",
       "sizePrices": {
-        "8": 1899,
-        "9": 1999
+        "8": 1799,
+        "9": 1799
       },
       "description": "Italian Chelsea Crust Leather Boot – Black Patina\n\nCrafted from premium Italian crust leather, this Chelsea Boot combines timeless craftsmanship with modern elegance. The naturally finished crust leather develops a rich patina over time, making every pair uniquely yours. Featuring a clean, streamlined silhouette with a refined round toe, it delivers effortless sophistication for both formal and smart-casual occasions.\n\nThe elastic side panels and pull tabs ensure easy slip-on convenience, while the soft leather lining and cushioned footbed provide exceptional comfort throughout the day. Finished with a durable anti-slip outsole, this boot is designed to offer lasting performance without compromising on style.\n\nKey Features\nPremium Italian crust leather upper\nRich hand-finished surface that develops a unique patina\nClassic Chelsea boot with stretch elastic side panels\nSoft genuine leather lining for breathability\nCushioned leather footbed for all-day comfort\nDurable anti-slip outsole for reliable traction\nRear pull tabs for easy wear\nRefined round-toe silhouette for versatile styling\nPerfect for business, formal, and smart-casual wear",
       "sizeWeights": {
@@ -100,7 +100,7 @@
       "id": "prod-1783967140930",
       "mrp": 2999,
       "name": "Wine - Wide Toe Chelsea",
-      "price": 1899,
+      "price": 1799,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/es99hc0qxsq-1783967095136.jpg",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/lbjc5yvvhl-1783967095609.jpg",
@@ -117,8 +117,8 @@
       "created_at": "2026-07-13T18:25:40.930Z",
       "sizePrices": {
         "6": 1899,
-        "7": 1899,
-        "8": 1899
+        "7": 1799,
+        "8": 1799
       },
       "description": "Italian Chelsea Crust Leather Boot – Burgundy Patina\n\nElevate your footwear collection with this handcrafted Italian Chelsea Boot, made from premium crust leather and finished with a rich hand-burnished burgundy patina. Designed for those who appreciate refined craftsmanship, the leather develops a deeper character over time, making each pair truly one of a kind.\n\nThe sleek Chelsea silhouette is paired with stretch elastic side panels and pull tabs for effortless wear, while the soft leather lining ensures superior comfort throughout the day. A rugged anti-slip rubber outsole provides exceptional grip and stability, making this boot as practical as it is elegant.\n\nWhether paired with tailored trousers, chinos, or premium denim, this versatile boot delivers timeless sophistication for every occasion.\n\nKey Features\nPremium Italian crust leather upper\nHand-burnished burgundy patina finish\nClassic Chelsea boot design with elastic side gussets\nSoft genuine leather lining for enhanced comfort\nCushioned footbed for all-day support\nHeavy-duty anti-slip rubber outsole with deep traction pattern\nDurable Goodyear-style welt construction look\nRear pull tabs for easy slip-on convenience\nPerfect for formal, business, and smart-casual wear",
       "sizeWeights": {
@@ -139,7 +139,7 @@
       "id": "prod-1783970443917",
       "mrp": 2999,
       "name": "TAN - Mafia Boot",
-      "price": 1899,
+      "price": 1799,
       "images": [
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/idtredltlti-1783970432184.jpg",
         "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sw0o1cu20c-1783970433088.jpg",
@@ -155,9 +155,9 @@
       "weight_kg": 2,
       "created_at": "2026-07-13T19:20:43.917Z",
       "sizePrices": {
-        "6": 1899,
-        "7": 1899,
-        "8": 1899
+        "6": 1799,
+        "7": 1799,
+        "8": 1799
       },
       "description": "Italian Chelsea Crust Leather Boot – Tan\n\nExperience timeless elegance with our Italian Chelsea Crust Leather Boot in Tan, expertly handcrafted from premium Italian crust leather. Featuring a rich hand-finished tan patina, each pair showcases unique depth and character that becomes even more beautiful with wear. The sleek, minimalist silhouette is enhanced with a convenient side zipper, offering effortless wear while maintaining a refined, contemporary look.\n\nDesigned with a soft leather lining, cushioned footbed, and a durable outsole, this boot delivers exceptional comfort and lasting performance for every occasion—from business meetings to evening outings.\n\nKey Features\nPremium Italian crust leather upper\nHand-burnished tan patina finish\nElegant side zipper for easy on-and-off\nSoft genuine leather lining for breathable comfort\nCushioned footbed for all-day support\nDurable, anti-slip outsole for superior grip\nSleek almond-toe silhouette\nLightweight construction for everyday wear\nPerfect for formal, business, and smart-casual styling",
       "sizeWeights": {
@@ -1701,35 +1701,27 @@
       ],
       "category": "PENNY - LOAFERS",
       "sizeMRPs": {
-        "6": 2999,
-        "7": 2999,
         "8": 2999,
-        "9": 2999,
-        "10": 2999,
         "11": 3499
       },
       "weight_kg": 2,
       "created_at": "2026-07-16T19:49:18.826Z",
       "sizePrices": {
-        "6": 1799,
-        "7": 1799,
         "8": 1799,
-        "9": 1799,
-        "10": 1799,
         "11": 1999
       },
       "description": "Old Money Shimmering Black Penny Loafer\n\nMake a lasting impression with the Old Money Shimmering Black Penny Loafer, a timeless symbol of elegance and refined craftsmanship. Expertly crafted from premium genuine leather, this loafer showcases a deep shimmering black finish with a sophisticated hand-polished sheen, embodying the understated luxury of classic old-money style. Its iconic penny strap, sleek silhouette, and flawless construction make it a versatile essential for the modern gentleman.\n\nDesigned for superior comfort, the soft leather lining and cushioned footbed provide effortless all-day wear, while the durable outsole ensures excellent grip and long-lasting performance. Whether styled with a tailored suit, tuxedo, chinos, or premium denim, this loafer delivers a polished look that never goes out of style.\n\nProduct Details:\nColor: Shimmering Black\nMaterial: Premium Genuine Leather\nStyle: Old Money Penny Loafer\nFinish: Hand-Polished Gloss\nClosure: Slip-On\nToe Shape: Round Almond Toe\nLining: Soft Leather Lining\nFootbed: Cushioned for All-Day Comfort\nOutsole: Durable Anti-Slip Sole\nFit: Regular Fit\nOccasion: Business | Formal | Smart Casual | Evening | Weddings | Luxury Events | Travel",
       "sizeWeights": {
-        "6": 2,
-        "7": 2,
         "8": 2,
-        "9": 2,
-        "10": 2,
         "11": 2
       },
       "is_published": true,
       "is_best_seller": true,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "8": 1,
+        "11": 2
+      }
     },
     {
       "id": "prod-1784232623651",
@@ -2819,9 +2811,786 @@
         "9": 3,
         "10": 2
       }
+    },
+    {
+      "id": "prod-1784797867233",
+      "mrp": 1499,
+      "name": "Beige - Double Strap Suede",
+      "price": 1099,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/j8vimr39t4i-1784797758641.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ffdzfe82kn4-1784797760827.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zunzb1zac6-1784797762082.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/klh2cisc4a-1784797763365.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5pruswkl59w-1784797764917.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:11:07.233Z",
+      "sizePrices": {
+        "6": 1099,
+        "7": 1099,
+        "8": 1099,
+        "9": 1099,
+        "10": 1099
+      },
+      "description": "Double Strap Suede Leather Sandal\n\nKey Features:\nPremium Genuine Suede Leather Upper\nDouble Adjustable Buckle Straps for a Secure & Customized Fit\nPremium Side Stitching for Enhanced Strength, Superior Finish & Long-Lasting Durability\nReinforced Bottom Stitching (Stitched Sole Construction) for Added Structural Integrity and Extended Lifespan\nErgonomic Soft Cushioned Footbed for All-Day Comfort\nLightweight & Flexible Construction\nDurable Anti-Slip Outsole for Excellent Grip & Stability\nBreathable Open-Toe Design for Maximum Comfort\nIdeal for Casual Wear, Travel, Holidays & Everyday Use\nExpertly Crafted with Precision Stitching for a Premium, Long-Lasting Finish",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 4,
+        "8": 4,
+        "9": 10,
+        "10": 10
+      }
+    },
+    {
+      "id": "prod-1784798274961",
+      "mrp": 1499,
+      "name": "Black - Double Strap Suede",
+      "price": 1099,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/29e5m8zw6ie-1784798250926.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5xnfdtret6n-1784798254196.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/9cm9ssufc3t-1784798255317.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/iyuxofbawa-1784798256376.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/jfuithl257n-1784798257751.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:17:54.961Z",
+      "sizePrices": {
+        "6": 1099,
+        "7": 1099,
+        "8": 1099,
+        "9": 1099,
+        "10": 1099
+      },
+      "description": "Black Double Strap Suede Leather Sandal\n\nKey Features:\nPremium Genuine Black Suede Leather Upper\nDual Adjustable Buckle Straps for a Secure & Custom Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nDurable Bottom Stitched Sole Construction for Long-Lasting Performance and Added Structural Integrity\nSoft Ergonomic Cushioned Footbed for All-Day Comfort\nLightweight & Flexible Design\nAnti-Slip Durable Outsole for Superior Grip\nBreathable Open-Toe Construction\nPerfect for Casual Wear, Travel, Everyday Use & Holidays\nExpertly Handcrafted with Precision Stitching for Maximum Durability and a Premium Finish",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 2
+      }
+    },
+    {
+      "id": "prod-1784798464327",
+      "mrp": 1499,
+      "name": "Tan - Double Strap Suede",
+      "price": 1099,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/d1ocw9wkveg-1784798447999.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/oe0gw48mkn-1784798450503.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nqr7y6m4n7-1784798451952.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/v1bv8m1qy8-1784798453183.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ucb01qjkhlk-1784798454833.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:21:04.327Z",
+      "sizePrices": {
+        "6": 1099,
+        "7": 1099,
+        "8": 1099,
+        "9": 1099,
+        "10": 1099
+      },
+      "description": "Tan Double Strap Suede Leather Sandal\n\nKey Features:\nPremium Genuine Tan Suede Leather Upper\nDual Adjustable Matte Black Buckle Straps for a Secure & Customized Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nBottom Stitched Sole Construction for Superior Durability and Long-Lasting Performance\nSoft Ergonomic Cushioned Footbed for Exceptional All-Day Comfort\nLightweight & Flexible Design for Natural Movement\nDurable Anti-Slip Outsole for Excellent Grip and Stability\nBreathable Open-Toe Design for Everyday Comfort\nHandcrafted with Precision Stitching for a Premium Finish\nPerfect for Casual Wear, Travel, Holidays, Weekend Outings & Daily Use",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784798745786",
+      "mrp": 1499,
+      "name": "Olive Green - Double Strap Suede",
+      "price": 1099,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8977829ov7h-1784798718241.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/q60ul8yd7v-1784798721318.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/znt1742x1uo-1784798722983.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/aa3rmyxvs6u-1784798724419.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rdf9o9o7zl-1784798725807.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1499,
+        "7": 1499,
+        "8": 1499,
+        "9": 1499,
+        "10": 1499
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:25:45.786Z",
+      "sizePrices": {
+        "6": 1099,
+        "7": 1099,
+        "8": 1099,
+        "9": 1099,
+        "10": 1099
+      },
+      "description": "Olive Green Double Strap Suede Leather Sandal\n\nKey Features:\nPremium Genuine Olive Green Suede Leather Upper\nDual Adjustable Matte Black Buckle Straps for a Secure & Customized Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nBottom Stitched Sole Construction for Superior Durability and Long-Lasting Performance\nSoft Ergonomic Cushioned Footbed for Maximum All-Day Comfort\nLightweight & Flexible Design for Natural Foot Movement\nDurable Anti-Slip Outsole for Excellent Grip & Stability\nBreathable Open-Toe Design for Everyday Comfort\nHandcrafted with Precision Stitching for Exceptional Quality and Longevity\nPerfect for Casual Wear, Travel, Holidays, Outdoor Walks & Daily Use",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784799336453",
+      "mrp": 1599,
+      "name": "Tan - Boston Suede",
+      "price": 1199,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rvlqbnwc5b-1784799315028.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b725d7t7csu-1784799318205.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e8nwcqa3qh5-1784799320610.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4rot1lea6l4-1784799324842.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/28e2349ysoj-1784799326170.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:35:36.453Z",
+      "sizePrices": {
+        "6": 1199,
+        "7": 1199,
+        "8": 1199,
+        "9": 1199,
+        "10": 1199
+      },
+      "description": "Suede Leather Closed-Toe Sandal\n\nKey Features:\nPremium Genuine Suede Leather Upper\nClassic Closed-Toe Slip-On Design\nAdjustable Buckle Strap for a Secure & Customized Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nBottom Stitched Sole Construction for Superior Durability and Long-Lasting Performance\nSoft Ergonomic Cushioned Footbed for All-Day Comfort\nLightweight & Flexible Construction\nDurable Anti-Slip Outsole for Excellent Grip & Stability\nBreathable Side Cut-Out Design for Improved Airflow\nHandcrafted with Precision Stitching for Exceptional Quality and Longevity\nPerfect for Casual Wear, Travel, Everyday Use & Smart-Casual Outfits",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784799583049",
+      "mrp": 1599,
+      "name": "Beige - Boston Suede",
+      "price": 1199,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/vcp2kjag4ji-1784799566230.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/k9rpi5o7dr-1784799568515.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/2v69icu7uxn-1784799570162.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/pu1zdd6ae4-1784799573220.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5m4z3adgkwu-1784799574689.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:39:43.049Z",
+      "sizePrices": {
+        "6": 1199,
+        "7": 1199,
+        "8": 1199,
+        "9": 1199,
+        "10": 1199
+      },
+      "description": "Beige Suede Leather Closed-Toe Sandal\n\nKey Features:\nPremium Genuine Beige Suede Leather Upper\nClassic Closed-Toe Slip-On Design\nAdjustable Buckle Strap for a Secure & Customized Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nBottom Stitched Sole Construction for Superior Durability and Long-Lasting Performance\nSoft Ergonomic Cushioned Footbed for All-Day Comfort\nLightweight & Flexible Construction\nDurable Anti-Slip Outsole for Excellent Grip & Stability\nBreathable Side Vent Design for Improved Airflow\nHandcrafted with Precision Stitching for Exceptional Quality and Longevity\nPerfect for Casual Wear, Travel, Everyday Use & Smart-Casual Styling",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 4,
+        "8": 4,
+        "9": 410,
+        "10": 2
+      }
+    },
+    {
+      "id": "prod-1784799713010",
+      "mrp": 1599,
+      "name": "Black - Boston Suede",
+      "price": 1199,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/tu2enw9yi-1784799692340.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/s7cxy1baovs-1784799694184.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/aucz3dgoyon-1784799695954.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/bbzzwf1vwr-1784799697044.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eyqcxfnepbv-1784799698184.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e7jiiptlf4-1784799699141.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:41:53.010Z",
+      "sizePrices": {
+        "6": 1199,
+        "7": 1199,
+        "8": 1199,
+        "9": 1199,
+        "10": 1199
+      },
+      "description": "Black Suede Leather Closed-Toe Sandal\n\nKey Features:\nPremium Genuine Black Suede Leather Upper\nClassic Closed-Toe Slip-On Design\nAdjustable Buckle Strap for a Secure & Personalized Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nBottom Stitched Sole Construction for Superior Durability and Long-Lasting Performance\nSoft Ergonomic Cushioned Footbed for Maximum All-Day Comfort\nLightweight & Flexible Construction\nDurable Anti-Slip Outsole for Excellent Grip and Stability\nBreathable Side Vent Design for Improved Airflow\nHandcrafted with Precision Stitching for Exceptional Quality and Longevity\nPerfect for Casual Wear, Travel, Everyday Use & Smart-Casual Styling",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 0
+      }
+    },
+    {
+      "id": "prod-1784799863449",
+      "mrp": 1599,
+      "name": "Olive Green - Boston Suede",
+      "price": 1199,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0bwt6nwam7fo-1784799845850.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ecrdgmebgfq-1784799848261.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/salvfho9tn-1784799850345.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/w7mdg6dstkg-1784799851984.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kbtneaexws-1784799853381.JPG"
+      ],
+      "category": "SANDALS",
+      "sizeMRPs": {
+        "6": 1599,
+        "7": 1599,
+        "8": 1599,
+        "9": 1599,
+        "10": 1599
+      },
+      "weight_kg": 1,
+      "created_at": "2026-07-23T09:44:23.449Z",
+      "sizePrices": {
+        "6": 1199,
+        "7": 1199,
+        "8": 1199,
+        "9": 1199,
+        "10": 1199
+      },
+      "description": "Olive Green Suede Leather Closed-Toe Sandal\n\nKey Features:\nPremium Genuine Olive Green Suede Leather Upper\nClassic Closed-Toe Slip-On Design\nAdjustable Buckle Strap for a Secure & Customized Fit\nReinforced Side Stitching for Enhanced Strength and Premium Craftsmanship\nBottom Stitched Sole Construction for Superior Durability and Extended Lifespan\nSoft Ergonomic Cushioned Footbed for All-Day Comfort\nLightweight & Flexible Construction\nDurable Anti-Slip Outsole for Excellent Grip & Stability\nBreathable Side Vent Design for Better Airflow\nHandcrafted with Precision Stitching for Exceptional Quality and Long-Lasting Performance\nPerfect for Casual Wear, Travel, Weekend Outings & Everyday Use",
+      "sizeWeights": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1
+      }
+    },
+    {
+      "id": "prod-1784800323684",
+      "mrp": 2499,
+      "name": "Black Red - Italian Chelsea Non Heel",
+      "price": 1699,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/8verh8qmjjl-1784800295496.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/6w2jy1h5vvm-1784800297368.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/vxh33xxg5jk-1784800298655.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zms72nmdh8m-1784800306040.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "6": 2499,
+        "7": 2499,
+        "8": 2499,
+        "9": 2499,
+        "10": 2499,
+        "11": 2699
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-23T09:52:03.684Z",
+      "sizePrices": {
+        "6": 1699,
+        "7": 1699,
+        "8": 1699,
+        "9": 1699,
+        "10": 1699,
+        "11": 1799
+      },
+      "description": "Black Leather Chelsea Boot with Red TPR Sole\n\nKey Features:\nPremium Genuine Black Leather Upper\nSleek Square-Toe Chelsea Boot Design\nConvenient Side Zipper for Easy On & Off\nSoft Cushioned Footbed for All-Day Comfort\nPremium Inner Lining for Enhanced Comfort\nDurable Red TPR Sole for Superior Grip, Flexibility & Shock Absorption\nLightweight & Long-Lasting Construction\nStable Low Block Heel for Comfortable Everyday Wear\nElegant Minimalist Design with a High-Gloss Finish\nPerfect for Business, Formal Events, Weddings, Parties & Smart-Casual Outfits\nExpertly Crafted with Premium Materials for Lasting Quality and Style",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 1,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 10
+      }
+    },
+    {
+      "id": "prod-1784800909368",
+      "mrp": 2499,
+      "name": "Burgundy Brown - Italain Chelsea Non Heel",
+      "price": 1699,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/f9y2nyzmb2o-1784800882931.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/eqn21qetsud-1784800897784.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ye64gmrm6ss-1784800900089.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/j4lgw9hjwo-1784800902165.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/jmv88lfnl1-1784800903608.JPG"
+      ],
+      "category": "CHELSEA BOOT",
+      "sizeMRPs": {
+        "7": 2499,
+        "8": 2499,
+        "9": 2499,
+        "10": 2499,
+        "11": 2699
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-23T10:01:49.368Z",
+      "sizePrices": {
+        "7": 1699,
+        "8": 1699,
+        "9": 1699,
+        "10": 1699,
+        "11": 1799
+      },
+      "description": "Burgundy Brown Leather Chelsea Boot with Red TPR Sole\n\nKey Features:\nPremium Genuine Burgundy Brown Leather Upper\nSleek Square-Toe Chelsea Boot Design\nConvenient Side Zipper for Easy On & Off\nSoft Cushioned Footbed for All-Day Comfort\nPremium Inner Lining for Enhanced Comfort\nDurable Red TPR Sole for Superior Grip, Flexibility & Shock Absorption\nLightweight & Long-Lasting Construction\nStable Low Block Heel for Comfortable Everyday Wear\nElegant Minimalist Design with a High-Gloss Finish\nPerfect for Business, Formal Events, Weddings, Parties & Smart-Casual Outfits\nExpertly Crafted with Premium Materials for Lasting Quality and Style",
+      "sizeWeights": {
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 1,
+        "11": 1
+      }
+    },
+    {
+      "id": "prod-1784802201669",
+      "mrp": 2999,
+      "name": "YY's Panda - Old Money Black & White",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9u77eq6njd-1784802189072.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/zdbd1nc2zqo-1784802191122.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0wmk12gxw25-1784802192120.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/0x14du150aso-1784802193039.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/b5ydmf1apy-1784802194030.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 3499
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-23T10:23:21.669Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1999
+      },
+      "description": "Old Money Dual-Tone Leather Chunky Penny Loafers\n\nKey Features:\nPremium Genuine Leather Upper\nElegant Black & White Dual-Tone (Old Money) Design\nClassic Penny Loafer Silhouette\nLightweight Chunky TPR Sole for Superior Comfort & Durability\nCushioned Footbed for All-Day Support\nSoft Breathable Inner Lining\nDurable Anti-Slip TPR Outsole for Excellent Grip & Stability\nSlip-On Design for Easy Wear\nPrecision Craftsmanship with Fine Stitching for Enhanced Durability\nPerfect for Business, Smart Casual, Evening Wear, Parties & Everyday Luxury\nPremium Finish with Timeless Old Money Aesthetics",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 2
+      }
+    },
+    {
+      "id": "prod-1784802831146",
+      "mrp": 2999,
+      "name": "Old Money Loafers - Burgundy",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/fqcireigfn-1784802799631.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/oq645dy2af-1784802812613.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/swc8sx1x4vo-1784802814313.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ww8rts3o2n-1784802815739.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/ntxop08ft5-1784802817345.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 2999
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-23T10:33:51.146Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1799
+      },
+      "description": "Premium Old Money Leather Chunky Penny Loafers – Burgundy\n\nKey Features:\nPremium Genuine Burgundy Leather Upper\nTimeless Old Money Penny Loafer Design\nRich Hand-Finished Polished Leather\nLightweight Chunky TPR Sole for Superior Comfort & Durability\nCushioned Footbed for All-Day Comfort\nSoft Breathable Inner Lining\nDurable Anti-Slip TPR Outsole for Excellent Grip & Stability\nSlip-On Design for Easy Wear\nPrecision Moc-Toe Stitching for Enhanced Durability\nElegant Low Heel for Comfortable Everyday Wear\nPerfect for Business, Formal, Smart Casual, Parties & Evening Wear\nExpertly Handcrafted with Premium Materials for Lasting Quality",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": true,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 2,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 2
+      }
+    },
+    {
+      "id": "prod-1784803017888",
+      "mrp": 2999,
+      "name": "Old Money - Midnight Navy Blue",
+      "price": 1799,
+      "images": [
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/92ukgaf867i-1784802998824.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kab8myjeoae-1784803006723.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/qqzs5juhipd-1784803008077.JPG",
+        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/kwe0qadio4e-1784803009340.JPG"
+      ],
+      "category": "PENNY - LOAFERS",
+      "sizeMRPs": {
+        "6": 2999,
+        "7": 2999,
+        "8": 2999,
+        "9": 2999,
+        "10": 2999,
+        "11": 3499
+      },
+      "weight_kg": 2,
+      "created_at": "2026-07-23T10:36:57.888Z",
+      "sizePrices": {
+        "6": 1799,
+        "7": 1799,
+        "8": 1799,
+        "9": 1799,
+        "10": 1799,
+        "11": 1999
+      },
+      "description": "Premium Old Money Leather Chunky Penny Loafers – Midnight Navy\n\nKey Features:\nPremium Genuine Midnight Navy Leather Upper\nClassic Old Money Penny Loafer Design\nSmooth Hand-Finished Leather for a Refined Look\nLightweight Chunky TPR Sole for Superior Comfort & Durability\nCushioned Footbed for All-Day Comfort\nSoft Breathable Inner Lining\nDurable Anti-Slip TPR Outsole for Excellent Grip & Stability\nPrecision Moc-Toe Stitching for Enhanced Strength & Craftsmanship\nSlip-On Design for Easy Wear\nStable Low Heel for Everyday Comfort\nPerfect for Business, Formal, Smart Casual, Office, Parties & Evening Wear\nExpertly Handcrafted with Premium Materials for Lasting Quality",
+      "sizeWeights": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2
+      },
+      "is_published": true,
+      "is_best_seller": false,
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 2,
+        "7": 2,
+        "8": 4,
+        "9": 4,
+        "10": 4,
+        "11": 2
+      }
     }
   ],
   "orders": [
+    {
+      "id": "YY-ORD-99277",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "phone": "+918248500780",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1783966382666",
+            "mrp": 2999,
+            "name": "Black - Mafia Italian Chelsea",
+            "price": 1999,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
+            ],
+            "category": "CHELSEA BOOT",
+            "sizeMRPs": {
+              "7": 2999,
+              "8": 2999,
+              "9": 2999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-13T18:13:02.666Z",
+            "sizePrices": {
+              "7": 1999,
+              "8": 1999,
+              "9": 1999
+            },
+            "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
+            "sizeWeights": {
+              "7": 2,
+              "8": 2,
+              "9": 2
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false,
+            "sizeQuantities": {
+              "7": 1,
+              "8": 5,
+              "9": 5
+            },
+            "customer_email": ""
+          },
+          "quantity": 1,
+          "selectedSize": "7"
+        }
+      ],
+      "total": 2108,
+      "status": "Ordered",
+      "address": "vinayagapuram, frist street",
+      "razorpay_order_id": "order_TGzwQIDsijRwPL",
+      "razorpay_payment_id": "pay_TGzwXLxqzZoOuJ",
+      "delivery_region": "Tamil Nadu",
+      "delivery_charge": 160,
+      "estimated_weight_kg": 2,
+      "student_discount_requested": false,
+      "student_discount_details": null,
+      "birthday_benefit_requested": false,
+      "birthday_benefit_details": null,
+      "buyback_requested": false,
+      "buyback_details": null,
+      "applied_offer": "none",
+      "created_at": "2026-07-23T15:45:07.565Z"
+    },
+    {
+      "id": "YY-ORD-56196",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "phone": "+918248500780",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1783966382666",
+            "mrp": 2999,
+            "name": "Black - Mafia Italian Chelsea",
+            "price": 1999,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
+            ],
+            "category": "CHELSEA BOOT",
+            "sizeMRPs": {
+              "7": 2999,
+              "8": 2999,
+              "9": 2999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-13T18:13:02.666Z",
+            "sizePrices": {
+              "7": 1999,
+              "8": 1999,
+              "9": 1999
+            },
+            "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
+            "sizeWeights": {
+              "7": 2,
+              "8": 2,
+              "9": 2
+            },
+            "is_published": true,
+            "is_best_seller": true,
+            "is_new_arrival": false,
+            "sizeQuantities": {
+              "7": 1,
+              "8": 5,
+              "9": 5
+            },
+            "customer_email": ""
+          },
+          "quantity": 1,
+          "selectedSize": "7"
+        }
+      ],
+      "total": 2108,
+      "status": "Ordered",
+      "address": "vinayagapuram, frist street",
+      "razorpay_order_id": "order_TGzo66AsSelT0v",
+      "razorpay_payment_id": "pay_TGzoGUXk0hnHlm",
+      "delivery_region": "Tamil Nadu",
+      "delivery_charge": 160,
+      "estimated_weight_kg": 2,
+      "student_discount_requested": false,
+      "student_discount_details": null,
+      "birthday_benefit_requested": false,
+      "birthday_benefit_details": null,
+      "buyback_requested": false,
+      "buyback_details": null,
+      "applied_offer": "none",
+      "created_at": "2026-07-23T15:37:15.835Z"
+    },
     {
       "id": "YY-ORD-20036",
       "items": [
@@ -4226,7 +4995,17 @@
       "original_price": 15000
     }
   ],
-  "offers": [],
+  "offers": [
+    {
+      "id": "off-1784805891805",
+      "title": "Website Launch Offer..!!",
+      "is_active": true,
+      "banner_url": "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/banners/1784805886329-o16wrb2icrf.png",
+      "description": "Buyback or Discount Benefit + Student Benefit = Best Deal.",
+      "valid_until": "2026-07-31",
+      "discount_percent": 0
+    }
+  ],
   "content_blocks": [
     {
       "id": "cb-about",

@@ -14,7 +14,7 @@ const razorpayKeyId = import.meta.env.VITE_RAZORPAY_KEY_ID || '';
 type AppliedOffer = 'none' | 'student' | 'birthday' | 'buyback' | 'both';
 
 export const Checkout: React.FC = () => {
-  const { cart, user, navigateTo, clearCart, sitewideDiscount, festivalCombineWithOffers, festivalName, isFestivalActive, refreshAllData } = useApp();
+  const { cart, user, navigateTo, clearCart, sitewideDiscount, festivalCombineWithOffers, festivalName, isFestivalActive, refreshAllData, decrementStock } = useApp();
   
   const [address, setAddress] = useState(user?.address || '');
   const [phoneNumber, setPhoneNumber] = useState(user?.phone || '');
@@ -375,6 +375,9 @@ export const Checkout: React.FC = () => {
         if (!saveOrderResponse.ok) {
           console.error('Failed to save order after payment, but payment was successful.');
         }
+        
+        // Decrement stock for purchased items
+        await decrementStock(cart);
         
         // Refresh orders instantly so user can see it in "My Orders"
         refreshAllData();

@@ -50,6 +50,9 @@ interface AppContextType {
     quantity: number,
   ) => void;
   clearCart: () => void;
+  
+  // Stock Management
+  updateProductStock: (productId: string, size: string, quantity: number) => Promise<boolean>;
 
   // Customer Submissions
   submitPreorder: (
@@ -96,6 +99,7 @@ interface AppContextType {
   addOffer: (offer: Omit<Offer, "id">) => Promise<boolean>;
   deleteOffer: (id: string) => Promise<boolean>;
   updateContentBlock: (key: string, value: any) => Promise<boolean>;
+  decrementStock: (cartItems: CartItem[]) => Promise<boolean>;
 
   // Refetch Helpers
   refreshAllData: () => Promise<void>;
@@ -534,6 +538,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // Cart Management
   const addToCart = (product: Product, size: string) => {
+    // Check stock availability first
+    const sizeQuantity = (product as any).sizeQuantities?.[size];
+    if (sizeQuantity !== undefined && sizeQuantity !== Infinity) {
+      // Get current cart quantity for this product+size
+      const existingCartItem = cart.find(
+        (item) => item.product.id === product.id && item.selectedSize === size
+      );
+      const currentCartQty = existingCartItem?.quantity || 0;
+      
+      // If adding one more would exceed stock, don't add
+      if (currentCartQty + 1 > sizeQuantity) {
+        alert(`Sorry, only ${sizeQuantity} item(s) available in stock for size ${size}. You already have ${currentCartQty} in your cart.`);
+        return;
+      }
+    }
+
     setCart((prev) => {
       const priceForSize = resolveProductPrice(product, size);
       const mrpForSize = resolveProductMRP(product, size);
@@ -582,6 +602,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       removeFromCart(productId, size);
       return;
     }
+    
+    // Validate against stock limits
+    const product = products.find(p => p.id === productId);
+    if (product && product.sizeQuantities) {
+      const availableStock = product.sizeQuantities[size];
+      if (availableStock !== undefined && availableStock !== Infinity && quantity > availableStock) {
+        alert(`Sorry, only ${availableStock} item(s) available in stock for size ${size}.`);
+        return;
+      }
+    }
+    
     setCart((prev) => {
       const updated = prev.map((item) => {
         if (item.product.id === productId && item.selectedSize === size) {
@@ -738,6 +769,68 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  const decrementStock = async (cartItems: CartItem[]) => {
+    try {
+      // Decrement stock for each item in the cart
+      for (const item of cartItems) {
+        const product = products.find(p => p.id === item.product.id);
+        if (!product || !product.sizeQuantities) continue;
+
+        const currentQty = product.sizeQuantities[item.selectedSize];
+        if (currentQty === undefined || currentQty === Infinity) continue;
+
+        const newQty = Math.max(0, currentQty - item.quantity);
+        
+        // Update the product's sizeQuantities
+        const updatedSizeQuantities = {
+          ...product.sizeQuantities,
+          [item.selectedSize]: newQty
+        };
+
+        // Save to database via API
+        await fetch(`/api/products/${product.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sizeQuantities: updatedSizeQuantities }),
+        });
+      }
+      
+      // Refresh all data to get latest stock levels
+      await refreshAllData();
+      return true;
+    } catch (e) {
+      console.error("Error decrementing stock:", e);
+      return false;
+    }
+  };
+
+  const updateProductStock = async (productId: string, size: string, quantity: number): Promise<boolean> => {
+    try {
+      const product = products.find(p => p.id === productId);
+      if (!product || !product.sizeQuantities) return false;
+
+      const updatedSizeQuantities = {
+        ...product.sizeQuantities,
+        [size]: quantity
+      };
+
+      const res = await fetch(`/api/products/${productId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sizeQuantities: updatedSizeQuantities }),
+      });
+
+      if (res.ok) {
+        await refreshAllData();
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error("Error updating product stock:", e);
+      return false;
+    }
+  };
+
   const deleteProduct = async (id: string) => {
     try {
       const res = await fetch(`/api/products/${id}`, {
@@ -887,6 +980,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     removeFromCart,
     updateCartQuantity,
     clearCart,
+    updateProductStock,
     submitPreorder,
     checkout,
     addProduct,
@@ -897,6 +991,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     addOffer,
     deleteOffer,
     updateContentBlock,
+    decrementStock,
     refreshAllData,
     setSitewideDiscount,
     festivalName,

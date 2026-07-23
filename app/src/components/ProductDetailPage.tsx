@@ -22,6 +22,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
   const [qty, setQty] = useState(1);
   const [isBuyingNow, setIsBuyingNow] = useState(false);
   const [buyNowAddress, setBuyNowAddress] = useState(user?.address || '');
+  
+  // Get available stock for selected size
+  const getAvailableStock = (size: string): number => {
+    return (product as any).sizeQuantities?.[size] ?? Infinity;
+  };
+  
+  const currentStock = getAvailableStock(selectedSize);
+  const maxAllowedQty = currentStock === Infinity ? 10 : Math.min(10, currentStock);
 
   React.useEffect(() => {
     if (product.sizePrices) {
@@ -323,15 +331,52 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
                 </div>
               </div>
 
-              {/* Qty */}
-              <div className="flex items-center gap-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Qty</span>
-                <div className="flex items-center border border-neutral-200 rounded-lg overflow-hidden">
-                  <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-2 text-sm font-bold text-neutral-600 hover:bg-neutral-50 cursor-pointer transition-colors" disabled={qty <= 1}>−</button>
-                  <span className="px-4 py-2 text-sm font-bold text-neutral-800 border-x border-neutral-200 min-w-[40px] text-center">{qty}</span>
-                  <button onClick={() => setQty(Math.min(10, qty + 1))} className="px-3 py-2 text-sm font-bold text-neutral-600 hover:bg-neutral-50 cursor-pointer transition-colors" disabled={qty >= 10}>+</button>
-                </div>
-              </div>
+               {/* Qty */}
+               {(() => {
+                 const currentStock = getSizeQuantity(selectedSize);
+                 const maxQty = currentStock === Infinity ? 10 : Math.min(10, currentStock);
+                 const isLowStock = currentStock !== Infinity && currentStock <= 3;
+                 const isOutOfStock = currentStock === 0;
+                
+                 return (
+                   <div className="space-y-2">
+                     <div className="flex items-center gap-3">
+                       <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">Qty</span>
+                       <div className="flex items-center border border-neutral-200 rounded-lg overflow-hidden">
+                         <button 
+                           onClick={() => setQty(Math.max(1, qty - 1))} 
+                           className="px-3 py-2 text-sm font-bold text-neutral-600 hover:bg-neutral-50 cursor-pointer transition-colors"
+                           disabled={qty <= 1 || isOutOfStock}
+                         >
+                           −
+                         </button>
+                         <span className="px-4 py-2 text-sm font-bold text-neutral-800 border-x border-neutral-200 min-w-[40px] text-center">{qty}</span>
+                         <button 
+                           onClick={() => setQty(Math.min(maxQty, qty + 1))} 
+                           className="px-3 py-2 text-sm font-bold text-neutral-600 hover:bg-neutral-50 cursor-pointer transition-colors"
+                           disabled={qty >= maxQty || isOutOfStock}
+                         >
+                           +
+                         </button>
+                       </div>
+                     </div>
+                     
+                     {/* Stock Warning Messages */}
+                     {isOutOfStock && (
+                       <p className="text-xs font-bold text-red-600 flex items-center gap-1">
+                         <span className="inline-block w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+                         Out of Stock
+                       </p>
+                     )}
+                     {isLowStock && !isOutOfStock && (
+                       <p className="text-xs font-bold text-amber-600 flex items-center gap-1">
+                         <span className="inline-block w-2 h-2 bg-amber-600 rounded-full"></span>
+                         Only {currentStock} left in stock
+                       </p>
+                     )}
+                   </div>
+                 );
+               })()}
 
               {/* Description - Made larger and more visible, shown FIRST before offers */}
               <div className="space-y-2">

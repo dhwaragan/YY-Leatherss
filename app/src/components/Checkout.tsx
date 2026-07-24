@@ -257,10 +257,6 @@ export const Checkout: React.FC = () => {
       alert('Please provide shipping coordinates!');
       return;
     }
-    if (!user?.email) {
-      alert('Please log in before you checkout.');
-      return;
-    }
 
     if (requiresManualQuote) {
       setCheckoutError('Please contact us for shipping rates for this region. Automatic checkout is disabled for this delivery area.');
@@ -279,6 +275,11 @@ export const Checkout: React.FC = () => {
     }
 
     setIsAssemblingGateway(true);
+
+    if (!user) {
+      alert('Please log in before completing checkout.');
+      return;
+    }
 
     try {
       const body = {

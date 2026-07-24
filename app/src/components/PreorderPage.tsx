@@ -24,7 +24,11 @@ export const PreorderPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
+
+    if (!user) {
+      alert('Please log in to submit a pre-order.');
+      return;
+    }
 
     setIsSubmitting(true);
     
@@ -71,47 +75,8 @@ export const PreorderPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Auth protection check */}
         <AnimatePresence mode="wait">
-          {!user ? (
-            <motion.div
-              id="preorder-auth-reminder"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              className="bg-white border-2 border-gold p-8 rounded-2xl shadow-xl text-center max-w-md mx-auto space-y-6"
-            >
-              <div className="w-16 h-16 bg-gold/15 rounded-full flex items-center justify-center text-gold text-2xl mx-auto font-sans font-bold">
-                YY
-              </div>
-              <h3 className="font-serif text-xl font-bold text-leather">
-                Pre-Ordering Requires Login
-              </h3>
-              <p className="text-xs text-neutral-500 font-sans leading-relaxed">
-                We store your requests and reservation history against your secured profile to ensure seamless in-store pickup.
-              </p>
-
-              <div className="space-y-4 pt-2">
-                <button
-                  id="preorder-google-login-btn"
-                  onClick={() => loginAsUser('customer@example.com', false)}
-                  className="w-full flex items-center justify-center gap-3 border border-neutral-200 hover:border-gold py-2.5 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-all font-sans font-semibold text-neutral-700 text-xs cursor-pointer shadow-sm"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.91h6.63c-.29 1.5-.1.8-1.5 2.1l3.5 2.7c2.05-1.9 3.25-4.7 3.25-7.74z"/>
-                    <path fill="#34A853" d="M12 24c3.24 0 5.96-1.1 7.95-3l-3.5-2.7c-1 .7-2.3 1.1-4.45 1.1-3.4 0-6.3-2.3-7.3-5.4l-3.6 2.8c2.1 4.2 6.4 7.2 11.4 7.2z"/>
-                    <path fill="#FBBC05" d="M4.7 14c-.2-.7-.4-1.4-.4-2.1c0-.7.1-1.4.3-2.1l-3.6-2.8C.3 8.7 0 10.3 0 12c0 1.7.3 3.3.95 4.8l3.75-2.8z"/>
-                    <path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0C7 0 2.7 3 1 7.2l3.6 2.8c1-3.1 3.9-5.2 7.4-5.2z"/>
-                  </svg>
-                  <span>Google Sign-In Bypass</span>
-                </button>
-                
-                <div className="flex gap-2 text-[10px] uppercase tracking-widest text-neutral-400 font-sans justify-center">
-                  <span>OR CHOOSE TEST ROLES ON NAVBAR SWITCHERS</span>
-                </div>
-              </div>
-            </motion.div>
-          ) : formSubmitted ? (
+          {formSubmitted ? (
             <motion.div
               id="preorder-submit-confirmation"
               initial={{ scale: 0.95, opacity: 0 }}
@@ -130,7 +95,7 @@ export const PreorderPage: React.FC = () => {
               </p>
 
               <div className="bg-neutral-50 p-6 border rounded-lg text-left text-xs font-sans text-neutral-600 space-y-2.5">
-                <p><strong>Customer Name:</strong> {user.name}</p>
+                <p><strong>Customer Name:</strong> {user?.name}</p>
                 <p><strong>Configured Size:</strong> UK Size {size}</p>
                 <p><strong>Desired Model / Brand:</strong> {styleDesc}</p>
                 <p><strong>Expected Visit Date:</strong> {date}</p>
@@ -187,7 +152,7 @@ export const PreorderPage: React.FC = () => {
                     <input
                       type="text"
                       disabled
-                      value={user.name}
+                      value={user?.name || ''}
                       className="w-full text-xs p-3 bg-neutral-50 border border-neutral-200 text-neutral-500 rounded font-sans focus:outline-none cursor-not-allowed"
                     />
                   </div>
@@ -198,7 +163,7 @@ export const PreorderPage: React.FC = () => {
                     <input
                       type="email"
                       disabled
-                      value={user.email}
+                      value={user?.email || ''}
                       className="w-full text-xs p-3 bg-neutral-50 border border-neutral-200 text-neutral-500 rounded font-sans focus:outline-none cursor-not-allowed"
                     />
                   </div>

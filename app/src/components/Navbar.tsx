@@ -299,20 +299,16 @@ export const Navbar: React.FC = () => {
                     Including professional shoe adjustment coverage & standard insured white-glove transport within Chennai.
                   </div>
 
-                  <button
-                    id="checkout-checkout-btn"
-                    onClick={() => {
-                      setIsCartOpen(false);
-                      if (!user) {
-                        navigateTo('user-profile');
-                      } else {
-                        navigateTo('checkout');
-                      }
-                    }}
-                    className="w-full bg-leather dark:bg-leather-dark hover:bg-gold text-white font-sans text-xs uppercase tracking-widest font-bold py-3 transition-all duration-300 rounded shadow-md flex items-center justify-center gap-2"
-                  >
-                    Proceed to Royal Checkout
-                  </button>
+                   <button
+                     id="checkout-checkout-btn"
+                     onClick={() => {
+                       setIsCartOpen(false);
+                       navigateTo('checkout');
+                     }}
+                     className="w-full bg-leather dark:bg-leather-dark hover:bg-gold text-white font-sans text-xs uppercase tracking-widest font-bold py-3 transition-all duration-300 rounded shadow-md flex items-center justify-center gap-2"
+                   >
+                     Proceed to Royal Checkout
+                   </button>
                 </div>
               )}
             </motion.div>

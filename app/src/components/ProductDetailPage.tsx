@@ -122,10 +122,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
 
   const handleBuyNowSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) {
-      alert("Please log in or select a testing user persona in the navbar above to checkout!");
-      return;
-    }
     if (!buyNowAddress.trim()) {
       alert("Please enter your delivery coordinates address!");
       return;
@@ -166,6 +162,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
         dob: birthdayDob,
         gov_id_photo_url: birthdayGovIdPhotoUrl
       } : undefined;
+
+      if (!user) {
+        alert('Please log in before completing your purchase.');
+        return;
+      }
 
       const studentDiscountData = includeStudentDiscount ? {
         college_name: studentCollegeName,

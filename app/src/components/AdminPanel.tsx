@@ -11,7 +11,7 @@ import {
   Filter, ListCollapse, Award, DollarSign, PenTool, Sparkles,
   RefreshCw, Calendar, FileText, Database, Upload, Image as ImageIcon,
   Loader2, CheckCircle2, XCircle, AlertCircle, SlidersHorizontal, Star,
-  Lock, MessageSquare, Gift, Percent
+  Lock, MessageSquare, Gift, Percent, MessageCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Chart from 'chart.js/auto';
@@ -1473,6 +1473,17 @@ export const AdminPanel: React.FC = () => {
                               <button key={step} onClick={() => handleUpdateOrderStatus(ord.id, step)} className={`px-2 py-1.5 border text-[10px] uppercase font-bold rounded cursor-pointer transition-all ${ord.status === step ? 'bg-leather text-white' : 'bg-white text-neutral-600 hover:bg-neutral-50'}`}>{step}</button>
                             ))}
                             <button onClick={() => handleRejectOrderWithComment(ord)} className="px-2 py-1.5 border border-red-300 text-red-600 hover:bg-red-50 text-[10px] uppercase font-bold rounded cursor-pointer transition-all">Cancel with Reason</button>
+                            {ord.phone && (
+                              <a
+                                href={`https://wa.me/${ord.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`*YY Leathers - Order Update*\n\nOrder ID: ${ord.id}\nStatus: ${ord.status}\nCustomer: ${ord.customer_name}\nTotal: ₹${ord.total}\n\nThank you for choosing YY Leathers!`)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-2 py-1.5 border border-green-400 bg-green-50 text-green-700 hover:bg-green-100 text-[10px] uppercase font-bold rounded cursor-pointer transition-all flex items-center gap-1.5"
+                                title="Send WhatsApp message to customer"
+                              >
+                                <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                              </a>
+                            )}
                           </div>
                         </div>
                       </div>

@@ -287,7 +287,16 @@ export const UserProfile: React.FC = () => {
                             )}
 
                             {/* Buttons */}
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-3 gap-2">
+                              <a
+                                href={ord.phone ? `https://wa.me/${ord.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`*YY Leathers - Order Inquiry*\n\nOrder ID: ${ord.id}\nStatus: ${ord.status}\nTotal: ₹${ord.total}\n\nI have a question about my order.`)}` : '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`py-3.5 rounded-full border text-xs font-bold cursor-pointer transition-colors shadow-sm flex items-center justify-center gap-1.5 ${ord.phone ? 'bg-green-50 border-green-200 text-green-700 hover:bg-green-100' : 'bg-neutral-50 border-neutral-200 text-neutral-400 pointer-events-none'}`}
+                              >
+                                <MessageSquare className="w-3.5 h-3.5" />
+                                <span className="hidden sm:inline">WhatsApp</span>
+                              </a>
                               <button className="py-3.5 rounded-full border border-neutral-200 bg-neutral-50 text-neutral-500 font-bold text-xs cursor-pointer hover:bg-neutral-100 transition-colors shadow-sm">
                                 Invoice
                               </button>

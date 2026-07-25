@@ -244,6 +244,13 @@ export const AdminPanel: React.FC = () => {
       // Only use Supabase data if local API didn't return orders
       if (ordersData.length === 0) {
         ordersData = o;
+      } else {
+        // We got orders from local API - sync them to Supabase to keep cloud in sync
+        try {
+          await dbSet('orders', ordersData as any);
+        } catch (e) {
+          console.warn('Failed to sync orders to Supabase', e);
+        }
       }
       productsData = p;
       offersData = off;

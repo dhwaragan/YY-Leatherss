@@ -213,27 +213,66 @@ export const AdminPanel: React.FC = () => {
 
   const loadAll = useCallback(async () => {
     setLoadingData(true);
-    const [p, o, off, hs, cc] = await Promise.all([
-      dbGet<Product>('products'),
-      dbGet<Order>('orders'),
-      dbGet<Offer>('offers'),
-      dbGet<any>('hero_slides'),
-      dbGet<string>('custom_categories'),
-    ]);
+    
+    // Try to fetch from local API first (most reliable), fall back to Supabase
+    let ordersData: Order[] = [];
+    let productsData: Product[] = [];
+    let offersData: Offer[] = [];
+    let heroSlidesData: any[] = [];
+    let customCategoriesData: string[] = [];
+    
+    try {
+      // Fetch orders from local API (always has latest data)
+      const ordersRes = await fetch('/api/orders');
+      if (ordersRes.ok) {
+        ordersData = await ordersRes.json();
+      }
+    } catch (e) {
+      console.warn('Failed to fetch orders from local API, trying Supabase...', e);
+    }
+    
+    // Try Supabase for all data
+    try {
+      const [p, o, off, hs, cc] = await Promise.all([
+        dbGet<Product>('products'),
+        dbGet<Order>('orders'),
+        dbGet<Offer>('offers'),
+        dbGet<any>('hero_slides'),
+        dbGet<string>('custom_categories'),
+      ]);
+      
+      // Only use Supabase data if local API didn't return orders
+      if (ordersData.length === 0) {
+        ordersData = o;
+      }
+      productsData = p;
+      offersData = off;
+      heroSlidesData = hs;
+      customCategoriesData = cc;
+    } catch (e) {
+      console.warn('Supabase fetch failed, using local API data only', e);
+    }
+    
     const DEFAULT_CATEGORIES = [
       "FORMAL - DERBY", "PENNY LOAFERS", "DRIVING LOAFERS", "CHELSEA BOOT",
       "TRAVEL BOOTS", "SUEDE LOAFER", "SANDALS", "MULES", "SNEAKERS",
       "PREMIUM CHELSEA", "WALLET", "BELT"
     ];
 
-    const { data: syncData } = await supabase.from('yy_store_sync').select('key, value');
+    let syncDataResult: { data: any; error: any } = { data: null, error: null };
+    try {
+      syncDataResult = await supabase.from('yy_store_sync').select('key, value');
+    } catch (e) {
+      // Supabase query failed, will use defaults
+    }
+    const { data: syncData } = syncDataResult;
     const hasCustomCategories = syncData?.some((r: any) => r.key === 'custom_categories') || false;
 
-    setProducts(p);
-    setOrders(o);
-    setOffers(off);
-    setHeroSlides(hs);
-    setCustomCategories(hasCustomCategories ? (cc || []) : DEFAULT_CATEGORIES);
+    setProducts(productsData);
+    setOrders(ordersData);
+    setOffers(offersData);
+    setHeroSlides(heroSlidesData);
+    setCustomCategories(hasCustomCategories ? (customCategoriesData || []) : DEFAULT_CATEGORIES);
     setLoadingData(false);
 
     const cbDiscount = contentBlocks.find(cb => cb.key === 'sitewide_discount');
@@ -716,6 +755,17 @@ export const AdminPanel: React.FC = () => {
 
   const handleUpdateOrderStatus = async (id: string, status: Order['status']) => {
     const updated = orders.map(o => o.id === id ? { ...o, status } : o);
+    // Save to local API first (most reliable)
+    try {
+      await fetch(`/api/orders/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+    } catch (e) {
+      console.warn('Failed to save order status to local API', e);
+    }
+    // Also sync to Supabase
     await dbSet('orders', updated);
     await refreshAllData();
     setOrders(updated);
@@ -753,6 +803,16 @@ export const AdminPanel: React.FC = () => {
       }
       return o;
     });
+    // Save to local API first
+    try {
+      await fetch(`/api/orders/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: updated.find(o => o.id === id)?.status || status }),
+      });
+    } catch (e) {
+      console.warn('Failed to save buyback update to local API', e);
+    }
     await dbSet('orders', updated);
     await refreshAllData();
     setOrders(updated);
@@ -776,6 +836,16 @@ export const AdminPanel: React.FC = () => {
       }
       return o;
     });
+    // Save to local API first
+    try {
+      await fetch(`/api/orders/${rejectModalOrder.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'Cancelled' }),
+      });
+    } catch (e) {
+      console.warn('Failed to save rejection to local API', e);
+    }
     await dbSet('orders', updated);
     await refreshAllData();
     setOrders(updated);

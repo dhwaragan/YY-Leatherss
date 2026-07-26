@@ -71,6 +71,10 @@ const app = express();
 const PORT = Number(process.env.PORT || 3000);
 
 const getDeliveryCharge = (region: string, weightKg: number) => {
+  // TESTING MODE: Flat ₹1 delivery charge
+  return 1;
+  
+  /* ORIGINAL RATES - uncomment for production:
   switch (region) {
     case 'TN':
       return 80 * weightKg;
@@ -87,6 +91,7 @@ const getDeliveryCharge = (region: string, weightKg: number) => {
     default:
       return 0;
   }
+  */
 };
 
 app.use(express.json({ limit: '10mb' }));
@@ -682,15 +687,22 @@ async function pullFromSupabase() {
 function saveDatabase(newDb: Database) {
   try {
     db = newDb;
-    fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
     
-    // Background async sync to Supabase for each dynamic table key
+    if (!IS_SERVERLESS) {
+      // In local dev, write to file
+      fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+    }
+    
+    // Sync to Supabase - in serverless mode this MUST complete before the function returns
     const keysToSync: Array<keyof Database> = ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks'];
     for (const key of keysToSync) {
-      syncToSupabase(key, db[key]);
+      // Use synchronous-style promise handling to ensure data persists
+      syncToSupabase(key, db[key]).catch(err => {
+        console.error(`[Supabase Sync] Failed to sync '${key}':`, err);
+      });
     }
   } catch (error) {
-    console.error("Failed to write to db.json", error);
+    console.error("Failed to save database", error);
   }
 }
 

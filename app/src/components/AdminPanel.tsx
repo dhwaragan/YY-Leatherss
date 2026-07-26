@@ -189,7 +189,7 @@ export const AdminPanel: React.FC = () => {
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const [loadingData, setLoadingData] = useState(true);
 
-  const [currentAdminPass, setCurrentAdminPass] = useState(localStorage.getItem('yy_admin_pass') || DEFAULT_ADMIN_PASS);
+  const [currentAdminPass, setCurrentAdminPass] = useState(localStorage.getItem('yy_admin_pass') || '');
   const [newAdminPass, setNewAdminPass] = useState('');
   const [confirmAdminPass, setConfirmAdminPass] = useState('');
   const [passChangeFeedback, setPassChangeFeedback] = useState('');
@@ -631,8 +631,9 @@ export const AdminPanel: React.FC = () => {
 
   const handleAdminBypass = async (e: React.FormEvent) => {
     e.preventDefault();
-    const ok = await bypassAdminLogin(enteredPassword);
-    if (!ok) setLoginFeedback("Invalid code. Try 'chennaileather2026' or 'admin'");
+    const adminEmail = "dhwaragandhwaragan9@gmail.com";
+    const ok = await bypassAdminLogin(adminEmail, enteredPassword);
+    if (!ok) setLoginFeedback("Invalid email or password. Access denied.");
     else setLoginFeedback('');
   };
 
@@ -643,24 +644,39 @@ export const AdminPanel: React.FC = () => {
           className="bg-white border-2 border-gold max-w-md w-full p-8 rounded-2xl shadow-2xl space-y-6">
           <div className="text-center">
             <div className="w-16 h-16 bg-leather/10 border border-gold/40 rounded-full flex items-center justify-center text-leather font-bold text-xl mx-auto mb-3 font-serif">YY</div>
-            <h3 className="font-serif text-2xl font-bold tracking-wide text-leather-dark">Atelier Headquarters</h3>
-            <p className="text-[10px] text-neutral-450 uppercase tracking-widest font-bold mt-1">Admin Role Access Authentication</p>
+            <h3 className="font-serif text-2xl font-bold tracking-wide text-leather-dark">Atelier Administration</h3>
+            <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-bold mt-1">Secure Admin Access</p>
           </div>
           <form onSubmit={handleAdminBypass} className="space-y-4">
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-neutral-600 block">Enter Atelier Secret Code</label>
-              <input type="password" required value={enteredPassword} onChange={(e) => setEnteredPassword(e.target.value)}
-                placeholder="Password (e.g., chennaileather2026)"
-                className="w-full text-xs p-3 border border-neutral-250 rounded focus:outline-none focus:border-gold font-sans" />
+              <label className="text-xs font-semibold text-neutral-600 block">Admin Email</label>
+              <input 
+                type="email" 
+                value="dhwaragandhwaragan9@gmail.com" 
+                disabled
+                className="w-full text-xs p-3 border border-neutral-200 rounded bg-neutral-100 text-neutral-600 cursor-not-allowed" 
+              />
+            </div>
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-neutral-600 block">Secure Password</label>
+              <input 
+                type="password" 
+                required 
+                value={enteredPassword} 
+                onChange={(e) => setEnteredPassword(e.target.value)}
+                placeholder="Enter admin password..."
+                minLength={6}
+                className="w-full text-xs p-3 border border-neutral-250 rounded focus:outline-none focus:border-gold font-sans" 
+              />
               {loginFeedback && <p className="text-[11px] text-red-500 mt-1">{loginFeedback}</p>}
             </div>
             <button type="submit" className="w-full bg-leather hover:bg-gold text-white font-sans text-xs uppercase tracking-widest font-bold py-3.5 rounded transition-colors cursor-pointer">
-              Verify Credentials
+              Authenticate
             </button>
           </form>
-          <div className="p-3.5 bg-neutral-50 rounded border text-[11px] text-neutral-500 leading-relaxed space-y-1">
-            <span className="font-bold text-neutral-700 uppercase tracking-wide block">Reviewer Tip:</span>
-            <span>Click the "Admin" button on the Navbar Persona Switcher (top right) to instantly bypass this wall.</span>
+          <div className="p-3.5 bg-neutral-50 rounded border text-[10px] text-neutral-500 leading-relaxed">
+            <span className="font-bold text-neutral-700 uppercase tracking-wide block mb-1">Security Notice:</span>
+            <span>This panel is restricted to authorized administrators only. All access attempts are monitored.</span>
           </div>
         </motion.div>
       </div>

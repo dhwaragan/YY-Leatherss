@@ -39,7 +39,7 @@ interface AppContextType {
   loginAsUser: (email: string, asAdmin?: boolean) => Promise<boolean>;
   logout: () => void;
   updateUserProfile: (profile: Partial<Profile>) => Promise<boolean>;
-  bypassAdminLogin: (password: string) => Promise<boolean>;
+  bypassAdminLogin: (email: string, password: string) => Promise<boolean>;
 
   // Cart Actions
   addToCart: (product: Product, size: string) => void;
@@ -249,7 +249,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             "Customer",
           email: session.user.email || "",
           role:
-            session.user.email === "sriramsriram0105@gmail.com"
+            session.user.email === "dhwaragandhwaragan9@gmail.com"
               ? "admin"
               : "customer",
           avatar: session.user.user_metadata.avatar_url,
@@ -275,7 +275,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             "Customer",
           email: session.user.email || "",
           role:
-            session.user.email === "sriramsriram0105@gmail.com"
+            session.user.email === "dhwaragandhwaragan9@gmail.com"
               ? "admin"
               : "customer",
           avatar: session.user.user_metadata.avatar_url,
@@ -284,7 +284,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         localStorage.setItem("yy_user", JSON.stringify(profile));
 
         if (event === "SIGNED_IN") {
-          const isAdmin = session.user.email === "sriramsriram0105@gmail.com";
+                const isAdmin = session.user.email === "dhwaragandhwaragan9@gmail.com";
           setCurrentPage(isAdmin ? "admin" : "home");
         }
       } else {
@@ -481,19 +481,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  const bypassAdminLogin = async (password: string) => {
+  const bypassAdminLogin = async (email: string, password: string) => {
     try {
-      const envPass = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD || "chennaileather2026";
+      // Only allow specific admin email
+      if (email !== "dhwaragandhwaragan9@gmail.com") {
+        return false;
+      }
+
+      const envPass = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD;
       const customPass = localStorage.getItem('yy_admin_pass');
       const adminPass = customPass || envPass;
-      
-      // Only check against the configured password - no extra fallback passwords
+
+      // Require password to be set in environment or localStorage
+      if (!adminPass) {
+        console.error("Admin password not configured");
+        return false;
+      }
+
       if (password === adminPass) {
         const adminProfile: Profile = {
           id: "admin-id",
-          name: "Sriram Srinivasan (Admin)",
+          name: "Store Administrator",
           role: "admin",
-          email: "sriramsriram0105@gmail.com",
+          email: "dhwaragandhwaragan9@gmail.com",
           phone: "+91 98765 43210",
           created_at: new Date().toISOString()
         };

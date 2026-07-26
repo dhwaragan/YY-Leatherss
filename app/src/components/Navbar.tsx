@@ -159,7 +159,7 @@ export const Navbar: React.FC = () => {
                       Customer View
                     </button>
                     <button
-                      onClick={() => { handleQuickLogin('sriramsriram0105@gmail.com', true); setIsMobileMenuOpen(false); }}
+                      onClick={() => { handleQuickLogin('dhwaragandhwaragan9@gmail.com', true); setIsMobileMenuOpen(false); }}
                       className="flex-1 bg-gold text-white py-1 rounded text-xs font-semibold hover:bg-gold-dark"
                     >
                       Admin Panel
@@ -344,7 +344,8 @@ export const Navbar: React.FC = () => {
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
-                  bypassAdminLogin(adminPassword).then((success) => {
+                  const email = "dhwaragandhwaragan9@gmail.com";
+                  bypassAdminLogin(email, adminPassword).then((success) => {
                     if (success) {
                       setIsAdminModalOpen(false);
                       navigateTo('admin');
@@ -357,8 +358,16 @@ export const Navbar: React.FC = () => {
               >
                 <div>
                   <input
+                    type="email"
+                    value="dhwaragandhwaragan9@gmail.com"
+                    disabled
+                    className="w-full text-center px-4 py-3 bg-neutral-100 border border-neutral-200 rounded-lg text-sm text-neutral-600 font-sans cursor-not-allowed"
+                  />
+                </div>
+                <div>
+                  <input
                     type="password"
-                    placeholder="Provide password..."
+                    placeholder="Enter secure password..."
                     value={adminPassword}
                     onChange={(e) => {
                       setAdminPassword(e.target.value);
@@ -366,10 +375,12 @@ export const Navbar: React.FC = () => {
                     }}
                     className="w-full text-center px-4 py-3 bg-neutral-50 border border-neutral-300 focus:border-[#8B5A2B] focus:ring-1 focus:ring-[#8B5A2B] rounded-lg text-sm transition-all text-neutral-900 font-mono tracking-widest placeholder:tracking-normal outline-none"
                     autoFocus
+                    required
+                    minLength={6}
                   />
                   {adminLoginError && (
                     <p className="text-red-500 text-[10px] mt-2 font-sans">
-                      Incorrect password. Please try again.
+                      Invalid credentials. Access denied.
                     </p>
                   )}
                 </div>

@@ -93,6 +93,61 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cors()); // Enable CORS
 
+// Security Headers Middleware
+app.use((req, res, next) => {
+  // Prevent clickjacking
+  res.setHeader('X-Frame-Options', 'DENY');
+  // Prevent MIME type sniffing
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  // XSS Protection
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  // Referrer Policy
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  // Content Security Policy
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; font-src 'self' data:; connect-src 'self' https: wss:; frame-ancestors 'none';");
+  // Permissions Policy
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  next();
+});
+
+// Admin Authentication Middleware
+const authenticateAdmin = (req: any, res: any, next: any) => {
+  const adminEmail = req.headers['x-admin-email'] || req.body?.admin_email;
+  const adminPassword = req.headers['x-admin-password'] || req.body?.admin_password;
+  
+  // Check for valid admin credentials
+  if (adminEmail === "dhwaragandhwaragan9@gmail.com" && adminPassword) {
+    // In production, validate against environment variable or secure database
+    const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+    if (adminPassword === envPass) {
+      next();
+      return;
+    }
+  }
+  
+  res.status(403).json({ success: false, error: 'Admin authentication required' });
+};
+
+// Rate limiting middleware (simple in-memory implementation)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const rateLimit = (maxRequests: number, windowMs: number) => {
+  return (req: any, res: any, next: any) => {
+    const key = req.ip || req.connection.remoteAddress;
+    const now = Date.now();
+    const limit = rateLimitMap.get(key);
+    
+    if (!limit || now > limit.resetTime) {
+      rateLimitMap.set(key, { count: 1, resetTime: now + windowMs });
+      next();
+    } else if (limit.count < maxRequests) {
+      limit.count++;
+      next();
+    } else {
+      res.status(429).json({ error: 'Too many requests. Please try again later.' });
+    }
+  };
+};
+
 // ---------------- STRIPE INTEGRATION ----------------
 app.post('/api/stripe/create-payment-intent', async (req, res) => {
   const {
@@ -350,12 +405,12 @@ interface Database {
 }
 
 // Initial seed data
-const initialDB: Database = {
+  const initialDB: Database = {
   profiles: [
     {
       id: "admin-id",
-      email: "sriramsriram0105@gmail.com",
-      name: "Sriram Srinivasan (Admin)",
+      email: "dhwaragandhwaragan9@gmail.com",
+      name: "Store Administrator",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
       phone: "+91 98765 43210",
       role: "admin",
@@ -769,7 +824,7 @@ app.get('/api/products', (req, res) => {
   res.json(db.products);
 });
 
-app.post('/api/products', (req, res) => {
+app.post('/api/products', authenticateAdmin, (req, res) => {
   const newProduct = req.body;
   newProduct.id = `prod-${Date.now()}`;
   newProduct.created_at = new Date().toISOString();
@@ -785,7 +840,7 @@ app.post('/api/products', (req, res) => {
   res.json({ success: true, product: newProduct });
 });
 
-app.put('/api/products/:id', (req, res) => {
+app.put('/api/products/:id', authenticateAdmin, (req, res) => {
   const { id } = req.params;
   const updatedData = req.body;
   const index = db.products.findIndex(p => p.id === id);
@@ -797,7 +852,7 @@ app.put('/api/products/:id', (req, res) => {
   res.status(404).json({ success: false, message: "Footwear not found." });
 });
 
-app.delete('/api/products/:id', (req, res) => {
+app.delete('/api/products/:id', authenticateAdmin, (req, res) => {
   const { id } = req.params;
   const initialCount = db.products.length;
   db.products = db.products.filter(p => p.id !== id);
@@ -821,6 +876,7 @@ app.get('/api/orders/user/:userId', (req, res) => {
 });
 
 app.post('/api/orders', (req, res) => {
+  // Allow public to create orders (customers)
   const { 
     user_id, items, total, address, phone, customer_name, customer_email, 
     razorpay_order_id, razorpay_payment_id, 
@@ -861,7 +917,7 @@ app.post('/api/orders', (req, res) => {
   res.json({ success: true, order: newOrder });
 });
 
-app.put('/api/orders/:id', (req, res) => {
+app.put('/api/orders/:id', authenticateAdmin, (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
   const index = db.orders.findIndex(o => o.id === id);
@@ -1033,7 +1089,7 @@ app.get('/api/offers', (req, res) => {
   res.json(db.offers);
 });
 
-app.post('/api/offers', (req, res) => {
+app.post('/api/offers', authenticateAdmin, (req, res) => {
   const newOffer = req.body;
   newOffer.id = `off-${Date.now()}`;
   newOffer.is_active = newOffer.is_active !== false;
@@ -1045,7 +1101,7 @@ app.post('/api/offers', (req, res) => {
   res.json({ success: true, offer: newOffer });
 });
 
-app.delete('/api/offers/:id', (req, res) => {
+app.delete('/api/offers/:id', authenticateAdmin, (req, res) => {
   const { id } = req.params;
   db.offers = db.offers.filter(o => o.id !== id);
   saveDatabase(db);
@@ -1058,7 +1114,7 @@ app.get('/api/content-blocks', (req, res) => {
   res.json(db.content_blocks);
 });
 
-app.post('/api/content-blocks', (req, res) => {
+app.post('/api/content-blocks', authenticateAdmin, (req, res) => {
   const { key, value } = req.body;
   const index = db.content_blocks.findIndex(cb => cb.key === key);
   if (index !== -1) {
@@ -1195,7 +1251,7 @@ CREATE POLICY "Allow anon update" ON yy_store_sync FOR UPDATE USING (true);
   }
 });
 
-app.post('/api/supabase-sync/push', async (req, res) => {
+app.post('/api/supabase-sync/push', authenticateAdmin, async (req, res) => {
   try {
     const keys: Array<keyof Database> = ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks'];
     let successCount = 0;
@@ -1217,7 +1273,7 @@ app.post('/api/supabase-sync/push', async (req, res) => {
   }
 });
 
-app.post('/api/supabase-sync/pull', async (req, res) => {
+app.post('/api/supabase-sync/pull', authenticateAdmin, async (req, res) => {
   try {
     const ok = await pullFromSupabase();
     if (ok) {

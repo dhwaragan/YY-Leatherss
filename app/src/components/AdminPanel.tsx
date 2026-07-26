@@ -1329,7 +1329,7 @@ export const AdminPanel: React.FC = () => {
                                     {o.items.map((item, idx) => (
                                       <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }} onClick={() => setSelectedProductDetail(item.product)}>
                                         <img src={item.product.images[0] || undefined} alt="" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover', border: '0.5px solid var(--color-border-tertiary)' }} onError={(e) => (e.currentTarget.style.display = 'none')} />
-                                        <span style={{ flex: 1 }}>{item.quantity}x {item.product.name}</span>
+                                        <span style={{ flex: 1 }}>{item.quantity}x {item.product.name} {item.selectedSize ? `(Size: ${item.selectedSize})` : ''}</span>
                                         <span style={{ color: 'var(--color-text-tertiary)', fontSize: '9px' }}>₹{(item.product.price * item.quantity).toLocaleString('en-IN')}</span>
                                       </div>
                                     ))}
@@ -1494,8 +1494,24 @@ export const AdminPanel: React.FC = () => {
                         <div className="p-4 flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
                           <div className="space-y-1 text-xs">
                             <p><strong>Customer:</strong> {ord.customer_name} ({ord.customer_email})</p>
+                            <p><strong>Phone:</strong> {ord.phone || 'N/A'}</p>
                             <p><strong>Address:</strong> {ord.address}</p>
                             <p><strong>Total:</strong> ₹{ord.total.toLocaleString('en-IN')}</p>
+                            {ord.items.length > 0 && (
+                              <div className="mt-3 p-3 bg-neutral-50 border border-neutral-200 rounded text-xs">
+                                <p className="font-bold text-neutral-700 mb-2 text-[10px] uppercase tracking-wider">Order Items</p>
+                                {ord.items.map((item, idx) => (
+                                  <div key={idx} className="flex items-center gap-2 mb-1.5 last:mb-0">
+                                    <img src={item.product.images[0] || undefined} alt="" className="w-8 h-8 rounded object-cover border border-neutral-200 flex-shrink-0" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                                    <div className="flex-1 min-w-0">
+                                      <p className="text-[11px] font-medium text-neutral-800 truncate">{item.product.name}</p>
+                                      <p className="text-[9px] text-neutral-500">Qty: {item.quantity} {item.selectedSize ? `| Size: ${item.selectedSize}` : ''}</p>
+                                    </div>
+                                    <span className="text-[10px] font-bold text-neutral-700">₹{(item.product.price * item.quantity).toLocaleString('en-IN')}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
 
                             {ord.status === 'Cancelled' && (ord as any).rejection_comment && (
                               <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded text-xs">
@@ -1595,7 +1611,7 @@ export const AdminPanel: React.FC = () => {
                               {ord.items.map((item, idx) => (
                                 <div key={idx} className="flex items-center gap-2 mb-1 cursor-pointer hover:text-gold transition-colors" onClick={() => setSelectedProductDetail(item.product)}>
                                   <img src={item.product.images[0] || undefined} alt="" className="w-6 h-6 rounded object-cover border border-neutral-200 flex-shrink-0" onError={(e) => (e.currentTarget.style.display = 'none')} />
-                                  <span className="whitespace-nowrap overflow-hidden text-ellipsis">{item.quantity}x {item.product.name}</span>
+                                  <span className="whitespace-nowrap overflow-hidden text-ellipsis">{item.quantity}x {item.product.name} {item.selectedSize ? `(Size: ${item.selectedSize})` : ''}</span>
                                 </div>
                               ))}
                             </div>

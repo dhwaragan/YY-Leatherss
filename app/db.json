@@ -57,9 +57,11 @@
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
+        "6": 0,
         "7": 0,
         "8": 5,
-        "9": 5
+        "9": 2,
+        "10": 0
       }
     },
     {
@@ -3902,7 +3904,10 @@
   ],
   "orders": [
     {
-      "id": "YY-ORD-99277",
+      "id": "YY-ORD-96112",
+      "user_id": "temp-id-1785061589696",
+      "customer_name": "dhwaragandhwaragan9",
+      "phone": "+918248500780",
       "items": [
         {
           "product": {
@@ -3937,39 +3942,193 @@
               "9": 2
             },
             "is_published": true,
-            "customer_email": "",
             "is_best_seller": true,
             "is_new_arrival": false,
             "sizeQuantities": {
-              "7": 1,
+              "6": 0,
+              "7": 0,
               "8": 5,
-              "9": 5
-            }
+              "9": 3,
+              "10": 0
+            },
+            "customer_email": ""
           },
           "quantity": 1,
-          "selectedSize": "7"
+          "selectedSize": "9"
         }
       ],
-      "phone": "+918248500780",
-      "total": 2108,
+      "total": 1916.1,
       "status": "Pending",
       "address": "vinayagapuram, frist street",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "created_at": "2026-07-23T15:45:07.565Z",
-      "applied_offer": "none",
-      "customer_name": "Dhwaragan Dhwaragan",
-      "buyback_details": null,
+      "razorpay_order_id": "order_TI67zZS9bA1LlS",
+      "razorpay_payment_id": "pay_TI68ATHtugg1Ap",
+      "delivery_region": "Tamil Nadu",
       "delivery_charge": 160,
+      "estimated_weight_kg": 2,
+      "student_discount_requested": false,
+      "student_discount_details": null,
+      "birthday_benefit_requested": false,
+      "birthday_benefit_details": null,
+      "buyback_requested": true,
+      "buyback_details": {
+        "status": "Pending"
+      },
+      "applied_offer": "buyback",
+      "created_at": "2026-07-26T10:27:15.499Z"
+    },
+    {
+      "id": "YY-ORD-87909",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1785057881819",
+            "name": "testing",
+            "price": 0.1,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "FORMAL - DERBY",
+            "weight_kg": 0.1,
+            "created_at": "2026-07-26T09:24:41.819Z",
+            "sizePrices": {},
+            "description": "super\n",
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "phone": "8248500780",
+      "total": 1,
+      "status": "Cancelled",
+      "address": "for testing only ",
+      "user_id": "549e0074-5254-4416-8a45-5a6929053f2f",
+      "created_at": "2026-07-26T09:46:52.401Z",
+      "applied_offer": "none",
+      "customer_name": "dhwaragan mass",
+      "buyback_details": null,
+      "delivery_charge": 1,
       "delivery_region": "Tamil Nadu",
       "buyback_requested": false,
-      "razorpay_order_id": "order_TGzwQIDsijRwPL",
-      "rejection_comment": "Rejecting since not meeting the requirement refund will be initiated",
-      "estimated_weight_kg": 2,
-      "razorpay_payment_id": "pay_TGzwXLxqzZoOuJ",
+      "razorpay_order_id": "order_TI5Qu58o5VhmVy",
+      "rejection_comment": "just for testing",
+      "estimated_weight_kg": 0.1,
+      "razorpay_payment_id": "pay_TI5RQ6bRHMqL6G",
       "birthday_benefit_details": null,
       "student_discount_details": null,
       "birthday_benefit_requested": false,
       "student_discount_requested": false
+    },
+    {
+      "id": "YY-ORD-68884",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1784207742525",
+            "mrp": 1999,
+            "name": "Brown - Italian Chelsea Texture Zip",
+            "price": 1499,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/rww32l371p-1784207731208.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/7clyo777fu3-1784207732698.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/gk5yxqw42ek-1784207733269.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/phsdwph2xim-1784207733925.JPG"
+            ],
+            "category": "CHELSEA BOOT",
+            "sizeMRPs": {
+              "6": 1999,
+              "7": 1999,
+              "8": 1999,
+              "9": 1999,
+              "10": 1999,
+              "11": 1999
+            },
+            "weight_kg": 1,
+            "created_at": "2026-07-16T13:15:42.525Z",
+            "sizePrices": {
+              "6": 1499,
+              "7": 1499,
+              "8": 1499,
+              "9": 1499,
+              "10": 1499,
+              "11": 1599
+            },
+            "description": "Key Features\nPremium Italian genuine leather upper\nElegant textured leather finish\nClassic zipper Chelsea boot design\nStretch elastic side panels for easy slip-on wear\nSoft leather lining for breathable comfort\nCushioned footbed for superior all-day support\nDurable outsole with excellent grip and stability\nRear pull tab for easy on and off\nHandcrafted with precision and premium finishing\n\nColor: Brown\nMaterial: Premium Italian Genuine Leather\nStyle: Classic Chelsea Boot (Zip)\nClosure: Slip-On with Zip Side Panels\nOccasion: Business | Formal | Smart Casual | Evening | Travel",
+            "sizeWeights": {
+              "6": 1,
+              "7": 1,
+              "8": 1,
+              "9": 1,
+              "10": 1,
+              "11": 1
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "phone": "7358349522",
+      "total": 1431.1,
+      "status": "Ordered",
+      "address": "No.8,Anna street,Shenoy nagar,Chennai-600030",
+      "user_id": "d7e0ebed-e36e-4293-ba73-a58b9f5ebd64",
+      "created_at": "2026-07-26T09:46:21.011Z",
+      "applied_offer": "buyback",
+      "customer_name": "Jagadev Sakthi",
+      "buyback_details": {
+        "status": "Pending"
+      },
+      "delivery_charge": 60,
+      "delivery_region": "Chennai",
+      "buyback_requested": true,
+      "razorpay_order_id": "order_TI5QGj34o5oOsL",
+      "estimated_weight_kg": 1,
+      "razorpay_payment_id": "pay_TI5QU40Xny1rwU",
+      "birthday_benefit_details": null,
+      "student_discount_details": null,
+      "birthday_benefit_requested": false,
+      "student_discount_requested": false
+    },
+    {
+      "id": "YY-ORD-98731",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1785057881819",
+            "name": "testing",
+            "price": 0.1,
+            "images": [
+              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
+            ],
+            "category": "FORMAL - DERBY",
+            "weight_kg": 0.1,
+            "created_at": "2026-07-26T09:24:41.819Z",
+            "sizePrices": {},
+            "description": "super\n",
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": false
+          },
+          "quantity": 1,
+          "selectedSize": "9"
+        }
+      ],
+      "total": 6,
+      "status": "Pending",
+      "address": "vinayagapuram, frist street",
+      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
+      "created_at": "2026-07-26T09:27:32.395Z",
+      "customer_name": "Dhwaragan Dhwaragan",
+      "razorpay_order_id": "order_TI56FiR4HwiQm7",
+      "razorpay_payment_id": "pay_TI56wXtvQgcwhM"
     }
   ],
   "preorders": [

@@ -71,10 +71,6 @@ const app = express();
 const PORT = Number(process.env.PORT || 3000);
 
 const getDeliveryCharge = (region: string, weightKg: number) => {
-  // TESTING MODE: Flat ₹1 delivery charge
-  return 1;
-  
-  /* ORIGINAL RATES - uncomment for production:
   switch (region) {
     case 'TN':
       return 80 * weightKg;
@@ -91,7 +87,6 @@ const getDeliveryCharge = (region: string, weightKg: number) => {
     default:
       return 0;
   }
-  */
 };
 
 app.use(express.json({ limit: '10mb' }));

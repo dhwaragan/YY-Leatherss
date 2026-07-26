@@ -65,12 +65,6 @@ export const Checkout: React.FC = () => {
   const getDeliveryCharge = (state: string, weightKg: number) => {
     const stateLower = state.toLowerCase();
     
-    // TESTING MODE: Flat ₹1 delivery charge for all states
-    // Original rates commented out below for reference
-    
-    return 1; // Flat ₹1 for testing
-
-    /* ORIGINAL RATES - uncomment for production:
     // ₹60 Per KG - Chennai
     if (stateLower === 'chennai') {
       return 60 * weightKg;
@@ -103,11 +97,11 @@ export const Checkout: React.FC = () => {
     
     // Contact Us - Jammu & Kashmir, Andaman & Nicobar Islands
     if (['jammu & kashmir', 'jammu and kashmir', 'andaman & nicobar islands', 'andaman and nicobar islands'].includes(stateLower)) {
-      return 0;
+      return 0; // Will trigger manual quote
     }
     
+    // Default: ₹1 for testing (any other states)
     return 1 * weightKg;
-    */
   };
 
   const deliveryRates = [

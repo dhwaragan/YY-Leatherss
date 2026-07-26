@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { supabase } from "../supabase";
-import { useApp } from "../context/AppContext";
 
 export const LoginPage: React.FC = () => {
-  const { loginAsUser } = useApp();
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [emailLoading, setEmailLoading] = useState(false);
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -23,23 +19,6 @@ export const LoginPage: React.FC = () => {
       console.error(error);
       setErrorMsg(error.message);
       setLoading(false);
-    }
-  };
-
-  const handleEmailSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!emailInput.trim()) return;
-    setEmailLoading(true);
-    setErrorMsg("");
-    try {
-      const ok = await loginAsUser(emailInput.trim());
-      if (!ok) {
-        setErrorMsg("Failed to sign in with this email. Please try again.");
-      }
-    } catch (err: any) {
-      setErrorMsg(err.message || "Failed to sign in");
-    } finally {
-      setEmailLoading(false);
     }
   };
 
@@ -90,7 +69,7 @@ export const LoginPage: React.FC = () => {
               Welcome to YY Leathers
             </h2>
             <p className="text-xs font-medium text-neutral-500 mt-1 uppercase tracking-wide">
-              Sign in to continue
+              Sign in with Google to continue
             </p>
           </div>
 
@@ -99,35 +78,6 @@ export const LoginPage: React.FC = () => {
               {errorMsg}
             </div>
           )}
-
-          {/* Email Sign-In (Testing Mode) */}
-          <form onSubmit={handleEmailSignIn} className="mb-5">
-            <div className="flex items-center gap-2 bg-neutral-50 border-2 border-neutral-200 rounded-xl p-1 focus-within:border-gold transition-colors">
-              <input
-                type="email"
-                value={emailInput}
-                onChange={(e) => setEmailInput(e.target.value)}
-                placeholder="Enter your email to sign in"
-                required
-                className="flex-1 bg-transparent px-3 py-3 text-sm text-neutral-800 placeholder-neutral-400 outline-none"
-              />
-              <button
-                type="submit"
-                disabled={emailLoading || !emailInput.trim()}
-                className="bg-leather hover:bg-gold text-white font-bold px-5 py-3 rounded-lg text-xs uppercase tracking-wider transition-colors disabled:opacity-50 whitespace-nowrap"
-              >
-                {emailLoading ? "Signing..." : "Sign In"}
-              </button>
-            </div>
-            <p className="text-[9px] text-neutral-400 mt-2 text-center">Testing mode: Just enter any email to sign in instantly</p>
-          </form>
-
-          {/* Divider */}
-          <div className="flex items-center gap-3 mb-5">
-            <div className="flex-1 h-px bg-neutral-200"></div>
-            <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider">or</span>
-            <div className="flex-1 h-px bg-neutral-200"></div>
-          </div>
 
           <button
             type="button"

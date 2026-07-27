@@ -108,18 +108,20 @@ export const Navbar: React.FC = () => {
             {/* Right Controls Area featuring Search, Account, and Cart */}
             <div id="navbar-controls-tray" className="flex items-center space-x-2 sm:space-x-3">
               
-              {/* Settings icon for Admin login */}
-              <button
-                onClick={() => {
-                  setIsAdminModalOpen(true);
-                  setAdminPassword('');
-                  setAdminLoginError(false);
-                }}
-                className="p-2 text-neutral-400 hover:text-[#c5a059] transition-colors duration-700 cursor-pointer focus:outline-none rounded-full bg-white/5 border border-white/5"
-                title="Admin Settings"
-              >
-                <Settings className="w-4 h-4 stroke-[1.5]" />
-              </button>
+              {/* Settings icon for Admin login - ONLY visible to logged-in admin users */}
+              {user?.role === 'admin' && (
+                <button
+                  onClick={() => {
+                    setIsAdminModalOpen(true);
+                    setAdminPassword('');
+                    setAdminLoginError(false);
+                  }}
+                  className="p-2 text-neutral-400 hover:text-[#c5a059] transition-colors duration-700 cursor-pointer focus:outline-none rounded-full bg-white/5 border border-white/5"
+                  title="Admin Settings"
+                >
+                  <Settings className="w-4 h-4 stroke-[1.5]" />
+                </button>
+              )}
 
               {/* Hamburger Menu bar toggle always visible */}
               <button
@@ -344,8 +346,7 @@ export const Navbar: React.FC = () => {
               <form 
                 onSubmit={(e) => {
                   e.preventDefault();
-                  const email = "dhwaragandhwaragan9@gmail.com";
-                  bypassAdminLogin(email, adminPassword).then((success) => {
+                  bypassAdminLogin(authEmail || "", adminPassword).then((success) => {
                     if (success) {
                       setIsAdminModalOpen(false);
                       navigateTo('admin');
@@ -359,10 +360,16 @@ export const Navbar: React.FC = () => {
                 <div>
                   <input
                     type="email"
-                    value="dhwaragandhwaragan9@gmail.com"
-                    disabled
-                    className="w-full text-center px-4 py-3 bg-neutral-100 border border-neutral-200 rounded-lg text-sm text-neutral-600 font-sans cursor-not-allowed"
+                    value={authEmail}
+                    onChange={(e) => {
+                      setAuthEmail(e.target.value);
+                      setAdminLoginError(false);
+                    }}
+                    placeholder="Enter your admin email..."
+                    className="w-full text-center px-4 py-3 bg-neutral-50 border border-neutral-300 focus:border-[#8B5A2B] focus:ring-1 focus:ring-[#8B5A2B] rounded-lg text-sm transition-all text-neutral-900 outline-none"
+                    required
                   />
+                  <p className="text-[9px] text-neutral-400 mt-2">Authorized emails: dhwaragandhwaragan9@gmail.com, Yomeyom786@gmail.com</p>
                 </div>
                 <div>
                   <input
@@ -380,26 +387,24 @@ export const Navbar: React.FC = () => {
                   />
                   {adminLoginError && (
                     <p className="text-red-500 text-[10px] mt-2 font-sans">
-                      Invalid credentials. Access denied.
+                      Invalid email or password. Access denied.
                     </p>
                   )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsAdminModalOpen(false)}
-                    className="py-2.5 px-4 text-xs font-semibold rounded-lg text-neutral-600 bg-neutral-100 hover:bg-neutral-200 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="py-2.5 px-4 text-xs font-semibold rounded-lg text-white bg-[#8B5A2B] hover:bg-[#6b421a] transition-colors"
-                  >
-                    Authenticate
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="w-full py-2.5 px-4 text-xs font-semibold rounded-lg text-white bg-[#8B5A2B] hover:bg-[#6b421a] transition-colors"
+                >
+                  Authenticate
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsAdminModalOpen(false)}
+                  className="w-full py-2 px-4 text-xs font-semibold rounded-lg text-neutral-600 bg-neutral-100 hover:bg-neutral-200 transition-colors"
+                >
+                  Cancel
+                </button>
               </form>
             </motion.div>
           </div>

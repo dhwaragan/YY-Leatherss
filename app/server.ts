@@ -110,13 +110,21 @@ app.use((req, res, next) => {
   next();
 });
 
+// Admin emails list
+const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
+
 // Admin Authentication Middleware
 const authenticateAdmin = (req: any, res: any, next: any) => {
   const adminEmail = req.headers['x-admin-email'] || req.body?.admin_email;
   const adminPassword = req.headers['x-admin-password'] || req.body?.admin_password;
   
+  // Check if email is in admin list (case-insensitive)
+  const isValidAdminEmail = ADMIN_EMAILS.some(
+    validEmail => validEmail.toLowerCase() === (adminEmail || '').toLowerCase()
+  );
+  
   // Check for valid admin credentials
-  if (adminEmail === "dhwaragandhwaragan9@gmail.com" && adminPassword) {
+  if (isValidAdminEmail && adminPassword) {
     // In production, validate against environment variable or secure database
     const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
     if (adminPassword === envPass) {

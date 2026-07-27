@@ -130,6 +130,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const [selectedProductDetail, setSelectedProductDetail] =
     useState<Product | null>(null);
+  // Admin emails list
+  const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
+  
+  const isAdminEmail = (email: string): boolean => {
+    return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === email.toLowerCase());
+  };
+
   const [sitewideDiscount, setSitewideDiscount] = useState<number>(() => {
     if (typeof window === "undefined") return 0;
     return Number(localStorage.getItem("yy_sitewide_discount") || "0");
@@ -249,7 +256,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             "Customer",
           email: session.user.email || "",
           role:
-            session.user.email === "dhwaragandhwaragan9@gmail.com"
+            isAdminEmail(session.user.email || "")
               ? "admin"
               : "customer",
           avatar: session.user.user_metadata.avatar_url,
@@ -275,7 +282,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             "Customer",
           email: session.user.email || "",
           role:
-            session.user.email === "dhwaragandhwaragan9@gmail.com"
+            isAdminEmail(session.user.email || "")
               ? "admin"
               : "customer",
           avatar: session.user.user_metadata.avatar_url,
@@ -284,7 +291,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         localStorage.setItem("yy_user", JSON.stringify(profile));
 
         if (event === "SIGNED_IN") {
-                const isAdmin = session.user.email === "dhwaragandhwaragan9@gmail.com";
+          const isAdmin = isAdminEmail(session.user.email || "");
           setCurrentPage(isAdmin ? "admin" : "home");
         }
       } else {
@@ -483,8 +490,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const bypassAdminLogin = async (email: string, password: string) => {
     try {
-      // Only allow specific admin email
-      if (email !== "dhwaragandhwaragan9@gmail.com") {
+      // Only allow admin emails list
+      if (!isAdminEmail(email)) {
         return false;
       }
 
@@ -492,26 +499,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       const customPass = localStorage.getItem('yy_admin_pass');
       const adminPass = customPass || envPass;
 
-      // Require password to be set in environment or localStorage
-      if (!adminPass) {
-        console.error("Admin password not configured");
+      // Password check
+      if (!adminPass || password !== adminPass) {
         return false;
       }
 
-      if (password === adminPass) {
-        const adminProfile: Profile = {
-          id: "admin-id",
-          name: "Store Administrator",
-          role: "admin",
-          email: "dhwaragandhwaragan9@gmail.com",
-          phone: "+91 98765 43210",
-          created_at: new Date().toISOString()
-        };
-        setUser(adminProfile);
-        localStorage.setItem("yy_user", JSON.stringify(adminProfile));
-        return true;
-      }
-      return false;
+      const adminProfile: Profile = {
+        id: "admin-id",
+        name: "Store Administrator",
+        role: "admin",
+        email: email,
+        phone: "+91 98765 43210",
+        created_at: new Date().toISOString()
+      };
+      setUser(adminProfile);
+      localStorage.setItem("yy_user", JSON.stringify(adminProfile));
+      return true;
     } catch (e) {
       console.error(e);
       return false;

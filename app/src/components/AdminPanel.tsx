@@ -177,6 +177,7 @@ export const AdminPanel: React.FC = () => {
     setSelectedProductDetail,
   } = useApp();
 
+  const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
   const [loginFeedback, setLoginFeedback] = useState('');
   const [activeTab, setActiveTab] = useState<'dashboard' | 'products' | 'orders' | 'new-orders' | 'reviews' | 'promos' | 'supabase' | 'settings'>('dashboard');
@@ -631,8 +632,11 @@ export const AdminPanel: React.FC = () => {
 
   const handleAdminBypass = async (e: React.FormEvent) => {
     e.preventDefault();
-    const adminEmail = "dhwaragandhwaragan9@gmail.com";
-    const ok = await bypassAdminLogin(adminEmail, enteredPassword);
+    if (!enteredEmail) {
+      setLoginFeedback("Please enter your admin email.");
+      return;
+    }
+    const ok = await bypassAdminLogin(enteredEmail, enteredPassword);
     if (!ok) setLoginFeedback("Invalid email or password. Access denied.");
     else setLoginFeedback('');
   };
@@ -652,10 +656,16 @@ export const AdminPanel: React.FC = () => {
               <label className="text-xs font-semibold text-neutral-600 block">Admin Email</label>
               <input 
                 type="email" 
-                value="dhwaragandhwaragan9@gmail.com" 
-                disabled
-                className="w-full text-xs p-3 border border-neutral-200 rounded bg-neutral-100 text-neutral-600 cursor-not-allowed" 
+                value={enteredEmail}
+                onChange={(e) => {
+                  setEnteredEmail(e.target.value);
+                  setLoginFeedback('');
+                }}
+                placeholder="Enter your admin email..."
+                required
+                className="w-full text-xs p-3 border border-neutral-300 rounded bg-white focus:outline-none focus:border-gold text-neutral-800" 
               />
+              <p className="text-[9px] text-neutral-400 mt-1">Authorized: dhwaragandhwaragan9@gmail.com, Yomeyom786@gmail.com</p>
             </div>
             <div className="space-y-1">
               <label className="text-xs font-semibold text-neutral-600 block">Secure Password</label>
@@ -676,7 +686,7 @@ export const AdminPanel: React.FC = () => {
           </form>
           <div className="p-3.5 bg-neutral-50 rounded border text-[10px] text-neutral-500 leading-relaxed">
             <span className="font-bold text-neutral-700 uppercase tracking-wide block mb-1">Security Notice:</span>
-            <span>This panel is restricted to authorized administrators only. All access attempts are monitored.</span>
+            <span>This panel is restricted to authorized administrators only.</span>
           </div>
         </motion.div>
       </div>

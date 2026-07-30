@@ -310,7 +310,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     return () => {
       subscription.unsubscribe();
     };
-  }, [products.length]);
+  }, []);
+  // Empty dependency - runs ONCE on mount to prevent infinite re-render loop
+  // (products.length was the previous dependency, but it caused an infinite loop
+  //  because refreshAllData() sets products state, which changes products.length)
 
   const navigateTo = (page: string) => {
     setCurrentPage(page);

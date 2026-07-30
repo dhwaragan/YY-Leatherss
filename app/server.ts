@@ -104,7 +104,7 @@ app.use((req, res, next) => {
   // Referrer Policy
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   // Content Security Policy
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; font-src 'self' data:; connect-src 'self' https: wss:; frame-ancestors 'none';");
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com https://api.razorpay.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: http:; font-src 'self' data: https:; connect-src 'self' https: wss: https://checkout.razorpay.com https://api.razorpay.com; frame-ancestors 'none';");
   // Permissions Policy
   res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
   next();
@@ -751,10 +751,9 @@ function saveDatabase(newDb: Database) {
       fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
     }
     
-    // Sync to Supabase - in serverless mode this MUST complete before the function returns
+    // Sync to Supabase - must complete before function returns to prevent data loss in serverless
     const keysToSync: Array<keyof Database> = ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks'];
     for (const key of keysToSync) {
-      // Use synchronous-style promise handling to ensure data persists
       syncToSupabase(key, db[key]).catch(err => {
         console.error(`[Supabase Sync] Failed to sync '${key}':`, err);
       });

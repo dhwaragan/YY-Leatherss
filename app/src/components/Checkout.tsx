@@ -19,6 +19,7 @@ export const Checkout: React.FC = () => {
   const [address, setAddress] = useState(user?.address || '');
   const [phoneNumber, setPhoneNumber] = useState(user?.phone || '');
   const [selectedState, setSelectedState] = useState('Tamil Nadu');
+  const [editableName, setEditableName] = useState(user?.name || '');
   
   // Birthday Benefit state
   const [includeBirthdayBenefit, setIncludeBirthdayBenefit] = useState<boolean | undefined>(undefined);
@@ -65,6 +66,11 @@ export const Checkout: React.FC = () => {
   const getDeliveryCharge = (state: string, weightKg: number) => {
     const stateLower = state.toLowerCase();
     
+    // Flat ₹1 - Take away from store (NOT per kg)
+    if (stateLower === 'take away from store') {
+      return 1;
+    }
+    
     // ₹60 Per KG - Chennai
     if (stateLower === 'chennai') {
       return 60 * weightKg;
@@ -105,6 +111,7 @@ export const Checkout: React.FC = () => {
   };
 
   const deliveryRates = [
+    { state: 'Take away from store', rate: 1, color: 'bg-green-100 border-green-300' },
     { state: 'Chennai', rate: 60, color: 'bg-purple-100 border-purple-300' },
     { state: 'Tamil Nadu', rate: 80, color: 'bg-blue-100 border-blue-300' },
     { state: 'Andhra Pradesh', rate: 100, color: 'bg-green-100 border-green-300' },
@@ -286,7 +293,7 @@ export const Checkout: React.FC = () => {
         address,
         phone: phoneNumber,
         email: user.email,
-        customer_name: user.name,
+        customer_name: editableName || user.name, // Use editable name if changed
         user_id: user.id,
         items: cart,
         total: orderTotal,
@@ -482,8 +489,15 @@ export const Checkout: React.FC = () => {
               <div className="p-6 space-y-4 font-sans">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1 text-xs">
-                    <label className="font-bold text-neutral-500 uppercase tracking-wide">Patron Name</label>
-                    <input type="text" disabled value={user?.name || 'Inquire login guest'} className="w-full p-3 bg-neutral-55 border border-neutral-150 text-neutral-450 rounded-lg cursor-not-allowed uppercase text-[11px]" />
+                    <label className="font-bold text-neutral-500 uppercase tracking-wide">Patron Name *</label>
+                    <input 
+                      type="text" 
+                      required 
+                      value={editableName} 
+                      onChange={(e) => setEditableName(e.target.value)}
+                      placeholder="Enter your full name" 
+                      className="w-full p-3 border border-neutral-200 rounded-lg focus:outline-none focus:border-gold text-xs" 
+                    />
                   </div>
                   <div className="space-y-1 text-xs">
                     <label className="font-bold text-neutral-500 uppercase tracking-wide">Patron Contact Mail</label>
@@ -511,7 +525,12 @@ export const Checkout: React.FC = () => {
                       📞 Special Destination Delivery: Please contact us at <strong>09344178585</strong> for custom shipping rates to your location.
                     </div>
                   )}
-                  {!requiresManualQuote && (<p className="text-[10px] text-neutral-500 mt-2">Estimated weight: {estimatedWeightKg.toFixed(1)} kg. Delivery fee = ₹{selectedDeliveryRate?.rate ?? 0} × {estimatedWeightKg.toFixed(1)} = ₹{deliveryCharge.toLocaleString('en-IN')}.</p>)}
+                  {!requiresManualQuote && (<p className="text-[10px] text-neutral-500 mt-2">
+                    {selectedState === 'Take away from store' 
+                      ? 'Store pickup: Flat ₹1 (no weight calculation)' 
+                      : `Estimated weight: ${estimatedWeightKg.toFixed(1)} kg. Delivery fee = ₹${selectedDeliveryRate?.rate ?? 0} × ${estimatedWeightKg.toFixed(1)} = ₹${deliveryCharge.toLocaleString('en-IN')}.`
+                    }
+                  </p>)}
                 </div>
 
                  {/* --- OFFER 1: BUYBACK --- */}
@@ -596,7 +615,7 @@ export const Checkout: React.FC = () => {
 
               {isPaymentReady && razorpayOrderId ? (
                 <div className="border-t border-neutral-100 bg-neutral-50 p-6">
-                  <RazorpayPaymentForm amount={orderTotal} orderId={razorpayOrderId} razorpayKeyId={razorpayKeyId} customerName={user?.name || 'Customer'} customerEmail={user?.email || ''} customerPhone={phoneNumber} notes={{ user_id: user?.id || '', address, customer_name: user?.name || '', delivery_region: selectedState, delivery_charge: String(deliveryCharge), estimated_weight_kg: String(estimatedWeightKg), items: JSON.stringify(cart), phone: phoneNumber, applied_offer: appliedOffer }} onSuccess={handlePaymentSuccess} onError={handlePaymentError} onCancel={handlePaymentCancel} />
+                  <RazorpayPaymentForm amount={orderTotal} orderId={razorpayOrderId} razorpayKeyId={razorpayKeyId} customerName={editableName || user?.name || 'Customer'} customerEmail={user?.email || ''} customerPhone={phoneNumber} notes={{ user_id: user?.id || '', address, customer_name: editableName || user?.name || '', delivery_region: selectedState, delivery_charge: String(deliveryCharge), estimated_weight_kg: String(estimatedWeightKg), items: JSON.stringify(cart), phone: phoneNumber, applied_offer: appliedOffer }} onSuccess={handlePaymentSuccess} onError={handlePaymentError} onCancel={handlePaymentCancel} />
                 </div>
               ) : (
                 <div className="bg-neutral-50 px-6 py-4 border-t border-neutral-100 flex items-center justify-between">

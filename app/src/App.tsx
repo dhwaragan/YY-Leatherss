@@ -148,8 +148,21 @@ const AppCore: React.FC = () => {
     ? JSON.parse(cbPolicies.value)
     : { returns: "", privacy: "", terms: "", shipping: "", buyback: "" };
 
-  if (!user) {
+  // Show login only after data is loaded (prevents flash on refresh)
+  if (!user && !isLoading) {
     return <LoginPage />;
+  }
+  
+  // Show loading while auth is being checked
+  if (isLoading && !user) {
+    return (
+      <div className="min-h-screen bg-[#3b2416] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white/60 text-[10px] uppercase tracking-widest">Loading YY Leathers...</p>
+        </div>
+      </div>
+    );
   }
 
   return (

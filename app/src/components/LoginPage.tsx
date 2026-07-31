@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { supabase } from "../supabase";
-import { useApp } from "../context/AppContext";
 
 export const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [email, setEmail] = useState("");
-  const { loginAsUser } = useApp();
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -23,15 +20,6 @@ export const LoginPage: React.FC = () => {
       setErrorMsg(error.message);
       setLoading(false);
     }
-  };
-
-  const handleEmailLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setLoading(true);
-    setErrorMsg("");
-    await loginAsUser(email.trim());
-    setLoading(false);
   };
 
   return (
@@ -104,32 +92,6 @@ export const LoginPage: React.FC = () => {
             />
             <span className="font-bold">Continue with Google</span>
           </button>
-
-          {/* Divider - Test Login (dev only) */}
-          <div className="flex items-center gap-3 my-5">
-            <div className="flex-1 h-px bg-neutral-200"></div>
-            <span className="text-[10px] text-neutral-400 uppercase tracking-widest font-semibold">Or test locally</span>
-            <div className="flex-1 h-px bg-neutral-200"></div>
-          </div>
-
-          {/* Email Login (for local testing) */}
-          <form onSubmit={handleEmailLogin} className="space-y-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email for testing..."
-              className="w-full px-4 py-3 border border-neutral-200 rounded-xl text-sm text-center focus:outline-none focus:border-gold transition-all"
-              required
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-gold hover:bg-gold-dark text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-widest transition-all shadow-md disabled:opacity-75"
-            >
-              Quick Login (Test)
-            </button>
-          </form>
         </div>
 
         <div className="mt-8 text-center text-[10px] text-white/50 uppercase tracking-widest">

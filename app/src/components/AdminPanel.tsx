@@ -6,6 +6,7 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { Product, Order, Offer } from '../types';
+import { isAdminEmail } from '../context/AppContext';
 import {
   Settings, Plus, Edit2, Trash2, Check, X, ShieldAlert,
   Filter, ListCollapse, Award, DollarSign, PenTool, Sparkles,

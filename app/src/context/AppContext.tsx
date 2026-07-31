@@ -120,6 +120,13 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+// Admin emails list - exported so AdminPanel can use it
+const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
+
+export const isAdminEmail = (email: string): boolean => {
+  return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === email.toLowerCase());
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -134,12 +141,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const [selectedProductDetail, setSelectedProductDetail] =
     useState<Product | null>(null);
-  // Admin emails list
-  const ADMIN_EMAILS = useMemo(() => ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"], []);
-  
-  const isAdminEmail = useCallback((email: string): boolean => {
-    return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === email.toLowerCase());
-  }, [ADMIN_EMAILS]);
 
   const [sitewideDiscount, setSitewideDiscount] = useState<number>(() => {
     if (typeof window === "undefined") return 0;
@@ -157,6 +158,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     if (typeof window === "undefined") return true;
     return localStorage.getItem("yy_festival_active") !== "false";
   });
+  
+  // Memoized admin check for this session
+  const isCurrentUserAdmin = useMemo(() => {
+    return user ? isAdminEmail(user.email) : false;
+  }, [user]);
   const getInitialPage = () => {
     if (typeof window === "undefined") return "home";
     const savedPage = window.localStorage.getItem("yy_current_page");
@@ -1114,3 +1120,4 @@ export const useApp = () => {
   }
   return context;
 };
+

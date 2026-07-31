@@ -113,6 +113,9 @@ interface AppContextType {
   festivalName: string;
   festivalCombineWithOffers: boolean;
   isFestivalActive: boolean;
+  
+  // Admin check helper
+  isAdminEmail: (email: string) => boolean;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -1089,15 +1092,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     festivalName,
     festivalCombineWithOffers,
     isFestivalActive,
+    isAdminEmail,
   }), [
     user, cart, products, orders, preorders, offers, heroSlides, contentBlocks,
     customCategories, selectedProductDetail, currentPage, shopCategory, isLoading,
-    sitewideDiscount, navigateTo, loginAsUser, logout, updateUserProfile,
-    bypassAdminLogin, addToCart, removeFromCart, updateCartQuantity, clearCart,
-    updateProductStock, submitPreorder, checkout, addProduct, updateProduct,
-    deleteProduct, updateOrderStatus, evaluatePreorder, addOffer, deleteOffer,
-    updateContentBlock, decrementStock, refreshAllData, festivalName,
-    festivalCombineWithOffers, isFestivalActive,
+    sitewideDiscount, navigateTo, setShopCategory, setSelectedProductDetail,
+    loginAsUser, logout, updateUserProfile, bypassAdminLogin, addToCart, removeFromCart,
+    updateCartQuantity, clearCart, updateProductStock, submitPreorder, checkout,
+    addProduct, updateProduct, deleteProduct, updateOrderStatus, evaluatePreorder,
+    addOffer, deleteOffer, updateContentBlock, decrementStock, refreshAllData,
+    festivalName, festivalCombineWithOffers, isFestivalActive, isAdminEmail,
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

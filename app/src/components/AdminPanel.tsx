@@ -261,12 +261,17 @@ export const AdminPanel: React.FC = () => {
     }
   }, [contentBlocks]);
 
-  // Run ONCE on mount only - prevents infinite re-render loop from context updates
+  // Run on mount AND when admin user logs in
   useEffect(() => {
-    if (hasInitializedRef.current) return;
-    hasInitializedRef.current = true;
-    loadAll();
-  }, []);
+    if (!user) {
+      hasInitializedRef.current = false;
+      return;
+    }
+    if (isAdminEmail(user.email)) {
+      // Admin is logged in - load data
+      loadAll();
+    }
+  }, [user?.email]); // Only re-run when user email changes
 
   const [supabaseStatus, setSupabaseStatus] = useState<{
     connected: boolean; latency_ms?: number; error?: string;

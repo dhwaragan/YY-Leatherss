@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { Product, Order, Offer } from '../types';
 import {
@@ -175,6 +175,12 @@ export const AdminPanel: React.FC = () => {
     sitewideDiscount: globalSitewideDiscount,
     setSitewideDiscount: setGlobalSitewideDiscount,
     setSelectedProductDetail,
+    // Use already-fetched data from context instead of re-fetching from Supabase
+    products: contextProducts,
+    orders: contextOrders,
+    offers: contextOffers,
+    heroSlides: contextHeroSlides,
+    customCategories: contextCustomCategories,
   } = useApp();
 
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -189,6 +195,15 @@ export const AdminPanel: React.FC = () => {
   const [heroSlides, setHeroSlides] = useState<any[]>([]);
   const [customCategories, setCustomCategories] = useState<string[]>([]);
   const [loadingData, setLoadingData] = useState(true);
+  
+  // Prevent re-fetching from Supabase - use context data directly
+  const dataFromContext = useMemo(() => ({
+    products: contextProducts || [],
+    orders: contextOrders || [],
+    offers: contextOffers || [],
+    heroSlides: contextHeroSlides || [],
+    customCategories: contextCustomCategories || [],
+  }), [contextProducts, contextOrders, contextOffers, contextHeroSlides, contextCustomCategories]);
 
   const [currentAdminPass, setCurrentAdminPass] = useState(localStorage.getItem('yy_admin_pass') || '');
   const [newAdminPass, setNewAdminPass] = useState('');
@@ -212,54 +227,10 @@ export const AdminPanel: React.FC = () => {
   const [rejectModalOrder, setRejectModalOrder] = useState<Order | null>(null);
   const [rejectReason, setRejectReason] = useState('');
 
+  // Use context data (already fetched once) instead of making 7+ duplicate Supabase queries
+  const hasInitializedRef = useRef(false);
   const loadAll = useCallback(async () => {
     setLoadingData(true);
-    
-    // Try to fetch from local API first (most reliable), fall back to Supabase
-    let ordersData: Order[] = [];
-    let productsData: Product[] = [];
-    let offersData: Offer[] = [];
-    let heroSlidesData: any[] = [];
-    let customCategoriesData: string[] = [];
-    
-    try {
-      // Fetch orders from local API (always has latest data)
-      const ordersRes = await fetch('/api/orders');
-      if (ordersRes.ok) {
-        ordersData = await ordersRes.json();
-      }
-    } catch (e) {
-      console.warn('Failed to fetch orders from local API, trying Supabase...', e);
-    }
-    
-    // Try Supabase for all data
-    try {
-      const [p, o, off, hs, cc] = await Promise.all([
-        dbGet<Product>('products'),
-        dbGet<Order>('orders'),
-        dbGet<Offer>('offers'),
-        dbGet<any>('hero_slides'),
-        dbGet<string>('custom_categories'),
-      ]);
-      
-      // Only use Supabase data if local API didn't return orders
-      if (ordersData.length === 0) {
-        ordersData = o;
-      } else {
-        // We got orders from local API - sync them to Supabase to keep cloud in sync
-        try {
-          await dbSet('orders', ordersData as any);
-        } catch (e) {
-          console.warn('Failed to sync orders to Supabase', e);
-        }
-      }
-      productsData = p;
-      offersData = off;
-      heroSlidesData = hs;
-      customCategoriesData = cc;
-    } catch (e) {
-      console.warn('Supabase fetch failed, using local API data only', e);
-    }
     
     const DEFAULT_CATEGORIES = [
       "FORMAL - DERBY", "PENNY LOAFERS", "DRIVING LOAFERS", "CHELSEA BOOT",
@@ -267,22 +238,18 @@ export const AdminPanel: React.FC = () => {
       "PREMIUM CHELSEA", "WALLET", "BELT"
     ];
 
-    let syncDataResult: { data: any; error: any } = { data: null, error: null };
-    try {
-      syncDataResult = await supabase.from('yy_store_sync').select('key, value');
-    } catch (e) {
-      // Supabase query failed, will use defaults
-    }
-    const { data: syncData } = syncDataResult;
-    const hasCustomCategories = syncData?.some((r: any) => r.key === 'custom_categories') || false;
-
-    setProducts(productsData);
-    setOrders(ordersData);
-    setOffers(offersData);
-    setHeroSlides(heroSlidesData);
-    setCustomCategories(hasCustomCategories ? (customCategoriesData || []) : DEFAULT_CATEGORIES);
+    // Use context data directly - ZERO additional Supabase queries
+    // Context already fetched all data once in AppContext.fetchPublicData()
+    const { products, orders, offers, heroSlides, customCategories } = dataFromContext;
+    
+    setProducts(products);
+    setOrders(orders);
+    setOffers(offers);
+    setHeroSlides(heroSlides);
+    setCustomCategories(customCategories.length > 0 ? customCategories : DEFAULT_CATEGORIES);
     setLoadingData(false);
 
+    // Load discount from content blocks (already in context)
     const cbDiscount = contentBlocks.find(cb => cb.key === 'sitewide_discount');
     if (cbDiscount) {
       try {
@@ -294,7 +261,12 @@ export const AdminPanel: React.FC = () => {
     }
   }, [contentBlocks]);
 
-  useEffect(() => { loadAll(); }, [loadAll]);
+  // Run ONCE on mount only - prevents infinite re-render loop from context updates
+  useEffect(() => {
+    if (hasInitializedRef.current) return;
+    hasInitializedRef.current = true;
+    loadAll();
+  }, []);
 
   const [supabaseStatus, setSupabaseStatus] = useState<{
     connected: boolean; latency_ms?: number; error?: string;

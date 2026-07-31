@@ -3,17 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, memo } from 'react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import { Eye, ShoppingCart, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
+import { optimizeImage } from '../utils/images';
 
 interface ProductCardProps {
   product: Product;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<ProductCardProps> = memo(({ product }) => {
   const { addToCart, navigateTo, setSelectedProductDetail } = useApp();
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
@@ -83,10 +84,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Shadow Overlay */}
         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 z-10 transition-colors duration-500 ease-in-out" />
 
-        {/* Product Image */}
+        {/* Product Image - lazy loaded + optimized WebP */}
         <img
-          src={product.images?.[0] || 'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop'}
+          src={optimizeImage(product.images?.[0], 400) || 'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=60&w=400&auto=format&fit=crop'}
           alt={product.name}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out will-change-transform"
         />
 
@@ -148,4 +151,4 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     </motion.div>
   );
-};
+});

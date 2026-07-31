@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { AppProvider, useApp } from "./context/AppContext";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -11,12 +11,14 @@ import { PromoSlider } from "./components/PromoSlider";
 import { HeroVideo } from "./components/HeroVideo";
 import { MapEmbed } from "./components/MapEmbed";
 import { ProductCard } from "./components/ProductCard";
-import { ProductDetailPage } from "./components/ProductDetailPage";
-import { BuybackPage } from "./components/BuybackPage";
-import { Checkout } from "./components/Checkout";
-import { AdminPanel } from "./components/AdminPanel";
-import { LoginPage } from "./components/LoginPage";
-import { UserProfile } from "./components/UserProfile";
+
+// Lazy-loaded pages - split the bundle to reduce initial load
+const ProductDetailPage = lazy(() => import("./components/ProductDetailPage").then(m => ({ default: m.ProductDetailPage })));
+const BuybackPage = lazy(() => import("./components/BuybackPage").then(m => ({ default: m.BuybackPage })));
+const Checkout = lazy(() => import("./components/Checkout").then(m => ({ default: m.Checkout })));
+const AdminPanel = lazy(() => import("./components/AdminPanel").then(m => ({ default: m.AdminPanel })));
+const LoginPage = lazy(() => import("./components/LoginPage").then(m => ({ default: m.LoginPage })));
+const UserProfile = lazy(() => import("./components/UserProfile").then(m => ({ default: m.UserProfile })));
 
 import {
   Sparkles,
@@ -97,6 +99,16 @@ const PromotionCountdown: React.FC<{ validUntil: string }> = ({
 
 import { SplashLoader } from "./components/SplashLoader";
 
+// Suspense fallback for lazy-loaded pages
+const PageLoader: React.FC = () => (
+  <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+    <div className="text-center">
+      <div className="w-10 h-10 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-neutral-400 text-[10px] uppercase tracking-widest">Loading...</p>
+    </div>
+  </div>
+);
+
 // ---------------- MAIN APP CORE INTERNALS ----------------
 const AppCore: React.FC = () => {
   const {
@@ -150,7 +162,11 @@ const AppCore: React.FC = () => {
 
   // Show login only after data is loaded (prevents flash on refresh)
   if (!user && !isLoading) {
-    return <LoginPage />;
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <LoginPage />
+      </Suspense>
+    );
   }
   
   // Show loading while auth is being checked
@@ -307,7 +323,9 @@ const AppCore: React.FC = () => {
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <BuybackPage />
+              <Suspense fallback={<PageLoader />}>
+                <BuybackPage />
+              </Suspense>
             </motion.div>
           )}
 
@@ -648,23 +666,27 @@ const AppCore: React.FC = () => {
           )}
 
           {/* ================= 9. USER PROFILE ================= */}
-          {currentPage === "user-profile" && !user && <LoginPage />}
-          {currentPage === "user-profile" && user && <UserProfile />}
+          {currentPage === "user-profile" && !user && <Suspense fallback={<PageLoader />}><LoginPage /></Suspense>}
+          {currentPage === "user-profile" && user && <Suspense fallback={<PageLoader />}><UserProfile /></Suspense>}
 
           {/* ================= 10. CHECKOUT ================= */}
-          {currentPage === "checkout" && (<motion.div key="checkout" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.4, ease: "easeOut" }}><Checkout /></motion.div>)}
+          {currentPage === "checkout" && (<motion.div key="checkout" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.4, ease: "easeOut" }}><Suspense fallback={<PageLoader />}><Checkout /></Suspense></motion.div>)}
 
           {/* ================= 11. ADMIN ================= */}
-          {currentPage === "admin" && (<motion.div key="admin" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.4, ease: "easeOut" }}><AdminPanel /></motion.div>)}
+          {currentPage === "admin" && (<motion.div key="admin" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.4, ease: "easeOut" }}><Suspense fallback={<PageLoader />}><AdminPanel /></Suspense></motion.div>)}
 
           {/* ================= 12. BUYBACK PAGE ================= */}
-          {(currentPage === "sell" || currentPage === "buyback") && (<motion.div key="sell" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.4, ease: "easeOut" }}><BuybackPage /></motion.div>)}
+          {(currentPage === "sell" || currentPage === "buyback") && (<motion.div key="sell" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.4, ease: "easeOut" }}><Suspense fallback={<PageLoader />}><BuybackPage /></Suspense></motion.div>)}
         </AnimatePresence>
       </main>
 
       {/* Product Detail Modal */}
       <AnimatePresence>
-        {selectedProductDetail && (<ProductDetailPage product={selectedProductDetail} onClose={() => setSelectedProductDetail(null)} />)}
+        {selectedProductDetail && (
+          <Suspense fallback={<PageLoader />}>
+            <ProductDetailPage product={selectedProductDetail} onClose={() => setSelectedProductDetail(null)} />
+          </Suspense>
+        )}
       </AnimatePresence>
 
       <Footer />

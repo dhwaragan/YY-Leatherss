@@ -518,7 +518,7 @@ export const Checkout: React.FC = () => {
                 <div className="space-y-1 text-xs">
                   <label className="font-bold text-neutral-600 uppercase tracking-wide">Delivery State *</label>
                   <select value={selectedState} onChange={(e) => setSelectedState(e.target.value)} className="w-full p-3 border border-neutral-200 rounded-lg focus:outline-none focus:border-gold text-xs">
-                    {deliveryRates.map((item) => (<option key={item.state} value={item.state}>{item.state} {typeof item.rate === 'number' ? `(₹${item.rate}/Kg)` : item.contact ? '(Contact for rate)' : ''}</option>))}
+                    {deliveryRates.map((item) => (<option key={item.state} value={item.state}>{item.state} {typeof item.rate === 'number' ? (item.state === 'Take away from store' ? `(₹${item.rate})` : `(₹${item.rate}/Kg)`) : item.contact ? '(Contact for rate)' : ''}</option>))}
                   </select>
                   {requiresManualQuote && (
                     <div className="text-[10px] text-blue-700 bg-blue-50 border border-blue-200 rounded p-2 mt-2">

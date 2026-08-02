@@ -49,6 +49,12 @@
   force = true
 
 [[redirects]]
+  from = "/api/preorders"
+  to = "/.netlify/functions/preorders"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api"
   status = 200

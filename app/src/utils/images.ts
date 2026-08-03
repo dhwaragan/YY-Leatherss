@@ -24,9 +24,10 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
     }
   }
   
-  // Supabase storage images - add resize/compression for bandwidth savings
+  // Supabase storage images - return as-is (public URLs don't support transform params)
+  // Note: Supabase image transformations require the /render/image/ endpoint
   if (url.includes('supabase.co/storage/v1/object/public/')) {
-    return `${url}?width=${width}&quality=60&resize=fit`;
+    return url;
   }
   
   return url;

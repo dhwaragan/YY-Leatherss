@@ -65,5 +65,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/maintenance.html"
   status = 200

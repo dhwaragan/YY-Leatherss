@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>We'll Be Back — YY Leathers Maintenance</title>
+  <style>
+    :root{--bg:#fff7ed;--accent:#0f766e;--muted:#6b7280;--card:#ffffff}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,#fff 0%,#fbf7f3 100%)}
+    body{display:flex;align-items:center;justify-content:center;color:#0f172a}
+    .wrap{width:100%;max-width:1100px;padding:40px;border-radius:12px;background:linear-gradient(180deg,var(--card),#fff);box-shadow:0 20px 60px rgba(15,23,42,0.06);text-align:center}
+    .hero{display:flex;gap:36px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .illustration{width:56%;min-width:320px;max-width:640px;border-radius:12px;background:linear-gradient(180deg,#fff,#fefff9);padding:28px;box-shadow:0 8px 30px rgba(15,23,42,0.05)}
+    .illus-canvas{height:340px;border-radius:8px;background:linear-gradient(135deg,#ffedd5,#fff7ed);display:flex;align-items:center;justify-content:center}
+    .illus-canvas svg{width:80%;height:80%;opacity:0.95}
+    .content{width:40%;min-width:260px;text-align:left}
+    h1{font-size:34px;margin:0 0 12px;letter-spacing:0.6px}
+    p.lead{color:var(--muted);margin:0 0 18px;font-size:15px}
+    .when{font-weight:700;color:var(--accent);margin-bottom:18px}
+    .btn{display:inline-block;padding:12px 20px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+    .btn.secondary{background:#111;color:#fff}
+    .note{font-size:13px;color:#9ca3af;margin-top:18px}
+    @media (max-width:900px){.hero{flex-direction:column-reverse}.illustration{width:100%}.content{width:100%;text-align:center}}
+  </style>
+</head>
+<body>
+    <div class="wrap">
+      <div class="hero">
+        <div class="illustration">
+          <div class="illus-canvas" role="img" aria-label="Maintenance illustration">
+            <!-- Simple illustrative SVG (non-copyright) -->
+            <svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" fill="none">
+              <rect x="0" y="0" width="640" height="480" rx="12" fill="#fff" />
+              <g transform="translate(60,40)">
+                <circle cx="220" cy="140" r="110" fill="#fff3e0" />
+                <path d="M160 200c20-40 80-40 100 0" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+                <rect x="80" y="60" width="140" height="160" rx="14" fill="#fff" stroke="#fde68a" stroke-width="6" />
+                <path d="M200 60c40 20 60 60 48 100" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+                <path d="M50 260c30-30 80-30 120 0" stroke="#7c3aed" stroke-width="8" stroke-linecap="round"/>
+                <!-- Wrench icon -->
+                <g transform="translate(340,80) scale(0.9)">
+                  <path d="M0 60 L40 20 L60 40 L20 80 Z" fill="#fde68a" />
+                  <path d="M10 50 L70 110" stroke="#f97316" stroke-width="12" stroke-linecap="round" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="content">
+          <div class="logo"><img src="/assets/logo.png" alt="YY" style="width:56px;height:56px;object-fit:contain;border-radius:50%"/></div>
+          <h1>WE'LL BE BACK SOON!</h1>
+          <p class="lead">We're doing some quick maintenance. Thanks for your patience — we'll be back online shortly.</p>
+          <div class="when">Maintenance window: 48 hours (starting now)</div>
+          <a class="btn" href="/">Return to Homepage</a>
+          <a class="btn secondary" href="mailto:hello@yyleathers.example" style="margin-left:12px">Contact support</a>
+          <p class="note">Apologies — planned for 3 days earlier but reduced to 2 days. — YY Leathers</p>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

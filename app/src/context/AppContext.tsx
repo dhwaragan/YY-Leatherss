@@ -308,8 +308,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setCache(ORDERS_KEY, mapped, 60 * 1000); // 1 min TTL
         return mapped;
       }
+      console.warn('fetchOrders: non-ok response', res.status, await res.text().catch(() => ''));
     } catch (e) {
       console.error("Error fetching orders:", e);
+    }
+
+    // Fallback: return cached orders if available to keep admin panel usable
+    const cached = getCache<Order[]>(ORDERS_KEY, 60 * 1000);
+    if (cached && cached.length) {
+      console.info('fetchOrders: returning cached orders due to fetch failure');
+      return cached;
     }
     return [];
   }, [mapOrder]);
@@ -324,8 +332,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setCache(PREORDERS_KEY, mapped, 60 * 1000); // 1 min TTL
         return mapped;
       }
+      console.warn('fetchPreorders: non-ok response', res.status, await res.text().catch(() => ''));
     } catch (e) {
       console.error("Error fetching preorders:", e);
+    }
+
+    // Fallback to cached preorders
+    const cached = getCache<Preorder[]>(PREORDERS_KEY, 60 * 1000);
+    if (cached && cached.length) {
+      console.info('fetchPreorders: returning cached preorders due to fetch failure');
+      return cached;
     }
     return [];
   }, [mapPreorder]);
@@ -355,15 +371,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setContentBlocks(cached.contentBlocks);
         setHeroSlides(cached.heroSlides);
         setCustomCategories(cached.customCategories);
-        // Fetch orders/preorders SEPARATELY for admin even on cache hit
+        // Only set orders/preorders if admin is logged in
         const savedU = localStorage.getItem("yy_user");
         if (savedU) {
           try {
             const su = JSON.parse(savedU);
             if (isAdminEmail(su.email)) {
-              const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
-              setOrders(orderData);
-              setPreorders(preorderData);
+              setOrders(cached.orders || []);
+              setPreorders(cached.preorders || []);
             }
           } catch {}
         }
@@ -394,7 +409,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setIsLoading(false);
       hasLoadedRef.current = true;
     };
-    
     init();
 
     // Check Supabase session and listen for changes
@@ -426,10 +440,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setUser(profile);
         localStorage.setItem("yy_user", JSON.stringify(profile));
         
-        // If admin, fetch orders/preorders now and SET STATE
+        // If admin, fetch orders/preorders now
         if (isAdminEmail(profile.email)) {
-          fetchOrders().then(data => setOrders(data));
-          fetchPreorders().then(data => setPreorders(data));
+          fetchOrders();
+          fetchPreorders();
         }
       }
     }).catch(e => {
@@ -458,10 +472,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
         if (event === "SIGNED_IN") {
           const isAdmin = isAdminEmail(session.user.email || "");
-          // If admin signed in, fetch admin data and SET STATE
+          // If admin signed in, fetch admin data
           if (isAdmin) {
-            fetchOrders().then(data => setOrders(data));
-            fetchPreorders().then(data => setPreorders(data));
+            fetchOrders();
+            fetchPreorders();
           }
           setCurrentPage(isAdmin ? "admin" : "home");
         }
@@ -598,23 +612,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setUser(adminProfile);
       localStorage.setItem("yy_user", JSON.stringify(adminProfile));
       
-      // Admin logged in - fetch admin data DIRECTLY (don't use refreshAllData which has stale user state)
-      removeCache(PUBLIC_DATA_KEY);
-      const pubData = await fetchPublicData();
-      setProducts(pubData.products.map(mapProduct));
-      setOffers(pubData.offers);
-      setContentBlocks(pubData.contentBlocks);
-      setHeroSlides(pubData.heroSlides);
-      setCustomCategories(pubData.customCategories);
-      const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
-      setOrders(orderData);
-      setPreorders(preorderData);
+      // Admin logged in - fetch admin data
+      refreshAllData();
       return true;
     } catch (e) {
       console.error(e);
       return false;
     }
-  }, [isAdminEmail, fetchPublicData, mapProduct, fetchOrders, fetchPreorders]);
+  }, [isAdminEmail, refreshAllData]);
 
   const logout = useCallback(async () => {
     await supabase.auth.signOut();

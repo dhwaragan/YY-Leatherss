@@ -274,6 +274,18 @@ export const AdminPanel: React.FC = () => {
     }
   }, [user?.email]); // Only re-run when user email changes
 
+  // Keep local admin panel state in sync with context updates (orders/offers/products)
+  useEffect(() => {
+    // Only update when admin is signed in
+    if (!user || !isAdminEmail(user.email)) return;
+    setProducts(contextProducts || []);
+    setOrders(contextOrders || []);
+    setOffers(contextOffers || []);
+    setHeroSlides(contextHeroSlides || []);
+    setCustomCategories(contextCustomCategories || []);
+    setLoadingData(false);
+  }, [contextProducts, contextOrders, contextOffers, contextHeroSlides, contextCustomCategories, user]);
+
   const [supabaseStatus, setSupabaseStatus] = useState<{
     connected: boolean; latency_ms?: number; error?: string;
     row_counts?: Record<string, number>;
@@ -1259,7 +1271,7 @@ export const AdminPanel: React.FC = () => {
                 <button className="wb-btn" onClick={() => window.open('/', '_blank')}>
                   🛍️ Live Shop
                 </button>
-                <button className="wb-btn" onClick={loadAll}>
+                <button className="wb-btn" onClick={() => { setLoadingData(true); refreshAllData().finally(() => setLoadingData(false)); }}>
                   <RefreshCw className="w-3.5 h-3.5" /> Refresh
                 </button>
                 <button className="wb-btn gold" onClick={handleTriggerAddProduct}>
@@ -2033,7 +2045,7 @@ export const AdminPanel: React.FC = () => {
                         <button onClick={fetchSupabaseStatus} className="bg-neutral-200 text-neutral-700 font-bold text-[10px] tracking-widest uppercase py-3 px-5 rounded hover:bg-neutral-300 cursor-pointer flex items-center gap-1.5">
                           <RefreshCw className="w-3.5 h-3.5" /> Refresh Diagnostics
                         </button>
-                        <button onClick={loadAll} className="bg-leather text-white font-bold text-[10px] tracking-widest uppercase py-3 px-5 rounded hover:bg-gold cursor-pointer flex items-center gap-1.5">
+                        <button onClick={() => { setLoadingData(true); refreshAllData().finally(() => setLoadingData(false)); }} className="bg-leather text-white font-bold text-[10px] tracking-widest uppercase py-3 px-5 rounded hover:bg-gold cursor-pointer flex items-center gap-1.5">
                           <Database className="w-3.5 h-3.5" /> Reload All Data
                         </button>
                       </div>

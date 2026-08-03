@@ -54,6 +54,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -77,19 +78,16 @@
       ],
       "category": "CHELSEA BOOT",
       "sizeMRPs": {
-        "8": 2999,
-        "9": 2999
+        "8": 2999
       },
       "weight_kg": 2,
       "created_at": "2026-07-13T18:17:37.891Z",
       "sizePrices": {
-        "8": 1799,
-        "9": 1799
+        "8": 1799
       },
       "description": "Italian Chelsea Crust Leather Boot – Black Patina\n\nCrafted from premium Italian crust leather, this Chelsea Boot combines timeless craftsmanship with modern elegance. The naturally finished crust leather develops a rich patina over time, making every pair uniquely yours. Featuring a clean, streamlined silhouette with a refined round toe, it delivers effortless sophistication for both formal and smart-casual occasions.\n\nThe elastic side panels and pull tabs ensure easy slip-on convenience, while the soft leather lining and cushioned footbed provide exceptional comfort throughout the day. Finished with a durable anti-slip outsole, this boot is designed to offer lasting performance without compromising on style.\n\nKey Features\nPremium Italian crust leather upper\nRich hand-finished surface that develops a unique patina\nClassic Chelsea boot with stretch elastic side panels\nSoft genuine leather lining for breathability\nCushioned leather footbed for all-day comfort\nDurable anti-slip outsole for reliable traction\nRear pull tabs for easy wear\nRefined round-toe silhouette for versatile styling\nPerfect for business, formal, and smart-casual wear",
       "sizeWeights": {
-        "8": 2,
-        "9": 2
+        "8": 2
       },
       "is_published": true,
       "is_best_seller": true,
@@ -129,6 +127,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -168,6 +167,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -201,6 +201,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -239,6 +240,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -280,6 +282,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -327,6 +330,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -374,6 +378,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -413,6 +418,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -450,6 +456,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -492,6 +499,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -533,6 +541,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -571,6 +580,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -617,6 +627,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -658,6 +669,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -707,6 +719,7 @@
         "12": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -748,6 +761,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -782,6 +796,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -815,6 +830,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -848,6 +864,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -885,6 +902,7 @@
         "8": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -928,6 +946,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -975,6 +994,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1014,6 +1034,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1058,6 +1079,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1108,6 +1130,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1151,6 +1174,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1194,6 +1218,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1245,6 +1270,7 @@
         "11": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1289,6 +1315,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1333,6 +1360,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1376,6 +1404,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1419,6 +1448,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1463,6 +1493,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1506,6 +1537,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1550,6 +1582,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false
     },
@@ -1594,6 +1627,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false
     },
@@ -1638,6 +1672,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false
     },
@@ -1682,8 +1717,17 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
-      "is_new_arrival": false
+      "is_new_arrival": false,
+      "sizeQuantities": {
+        "6": 0,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 2
+      }
     },
     {
       "id": "prod-1784231358825",
@@ -1726,6 +1770,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1775,6 +1820,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1823,6 +1869,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1871,6 +1918,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": true,
       "sizeQuantities": {
@@ -1916,6 +1964,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": true,
       "sizeQuantities": {
@@ -1950,6 +1999,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -1981,6 +2031,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2012,6 +2063,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2052,6 +2104,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2089,6 +2142,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2127,6 +2181,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2166,6 +2221,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2209,6 +2265,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2252,6 +2309,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2292,6 +2350,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2335,6 +2394,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2379,6 +2439,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2426,6 +2487,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2470,6 +2532,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2508,6 +2571,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2549,6 +2613,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2596,6 +2661,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2644,6 +2710,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2692,6 +2759,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2737,6 +2805,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2784,6 +2853,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2830,6 +2900,7 @@
         "10": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2878,6 +2949,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2926,6 +2998,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -2974,6 +3047,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3022,6 +3096,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3070,6 +3145,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3118,6 +3194,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3167,6 +3244,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3215,6 +3293,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3265,6 +3344,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3317,6 +3397,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3369,6 +3450,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3421,6 +3503,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3472,6 +3555,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3517,6 +3601,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3554,6 +3639,7 @@
         "7": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3586,6 +3672,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3623,6 +3710,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3659,6 +3747,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3697,6 +3786,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3730,6 +3820,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3761,6 +3852,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3792,6 +3884,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3823,6 +3916,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3854,6 +3948,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3885,6 +3980,7 @@
         "10": 1
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3923,6 +4019,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -3974,6 +4071,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": true,
       "sizeQuantities": {
@@ -4027,6 +4125,7 @@
         "11": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": true,
       "sizeQuantities": {
@@ -4071,6 +4170,7 @@
         "9": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": false,
       "is_new_arrival": true,
       "sizeQuantities": {
@@ -4136,12 +4236,13 @@
       ],
       "phone": "8281956432",
       "total": 1663.1,
-      "status": "Ordered",
+      "status": "Dispatched",
       "address": "Chemmannur bank erratupetta Kottayam Kerala 686121",
       "user_id": "a6077702-d4e3-4e1a-acfd-3718726a81a9",
       "created_at": "2026-07-31T13:49:19.609Z",
       "applied_offer": "buyback",
       "customer_name": "Nishamolpv Pv",
+      "customer_email": "",
       "buyback_details": {
         "status": "Pending"
       },
@@ -4221,12 +4322,13 @@
       ],
       "phone": "7299795996",
       "total": 1541,
-      "status": "Dispatched",
+      "status": "Delivered",
       "address": "112, Seven Wells Street MINT NEAR Muslim government school chennai-600001",
       "user_id": "fd5b16b6-4683-4397-9b1f-bd9bdc23b51e",
       "created_at": "2026-07-30T17:00:56.724Z",
       "applied_offer": "student",
       "customer_name": "Priya Dharshan",
+      "customer_email": "",
       "buyback_details": null,
       "delivery_charge": 120,
       "delivery_region": "Chennai",
@@ -4313,6 +4415,7 @@
       "created_at": "2026-07-28T18:54:41.600Z",
       "applied_offer": "buyback",
       "customer_name": "Shigin Raj",
+      "customer_email": "",
       "buyback_details": {
         "status": "Pending"
       },
@@ -4360,6 +4463,7 @@
       "created_at": "2026-07-28T15:59:54.247Z",
       "applied_offer": "none",
       "customer_name": "dhwaragan mass",
+      "customer_email": "",
       "buyback_details": null,
       "delivery_charge": 6,
       "delivery_region": "Chennai",
@@ -4441,6 +4545,7 @@
       "created_at": "2026-07-28T07:56:48.426Z",
       "applied_offer": "buyback",
       "customer_name": "ramanashcr7",
+      "customer_email": "",
       "buyback_details": {
         "status": "Pending"
       },
@@ -4503,6 +4608,7 @@
       "created_at": "2026-07-27T15:12:05.957Z",
       "applied_offer": "birthday",
       "customer_name": "Aswini A",
+      "customer_email": "",
       "buyback_details": null,
       "delivery_charge": 80,
       "delivery_region": "Tamil Nadu",
@@ -4579,6 +4685,7 @@
       "created_at": "2026-07-26T10:27:15.499Z",
       "applied_offer": "buyback",
       "customer_name": "dhwaragandhwaragan9",
+      "customer_email": "",
       "buyback_details": {
         "status": "Confirmed"
       },
@@ -4627,6 +4734,7 @@
       "created_at": "2026-07-26T09:46:52.401Z",
       "applied_offer": "none",
       "customer_name": "dhwaragan mass",
+      "customer_email": "",
       "buyback_details": null,
       "delivery_charge": 1,
       "delivery_region": "Tamil Nadu",
@@ -4700,6 +4808,7 @@
       "created_at": "2026-07-26T09:46:21.011Z",
       "applied_offer": "buyback",
       "customer_name": "Jagadev Sakthi",
+      "customer_email": "",
       "buyback_details": {
         "status": "Pending"
       },
@@ -4745,6 +4854,7 @@
       "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
       "created_at": "2026-07-26T09:27:32.395Z",
       "customer_name": "Dhwaragan Dhwaragan",
+      "customer_email": "",
       "razorpay_order_id": "order_TI56FiR4HwiQm7",
       "razorpay_payment_id": "pay_TI56wXtvQgcwhM"
     }
@@ -4834,7 +4944,7 @@
     {
       "id": "cb-festival_active",
       "key": "festival_active",
-      "value": "true"
+      "value": "false"
     },
     {
       "id": "cb-festival_name",

@@ -1,7 +1,7 @@
 /**
  * Image optimization utilities.
- * - Enhances Unsplash URLs to request WebP + compressed sizes
- * - Prevents duplicate downloads through CDN params
+ * - Enhances Unsplash/Cloudinary URLs to request WebP + compressed sizes
+ * - Generates srcset for responsive loading
  * - Adds lazy loading attributes
  */
 
@@ -25,12 +25,36 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
   }
   
   // Supabase storage images - return as-is (public URLs don't support transform params)
-  // Note: Supabase image transformations require the /render/image/ endpoint
   if (url.includes('supabase.co/storage/v1/object/public/')) {
     return url;
   }
   
   return url;
+}
+
+// Generate srcset for responsive images (STEP 4)
+// Creates multiple width versions for Unsplash and Cloudinary
+export function generateSrcSet(url: string | undefined, maxWidth: number = 800): string {
+  if (!url) return '';
+  
+  // Unsplash srcset - multiple widths
+  if (url.includes('images.unsplash.com')) {
+    const baseUrl = url.split('?')[0];
+    const widths = [320, 480, 640, 800, 1200].filter(w => w <= Math.max(maxWidth, 800));
+    return widths.map(w => `${baseUrl}?q=60&w=${w}&auto=format&fit=crop ${w}w`).join(', ');
+  }
+  
+  // Cloudinary srcset - multiple widths
+  if (url.includes('cloudinary.com')) {
+    const parts = url.split('/upload/');
+    if (parts.length === 2) {
+      const widths = [320, 480, 640, 800, 1200].filter(w => w <= Math.max(maxWidth, 800));
+      return widths.map(w => `${parts[0]}/upload/f_auto,q_60,w_${w}/${parts[1]} ${w}w`).join(', ');
+    }
+  }
+  
+  // Supabase - can't generate srcset, return empty (browser uses src)
+  return '';
 }
 
 // Lazy loading props for images
@@ -42,20 +66,27 @@ export function lazyImgProps(src: string, width: number = 600) {
   };
 }
 
-// IntersectionObserver-based lazy loading helper (STEP 7)
-// Only loads images when they scroll into view
-export function createLazyImageObserver(callback: (img: HTMLImageElement) => void): IntersectionObserver | null {
-  if (typeof IntersectionObserver === 'undefined') return null;
-  return new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target as HTMLImageElement;
-          callback(img);
-          (entry.target as any)._yyObserver?.unobserve(img);
-        }
-      });
-    },
-    { rootMargin: '200px' }
-  );
+// Responsive image props with srcset (STEP 4 + STEP 5)
+export function responsiveImgProps(src: string | undefined, displayWidth: number = 400, sizes?: string) {
+  if (!src) return { src: '', loading: 'lazy' as const, decoding: 'async' as const };
+  return {
+    src: optimizeImage(src, displayWidth),
+    srcSet: generateSrcSet(src, displayWidth),
+    sizes: sizes || `${displayWidth}px`,
+    loading: 'lazy' as const,
+    decoding: 'async' as const,
+  };
+}
+
+// Eager loading props for above-the-fold images (STEP 6)
+export function eagerImgProps(src: string | undefined, displayWidth: number = 800, sizes?: string) {
+  if (!src) return { src: '', loading: 'eager' as const, decoding: 'async' as const, fetchPriority: 'high' as const };
+  return {
+    src: optimizeImage(src, displayWidth),
+    srcSet: generateSrcSet(src, displayWidth),
+    sizes: sizes || `${displayWidth}px`,
+    loading: 'eager' as const,
+    decoding: 'async' as const,
+    fetchPriority: 'high' as const,
+  };
 }

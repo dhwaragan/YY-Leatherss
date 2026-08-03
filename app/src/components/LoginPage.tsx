@@ -48,9 +48,11 @@ export const LoginPage: React.FC = () => {
           <div className="flex justify-center mb-4">
             <div className="p-2 border-2 border-white/10 rounded-full bg-white/5 backdrop-blur-sm self-center">
               <img
-                src="https://res.cloudinary.com/domuelr1f/image/upload/v1781330047/WhatsApp_Image_2026-06-06_at_8.18.23_PM_1_a7mhk6.jpg"
+                src="https://res.cloudinary.com/domuelr1f/image/upload/f_auto,q_60,w_128/v1781330047/WhatsApp_Image_2026-06-06_at_8.18.23_PM_1_a7mhk6.jpg"
                 alt="YY Leathers Logo"
                 className="w-16 h-16 object-cover rounded-full"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </div>

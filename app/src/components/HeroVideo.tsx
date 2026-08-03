@@ -19,6 +19,7 @@ import {
   Instagram
 } from 'lucide-react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { optimizeImage } from '../utils/images';
 
 let globalAppHasLoaded = false;
 
@@ -335,8 +336,10 @@ export const HeroSection: React.FC = () => {
                       className="w-[200px] h-[160px] sm:w-[260px] sm:h-[200px] bg-white rounded-2xl border border-leather/10 flex items-center justify-center hover:border-gold hover:shadow-[0_15px_30px_rgba(212,175,55,0.2)] transition-all relative overflow-hidden duration-300 transform group-hover:-translate-y-2 shadow-md"
                     >
                       <img 
-                        src={slide.image_url} 
-                        alt={slide.category} 
+                        src={optimizeImage(slide.image_url, 400)} 
+                        alt={slide.category}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                       />
                     </div>
@@ -353,8 +356,10 @@ export const HeroSection: React.FC = () => {
                       className="w-[200px] h-[160px] sm:w-[260px] sm:h-[200px] bg-white rounded-2xl border border-leather/10 flex items-center justify-center hover:border-gold hover:shadow-[0_15px_30px_rgba(212,175,55,0.2)] transition-all relative overflow-hidden duration-300 transform group-hover:-translate-y-2 shadow-md"
                     >
                       <img 
-                        src={prod.images[0] || 'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=200&auto=format&fit=crop'} 
-                        alt={prod.name} 
+                        src={optimizeImage(prod.images[0], 400) || 'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=60&w=400&auto=format&fit=crop'} 
+                        alt={prod.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                       />
                     </div>

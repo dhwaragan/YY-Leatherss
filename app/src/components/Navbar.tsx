@@ -9,6 +9,7 @@ import { ShoppingBag, User, LogOut, ShieldAlert, X, Menu, Settings, Check, Credi
 import { motion, AnimatePresence } from 'motion/react';
 import { LogoNavbar } from './Logo';
 import { TopSlider } from './TopSlider';
+import { optimizeImage } from '../utils/images';
 
 export const Navbar: React.FC = () => {
   const { 
@@ -240,9 +241,11 @@ export const Navbar: React.FC = () => {
                       className="flex items-center space-x-4 border-b border-neutral-100 pb-4"
                     >
                       <img 
-                        src={item.product.images[0] || undefined} 
+                        src={optimizeImage(item.product.images[0], 128) || undefined} 
                         alt={item.product.name} 
                         className="w-16 h-16 object-cover border border-neutral-100 bg-neutral-50 rounded"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div className="flex-1">
                         <h4 className="font-serif text-xs font-bold text-neutral-800 tracking-wider line-clamp-1">

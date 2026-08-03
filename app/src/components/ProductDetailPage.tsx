@@ -8,6 +8,7 @@ import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import { X, ShoppingBag, Eye, Calendar, Sparkles, Shield, RefreshCw, GraduationCap } from 'lucide-react';
 import { motion } from 'motion/react';
+import { optimizeImage } from '../utils/images';
 
 interface ProductDetailPageProps {
   product: Product;
@@ -252,10 +253,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
           <div className="lg:col-span-7 space-y-4">
             <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-neutral-100 bg-neutral-50 group">
               <img
-                src={activeImage || product.images[0]}
+                src={optimizeImage(activeImage || product.images[0], 800)}
                 alt={product.name || "Crafted Leather Shoes"}
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 loading="eager"
+                decoding="async"
+                fetchPriority="high"
               />
               {product.is_new_arrival && (
                 <span className="absolute top-3 left-3 bg-gold text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">

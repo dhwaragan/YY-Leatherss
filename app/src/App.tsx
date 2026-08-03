@@ -11,6 +11,7 @@ import { PromoSlider } from "./components/PromoSlider";
 import { HeroVideo } from "./components/HeroVideo";
 import { MapEmbed } from "./components/MapEmbed";
 import { ProductCard } from "./components/ProductCard";
+import { optimizeImage } from "./utils/images";
 
 // Lazy-loaded pages - split the bundle to reduce initial load
 const ProductDetailPage = lazy(() => import("./components/ProductDetailPage").then(m => ({ default: m.ProductDetailPage })));
@@ -485,7 +486,7 @@ const AppCore: React.FC = () => {
                       {cart.map((item, idx) => (
                         <div key={`${item.product.id}-${item.selectedSize}-${idx}`} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-neutral-100 pb-6 last:border-0 last:pb-0 font-sans">
                           <div className="flex items-center gap-4">
-                            <img src={item.product.images[0] || undefined} alt={item.product.name} className="w-20 h-20 object-cover border border-neutral-150 bg-neutral-50 rounded-lg shadow-2xs" />
+                            <img src={optimizeImage(item.product.images[0], 160) || undefined} alt={item.product.name} loading="lazy" decoding="async" className="w-20 h-20 object-cover border border-neutral-150 bg-neutral-50 rounded-lg shadow-2xs" />
                             <div>
                               <h4 className="font-serif text-sm font-bold text-neutral-900 group-hover:text-leather">{item.product.name}</h4>
                               <p className="text-[10px] text-neutral-400 uppercase tracking-wider font-semibold mt-0.5 font-sans">{item.product.category}</p>
@@ -556,7 +557,7 @@ const AppCore: React.FC = () => {
                 <div className="space-y-24">
                   {products.filter((p) => p.is_best_seller && p.is_published).map((p, index) => (
                     <div key={p.id} className={`flex flex-col md:flex-row gap-12 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-                      <div className="w-full md:w-1/2 overflow-hidden rounded-xl border-2 border-gold/10 aspect-[4/3] relative shadow-lg"><img src={p.images[0] || undefined} alt="" className="w-full h-full object-cover" /></div>
+                      <div className="w-full md:w-1/2 overflow-hidden rounded-xl border-2 border-gold/10 aspect-[4/3] relative shadow-lg"><img src={optimizeImage(p.images[0], 800) || undefined} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" /></div>
                       <div className="w-full md:w-1/2 space-y-4 font-sans select-none">
                         <span className="text-gold text-[10px] uppercase font-bold tracking-widest block">SPECIAL CROWN 0{index + 1}</span>
                         <h2 className="font-serif text-2xl sm:text-4xl text-neutral-900 font-bold">{p.name}</h2>

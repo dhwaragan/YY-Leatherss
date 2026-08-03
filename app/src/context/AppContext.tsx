@@ -355,14 +355,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setContentBlocks(cached.contentBlocks);
         setHeroSlides(cached.heroSlides);
         setCustomCategories(cached.customCategories);
-        // Only set orders/preorders if admin is logged in
+        // Fetch orders/preorders SEPARATELY for admin even on cache hit
         const savedU = localStorage.getItem("yy_user");
         if (savedU) {
           try {
             const su = JSON.parse(savedU);
             if (isAdminEmail(su.email)) {
-              setOrders(cached.orders || []);
-              setPreorders(cached.preorders || []);
+              const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
+              setOrders(orderData);
+              setPreorders(preorderData);
             }
           } catch {}
         }
@@ -597,14 +598,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setUser(adminProfile);
       localStorage.setItem("yy_user", JSON.stringify(adminProfile));
       
-      // Admin logged in - fetch admin data
-      refreshAllData();
+      // Admin logged in - fetch admin data DIRECTLY (don't use refreshAllData which has stale user state)
+      removeCache(PUBLIC_DATA_KEY);
+      const pubData = await fetchPublicData();
+      setProducts(pubData.products.map(mapProduct));
+      setOffers(pubData.offers);
+      setContentBlocks(pubData.contentBlocks);
+      setHeroSlides(pubData.heroSlides);
+      setCustomCategories(pubData.customCategories);
+      const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
+      setOrders(orderData);
+      setPreorders(preorderData);
       return true;
     } catch (e) {
       console.error(e);
       return false;
     }
-  }, [isAdminEmail, refreshAllData]);
+  }, [isAdminEmail, fetchPublicData, mapProduct, fetchOrders, fetchPreorders]);
 
   const logout = useCallback(async () => {
     await supabase.auth.signOut();

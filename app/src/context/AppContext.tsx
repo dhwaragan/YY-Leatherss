@@ -378,14 +378,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setContentBlocks(data.contentBlocks);
       setHeroSlides(data.heroSlides);
       setCustomCategories(data.customCategories);
-      // Only set orders/preorders if admin is logged in
+      // Fetch orders/preorders SEPARATELY for admin (not in public data)
       const savedU2 = localStorage.getItem("yy_user");
       if (savedU2) {
         try {
           const su = JSON.parse(savedU2);
           if (isAdminEmail(su.email)) {
-            setOrders(data.orders || []);
-            setPreorders(data.preorders || []);
+            const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
+            setOrders(orderData);
+            setPreorders(preorderData);
           }
         } catch {}
       }
@@ -424,10 +425,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setUser(profile);
         localStorage.setItem("yy_user", JSON.stringify(profile));
         
-        // If admin, fetch orders/preorders now
+        // If admin, fetch orders/preorders now and SET STATE
         if (isAdminEmail(profile.email)) {
-          fetchOrders();
-          fetchPreorders();
+          fetchOrders().then(data => setOrders(data));
+          fetchPreorders().then(data => setPreorders(data));
         }
       }
     }).catch(e => {
@@ -456,10 +457,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
         if (event === "SIGNED_IN") {
           const isAdmin = isAdminEmail(session.user.email || "");
-          // If admin signed in, fetch admin data
+          // If admin signed in, fetch admin data and SET STATE
           if (isAdmin) {
-            fetchOrders();
-            fetchPreorders();
+            fetchOrders().then(data => setOrders(data));
+            fetchPreorders().then(data => setPreorders(data));
           }
           setCurrentPage(isAdmin ? "admin" : "home");
         }

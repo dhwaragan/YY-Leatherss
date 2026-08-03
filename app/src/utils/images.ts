@@ -1,6 +1,6 @@
 /**
  * Image optimization utilities.
- * - Enhances Unsplash/Cloudinary URLs to request WebP + compressed sizes
+ * - Enhances Unsplash/Cloudinary/Supabase URLs to request compressed sizes
  * - Generates srcset for responsive loading
  * - Adds lazy loading attributes
  */
@@ -24,16 +24,18 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
     }
   }
   
-  // Supabase storage images - return as-is (public URLs don't support transform params)
+  // Supabase storage images - use /render/image/ endpoint for server-side transformation
+  // This resizes and compresses images server-side, drastically reducing bandwidth
   if (url.includes('supabase.co/storage/v1/object/public/')) {
-    return url;
+    const renderUrl = url.replace('/storage/v1/object/public/', '/storage/v1/render/image/public/');
+    return `${renderUrl}?width=${width}&height=${width}&resize=cover&quality=60`;
   }
   
   return url;
 }
 
 // Generate srcset for responsive images (STEP 4)
-// Creates multiple width versions for Unsplash and Cloudinary
+// Creates multiple width versions for Unsplash, Cloudinary, and Supabase
 export function generateSrcSet(url: string | undefined, maxWidth: number = 800): string {
   if (!url) return '';
   
@@ -53,7 +55,13 @@ export function generateSrcSet(url: string | undefined, maxWidth: number = 800):
     }
   }
   
-  // Supabase - can't generate srcset, return empty (browser uses src)
+  // Supabase srcset - multiple widths via render/image endpoint
+  if (url.includes('supabase.co/storage/v1/object/public/')) {
+    const renderUrl = url.replace('/storage/v1/object/public/', '/storage/v1/render/image/public/');
+    const widths = [320, 480, 640, 800].filter(w => w <= Math.max(maxWidth, 800));
+    return widths.map(w => `${renderUrl}?width=${w}&height=${w}&resize=cover&quality=60 ${w}w`).join(', ');
+  }
+  
   return '';
 }
 

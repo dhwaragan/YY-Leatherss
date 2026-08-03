@@ -241,7 +241,7 @@ app.post('/api/stripe/create-checkout-session', async (req, res) => {
       created_at: new Date().toISOString(),
     };
     db.orders.unshift(pendingOrder);
-    saveDatabase(db);
+    saveDatabase(db, 'orders');
 
     const line_items = items.map((item: any) => ({
       price_data: {
@@ -276,7 +276,7 @@ app.post('/api/stripe/create-checkout-session', async (req, res) => {
       });
     }
 
-    // Add a placeholder for processing fee, if necessary
+      // Add a placeholder for processing fee, if necessary
     const processingFee = Math.round(total * 0.025);
     if (processingFee > 0) {
       line_items.push({
@@ -380,7 +380,7 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async
       } else {
         db.orders.unshift(newOrder);
       }
-      saveDatabase(db);
+      saveDatabase(db, 'orders');
       console.log('Order saved to DB:', newOrder);
 
       break;
@@ -700,9 +700,11 @@ async function syncToSupabase(key: string, value: any) {
 async function pullFromSupabase() {
   console.log("[Supabase Sync] Retrieving dynamic cloud records from Supabase PostgreSQL...");
   try {
+    // KEY OPTIMIZATION: Only pull these known keys - avoids downloading unused data
     const { data, error } = await supabase
       .from('yy_store_sync')
-      .select('*');
+      .select('key, value')
+      .in('key', ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks']);
     
     if (error) {
       if (error.code === '42P01') {
@@ -742,7 +744,7 @@ async function pullFromSupabase() {
   return false;
 }
 
-function saveDatabase(newDb: Database) {
+function saveDatabase(newDb: Database, changedKey?: string) {
   try {
     db = newDb;
     
@@ -751,10 +753,13 @@ function saveDatabase(newDb: Database) {
       fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
     }
     
-    // Sync to Supabase - must complete before function returns to prevent data loss in serverless
-    const keysToSync: Array<keyof Database> = ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks'];
+    // KEY OPTIMIZATION: Only sync the changed key, NOT all 6 collections on every mutation.
+    // This prevents re-uploading everything when only one field changes.
+    const keysToSync: Array<keyof Database> = changedKey 
+      ? [changedKey as keyof Database]
+      : ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks'];
     for (const key of keysToSync) {
-      syncToSupabase(key, db[key]).catch(err => {
+      syncToSupabase(String(key), db[key]).catch(err => {
         console.error(`[Supabase Sync] Failed to sync '${key}':`, err);
       });
     }
@@ -804,7 +809,7 @@ app.get('/api/auth/profile/:email', (req, res) => {
     created_at: new Date().toISOString()
   };
   db.profiles.push(newProfile);
-  saveDatabase(db);
+  saveDatabase(db, 'profiles');
   res.json(newProfile);
 });
 
@@ -819,7 +824,7 @@ app.post('/api/auth/profile', (req, res) => {
     updatedProfile.created_at = new Date().toISOString();
     db.profiles.push(updatedProfile);
   }
-  saveDatabase(db);
+  saveDatabase(db, 'profiles');
   res.json({ success: true, profile: db.profiles.find(p => p.email.toLowerCase() === updatedProfile.email.toLowerCase()) });
 });
 
@@ -843,7 +848,7 @@ app.post('/api/products', authenticateAdmin, (req, res) => {
   newProduct.is_published = newProduct.is_published !== false;
 
   db.products.unshift(newProduct);
-  saveDatabase(db);
+  saveDatabase(db, 'products');
   res.json({ success: true, product: newProduct });
 });
 
@@ -853,7 +858,7 @@ app.put('/api/products/:id', authenticateAdmin, (req, res) => {
   const index = db.products.findIndex(p => p.id === id);
   if (index !== -1) {
     db.products[index] = { ...db.products[index], ...updatedData, id };
-    saveDatabase(db);
+    saveDatabase(db, 'products');
     return res.json({ success: true, product: db.products[index] });
   }
   res.status(404).json({ success: false, message: "Footwear not found." });
@@ -864,7 +869,7 @@ app.delete('/api/products/:id', authenticateAdmin, (req, res) => {
   const initialCount = db.products.length;
   db.products = db.products.filter(p => p.id !== id);
   if (db.products.length < initialCount) {
-    saveDatabase(db);
+    saveDatabase(db, 'products');
     return res.json({ success: true });
   }
   res.status(404).json({ success: false, message: "Product not found." });
@@ -920,7 +925,7 @@ app.post('/api/orders', (req, res) => {
   };
   
   db.orders.unshift(newOrder);
-  saveDatabase(db);
+  saveDatabase(db, 'orders');
   res.json({ success: true, order: newOrder });
 });
 
@@ -930,7 +935,7 @@ app.put('/api/orders/:id', authenticateAdmin, (req, res) => {
   const index = db.orders.findIndex(o => o.id === id);
   if (index !== -1) {
     db.orders[index].status = status;
-    saveDatabase(db);
+    saveDatabase(db, 'orders');
     return res.json({ success: true, order: db.orders[index] });
   }
   res.status(404).json({ success: false, message: "Order records not found." });
@@ -1040,7 +1045,7 @@ app.post('/api/razorpay/webhook', (req, res) => {
           created_at: new Date().toISOString()
         };
         db.orders.unshift(newOrder);
-        saveDatabase(db);
+        saveDatabase(db, 'orders');
         console.log('Order saved from Razorpay webhook:', newOrder);
       }
     }
@@ -1072,7 +1077,7 @@ app.post('/api/preorders', (req, res) => {
   preorderData.image_urls = preorderData.image_urls || ["https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=600&auto=format&fit=crop"];
 
   db.preorders.unshift(preorderData);
-  saveDatabase(db);
+  saveDatabase(db, 'preorders');
   res.json({ success: true, preorder: preorderData });
 });
 
@@ -1084,7 +1089,7 @@ app.put('/api/preorders/:id', (req, res) => {
     if (status) db.preorders[index].status = status;
     if (admin_note !== undefined) db.preorders[index].admin_note = admin_note;
     if (estimated_delivery !== undefined) db.preorders[index].estimated_delivery = estimated_delivery;
-    saveDatabase(db);
+    saveDatabase(db, 'preorders');
     return res.json({ success: true, preorder: db.preorders[index] });
   }
   res.status(404).json({ success: false, message: "Pre-order records not found." });
@@ -1104,14 +1109,14 @@ app.post('/api/offers', authenticateAdmin, (req, res) => {
   newOffer.banner_url = newOffer.banner_url || "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200 auto=format&fit=crop";
 
   db.offers.unshift(newOffer);
-  saveDatabase(db);
+  saveDatabase(db, 'offers');
   res.json({ success: true, offer: newOffer });
 });
 
 app.delete('/api/offers/:id', authenticateAdmin, (req, res) => {
   const { id } = req.params;
   db.offers = db.offers.filter(o => o.id !== id);
-  saveDatabase(db);
+  saveDatabase(db, 'offers');
   res.json({ success: true });
 });
 
@@ -1133,7 +1138,7 @@ app.post('/api/content-blocks', authenticateAdmin, (req, res) => {
       value: typeof value === 'object' ? JSON.stringify(value) : value
     });
   }
-  saveDatabase(db);
+  saveDatabase(db, 'content_blocks');
   res.json({ success: true, content_blocks: db.content_blocks });
 });
 

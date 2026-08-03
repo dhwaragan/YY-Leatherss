@@ -24,6 +24,11 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
     }
   }
   
+  // Supabase storage images - add resize/compression for bandwidth savings
+  if (url.includes('supabase.co/storage/v1/object/public/')) {
+    return `${url}?width=${width}&quality=60&resize=fit`;
+  }
+  
   return url;
 }
 
@@ -34,4 +39,22 @@ export function lazyImgProps(src: string, width: number = 600) {
     loading: 'lazy' as const,
     decoding: 'async' as const,
   };
+}
+
+// IntersectionObserver-based lazy loading helper (STEP 7)
+// Only loads images when they scroll into view
+export function createLazyImageObserver(callback: (img: HTMLImageElement) => void): IntersectionObserver | null {
+  if (typeof IntersectionObserver === 'undefined') return null;
+  return new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          callback(img);
+          (entry.target as any)._yyObserver?.unobserve(img);
+        }
+      });
+    },
+    { rootMargin: '200px' }
+  );
 }

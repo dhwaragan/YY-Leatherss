@@ -234,16 +234,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const fetchPublicData = useCallback(async (): Promise<{ products: any[]; offers: any[]; contentBlocks: ContentBlock[]; heroSlides: any[]; customCategories: string[]; orders: Order[]; preorders: Preorder[]; }> => {
     // Try cache first - avoids Supabase bandwidth entirely on repeat visits
     const cached = getCache<any>(PUBLIC_DATA_KEY, PUBLIC_TTL);
-    if (cached && hasLoadedRef.current) {
+    if (cached) {
       return cached;
     }
 
     try {
-      // SINGLE request - selective columns to reduce payload
+      // KEY OPTIMIZATION: Fetch ONLY public keys - NEVER download orders/preorders/buybacks
+      // This eliminates the 1.26MB orders array download for every visitor
+      // We filter admin-only keys OUT using `.in()` to avoid pulling them at all
       const { data: syncData, error } = await supabase
         .from('yy_store_sync')
-        .select('key, value');
-        // Note: We still need full value for products, but orders/preorders are filtered below
+        .select('key, value')
+        .in('key', ['products', 'offers', 'content_blocks', 'hero_slides', 'custom_categories']);
 
       if (!error && syncData && syncData.length > 0) {
         const getVal = (key: string) => {
@@ -259,8 +261,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           customCategories: syncData.some((r: any) => r.key === 'custom_categories') 
             ? (getVal('custom_categories') || DEFAULT_CATEGORIES) 
             : DEFAULT_CATEGORIES,
-          orders: (getVal('orders') || []) as Order[],
-          preorders: (getVal('preorders') || []) as Preorder[],
+          orders: [] as Order[],
+          preorders: [] as Preorder[],
         };
         
         // Cache for repeat visits
@@ -268,30 +270,30 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         return result;
       }
       
-      // Fallback to local db.json (no network)
-      const fallback = await import('../../db.json');
+      // KEY OPTIMIZATION: Fallback to MINIMAL seed data - do NOT import full db.json
+      // The full db.json (1.4MB) was being bundled and downloaded with every page load!
+      // Supabase is the source of truth; empty arrays here are fine since Supabase fetch is retried.
       const result = {
-        products: (fallback.products || []) as any[],
-        offers: (fallback.offers || []) as Offer[],
-        contentBlocks: (fallback.content_blocks || []) as ContentBlock[],
+        products: [] as any[],
+        offers: [] as Offer[],
+        contentBlocks: [] as ContentBlock[],
         heroSlides: [] as any[],
         customCategories: DEFAULT_CATEGORIES,
-        orders: (fallback.orders || []).map((o: any) => ({ ...o, customer_email: o.customer_email || '' })),
-        preorders: (fallback.preorders || []) as Preorder[],
+        orders: [] as Order[],
+        preorders: [] as Preorder[],
       };
       setCache(PUBLIC_DATA_KEY, result, PUBLIC_TTL);
       return result;
     } catch (e) {
       console.error("Error loading data:", e);
-      const fallback = await import('../../db.json');
       return {
-        products: (fallback.products || []) as any[],
-        offers: (fallback.offers || []) as Offer[],
-        contentBlocks: (fallback.content_blocks || []) as ContentBlock[],
+        products: [] as any[],
+        offers: [] as Offer[],
+        contentBlocks: [] as ContentBlock[],
         heroSlides: [] as any[],
         customCategories: DEFAULT_CATEGORIES,
-        orders: (fallback.orders || []).map((o: any) => ({ ...o, customer_email: o.customer_email || '' })),
-        preorders: (fallback.preorders || []) as Preorder[],
+        orders: [] as Order[],
+        preorders: [] as Preorder[],
       };
     }
   }, [DEFAULT_CATEGORIES]);

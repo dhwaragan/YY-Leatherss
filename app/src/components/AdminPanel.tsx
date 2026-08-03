@@ -284,12 +284,13 @@ export const AdminPanel: React.FC = () => {
     setIsSupabaseLoading(true);
     try {
       const t0 = Date.now();
-      const { data, error } = await supabase.from('yy_store_sync').select('key, value');
+      // KEY OPTIMIZATION: Only fetch keys + updated_at - NOT the full value data
+      const { data, error } = await supabase.from('yy_store_sync').select('key, updated_at').limit(50);
       const latency = Date.now() - t0;
       if (error) throw error;
       const counts: Record<string, number> = {};
       (data || []).forEach((row: any) => {
-        counts[row.key] = Array.isArray(row.value) ? row.value.length : 1;
+        counts[row.key] = 1;
       });
       setSupabaseStatus({ connected: true, latency_ms: latency, row_counts: counts });
     } catch (e: any) {

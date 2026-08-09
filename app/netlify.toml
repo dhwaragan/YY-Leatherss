@@ -9,6 +9,7 @@
   SUPABASE_URL = "https://joutnmqckfwtfwicfqrm.supabase.co"
   SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvdXRubXFja2Z3dGZ3aWNmcXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4NTk5NDEsImV4cCI6MjEwMTQzNTk0MX0._cscygUUrJdwnfDhJm5IXGK5fo6X7ig6SaR2rDYcb8o"
   VITE_RAZORPAY_KEY_ID = "rzp_live_TFnYWaFof1ynO6"
+  RAZORPAY_KEY_SECRET = "P2ba701WLFrmPQM4XA1pk1q6"
   VITE_ADMIN_PASSWORD = "YYLeathers@SecureAdmin2026!"
 
 [functions]

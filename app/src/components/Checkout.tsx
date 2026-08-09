@@ -224,7 +224,10 @@ export const Checkout: React.FC = () => {
   
   // Total discount - Buyback + Student can stack, Birthday is separate
   const totalOfferDiscount = studentDiscountAmount + birthdayDiscount + buybackDiscountAmount;
-  const orderTotal = Math.max(0, subtotalAfterSitewide + processingFee + deliveryCharge - totalOfferDiscount);
+  // 5% Tax applied on the discounted subtotal (after sitewide + offer discounts)
+  const taxableAmount = Math.max(0, subtotalAfterSitewide - totalOfferDiscount);
+  const taxAmount = Math.round(taxableAmount * 0.05);
+  const orderTotal = Math.max(0, taxableAmount + processingFee + deliveryCharge + taxAmount);
 
   const readFileAsDataUrl = (file: File) => new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
@@ -297,6 +300,7 @@ export const Checkout: React.FC = () => {
         user_id: user.id,
         items: cart,
         total: orderTotal,
+        tax_amount: taxAmount,
         delivery_region: selectedState,
         delivery_charge: deliveryCharge,
         estimated_weight_kg: estimatedWeightKg,
@@ -670,6 +674,11 @@ export const Checkout: React.FC = () => {
                     <span className="font-bold">-₹{buybackDiscountAmount.toLocaleString('en-IN')}</span>
                   </div>
                 )}
+
+                <div className="flex justify-between text-neutral-500">
+                  <span>Tax (5%)</span>
+                  <span className="font-bold text-neutral-800">₹{taxAmount.toLocaleString('en-IN')}</span>
+                </div>
 
                 <div className="border-t border-neutral-150 pt-3 flex justify-between items-center text-neutral-800 font-bold text-sm">
                   <span>Grand Legacy Total</span>

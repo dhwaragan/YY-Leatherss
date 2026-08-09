@@ -19,6 +19,16 @@
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
       "address": "12, TTK Road, Alwarpet, Chennai, Tamil Nadu - 600018",
       "created_at": "2026-07-01T14:05:56.207Z"
+    },
+    {
+      "id": "27c0cf32-56a8-4678-a3b3-2f3939c6afe6",
+      "name": "Dhwaragan Narayana",
+      "role": "customer",
+      "email": "dhwaraganleveling16@gmail.com",
+      "phone": "08248500780",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJsKR2zfPReKO6w4k8oXrYTo1r4iUizbdVeJmy5D-zjUZoAGQ=s96-c",
+      "address": "vinayagapuram, frist street",
+      "created_at": "2026-08-09T08:45:02.155Z"
     }
   ],
   "products": [
@@ -90,6 +100,7 @@
         "8": 2
       },
       "is_published": true,
+      "customer_email": "",
       "is_best_seller": true,
       "is_new_arrival": false,
       "sizeQuantities": {
@@ -4431,53 +4442,6 @@
       "student_discount_requested": false
     },
     {
-      "id": "YY-ORD-77598",
-      "items": [
-        {
-          "product": {
-            "id": "prod-1785057881819",
-            "name": "testing",
-            "price": 0.1,
-            "images": [
-              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
-            ],
-            "category": "FORMAL - DERBY",
-            "weight_kg": 0.1,
-            "created_at": "2026-07-26T09:24:41.819Z",
-            "sizePrices": {},
-            "description": "super\n",
-            "is_published": true,
-            "customer_email": "",
-            "is_best_seller": false,
-            "is_new_arrival": false
-          },
-          "quantity": 1,
-          "selectedSize": "9"
-        }
-      ],
-      "phone": "898",
-      "total": 6,
-      "status": "Cancelled",
-      "address": "testing",
-      "user_id": "549e0074-5254-4416-8a45-5a6929053f2f",
-      "created_at": "2026-07-28T15:59:54.247Z",
-      "applied_offer": "none",
-      "customer_name": "dhwaragan mass",
-      "customer_email": "",
-      "buyback_details": null,
-      "delivery_charge": 6,
-      "delivery_region": "Chennai",
-      "buyback_requested": false,
-      "razorpay_order_id": "order_TIyrIHwdwMHJu5",
-      "rejection_comment": "Cancel",
-      "estimated_weight_kg": 0.1,
-      "razorpay_payment_id": "pay_TIyrevxIA27tDi",
-      "birthday_benefit_details": null,
-      "student_discount_details": null,
-      "birthday_benefit_requested": false,
-      "student_discount_requested": false
-    },
-    {
       "id": "YY-ORD-27601",
       "items": [
         {
@@ -4627,128 +4591,6 @@
       "student_discount_requested": false
     },
     {
-      "id": "YY-ORD-96112",
-      "items": [
-        {
-          "product": {
-            "id": "prod-1783966382666",
-            "mrp": 2999,
-            "name": "Black - Mafia Italian Chelsea",
-            "price": 1999,
-            "images": [
-              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
-              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
-              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
-              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
-              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
-            ],
-            "category": "CHELSEA BOOT",
-            "sizeMRPs": {
-              "7": 2999,
-              "8": 2999,
-              "9": 2999
-            },
-            "weight_kg": 2,
-            "created_at": "2026-07-13T18:13:02.666Z",
-            "sizePrices": {
-              "7": 1999,
-              "8": 1999,
-              "9": 1999
-            },
-            "description": "Italian Chelsea Crust Leather Boot – Mafia Chelsea\n\nRefined, timeless, and effortlessly versatile, this Italian Chelsea Leather Boot is crafted for the modern gentleman who values both sophistication and comfort. Made from premium full Crust leather with a sleek hand-polished finish, it delivers a luxurious look that only gets better with age.\n\nThe clean, minimalist silhouette is complemented by elastic side panels and rear pull tabs, allowing for easy slip-on wear while ensuring a secure fit. Its streamlined almond-toe design makes it equally suited for business attire, smart-casual outfits, or evening occasions.\n\nBuilt on a durable outsole with a comfortable cushioned footbed, this boot offers lasting support without compromising on elegance.\n\nKey Features:\n\nPremium Italian full-Crust leather upper\nHand-polished finish for a rich, luxurious appearance\nClassic Chelsea boot design with elastic side gussets\nSoft leather lining for enhanced comfort and breathability\nCushioned insole for all-day wear\nDurable, anti-slip outsole for superior grip\nRear pull tabs for easy on-and-off\nSleek almond-toe silhouette\nIdeal for formal, business, and smart-casual occasions",
-            "sizeWeights": {
-              "7": 2,
-              "8": 2,
-              "9": 2
-            },
-            "is_published": true,
-            "customer_email": "",
-            "is_best_seller": true,
-            "is_new_arrival": false,
-            "sizeQuantities": {
-              "6": 0,
-              "7": 0,
-              "8": 5,
-              "9": 3,
-              "10": 0
-            }
-          },
-          "quantity": 1,
-          "selectedSize": "9"
-        }
-      ],
-      "phone": "+918248500780",
-      "total": 1916.1,
-      "status": "Cancelled",
-      "address": "vinayagapuram, frist street",
-      "user_id": "temp-id-1785061589696",
-      "created_at": "2026-07-26T10:27:15.499Z",
-      "applied_offer": "buyback",
-      "customer_name": "dhwaragandhwaragan9",
-      "customer_email": "",
-      "buyback_details": {
-        "status": "Confirmed"
-      },
-      "delivery_charge": 160,
-      "delivery_region": "Tamil Nadu",
-      "buyback_requested": true,
-      "razorpay_order_id": "order_TI67zZS9bA1LlS",
-      "rejection_comment": "No specific reason provided",
-      "estimated_weight_kg": 2,
-      "razorpay_payment_id": "pay_TI68ATHtugg1Ap",
-      "birthday_benefit_details": null,
-      "student_discount_details": null,
-      "birthday_benefit_requested": false,
-      "student_discount_requested": false
-    },
-    {
-      "id": "YY-ORD-87909",
-      "items": [
-        {
-          "product": {
-            "id": "prod-1785057881819",
-            "name": "testing",
-            "price": 0.1,
-            "images": [
-              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
-            ],
-            "category": "FORMAL - DERBY",
-            "weight_kg": 0.1,
-            "created_at": "2026-07-26T09:24:41.819Z",
-            "sizePrices": {},
-            "description": "super\n",
-            "is_published": true,
-            "customer_email": "",
-            "is_best_seller": false,
-            "is_new_arrival": false
-          },
-          "quantity": 1,
-          "selectedSize": "9"
-        }
-      ],
-      "phone": "8248500780",
-      "total": 1,
-      "status": "Cancelled",
-      "address": "for testing only ",
-      "user_id": "549e0074-5254-4416-8a45-5a6929053f2f",
-      "created_at": "2026-07-26T09:46:52.401Z",
-      "applied_offer": "none",
-      "customer_name": "dhwaragan mass",
-      "customer_email": "",
-      "buyback_details": null,
-      "delivery_charge": 1,
-      "delivery_region": "Tamil Nadu",
-      "buyback_requested": false,
-      "razorpay_order_id": "order_TI5Qu58o5VhmVy",
-      "rejection_comment": "test",
-      "estimated_weight_kg": 0.1,
-      "razorpay_payment_id": "pay_TI5RQ6bRHMqL6G",
-      "birthday_benefit_details": null,
-      "student_discount_details": null,
-      "birthday_benefit_requested": false,
-      "student_discount_requested": false
-    },
-    {
       "id": "YY-ORD-68884",
       "items": [
         {
@@ -4822,41 +4664,6 @@
       "student_discount_details": null,
       "birthday_benefit_requested": false,
       "student_discount_requested": false
-    },
-    {
-      "id": "YY-ORD-98731",
-      "items": [
-        {
-          "product": {
-            "id": "prod-1785057881819",
-            "name": "testing",
-            "price": 0.1,
-            "images": [
-              "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop"
-            ],
-            "category": "FORMAL - DERBY",
-            "weight_kg": 0.1,
-            "created_at": "2026-07-26T09:24:41.819Z",
-            "sizePrices": {},
-            "description": "super\n",
-            "is_published": true,
-            "customer_email": "",
-            "is_best_seller": false,
-            "is_new_arrival": false
-          },
-          "quantity": 1,
-          "selectedSize": "9"
-        }
-      ],
-      "total": 6,
-      "status": "Pending",
-      "address": "vinayagapuram, frist street",
-      "user_id": "641cf12a-d21b-49ac-b07b-e382bb74a75a",
-      "created_at": "2026-07-26T09:27:32.395Z",
-      "customer_name": "Dhwaragan Dhwaragan",
-      "customer_email": "",
-      "razorpay_order_id": "order_TI56FiR4HwiQm7",
-      "razorpay_payment_id": "pay_TI56wXtvQgcwhM"
     }
   ],
   "preorders": [
@@ -4899,17 +4706,7 @@
       "original_price": 15000
     }
   ],
-  "offers": [
-    {
-      "id": "off-1785336241686",
-      "title": "Big Benefit",
-      "is_active": true,
-      "banner_url": "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/banners/1785336229602-20fbuc6qrnv.png",
-      "description": "Something special is coming up soon...",
-      "valid_until": "2026-08-01",
-      "discount_percent": 0
-    }
-  ],
+  "offers": [],
   "content_blocks": [
     {
       "id": "cb-about",
@@ -4934,7 +4731,7 @@
     {
       "id": "cb-sitewide_discount",
       "key": "sitewide_discount",
-      "value": "5"
+      "value": "27"
     },
     {
       "id": "cb-festival_combine_with_offers",
@@ -4944,12 +4741,27 @@
     {
       "id": "cb-festival_active",
       "key": "festival_active",
-      "value": "false"
+      "value": "true"
     },
     {
       "id": "cb-festival_name",
       "key": "festival_name",
-      "value": "\"1000 Logins\""
+      "value": "\"Website Launch Offer\""
+    },
+    {
+      "id": "cb-maintenance_mode",
+      "key": "maintenance_mode",
+      "value": "true"
+    },
+    {
+      "id": "cb-maintenance_title",
+      "key": "maintenance_title",
+      "value": "\"We'll Be Back Soon\""
+    },
+    {
+      "id": "cb-maintenance_message",
+      "key": "maintenance_message",
+      "value": "\"We're currently updating our store. Please check back soon.\""
     }
   ]
 }

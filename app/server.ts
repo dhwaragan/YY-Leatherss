@@ -41,9 +41,10 @@ function getAi(): GoogleGenAI {
   return aiClient;
 }
 
-// Initialize Supabase Client (pre-configured with the endpoint and key from the user)
-const SUPABASE_URL = process.env.SUPABASE_URL || "https://vnspipodxzxuwsailgok.supabase.co";
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuc3BpcG9keHp4dXdzYWlsZ29rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NTIyNTgsImV4cCI6MjA5NjMyODI1OH0.wI8_OVKRzSGDTMyNQd5I_U1wZmQwVkDWYR2g-eiU78s";
+// Initialize Supabase Client - uses environment variables from .env file
+const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "https://joutnmqckfwtfwicfqrm.supabase.co";
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvdXRubXFja2Z3dGZ3aWNmcXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4NTk5NDEsImV4cCI6MjEwMTQzNTk0MX0._cscygUUrJdwnfDhJm5IXGK5fo6X7ig6SaR2rDYcb8o";
+console.log('[Supabase] Connecting to:', SUPABASE_URL);
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -103,8 +104,19 @@ app.use((req, res, next) => {
   res.setHeader('X-XSS-Protection', '1; mode=block');
   // Referrer Policy
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  // Content Security Policy
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com https://api.razorpay.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: http:; font-src 'self' data: https:; connect-src 'self' https: wss: https://checkout.razorpay.com https://api.razorpay.com; frame-ancestors 'none';");
+  // Content Security Policy - Updated to allow Razorpay, Supabase, and Cloudinary assets
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com https://api.razorpay.com https://cdn.razorpay.com *.supabase.co; " +
+    "style-src 'self' 'unsafe-inline' https:; " +
+    "img-src 'self' data: https: http:; " +
+    "font-src 'self' data: https:; " +
+    "connect-src 'self' https: wss: https://checkout.razorpay.com https://api.razorpay.com https://cdn.razorpay.com *.supabase.co https://res.cloudinary.com; " +
+    "frame-src 'self' https://checkout.razorpay.com https://api.razorpay.com; " +
+    "media-src 'self' https://res.cloudinary.com; " +
+    "frame-ancestors 'none';"
+  );
   // Permissions Policy
   res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
   next();
@@ -113,27 +125,135 @@ app.use((req, res, next) => {
 // Admin emails list
 const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
 
-// Admin Authentication Middleware
-const authenticateAdmin = (req: any, res: any, next: any) => {
+// Helper to get current admin password (checks Supabase first, then local DB, then env)
+const getAdminPassword = async () => {
+  // First check Supabase for the most up-to-date password
+  try {
+    const { data, error } = await supabase
+      .from('yy_store_sync')
+      .select('value')
+      .eq('key', 'content_blocks')
+      .single();
+    
+    if (!error && data?.value && Array.isArray(data.value)) {
+      const contentBlock = data.value.find((cb: any) => cb.key === 'admin_password');
+      if (contentBlock && contentBlock.value) {
+        console.log('[Auth] Using password from Supabase');
+        return contentBlock.value;
+      }
+    }
+  } catch (e) {
+    console.error('Error reading admin password from Supabase:', e);
+  }
+  
+  // Fallback to local database
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      if (contentBlock && contentBlock.value) {
+        console.log('[Auth] Using password from local DB');
+        return contentBlock.value;
+      }
+    }
+  } catch (e) {
+    console.error('Error reading admin password from local DB:', e);
+  }
+  
+  // Fallback to environment variable
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass) {
+    console.log('[Auth] Using password from environment variable');
+    return envPass;
+  }
+  
+  // Final fallback to default
+  console.log('[Auth] Using default password');
+  return "chennaileather2026";
+};
+
+// Admin Authentication Middleware (ASYNC to support database password checks)
+const authenticateAdmin = async (req: any, res: any, next: any) => {
   const adminEmail = req.headers['x-admin-email'] || req.body?.admin_email;
   const adminPassword = req.headers['x-admin-password'] || req.body?.admin_password;
+  
+  console.log('[Auth] Attempt with email:', adminEmail, 'password length:', adminPassword?.length);
   
   // Check if email is in admin list (case-insensitive)
   const isValidAdminEmail = ADMIN_EMAILS.some(
     validEmail => validEmail.toLowerCase() === (adminEmail || '').toLowerCase()
   );
   
-  // Check for valid admin credentials
-  if (isValidAdminEmail && adminPassword) {
-    // In production, validate against environment variable or secure database
-    const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
-    if (adminPassword === envPass) {
-      next();
-      return;
-    }
+  if (!isValidAdminEmail || !adminPassword) {
+    console.log('[Auth] Failed: invalid email or missing password');
+    res.status(403).json({ success: false, error: 'Admin authentication required' });
+    return;
   }
   
-  res.status(403).json({ success: false, error: 'Admin authentication required' });
+  // Normalize password (trim whitespace)
+  const normalizedPassword = (adminPassword || '').trim();
+  
+  // Check Supabase FIRST (source of truth) - password changes are saved here
+  try {
+    const { data, error } = await supabase
+      .from('yy_store_sync')
+      .select('value')
+      .eq('key', 'content_blocks')
+      .single();
+    
+    if (!error && data?.value && Array.isArray(data.value)) {
+      const supabaseBlock = data.value.find((cb: any) => cb.key === 'admin_password');
+      const supabasePass = supabaseBlock?.value;
+      
+      if (supabasePass && normalizedPassword === supabasePass) {
+        console.log('[Auth] Authenticated via Supabase');
+        cachedAdminPassword = supabasePass;
+        return next();
+      }
+    }
+  } catch (supabaseError) {
+    console.error('Error checking Supabase password:', supabaseError);
+  }
+  
+  // Try cached password (fastest) - only if Supabase check failed
+  if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
+    console.log('[Auth] Authenticated via cache');
+    return next();
+  }
+  
+  // Fallback: check local database (may be stale after password change)
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      const localPass = contentBlock?.value;
+      
+      if (localPass && normalizedPassword === localPass) {
+        console.log('[Auth] Authenticated via local DB');
+        cachedAdminPassword = localPass;
+        return next();
+      }
+    }
+  } catch (e) {
+    console.error('Error checking admin password in DB:', e);
+  }
+  
+  // Also check environment variable as final fallback
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass && normalizedPassword === envPass) {
+    console.log('[Auth] Authenticated via env');
+    cachedAdminPassword = envPass;
+    return next();
+  }
+  
+  console.log('[Auth] AUTHENTICATION FAILED');
+  console.log('[Auth] Details:', {
+    supabase: 'checked',
+    cache: !!cachedAdminPassword,
+    localDB: 'checked',
+    env: !!envPass,
+    receivedPassword: normalizedPassword.substring(0, 3) + '...'
+  });
+  
+  res.status(403).json({ success: false, error: 'Invalid email or password. Access denied.' });
 };
 
 // Rate limiting middleware (simple in-memory implementation)
@@ -771,6 +891,43 @@ function saveDatabase(newDb: Database, changedKey?: string) {
 // Ensure database is initialized
 let db = loadDatabase();
 
+// Synchronous password cache - initialized at startup
+let cachedAdminPassword: string | null = null;
+
+// Initialize password cache synchronously on startup
+function initializePasswordCache() {
+  // Try to get password synchronously from local DB first
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      if (contentBlock && contentBlock.value) {
+        cachedAdminPassword = contentBlock.value;
+        console.log('[Auth] Initialized password cache from local DB');
+        return;
+      }
+    }
+  } catch (e) {
+    console.error('Error reading admin password from local DB:', e);
+  }
+  
+  // Fallback to environment variable
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass) {
+    cachedAdminPassword = envPass;
+    console.log('[Auth] Initialized password cache from environment variable');
+    return;
+  }
+  
+  // Final fallback to default
+  cachedAdminPassword = "chennaileather2026";
+  console.log('[Auth] Initialized password cache with default password');
+}
+
+// Update password cache whenever it's changed
+async function invalidatePasswordCache() {
+  cachedAdminPassword = null;
+}
+
 let isSupabasePulled = false;
 app.use(async (req, res, next) => {
   if (req.url.startsWith('/.netlify/functions/api')) {
@@ -791,6 +948,68 @@ app.use(async (req, res, next) => {
 // API Endpoints
 
 // ---------------- AUTH / PROFILES ----------------
+app.post('/api/auth/verify-password', async (req, res) => {
+  const { email, password } = req.body;
+  
+  if (!email || !password) {
+    return res.status(400).json({ valid: false, error: 'Email and password required' });
+  }
+  
+  const normalizedPassword = (password || '').trim();
+  
+  // Check if email is admin
+  const isAdmin = ADMIN_EMAILS.some(
+    adminEmail => adminEmail.toLowerCase() === email.toLowerCase()
+  );
+  
+  if (!isAdmin) {
+    return res.status(403).json({ valid: false, error: 'Not an admin email' });
+  }
+  
+  // Check Supabase FIRST (source of truth)
+  try {
+    const { data, error } = await supabase
+      .from('yy_store_sync')
+      .select('value')
+      .eq('key', 'content_blocks')
+      .single();
+    
+    if (!error && data?.value && Array.isArray(data.value)) {
+      const supabaseBlock = data.value.find((cb: any) => cb.key === 'admin_password');
+      if (supabaseBlock && supabaseBlock.value && normalizedPassword === supabaseBlock.value) {
+        return res.json({ valid: true });
+      }
+    }
+  } catch (supabaseError) {
+    console.error('Error checking Supabase password:', supabaseError);
+  }
+  
+  // Check cached password
+  if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
+    return res.json({ valid: true });
+  }
+  
+  // Check local database
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      if (contentBlock && contentBlock.value && normalizedPassword === contentBlock.value) {
+        return res.json({ valid: true });
+      }
+    }
+  } catch (e) {
+    console.error('Error checking admin password in DB:', e);
+  }
+  
+  // Check environment variable
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass && normalizedPassword === envPass) {
+    return res.json({ valid: true });
+  }
+  
+  return res.status(401).json({ valid: false, error: 'Invalid password' });
+});
+
 app.get('/api/auth/profile/:email', (req, res) => {
   const { email } = req.params;
   const user = db.profiles.find(p => p.email.toLowerCase() === email.toLowerCase());
@@ -939,6 +1158,17 @@ app.put('/api/orders/:id', authenticateAdmin, (req, res) => {
     return res.json({ success: true, order: db.orders[index] });
   }
   res.status(404).json({ success: false, message: "Order records not found." });
+});
+
+app.delete('/api/orders/:id', authenticateAdmin, (req, res) => {
+  const { id } = req.params;
+  const index = db.orders.findIndex(o => o.id === id);
+  if (index !== -1) {
+    db.orders.splice(index, 1);
+    saveDatabase(db, 'orders');
+    return res.json({ success: true, message: "Order deleted successfully" });
+  }
+  res.status(404).json({ success: false, message: "Order not found" });
 });
 
 
@@ -1126,6 +1356,24 @@ app.get('/api/content-blocks', (req, res) => {
   res.json(db.content_blocks);
 });
 
+// Generic store-sync key-value save endpoint to bypass RLS issues on client
+app.post('/api/admin/store-sync/:key', authenticateAdmin, async (req, res) => {
+  const { key } = req.params;
+  const { value } = req.body;
+  try {
+    if (key in db) {
+      (db as any)[key] = value;
+      saveDatabase(db, key);
+    } else {
+      await syncToSupabase(key, value);
+    }
+    res.json({ success: true });
+  } catch (err: any) {
+    console.error(`Error syncing key '${key}':`, err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.post('/api/content-blocks', authenticateAdmin, (req, res) => {
   const { key, value } = req.body;
   const index = db.content_blocks.findIndex(cb => cb.key === key);
@@ -1298,6 +1546,16 @@ app.post('/api/supabase-sync/pull', authenticateAdmin, async (req, res) => {
   }
 });
 
+// Invalidate admin password cache (called when password is changed)
+app.post('/api/admin/invalidate-password-cache', authenticateAdmin, async (req, res) => {
+  try {
+    await invalidatePasswordCache();
+    res.json({ success: true, message: "Password cache invalidated" });
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 
 // Catch-all for missing API routes to return JSON instead of Vite HTML string
 app.all('/api/*', (req, res) => {
@@ -1306,6 +1564,9 @@ app.all('/api/*', (req, res) => {
 
 // Vite Dev vs Prod deployment routing
 async function startServer() {
+  // Initialize password cache synchronously
+  initializePasswordCache();
+  
   // Sync state from Supabase on launch
   try {
     await pullFromSupabase();
@@ -1315,7 +1576,12 @@ async function startServer() {
 
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: { 
+        middlewareMode: true,
+        watch: {
+          ignored: ['**/db.json']
+        }
+      },
       appType: "spa",
     });
     app.use(vite.middlewares);

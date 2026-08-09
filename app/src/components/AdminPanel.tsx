@@ -1,3 +1,4 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -7,6 +8,7 @@ import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { useApp } from '../context/AppContext';
 import { Product, Order, Offer } from '../types';
 import { isAdminEmail } from '../context/AppContext';
+import { generateInvoiceHTML } from '../utils/invoiceTemplate';
 import {
   Settings, Plus, Edit2, Trash2, Check, X, ShieldAlert,
   Filter, ListCollapse, Award, DollarSign, PenTool, Sparkles,
@@ -18,6 +20,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import Chart from 'chart.js/auto';
 import { supabase } from '../supabase';
 import { MultiImageUploader } from './MultiImageUploader';
+import { optimizeImage } from '../utils/images';
 
 const SUPA_URL = import.meta.env.VITE_SUPABASE_URL as string || 'https://vnspipodxzxuwsailgok.supabase.co';
 const DEFAULT_ADMIN_PASS = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD || "chennaileather2026";
@@ -172,16 +175,23 @@ export const AdminPanel: React.FC = () => {
     bypassAdminLogin,
     updateContentBlock,
     contentBlocks,
+    setContentBlocks,
     refreshAllData,
     sitewideDiscount: globalSitewideDiscount,
     setSitewideDiscount: setGlobalSitewideDiscount,
     setSelectedProductDetail,
+    addProduct,
+    updateProduct,
+    updateOrderStatus,
     // Use already-fetched data from context instead of re-fetching from Supabase
     products: contextProducts,
     orders: contextOrders,
     offers: contextOffers,
     heroSlides: contextHeroSlides,
     customCategories: contextCustomCategories,
+    isMaintenanceMode: globalIsMaintenanceMode,
+    maintenanceTitle: globalMaintenanceTitle,
+    maintenanceMessage: globalMaintenanceMessage
   } = useApp();
 
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -224,6 +234,13 @@ export const AdminPanel: React.FC = () => {
   const [isFestivalActive, setIsFestivalActive] = useState(() => {
     return localStorage.getItem('yy_festival_active') !== 'false';
   });
+  const [festivalFeedback, setFestivalFeedback] = useState('');
+
+  // Maintenance Settings local states
+  const [isMaintMode, setIsMaintMode] = useState(false);
+  const [maintTitleInput, setMaintTitleInput] = useState("We'll Be Back Soon");
+  const [maintMsgInput, setMaintMsgInput] = useState("We're currently updating our store. Please check back soon.");
+  const [maintFeedback, setMaintFeedback] = useState('');
 
   const [rejectModalOrder, setRejectModalOrder] = useState<Order | null>(null);
   const [rejectReason, setRejectReason] = useState('');
@@ -291,6 +308,21 @@ export const AdminPanel: React.FC = () => {
     row_counts?: Record<string, number>;
   } | null>(null);
   const [isSupabaseLoading, setIsSupabaseLoading] = useState(false);
+
+  // Helper to make authenticated admin API calls
+  const adminFetch = useCallback(async (url: string, options: RequestInit = {}) => {
+    const adminEmail = user?.email || '';
+    const adminPassword = currentAdminPass || localStorage.getItem('yy_admin_pass') || '';
+    
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'x-admin-email': adminEmail,
+      'x-admin-password': adminPassword,
+      ...(options.headers as Record<string, string> || {}),
+    };
+    
+    return fetch(url, { ...options, headers });
+  }, [user, currentAdminPass]);
 
   const fetchSupabaseStatus = async () => {
     setIsSupabaseLoading(true);
@@ -477,7 +509,7 @@ export const AdminPanel: React.FC = () => {
   const [dragOverSlideId, setDragOverSlideId] = useState<string | null>(null);
 
   const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
-  const [deleteConfirmType, setDeleteConfirmType] = useState<'product' | 'offer' | null>(null);
+  const [deleteConfirmType, setDeleteConfirmType] = useState<'product' | 'offer' | 'order' | null>(null);
 
   const cbAbout = contentBlocks.find(cb => cb.key === 'about');
   const aboutData = cbAbout ? JSON.parse(cbAbout.value) : { title: '', tagline: '', mission: '', paragraphs: ['', ''] };
@@ -517,6 +549,57 @@ export const AdminPanel: React.FC = () => {
         setSitewideDiscount(val);
         setTempSitewideDiscount(val);
         localStorage.setItem('yy_sitewide_discount', String(val));
+      } catch {}
+    }
+
+    const cbActive = contentBlocks.find(cb => cb.key === 'festival_active');
+    if (cbActive) {
+      try {
+        const val = JSON.parse(cbActive.value) === true;
+        setIsFestivalActive(val);
+        localStorage.setItem('yy_festival_active', String(val));
+      } catch {}
+    }
+
+    const cbCombine = contentBlocks.find(cb => cb.key === 'festival_combine_with_offers');
+    if (cbCombine) {
+      try {
+        const val = JSON.parse(cbCombine.value) === true;
+        setFestivalCombineWithOffers(val);
+        localStorage.setItem('yy_festival_combine', String(val));
+      } catch {}
+    }
+
+    const cbName = contentBlocks.find(cb => cb.key === 'festival_name');
+    if (cbName) {
+      try {
+        const val = JSON.parse(cbName.value);
+        setFestivalName(val);
+        localStorage.setItem('yy_festival_name', val);
+      } catch {}
+    }
+
+    const cbMaintMode = contentBlocks.find(cb => cb.key === 'maintenance_mode');
+    if (cbMaintMode) {
+      try {
+        const val = JSON.parse(cbMaintMode.value) === true;
+        setIsMaintMode(val);
+      } catch {}
+    }
+
+    const cbMaintTitle = contentBlocks.find(cb => cb.key === 'maintenance_title');
+    if (cbMaintTitle) {
+      try {
+        const val = JSON.parse(cbMaintTitle.value);
+        setMaintTitleInput(val);
+      } catch {}
+    }
+
+    const cbMaintMsg = contentBlocks.find(cb => cb.key === 'maintenance_message');
+    if (cbMaintMsg) {
+      try {
+        const val = JSON.parse(cbMaintMsg.value);
+        setMaintMsgInput(val);
       } catch {}
     }
   }, [contentBlocks]);
@@ -567,11 +650,61 @@ export const AdminPanel: React.FC = () => {
       setPassChangeFeedback('Passwords do not match');
       return;
     }
+    
+    // Save to localStorage
     localStorage.setItem('yy_admin_pass', newAdminPass);
     setCurrentAdminPass(newAdminPass);
     setNewAdminPass('');
     setConfirmAdminPass('');
-    setPassChangeFeedback('✅ Admin password changed successfully!');
+    
+    // ALSO save to database so server can authenticate
+    try {
+      const currentBlocks = [...contentBlocks];
+      const existingIdx = currentBlocks.findIndex(cb => cb.key === 'admin_password');
+      const newBlock = { id: 'cb-admin_password', key: 'admin_password', value: newAdminPass };
+      
+      if (existingIdx !== -1) {
+        currentBlocks[existingIdx] = newBlock;
+      } else {
+        currentBlocks.push(newBlock);
+      }
+
+      // Save directly to Supabase
+      const { error } = await supabase.from('yy_store_sync').upsert(
+        { key: 'content_blocks', value: currentBlocks, updated_at: new Date().toISOString() },
+        { onConflict: 'key' }
+      );
+      
+      if (!error) {
+        // Update local state
+        setContentBlocks(currentBlocks);
+        
+        // Invalidate server-side password cache so it picks up the new password
+        try {
+          const adminPass = newAdminPass;
+          const adminEmail = user?.email || '';
+          await fetch('/api/admin/invalidate-password-cache', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-admin-email': adminEmail,
+              'x-admin-password': adminPass,
+            },
+          });
+        } catch (cacheError) {
+          console.warn('Failed to invalidate server cache:', cacheError);
+        }
+        
+        setPassChangeFeedback('✅ Admin password changed successfully!');
+      } else {
+        console.error('Failed to save password to database:', error);
+        setPassChangeFeedback('⚠️ Password saved locally but failed to sync to database');
+      }
+    } catch (err) {
+      console.error('Error saving password:', err);
+      setPassChangeFeedback('⚠️ Password saved locally but failed to sync to database');
+    }
+    
     setTimeout(() => setPassChangeFeedback(''), 3000);
   };
 
@@ -602,16 +735,33 @@ export const AdminPanel: React.FC = () => {
       }
     }
 
+    // Set local context contentBlocks state immediately
+    setContentBlocks(currentBlocks);
+
+    try {
+      // Sync locally to server's db.json
+      await adminFetch('/api/admin/store-sync/content_blocks', {
+        method: 'POST',
+        body: JSON.stringify({ value: currentBlocks })
+      });
+    } catch (e) {
+      console.warn('Failed to save content_blocks to local server API', e);
+    }
+
     const { error } = await supabase.from('yy_store_sync').upsert(
       { key: 'content_blocks', value: currentBlocks, updated_at: new Date().toISOString() },
       { onConflict: 'key' }
     );
 
     if (!error) {
-      await refreshAllData();
+      await refreshAllData(true);
+      setFestivalFeedback('✅ Festival settings updated and synced successfully!');
+    } else {
+      setFestivalFeedback('⚠️ Settings saved locally but cloud sync failed.');
     }
 
     setGlobalSitewideDiscount(val);
+    setTimeout(() => setFestivalFeedback(''), 3000);
   };
 
   const toggleFestivalActive = async () => {
@@ -619,6 +769,69 @@ export const AdminPanel: React.FC = () => {
     setIsFestivalActive(newState);
     localStorage.setItem('yy_festival_active', String(newState));
     await updateContentBlock('festival_active', newState);
+    await refreshAllData(true);
+  };
+
+  const handleSaveMaintenance = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Toggle check warning confirm
+    const isActivating = isMaintMode;
+    const confirmMessage = isActivating
+      ? "Are you sure you want to put the website into maintenance mode? Normal customers will temporarily see the maintenance page."
+      : "Are you sure you want to take the website out of maintenance mode? Normal customers will be able to browse and shop again.";
+      
+    if (!window.confirm(confirmMessage)) {
+      return;
+    }
+
+    setMaintFeedback("Saving settings...");
+
+    const currentBlocks = [...contentBlocks];
+    const updates = [
+      { key: 'maintenance_mode', value: JSON.stringify(isMaintMode) },
+      { key: 'maintenance_title', value: JSON.stringify(maintTitleInput) },
+      { key: 'maintenance_message', value: JSON.stringify(maintMsgInput) },
+    ];
+
+    for (const { key, value } of updates) {
+      const existingIdx = currentBlocks.findIndex(cb => cb.key === key);
+      if (existingIdx !== -1) {
+        currentBlocks[existingIdx] = { id: `cb-${key}`, key, value };
+      } else {
+        currentBlocks.push({ id: `cb-${key}`, key, value });
+      }
+    }
+
+    // Set local context contentBlocks state immediately
+    setContentBlocks(currentBlocks);
+
+    try {
+      // Sync locally to server's db.json
+      await adminFetch('/api/admin/store-sync/content_blocks', {
+        method: 'POST',
+        body: JSON.stringify({ value: currentBlocks })
+      });
+    } catch (localErr) {
+      console.warn('Failed to sync content_blocks to local server API:', localErr);
+    }
+
+    const { error } = await supabase.from('yy_store_sync').upsert(
+      { key: 'content_blocks', value: currentBlocks, updated_at: new Date().toISOString() },
+      { onConflict: 'key' }
+    );
+
+    if (!error) {
+      await refreshAllData(true);
+      setMaintFeedback(isMaintMode 
+        ? "🔴 Website is currently under maintenance. Customers cannot access the storefront." 
+        : "🟢 Website is online! Customers can access the storefront."
+      );
+    } else {
+      setMaintFeedback("⚠️ Settings saved locally but cloud sync failed.");
+    }
+
+    setTimeout(() => setMaintFeedback(''), 4000);
   };
 
   const handleAdminBypass = async (e: React.FormEvent) => {
@@ -688,6 +901,11 @@ export const AdminPanel: React.FC = () => {
     e.preventDefault();
     setSavingProduct(true);
     try {
+      // Optimize images before saving to database
+      const optimizedImages = pImgs.length > 0 
+        ? pImgs.map(img => optimizeImage(img, 800)) 
+        : ['https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop'];
+      
       const payload: Product = {
         id: editingProductId || `prod-${Date.now()}`,
         name: pName,
@@ -700,21 +918,28 @@ export const AdminPanel: React.FC = () => {
         sizeWeights: Object.keys(pSizeWeights).length ? pSizeWeights : undefined,
         sizeQuantities: Object.keys(pSizeQuantities).length ? pSizeQuantities : undefined,
         category: pCat,
-        images: pImgs.length > 0 ? pImgs : ['https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=600&auto=format&fit=crop'],
+        images: optimizedImages,
         is_new_arrival: pNew,
         is_best_seller: pBest,
         is_published: pPub,
         created_at: editingProductId ? products.find(p => p.id === editingProductId)?.created_at || new Date().toISOString() : new Date().toISOString(),
       };
-      const updated = editingProductId
-        ? products.map(p => p.id === editingProductId ? payload : p)
-        : [...products, payload];
-      await dbSet('products', updated);
-      await refreshAllData();
-      setProducts(updated);
-      setShowProductModal(false);
-      setEditingProductId(null);
-      setPName(''); setPDesc(''); setPImgs([]);
+      
+      // Use the context's addProduct/updateProduct functions which call the API
+      let success = false;
+      if (editingProductId) {
+        success = await updateProduct(editingProductId, payload);
+      } else {
+        success = await addProduct(payload);
+      }
+      
+      if (success) {
+        setShowProductModal(false);
+        setEditingProductId(null);
+        setPName(''); setPDesc(''); setPImgs([]);
+        setPMRP(undefined); setPWeight(1); setPSizePrices({}); setPSizeMRPs({}); setPSizeWeights({}); setPSizeQuantities({});
+        setPNew(false); setPBest(false); setPPub(true);
+      }
     } finally {
       setSavingProduct(false);
     }
@@ -766,33 +991,30 @@ export const AdminPanel: React.FC = () => {
     if (deleteConfirmType === 'product') {
       const updated = products.filter(p => p.id !== deleteConfirmId);
       await dbSet('products', updated);
-      await refreshAllData();
+      await refreshAllData(true);
       setProducts(updated);
     } else if (deleteConfirmType === 'offer') {
       const updated = offers.filter(o => o.id !== deleteConfirmId);
       await dbSet('offers', updated);
-      await refreshAllData();
+      await refreshAllData(true);
       setOffers(updated);
+    } else if (deleteConfirmType === 'order') {
+      try {
+        await adminFetch(`/api/orders/${deleteConfirmId}`, {
+          method: 'DELETE'
+        });
+        // Force refresh all context data so the order list updates on screen immediately
+        await refreshAllData(true);
+      } catch (e) {
+        console.warn('Failed to delete order from local API', e);
+      }
     }
     setDeleteConfirmId(null); setDeleteConfirmType(null);
   };
 
   const handleUpdateOrderStatus = async (id: string, status: Order['status']) => {
-    const updated = orders.map(o => o.id === id ? { ...o, status } : o);
-    // Save to local API first (most reliable)
-    try {
-      await fetch(`/api/orders/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status }),
-      });
-    } catch (e) {
-      console.warn('Failed to save order status to local API', e);
-    }
-    // Also sync to Supabase
-    await dbSet('orders', updated);
-    await refreshAllData();
-    setOrders(updated);
+    // Call AppContext updateOrderStatus to ensure context and db are fully synchronized instantly
+    await updateOrderStatus(id, status);
   };
 
   const handleUpdateOrderBuyback = async (id: string, status: 'Confirmed' | 'Rejected') => {
@@ -827,19 +1049,21 @@ export const AdminPanel: React.FC = () => {
       }
       return o;
     });
-    // Save to local API first
-    try {
-      await fetch(`/api/orders/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: updated.find(o => o.id === id)?.status || status }),
-      });
-    } catch (e) {
-      console.warn('Failed to save buyback update to local API', e);
+
+    const targetOrder = updated.find(o => o.id === id);
+    if (targetOrder) {
+      // Direct PUT request to update order properties (buyback status, new total) on the backend
+      try {
+        await adminFetch(`/api/orders/${id}`, {
+          method: 'PUT',
+          body: JSON.stringify(targetOrder),
+        });
+      } catch (e) {
+        console.warn('Failed to save buyback update to local API', e);
+      }
+      // Force refreshing context data so all screens pick up new buyback properties
+      await refreshAllData(true);
     }
-    await dbSet('orders', updated);
-    await refreshAllData();
-    setOrders(updated);
   };
 
   const handleRejectOrderWithComment = (ord: Order) => {
@@ -850,31 +1074,20 @@ export const AdminPanel: React.FC = () => {
   const handleSubmitRejection = async () => {
     if (!rejectModalOrder) return;
     const reason = rejectReason.trim() || 'No specific reason provided';
-    const updated = orders.map(o => {
-      if (o.id === rejectModalOrder.id) {
-        return {
-          ...o,
-          status: 'Cancelled' as Order['status'],
-          rejection_comment: reason
-        };
-      }
-      return o;
-    });
-    // Save to local API first
+    
+    // Call PUT endpoint with cancelled status & rejection comment
     try {
-      await fetch(`/api/orders/${rejectModalOrder.id}`, {
+      await adminFetch(`/api/orders/${rejectModalOrder.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'Cancelled' }),
+        body: JSON.stringify({ status: 'Cancelled', rejection_comment: reason }),
       });
     } catch (e) {
       console.warn('Failed to save rejection to local API', e);
     }
-    await dbSet('orders', updated);
-    await refreshAllData();
-    setOrders(updated);
+    
     setRejectModalOrder(null);
     setRejectReason('');
+    await refreshAllData(true);
   };
 
   const handleAddPromoOffer = async (e: React.FormEvent) => {
@@ -890,7 +1103,7 @@ export const AdminPanel: React.FC = () => {
     };
     const updated = [...offers, newOffer];
     await dbSet('offers', updated);
-    await refreshAllData();
+    await refreshAllData(true);
     setOffers(updated);
     setOTitle(''); setODesc(''); setOImg(''); setOUntil('');
   };
@@ -905,7 +1118,7 @@ export const AdminPanel: React.FC = () => {
     };
     const updated = [...(heroSlides || []), newSlide];
     await dbSet('hero_slides', updated);
-    await refreshAllData();
+    await refreshAllData(true);
     setHeroSlides(updated);
     setHsImg('');
   };
@@ -913,7 +1126,7 @@ export const AdminPanel: React.FC = () => {
   const handleDeleteHeroSlide = async (id: string) => {
     const updated = heroSlides.filter(s => s.id !== id);
     await dbSet('hero_slides', updated);
-    await refreshAllData();
+    await refreshAllData(true);
     setHeroSlides(updated);
   };
 
@@ -952,8 +1165,11 @@ export const AdminPanel: React.FC = () => {
       const [removed] = slides.splice(draggedIndex, 1);
       slides.splice(targetIndex, 0, removed);
 
+      // Save to Supabase
       await dbSet('hero_slides', slides);
-      await refreshAllData();
+      await refreshAllData(true);
+      
+      // Update local state immediately
       setHeroSlides(slides);
     }
 
@@ -1583,17 +1799,31 @@ export const AdminPanel: React.FC = () => {
                               <button key={step} onClick={() => handleUpdateOrderStatus(ord.id, step)} className={`px-2 py-1.5 border text-[10px] uppercase font-bold rounded cursor-pointer transition-all ${ord.status === step ? 'bg-leather text-white' : 'bg-white text-neutral-600 hover:bg-neutral-50'}`}>{step}</button>
                             ))}
                             <button onClick={() => handleRejectOrderWithComment(ord)} className="px-2 py-1.5 border border-red-300 text-red-600 hover:bg-red-50 text-[10px] uppercase font-bold rounded cursor-pointer transition-all">Cancel with Reason</button>
+                            <button onClick={() => { setDeleteConfirmId(ord.id); setDeleteConfirmType('order'); }} className="px-2 py-1.5 border border-red-300 bg-red-50 text-red-600 hover:bg-red-100 text-[10px] uppercase font-bold rounded cursor-pointer transition-all flex items-center gap-1"><Trash2 className="w-3 h-3" /> Delete</button>
                             {ord.phone && (
                               <a
-                                href={`https://wa.me/${ord.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`*YY Leathers - Order Update*\n\nOrder ID: ${ord.id}\nStatus: ${ord.status}\nCustomer: ${ord.customer_name}\nTotal: ₹${ord.total}\n\nThank you for choosing YY Leathers!`)}`}
+                                href={`https://wa.me/${ord.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`*YY Leathers - Order Invoice*\nOrder ID: ${ord.id}\nStatus: ${ord.status}\nCustomer: ${ord.customer_name}\nTotal: ₹${ord.total}\n\nArtisan invoice details have been updated.`)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-2 py-1.5 border border-green-400 bg-green-50 text-green-700 hover:bg-green-100 text-[10px] uppercase font-bold rounded cursor-pointer transition-all flex items-center gap-1.5"
-                                title="Send WhatsApp message to customer"
+                                title="Send WhatsApp invoice/update to customer"
                               >
                                 <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
                               </a>
                             )}
+                            <button
+                              onClick={() => {
+                                const win = window.open("", "_blank");
+                                if (win) {
+                                  win.document.write(generateInvoiceHTML(ord));
+                                  win.document.close();
+                                }
+                              }}
+                              className="px-2 py-1.5 border border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100 text-[10px] uppercase font-bold rounded cursor-pointer transition-all flex items-center gap-1"
+                              title="Preview and Print Invoice"
+                            >
+                              <FileText className="w-3.5 h-3.5" /> Invoice
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -1743,6 +1973,11 @@ export const AdminPanel: React.FC = () => {
                     </div>
                     <form onSubmit={handleSaveSitewideDiscount} className="bg-neutral-50 p-5 rounded-xl border grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                       <div className="space-y-3">
+                        {festivalFeedback && (
+                          <div className={`p-3 rounded-lg text-center font-bold text-[10px] uppercase tracking-wider ${festivalFeedback.startsWith('✅') ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-red-50 border border-red-200 text-red-700'}`}>
+                            {festivalFeedback}
+                          </div>
+                        )}
                         <div>
                           <label className="block font-semibold mb-1 text-neutral-700">Festival Name</label>
                           <input type="text" value={festivalName} onChange={(e) => setFestivalName(e.target.value)} placeholder="e.g., Bakrid, New Year" className="w-full p-2 border rounded bg-white focus:outline-none focus:border-gold" />
@@ -1995,6 +2230,75 @@ export const AdminPanel: React.FC = () => {
                       </button>
                     </form>
                   </div>
+                  <div className="space-y-6 pt-8 border-t">
+                    <div className="pb-4 border-b flex items-center gap-2">
+                      <SlidersHorizontal className="w-5 h-5 text-gold flex-shrink-0" />
+                      <div>
+                        <h3 className="font-serif text-xl font-bold text-neutral-800">Maintenance Mode Settings</h3>
+                        <p className="text-xs text-neutral-400">Put the website under maintenance mode to block customer checkout during inventory updates.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 rounded-xl border bg-white flex items-center justify-between text-xs max-w-md">
+                      <div>
+                        <p className="font-bold text-neutral-700">Maintenance Mode Status</p>
+                        <p className="text-[10px] text-neutral-400 mt-1">
+                          {isMaintMode ? "🔴 Website is currently under maintenance. Customers cannot access." : "🟢 Website is online! Customers can access."}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setIsMaintMode(!isMaintMode)}
+                        className={`px-4 py-2 text-[10px] font-bold rounded transition-all cursor-pointer ${
+                          isMaintMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-green-600 text-white hover:bg-green-700'
+                        }`}
+                      >
+                        {isMaintMode ? "🔴 ON" : "🟢 OFF"}
+                      </button>
+                    </div>
+
+                    <form onSubmit={handleSaveMaintenance} className="bg-neutral-50 p-5 rounded-xl border space-y-4 text-xs max-w-md">
+                      <div>
+                        <label className="block font-semibold mb-1 text-neutral-700">Maintenance Title</label>
+                        <input
+                          type="text"
+                          required
+                          value={maintTitleInput}
+                          onChange={(e) => setMaintTitleInput(e.target.value)}
+                          placeholder="We'll Be Back Soon"
+                          className="w-full p-2.5 border rounded bg-white focus:outline-none focus:border-gold"
+                        />
+                      </div>
+                      <div>
+                        <label className="block font-semibold mb-1 text-neutral-700">Maintenance Message</label>
+                        <textarea
+                          required
+                          value={maintMsgInput}
+                          onChange={(e) => setMaintMsgInput(e.target.value)}
+                          placeholder="We're currently updating our store. Please check back shortly."
+                          rows={3}
+                          className="w-full p-2.5 border rounded bg-white focus:outline-none focus:border-gold resize-none"
+                        />
+                      </div>
+
+                      {maintFeedback && (
+                        <div className={`p-3 rounded text-[10px] font-bold uppercase tracking-wide text-center border ${
+                          maintFeedback.startsWith('🟢') || maintFeedback.includes('online')
+                            ? 'bg-green-50 text-green-700 border-green-200' 
+                            : maintFeedback.startsWith('🔴') || maintFeedback.includes('maintenance')
+                            ? 'bg-red-50 text-red-750 border-red-200'
+                            : 'bg-amber-50 text-amber-700 border-amber-200'
+                        }`}>
+                          {maintFeedback}
+                        </div>
+                      )}
+
+                      <button type="submit" className="w-full bg-gold hover:bg-gold-dark text-white font-bold uppercase tracking-widest text-[10px] py-3 rounded shadow transition-all cursor-pointer flex items-center justify-center gap-2">
+                        <SlidersHorizontal className="w-3.5 h-3.5" /> Commit Maintenance State
+                      </button>
+                    </form>
+                  </div>
+
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 text-xs text-amber-800 space-y-2">
                     <h4 className="font-bold text-amber-900 uppercase tracking-wider">Password Notes</h4>
                     <p>• The admin password change is stored in your browser's localStorage. For permanent changes, update the VITE_ADMIN_PASSWORD in your .env file.</p>

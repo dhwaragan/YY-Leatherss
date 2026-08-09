@@ -1,7 +1,6 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
-import Maintenance from './components/Maintenance';
 import './index.css';
 
 // Suppress Supabase Auth expected token expiry errors in the preview environment
@@ -20,6 +19,6 @@ console.error = (...args) => {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {import.meta.env.VITE_MAINTENANCE === 'false' ? <App /> : <Maintenance />}
+    <App />
   </StrictMode>,
 );

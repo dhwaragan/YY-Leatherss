@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useApp } from '../context/AppContext';
+import { generateInvoiceHTML } from '../utils/invoiceTemplate';
 import { 
   Package, 
   MapPin, 
@@ -289,15 +290,24 @@ export const UserProfile: React.FC = () => {
                             {/* Buttons */}
                             <div className="grid grid-cols-3 gap-2">
                               <a
-                                href={ord.phone ? `https://wa.me/${ord.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`*YY Leathers - Order Inquiry*\n\nOrder ID: ${ord.id}\nStatus: ${ord.status}\nTotal: ₹${ord.total}\n\nI have a question about my order.`)}` : '#'}
+                                href={`https://wa.me/919344178585?text=${encodeURIComponent(`*YY Leathers - Order Inquiry*\n\nOrder ID: ${ord.id}\nStatus: ${ord.status}\nCustomer: ${ord.customer_name}\nTotal: ₹${ord.total}\n\nI have a question about my order.`)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`py-3.5 rounded-full border text-xs font-bold cursor-pointer transition-colors shadow-sm flex items-center justify-center gap-1.5 ${ord.phone ? 'bg-green-50 border-green-200 text-green-700 hover:bg-green-100' : 'bg-neutral-50 border-neutral-200 text-neutral-400 pointer-events-none'}`}
+                                className="py-3.5 rounded-full border border-green-200 bg-green-50 text-green-700 hover:bg-green-100 text-xs font-bold cursor-pointer transition-colors shadow-sm flex items-center justify-center gap-1.5"
                               >
                                 <MessageSquare className="w-3.5 h-3.5" />
                                 <span className="hidden sm:inline">WhatsApp</span>
                               </a>
-                              <button className="py-3.5 rounded-full border border-neutral-200 bg-neutral-50 text-neutral-500 font-bold text-xs cursor-pointer hover:bg-neutral-100 transition-colors shadow-sm">
+                              <button 
+                                onClick={() => {
+                                  const win = window.open("", "_blank");
+                                  if (win) {
+                                    win.document.write(generateInvoiceHTML(ord));
+                                    win.document.close();
+                                  }
+                                }} 
+                                className="py-3.5 rounded-full border border-neutral-200 bg-neutral-50 text-neutral-500 font-bold text-xs cursor-pointer hover:bg-neutral-100 transition-colors shadow-sm"
+                              >
                                 Invoice
                               </button>
                               <button className="py-3.5 rounded-full bg-leather hover:bg-gold text-white font-bold text-xs cursor-pointer transition-colors shadow-md">
@@ -310,7 +320,25 @@ export const UserProfile: React.FC = () => {
                    </div>
                 )}
 
-                {['payment', 'wishlist', 'coupons', 'support'].includes(activeTab) && (
+                {activeTab === 'support' && (
+                  <div className="flex flex-col items-center justify-center py-8 text-center font-sans space-y-4">
+                    <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center border border-green-100">
+                       <MessageSquare className="w-8 h-8 text-green-600" />
+                    </div>
+                    <h4 className="font-bold text-neutral-800 text-lg">YY Leathers Customer Support</h4>
+                    <p className="text-xs text-neutral-500 max-w-sm">Have queries regarding size fits, dispatch delays, or refunds? Connect directly with our artisan workshop helpdesk on WhatsApp.</p>
+                    <a 
+                      href="https://wa.me/919344178585?text=Hello%20YY%20Leathers%2C%20I%20need%20help%20with%20my%20order." 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white font-bold text-xs uppercase tracking-widest rounded-full shadow transition-all flex items-center gap-2 cursor-pointer"
+                    >
+                      <MessageSquare className="w-4 h-4" /> Message Workshop (+91 93441 78585)
+                    </a>
+                  </div>
+                )}
+
+                {['payment', 'wishlist', 'coupons'].includes(activeTab) && (
                   <div className="flex flex-col items-center justify-center py-12 text-center">
                     <div className="w-16 h-16 bg-neutral-50 rounded-full flex items-center justify-center border border-neutral-100 mb-4">
                        <Clock className="w-8 h-8 text-neutral-300" />

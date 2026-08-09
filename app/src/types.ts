@@ -8,6 +8,9 @@ export interface Profile {
   email: string;
   name: string;
   avatar?: string;
+
+
+  
   phone?: string;
   role: 'admin' | 'customer';
   address?: string;

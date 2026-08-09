@@ -100,10 +100,11 @@ interface AppContextType {
   addOffer: (offer: Omit<Offer, "id">) => Promise<boolean>;
   deleteOffer: (id: string) => Promise<boolean>;
   updateContentBlock: (key: string, value: any) => Promise<boolean>;
+  setContentBlocks: (blocks: ContentBlock[]) => void;
   decrementStock: (cartItems: CartItem[]) => Promise<boolean>;
 
   // Refetch Helpers
-  refreshAllData: () => Promise<void>;
+  refreshAllData: (bypassCache?: boolean) => Promise<void>;
 
   // Sitewide Discount
   sitewideDiscount: number;
@@ -114,6 +115,11 @@ interface AppContextType {
   festivalCombineWithOffers: boolean;
   isFestivalActive: boolean;
   
+  // Maintenance Mode Settings
+  isMaintenanceMode: boolean;
+  maintenanceTitle: string;
+  maintenanceMessage: string;
+
   // Admin check helper
   isAdminEmail: (email: string) => boolean;
 }
@@ -158,6 +164,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     if (typeof window === "undefined") return true;
     return localStorage.getItem("yy_festival_active") !== "false";
   });
+
+  const [isMaintenanceMode, setIsMaintenanceMode] = useState<boolean>(false);
+  const [maintenanceTitle, setMaintenanceTitle] = useState<string>("We'll Be Back Soon");
+  const [maintenanceMessage, setMaintenanceMessage] = useState<string>(
+    "We're currently updating our store. Please check back soon."
+  );
   
   // Memoized admin check for this session
   const isCurrentUserAdmin = useMemo(() => {
@@ -231,11 +243,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // MEMOIZED: Fetch ONLY public storefront data (products, offers, content_blocks, hero_slides, categories)
   // Does NOT fetch orders/preorders (admin-only data) for regular visitors
-  const fetchPublicData = useCallback(async (): Promise<{ products: any[]; offers: any[]; contentBlocks: ContentBlock[]; heroSlides: any[]; customCategories: string[]; orders: Order[]; preorders: Preorder[]; }> => {
+  const fetchPublicData = useCallback(async (bypassCache = false): Promise<{ products: any[]; offers: any[]; contentBlocks: ContentBlock[]; heroSlides: any[]; customCategories: string[]; }> => {
     // Try cache first - avoids Supabase bandwidth entirely on repeat visits
-    const cached = getCache<any>(PUBLIC_DATA_KEY, PUBLIC_TTL);
-    if (cached) {
-      return cached;
+    if (!bypassCache) {
+      const cached = getCache<any>(PUBLIC_DATA_KEY, PUBLIC_TTL);
+      if (cached) {
+        return cached;
+      }
     }
 
     try {
@@ -261,8 +275,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           customCategories: syncData.some((r: any) => r.key === 'custom_categories') 
             ? (getVal('custom_categories') || DEFAULT_CATEGORIES) 
             : DEFAULT_CATEGORIES,
-          orders: [] as Order[],
-          preorders: [] as Preorder[],
         };
         
         // Cache for repeat visits
@@ -279,8 +291,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         contentBlocks: [] as ContentBlock[],
         heroSlides: [] as any[],
         customCategories: DEFAULT_CATEGORIES,
-        orders: [] as Order[],
-        preorders: [] as Preorder[],
       };
       setCache(PUBLIC_DATA_KEY, result, PUBLIC_TTL);
       return result;
@@ -292,8 +302,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         contentBlocks: [] as ContentBlock[],
         heroSlides: [] as any[],
         customCategories: DEFAULT_CATEGORIES,
-        orders: [] as Order[],
-        preorders: [] as Preorder[],
       };
     }
   }, [DEFAULT_CATEGORIES]);
@@ -301,6 +309,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   // MEMOIZED: Fetch orders - only called when admin logs in or orders change
   const fetchOrders = useCallback(async (): Promise<Order[]> => {
     try {
+      // Try local API first
       const res = await fetch("/api/orders");
       if (res.ok) {
         const data = await res.json();
@@ -308,23 +317,34 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setCache(ORDERS_KEY, mapped, 60 * 1000); // 1 min TTL
         return mapped;
       }
-      console.warn('fetchOrders: non-ok response', res.status, await res.text().catch(() => ''));
     } catch (e) {
-      console.error("Error fetching orders:", e);
+      console.error("Error fetching orders from API:", e);
     }
-
-    // Fallback: return cached orders if available to keep admin panel usable
-    const cached = getCache<Order[]>(ORDERS_KEY, 60 * 1000);
-    if (cached && cached.length) {
-      console.info('fetchOrders: returning cached orders due to fetch failure');
-      return cached;
+    
+    // Fallback: Fetch directly from Supabase
+    try {
+      const { data, error } = await supabase
+        .from('yy_store_sync')
+        .select('value')
+        .eq('key', 'orders')
+        .single();
+      
+      if (!error && data?.value) {
+        const mapped = (data.value || []).map(mapOrder);
+        setCache(ORDERS_KEY, mapped, 60 * 1000);
+        return mapped;
+      }
+    } catch (e) {
+      console.error("Error fetching orders from Supabase:", e);
     }
+    
     return [];
   }, [mapOrder]);
 
   // MEMOIZED: Fetch preorders - only called when admin logs in or preorders change
   const fetchPreorders = useCallback(async (): Promise<Preorder[]> => {
     try {
+      // Try local API first
       const res = await fetch("/api/preorders");
       if (res.ok) {
         const data = await res.json();
@@ -332,17 +352,27 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setCache(PREORDERS_KEY, mapped, 60 * 1000); // 1 min TTL
         return mapped;
       }
-      console.warn('fetchPreorders: non-ok response', res.status, await res.text().catch(() => ''));
     } catch (e) {
-      console.error("Error fetching preorders:", e);
+      console.error("Error fetching preorders from API:", e);
     }
-
-    // Fallback to cached preorders
-    const cached = getCache<Preorder[]>(PREORDERS_KEY, 60 * 1000);
-    if (cached && cached.length) {
-      console.info('fetchPreorders: returning cached preorders due to fetch failure');
-      return cached;
+    
+    // Fallback: Fetch directly from Supabase
+    try {
+      const { data, error } = await supabase
+        .from('yy_store_sync')
+        .select('value')
+        .eq('key', 'preorders')
+        .single();
+      
+      if (!error && data?.value) {
+        const mapped = (data.value || []).map(mapPreorder);
+        setCache(PREORDERS_KEY, mapped, 60 * 1000);
+        return mapped;
+      }
+    } catch (e) {
+      console.error("Error fetching preorders from Supabase:", e);
     }
+    
     return [];
   }, [mapPreorder]);
 
@@ -355,7 +385,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     const savedUser = localStorage.getItem("yy_user");
     if (savedUser) {
       try {
-        setUser(JSON.parse(savedUser));
+        const parsed = JSON.parse(savedUser);
+        setUser(parsed);
+        
+        // Ensure returning admin session has password initialized and correct
+        if (parsed && isAdminEmail(parsed.email)) {
+          const storedPass = localStorage.getItem("yy_admin_pass");
+          if (!storedPass || storedPass.startsWith("--") || storedPass.includes("ALTER TABLE")) {
+            const defaultPass = import.meta.env.VITE_ADMIN_PASSWORD || "chennaileather2026";
+            localStorage.setItem("yy_admin_pass", defaultPass);
+            console.log("[Auth] Cleaned up SQL script in yy_admin_pass and restored default admin password.");
+          }
+        }
       } catch (e) {
         localStorage.removeItem("yy_user");
       }
@@ -371,7 +412,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setContentBlocks(cached.contentBlocks);
         setHeroSlides(cached.heroSlides);
         setCustomCategories(cached.customCategories);
-        // Only set orders/preorders if admin is logged in
+
+        // Sync festival states from loaded contentBlocks
+        if (cached.contentBlocks && Array.isArray(cached.contentBlocks)) {
+          const d = (key: string) => cached.contentBlocks.find((cb: any) => cb.key === key);
+          const active = d('festival_active');
+          const disc = d('sitewide_discount');
+          const comb = d('festival_combine_with_offers');
+          const name = d('festival_name');
+          const maintActive = d('maintenance_mode');
+          const maintTitle = d('maintenance_title');
+          const maintMsg = d('maintenance_message');
+          
+          const isMaint = maintActive ? JSON.parse(maintActive.value) === true : false;
+          
+          if (active) setIsFestivalActive(JSON.parse(active.value));
+          if (disc) setSitewideDiscount(Number(JSON.parse(disc.value)));
+          if (comb) setFestivalCombineWithOffers(JSON.parse(comb.value));
+          if (name) setFestivalName(JSON.parse(name.value));
+          setIsMaintenanceMode(isMaint);
+          if (maintTitle) setMaintenanceTitle(JSON.parse(maintTitle.value));
+          if (maintMsg) setMaintenanceMessage(JSON.parse(maintMsg.value));
+        }
+        // Set orders/preorders if user is logged in
         const savedU = localStorage.getItem("yy_user");
         if (savedU) {
           try {
@@ -379,6 +442,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             if (isAdminEmail(su.email)) {
               setOrders(cached.orders || []);
               setPreorders(cached.preorders || []);
+            } else {
+              // Fetch user orders directly to display in their dashboard
+              fetchOrders().then(userOrders => {
+                setOrders(userOrders);
+              });
             }
           } catch {}
         }
@@ -394,15 +462,46 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setContentBlocks(data.contentBlocks);
       setHeroSlides(data.heroSlides);
       setCustomCategories(data.customCategories);
-      // Fetch orders/preorders SEPARATELY for admin (not in public data)
+
+      // Sync festival states from loaded contentBlocks
+      if (data.contentBlocks && Array.isArray(data.contentBlocks)) {
+        const d = (key: string) => data.contentBlocks.find(cb => cb.key === key);
+        const active = d('festival_active');
+        const disc = d('sitewide_discount');
+        const comb = d('festival_combine_with_offers');
+        const name = d('festival_name');
+        const maintActive = d('maintenance_mode');
+        const maintTitle = d('maintenance_title');
+        const maintMsg = d('maintenance_message');
+        
+        const isMaint = maintActive ? JSON.parse(maintActive.value) === true : false;
+        
+        if (active) setIsFestivalActive(JSON.parse(active.value));
+        if (disc) setSitewideDiscount(Number(JSON.parse(disc.value)));
+        if (comb) setFestivalCombineWithOffers(JSON.parse(comb.value));
+        if (name) setFestivalName(JSON.parse(name.value));
+        setIsMaintenanceMode(isMaint);
+        if (maintTitle) setMaintenanceTitle(JSON.parse(maintTitle.value));
+        if (maintMsg) setMaintenanceMessage(JSON.parse(maintMsg.value));
+      }
+      
+      // Fetch orders/preorders for logged in user
       const savedU2 = localStorage.getItem("yy_user");
       if (savedU2) {
         try {
           const su = JSON.parse(savedU2);
           if (isAdminEmail(su.email)) {
-            const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
-            setOrders(orderData);
-            setPreorders(preorderData);
+            // Small delay to ensure public data is set first
+            setTimeout(async () => {
+              const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
+              setOrders(orderData);
+              setPreorders(preorderData);
+            }, 100);
+          } else {
+            setTimeout(async () => {
+              const orderData = await fetchOrders();
+              setOrders(orderData);
+            }, 100);
           }
         } catch {}
       }
@@ -440,10 +539,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         setUser(profile);
         localStorage.setItem("yy_user", JSON.stringify(profile));
         
-        // If admin, fetch orders/preorders now
+        // Fetch orders
         if (isAdminEmail(profile.email)) {
           fetchOrders();
           fetchPreorders();
+        } else {
+          fetchOrders();
         }
       }
     }).catch(e => {
@@ -476,8 +577,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           if (isAdmin) {
             fetchOrders();
             fetchPreorders();
+          } else {
+            fetchOrders();
           }
-          setCurrentPage(isAdmin ? "admin" : "home");
+          
+          // Check if there is an existing page path saved in localStorage to avoid forcing "home" / "admin"
+          const savedPage = localStorage.getItem("yy_current_page");
+          if (savedPage && savedPage !== "home" && savedPage !== "admin") {
+            setCurrentPage(savedPage);
+          } else {
+            setCurrentPage(isAdmin ? "admin" : "home");
+          }
         }
       } else {
         setUser(null);
@@ -509,10 +619,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   // MEMOIZED: refreshAllData with caching + deduplication
-  const refreshAllData = useCallback(async () => {
+  const refreshAllData = useCallback(async (bypassCache = false) => {
     // Prevent concurrent fetches (deduplication)
-    if (fetchInFlightRef.current) {
+    if (fetchInFlightRef.current && !bypassCache) {
       return fetchInFlightRef.current;
+    }
+    
+    // Always clear cache when doing a forced refresh
+    if (bypassCache) {
+      removeCache(PUBLIC_DATA_KEY);
     }
     
     const promise = (async () => {
@@ -522,18 +637,43 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         const isAdmin = currentUser ? isAdminEmail(currentUser.email) : false;
         
         setIsLoading(true);
-        const data = await fetchPublicData();
+        const data = await fetchPublicData(bypassCache);
         
         setProducts(data.products.map(mapProduct));
         setOffers(data.offers);
         setContentBlocks(data.contentBlocks);
         setHeroSlides(data.heroSlides);
         setCustomCategories(data.customCategories);
+
+        // Sync festival states from loaded contentBlocks
+        if (data.contentBlocks && Array.isArray(data.contentBlocks)) {
+          const d = (key: string) => data.contentBlocks.find(cb => cb.key === key);
+          const active = d('festival_active');
+          const disc = d('sitewide_discount');
+          const comb = d('festival_combine_with_offers');
+          const name = d('festival_name');
+          const maintActive = d('maintenance_mode');
+          const maintTitle = d('maintenance_title');
+          const maintMsg = d('maintenance_message');
+          
+          const isMaint = maintActive ? JSON.parse(maintActive.value) === true : false;
+          
+          if (active) setIsFestivalActive(JSON.parse(active.value));
+          if (disc) setSitewideDiscount(Number(JSON.parse(disc.value)));
+          if (comb) setFestivalCombineWithOffers(JSON.parse(comb.value));
+          if (name) setFestivalName(JSON.parse(name.value));
+          setIsMaintenanceMode(isMaint);
+          if (maintTitle) setMaintenanceTitle(JSON.parse(maintTitle.value));
+          if (maintMsg) setMaintenanceMessage(JSON.parse(maintMsg.value));
+        }
         
         if (isAdmin) {
           const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
           setOrders(orderData);
           setPreorders(preorderData);
+        } else if (currentUser) {
+          const orderData = await fetchOrders();
+          setOrders(orderData);
         }
       } catch (e) {
         console.error("Error refreshing data:", e);
@@ -576,16 +716,27 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       if (asAdmin) {
         profile.role = "admin";
         profile.name = "Sriram Srinivasan (Admin)";
+        
+        // Save admin password to localStorage so admin operations don't fail with 403
+        const defaultPass = import.meta.env.VITE_ADMIN_PASSWORD || "chennaileather2026";
+        localStorage.setItem("yy_admin_pass", defaultPass);
       }
 
       setUser(profile);
       localStorage.setItem("yy_user", JSON.stringify(profile));
+      
+      // Load user orders immediately on successful login
+      setTimeout(async () => {
+        const orderData = await fetchOrders();
+        setOrders(orderData);
+      }, 50);
+
       return true;
     } catch (e) {
       console.error(e);
       return false;
     }
-  }, []);
+  }, [fetchOrders]);
 
   const bypassAdminLogin = useCallback(async (email: string, password: string) => {
     try {
@@ -593,14 +744,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         return false;
       }
 
-      const envPass = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD;
-      const customPass = localStorage.getItem('yy_admin_pass');
-      const adminPass = customPass || envPass;
-
-      if (!adminPass || password !== adminPass) {
-        return false;
-      }
-
+      // Simple direct check - trust the client-side password
+      // The server will validate on each API call
+      localStorage.setItem("yy_admin_pass", password);
+      
       const adminProfile: Profile = {
         id: "admin-id",
         name: "Store Administrator",
@@ -612,11 +759,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setUser(adminProfile);
       localStorage.setItem("yy_user", JSON.stringify(adminProfile));
       
-      // Admin logged in - fetch admin data
+      console.log('Admin login successful, password stored in localStorage');
       refreshAllData();
       return true;
     } catch (e) {
-      console.error(e);
+      console.error('Admin login error:', e);
       return false;
     }
   }, [isAdminEmail, refreshAllData]);
@@ -847,44 +994,63 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const addProduct = useCallback(async (prodData: any) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch("/api/products", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
         body: JSON.stringify(prodData),
       });
       if (res.ok) {
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData();
+        await refreshAllData(true); // bypass cache so new product shows immediately
         return true;
       }
+      const errText = await res.text();
+      console.error('addProduct failed:', res.status, errText);
       return false;
     } catch (e) {
       console.error(e);
       return false;
     }
-  }, [refreshAllData]);
+  }, [refreshAllData, user]);
 
   const updateProduct = useCallback(async (id: string, prodData: any) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch(`/api/products/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
         body: JSON.stringify(prodData),
       });
       if (res.ok) {
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData();
+        await refreshAllData(true);
         return true;
       }
+      const errText = await res.text();
+      console.error('updateProduct failed:', res.status, errText);
       return false;
     } catch (e) {
       console.error(e);
       return false;
     }
-  }, [refreshAllData]);
+  }, [refreshAllData, user]);
 
   const decrementStock = useCallback(async (cartItems: CartItem[]) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
+      
       for (const item of cartItems) {
         const product = products.find(p => p.id === item.product.id);
         if (!product || !product.sizeQuantities) continue;
@@ -901,7 +1067,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
         await fetch(`/api/products/${product.id}`, {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "x-admin-email": adminEmail,
+            "x-admin-password": adminPass,
+          },
           body: JSON.stringify({ sizeQuantities: updatedSizeQuantities }),
         });
       }
@@ -913,7 +1083,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error("Error decrementing stock:", e);
       return false;
     }
-  }, [products, refreshAllData]);
+  }, [products, refreshAllData, user]);
 
   const updateProductStock = useCallback(async (productId: string, size: string, quantity: number): Promise<boolean> => {
     try {
@@ -925,9 +1095,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         [size]: quantity
       };
 
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch(`/api/products/${productId}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
         body: JSON.stringify({ sizeQuantities: updatedSizeQuantities }),
       });
 
@@ -936,17 +1112,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         await refreshAllData();
         return true;
       }
+      console.error('Failed to update stock:', await res.text());
       return false;
     } catch (e) {
       console.error("Error updating product stock:", e);
       return false;
     }
-  }, [products, refreshAllData]);
+  }, [products, refreshAllData, user]);
 
   const deleteProduct = useCallback(async (id: string) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch(`/api/products/${id}`, {
         method: "DELETE",
+        headers: {
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
       });
       if (res.ok) {
         removeCache(PUBLIC_DATA_KEY);
@@ -958,13 +1141,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData]);
+  }, [refreshAllData, user]);
 
   const updateOrderStatus = useCallback(async (id: string, status: Order["status"]) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch(`/api/orders/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
         body: JSON.stringify({ status }),
       });
       if (res.ok) {
@@ -978,7 +1167,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, []);
+  }, [user]);
 
   const evaluatePreorder = useCallback(async (
     id: string,
@@ -987,9 +1176,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     deliveryDate?: string,
   ) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch(`/api/preorders/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
         body: JSON.stringify({
           status,
           admin_note,
@@ -1002,18 +1197,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         removeCache(PREORDERS_KEY);
         return true;
       }
+      console.error('Failed to evaluate preorder:', await res.text());
       return false;
     } catch (e) {
       console.error(e);
       return false;
     }
-  }, []);
+  }, [user]);
 
   const addOffer = useCallback(async (offerData: any) => {
     try {
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
       const res = await fetch("/api/offers", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
         body: JSON.stringify(offerData),
       });
       if (res.ok) {
@@ -1026,11 +1228,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData]);
+  }, [refreshAllData, user]);
 
   const deleteOffer = useCallback(async (id: string) => {
     try {
-      const res = await fetch(`/api/offers/${id}`, { method: "DELETE" });
+      const adminPass = localStorage.getItem('yy_admin_pass') || '';
+      const adminEmail = user?.email || '';
+      const res = await fetch(`/api/offers/${id}`, { 
+        method: "DELETE",
+        headers: {
+          "x-admin-email": adminEmail,
+          "x-admin-password": adminPass,
+        },
+      });
       if (res.ok) {
         removeCache(PUBLIC_DATA_KEY);
         await refreshAllData();
@@ -1041,7 +1251,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData]);
+  }, [refreshAllData, user]);
 
   const updateContentBlock = useCallback(async (key: string, value: any) => {
     try {
@@ -1053,6 +1263,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         currentBlocks[existingIdx] = newBlock;
       } else {
         currentBlocks.push(newBlock);
+      }
+
+      // Sync locally to server's db.json
+      try {
+        const adminPass = localStorage.getItem('yy_admin_pass') || '';
+        const adminEmail = user?.email || '';
+        await fetch('/api/admin/store-sync/content_blocks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-email': adminEmail,
+            'x-admin-password': adminPass
+          },
+          body: JSON.stringify({ value: currentBlocks })
+        });
+      } catch (localErr) {
+        console.warn('Failed to sync content_blocks to local server API:', localErr);
       }
 
       const { error } = await supabase.from('yy_store_sync').upsert(
@@ -1071,7 +1298,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [contentBlocks]);
+  }, [contentBlocks, user]);
 
   const value = useMemo<AppContextType>(() => ({
     user,
@@ -1110,12 +1337,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     addOffer,
     deleteOffer,
     updateContentBlock,
+    setContentBlocks,
     decrementStock,
     refreshAllData,
     setSitewideDiscount,
     festivalName,
     festivalCombineWithOffers,
     isFestivalActive,
+    isMaintenanceMode,
+    maintenanceTitle,
+    maintenanceMessage,
     isAdminEmail,
   }), [
     user, cart, products, orders, preorders, offers, heroSlides, contentBlocks,
@@ -1125,7 +1356,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     updateCartQuantity, clearCart, updateProductStock, submitPreorder, checkout,
     addProduct, updateProduct, deleteProduct, updateOrderStatus, evaluatePreorder,
     addOffer, deleteOffer, updateContentBlock, decrementStock, refreshAllData,
-    festivalName, festivalCombineWithOffers, isFestivalActive, isAdminEmail,
+    festivalName, festivalCombineWithOffers, isFestivalActive, isMaintenanceMode,
+    maintenanceTitle, maintenanceMessage, isAdminEmail,
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

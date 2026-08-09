@@ -24,11 +24,15 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
     }
   }
   
-  // Supabase storage images - use /render/image/ endpoint for server-side transformation
-  // This resizes and compresses images server-side, drastically reducing bandwidth
+  // NEW Supabase project - Free plan does not support Image Transformations,
+  // so return the direct public object URL to prevent broken images.
+  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/')) {
+    return url;
+  }
+  
+  // OLD Supabase project (down/quota exceeded) - use placeholder
   if (url.includes('supabase.co/storage/v1/object/public/')) {
-    const renderUrl = url.replace('/storage/v1/object/public/', '/storage/v1/render/image/public/');
-    return `${renderUrl}?width=${width}&height=${width}&resize=cover&quality=60`;
+    return `https://via.placeholder.com/${width}x${width}/e5e5e5/999999?text=YY+Leathers`;
   }
   
   return url;
@@ -55,11 +59,14 @@ export function generateSrcSet(url: string | undefined, maxWidth: number = 800):
     }
   }
   
-  // Supabase srcset - multiple widths via render/image endpoint
+  // NEW Supabase project - Free plan does not support Image Transformations
+  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/')) {
+    return '';
+  }
+  
+  // OLD Supabase project (down) - no srcset, just placeholder
   if (url.includes('supabase.co/storage/v1/object/public/')) {
-    const renderUrl = url.replace('/storage/v1/object/public/', '/storage/v1/render/image/public/');
-    const widths = [320, 480, 640, 800].filter(w => w <= Math.max(maxWidth, 800));
-    return widths.map(w => `${renderUrl}?width=${w}&height=${w}&resize=cover&quality=60 ${w}w`).join(', ');
+    return '';
   }
   
   return '';

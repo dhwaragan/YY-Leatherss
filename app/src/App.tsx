@@ -129,7 +129,11 @@ const AppCore: React.FC = () => {
     removeFromCart,
     updateCartQuantity,
     shopCategory,
-    setShopCategory
+    setShopCategory,
+    isMaintenanceMode,
+    maintenanceTitle,
+    maintenanceMessage,
+    isAdminEmail
   } = useApp();
 
   const cartTotal = cart.reduce(
@@ -161,17 +165,38 @@ const AppCore: React.FC = () => {
     ? JSON.parse(cbPolicies.value)
     : { returns: "", privacy: "", terms: "", shipping: "", buyback: "" };
 
-  // Show login only after data is loaded (prevents flash on refresh)
-  if (!user && !isLoading) {
+  // Maintenance Mode Gate: block normal users if mode is ON
+  const isAdmin = user ? isAdminEmail(user.email) : false;
+  if (isMaintenanceMode && !isAdmin) {
     return (
-      <Suspense fallback={<PageLoader />}>
-        <LoginPage />
-      </Suspense>
+      <div className="min-h-screen bg-[#3b2416] text-white flex flex-col items-center justify-center p-6 text-center select-none font-sans relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,90,43,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+        <div className="relative max-w-md w-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl space-y-6">
+          <div className="flex justify-center">
+            <div className="p-3 bg-gold/15 border border-gold/30 rounded-full animate-pulse">
+              <span className="text-4xl">🔧</span>
+            </div>
+          </div>
+          <h1 className="font-serif text-3xl font-bold text-white tracking-wide uppercase">
+            {maintenanceTitle || "We'll Be Back Soon"}
+          </h1>
+          <div className="w-12 h-0.5 bg-gold mx-auto"></div>
+          <p className="text-white/70 text-sm leading-relaxed font-body">
+            {maintenanceMessage || "We're currently updating our store. Please check back shortly."}
+          </p>
+          <p className="text-gold text-xs uppercase tracking-widest font-bold">
+            Thank you for your patience
+          </p>
+        </div>
+        <div className="absolute bottom-6 text-[9px] text-white/40 uppercase tracking-widest">
+          YY Leathers · Chennai Premium Leather Artisan
+        </div>
+      </div>
     );
   }
-  
+
   // Show loading while auth is being checked
-  if (isLoading && !user) {
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-[#3b2416] flex items-center justify-center">
         <div className="text-center">
@@ -179,6 +204,15 @@ const AppCore: React.FC = () => {
           <p className="text-white/60 text-[10px] uppercase tracking-widest">Loading YY Leathers...</p>
         </div>
       </div>
+    );
+  }
+
+  // Show login only after data is loaded (prevents flash on refresh)
+  if (!user) {
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <LoginPage />
+      </Suspense>
     );
   }
 

@@ -1,0 +1,105 @@
+# YY Leathers - New Supabase Setup Guide
+
+Your old Supabase project hit the free tier quota limit (exceed_cached_egress_quota). This guide walks you through setting up a new optimized Supabase project from scratch.
+
+## Step 1: Create a New Supabase Project
+
+1. Go to https://supabase.com and sign in
+2. Click New Project
+3. Fill in: Name, Database Password (save it!), Region (Mumbai ap-south-1), Plan (Free)
+4. Wait 2-3 minutes for provisioning
+
+## Step 2: Run the SQL Schema
+
+1. In Supabase dashboard, go to SQL Editor
+2. Open `app/supabase-schema.sql` from this project
+3. Copy ALL content and paste into SQL editor
+4. Click Run - should see "Success"
+
+This creates: yy_store_sync table, profiles table, yy-images storage bucket, RLS policies, seed data, admin profile.
+
+## Step 3: Get Your API Keys
+
+1. In Supabase dashboard, go to Settings then API
+2. Copy: Project URL, anon public key, service_role key (KEEP SECRET)
+
+## Step 4: Update Your .env File
+
+Open `app/.env` and replace OLD Supabase values with NEW ones:
+
+```
+VITE_SUPABASE_URL="https://YOUR_NEW_PROJECT.supabase.co"
+VITE_SUPABASE_ANON_KEY="your_new_anon_key_here"
+SUPABASE_URL="https://YOUR_NEW_PROJECT.supabase.co"
+SUPABASE_ANON_KEY="your_new_anon_key_here"
+```
+
+## Step 5: Migrate Your Data
+
+Run the migration script to copy all data from db.json to new Supabase:
+
+PowerShell:
+```
+$env:SUPABASE_URL="https://YOUR_NEW_PROJECT.supabase.co"
+$env:SUPABASE_SERVICE_KEY="your_service_role_key_here"
+cd app
+node migrate-to-supabase.mjs
+```
+
+## Step 6: Re-upload Product Images (IMPORTANT)
+
+Product images are on the OLD Supabase Storage (down due to quota). You must re-upload them:
+
+Option A: Upload to new Supabase Storage bucket "yy-images" then update URLs in admin panel
+Option B: Use Cloudinary (free 25GB) - upload images and update URLs
+Option C: Use Imgur or another free image host
+
+## Step 7: Enable Google OAuth
+
+1. Supabase dashboard - Authentication - Providers - Enable Google
+2. Add Google OAuth Client ID and Secret
+3. Set redirect URL to your Supabase callback URL
+
+## Step 8: Run the Website
+
+```
+cd app
+npm run dev
+```
+
+Open http://localhost:3000
+
+Testing Login (localhost only):
+- Customer: Enter any email in the Localhost Testing Login section
+- Admin: Click "Login as Admin (No Password)" button
+
+## Step 9: Deploy to Netlify
+
+Update Netlify env vars: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, SUPABASE_URL, SUPABASE_ANON_KEY
+
+## Optimization Tips to Avoid Hitting Quota Again
+
+What was optimized:
+1. Removed hardcoded old credentials from supabase.ts
+2. Increased cache TTL from 15 min to 30 min
+3. Only fetches public data for regular visitors
+4. Admin data fetched separately only when admin logs in
+
+Best practices:
+1. Use Cloudinary for images instead of Supabase Storage (images = #1 cause of egress quota)
+2. Keep product descriptions short
+3. Monitor usage in Supabase dashboard - Settings - Usage
+4. Set up spending caps in Supabase
+5. Use a CDN (Cloudflare) in front of your site
+
+Free tier limits: 500MB DB, 1GB Storage, 5GB Bandwidth/month
+Pro plan ($25/month): 8GB DB, 100GB Storage, 250GB Bandwidth/month
+
+## Files Created/Modified
+
+- app/supabase-schema.sql - NEW - SQL schema for all tables
+- app/migrate-to-supabase.mjs - NEW - Data migration script
+- app/src/supabase.ts - MODIFIED - Removed old hardcoded credentials
+- app/.env.example - MODIFIED - Clear setup instructions
+- app/src/utils/cache.ts - MODIFIED - Increased cache TTL to 30 min
+- app/NEW_SUPABASE_SETUP.md - NEW - This guide

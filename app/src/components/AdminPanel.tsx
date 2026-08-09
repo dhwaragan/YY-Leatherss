@@ -22,7 +22,7 @@ import { supabase } from '../supabase';
 import { MultiImageUploader } from './MultiImageUploader';
 import { optimizeImage } from '../utils/images';
 
-const SUPA_URL = import.meta.env.VITE_SUPABASE_URL as string || 'https://vnspipodxzxuwsailgok.supabase.co';
+const SUPA_URL = import.meta.env.VITE_SUPABASE_URL as string || 'https://joutnmqckfwtfwicfqrm.supabase.co';
 const DEFAULT_ADMIN_PASS = import.meta.env.VITE_ADMIN_PASSWORD || import.meta.env.VITE_DATABASE_PASSWORD || "chennaileather2026";
 
 const defaultReviews = [

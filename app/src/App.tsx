@@ -165,17 +165,43 @@ const AppCore: React.FC = () => {
     ? JSON.parse(cbPolicies.value)
     : { returns: "", privacy: "", terms: "", shipping: "", buyback: "" };
 
+  // Secret maintenance override hooks
+  const [clickCount, setClickCount] = useState(0);
+  const [secretOverride, setSecretOverride] = useState(false);
+
   // Maintenance Mode Gate: block normal users if mode is ON
   const isAdmin = user ? isAdminEmail(user.email) : false;
-  if (isMaintenanceMode && !isAdmin) {
+  
+  if (isMaintenanceMode && !isAdmin && !secretOverride) {
+    const handleIconClick = () => {
+      const nextCount = clickCount + 1;
+      if (nextCount >= 10) {
+        setClickCount(0);
+        const pass = prompt("Enter Master Admin Password:");
+        const securePass = import.meta.env.VITE_ADMIN_PASSWORD || "YYLeathers@SecureAdmin2026!";
+        if (pass === securePass) {
+          setSecretOverride(true);
+          navigateTo("admin");
+        } else if (pass !== null) {
+          alert("Incorrect master password.");
+        }
+      } else {
+        setClickCount(nextCount);
+      }
+    };
+
     return (
       <div className="min-h-screen bg-[#3b2416] text-white flex flex-col items-center justify-center p-6 text-center select-none font-sans relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,90,43,0.15)_0%,transparent_70%)] pointer-events-none"></div>
         <div className="relative max-w-md w-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl space-y-6">
           <div className="flex justify-center">
-            <div className="p-3 bg-gold/15 border border-gold/30 rounded-full animate-pulse">
+            <button 
+              onClick={handleIconClick}
+              className="p-3 bg-gold/15 border border-gold/30 rounded-full animate-pulse focus:outline-none hover:bg-gold/20 active:scale-95 transition-all cursor-pointer"
+              title="Under Maintenance"
+            >
               <span className="text-4xl">🔧</span>
-            </div>
+            </button>
           </div>
           <h1 className="font-serif text-3xl font-bold text-white tracking-wide uppercase">
             {maintenanceTitle || "We'll Be Back Soon"}

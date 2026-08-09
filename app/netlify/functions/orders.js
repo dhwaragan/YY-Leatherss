@@ -1,8 +1,8 @@
 // Orders Netlify Function - Reads/Writes directly to Supabase for persistence
 const { createClient } = require('@supabase/supabase-js');
 
-const SUPABASE_URL = process.env.SUPABASE_URL || "https://vnspipodxzxuwsailgok.supabase.co";
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuc3BpcG9keHp4dXdzYWlsZ29rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NTIyNTgsImV4cCI6MjA5NjMyODI1OH0.wI8_OVKRzSGDTMyNQd5I_U1wZmQwVkDWYR2g-eiU78s";
+const SUPABASE_URL = process.env.SUPABASE_URL || "https://joutnmqckfwtfwicfqrm.supabase.co";
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvdXRubXFja2Z3dGZ3aWNmcXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4NTk5NDEsImV4cCI6MjEwMTQzNTk0MX0._cscygUUrJdwnfDhJm5IXGK5fo6X7ig6SaR2rDYcb8o";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 

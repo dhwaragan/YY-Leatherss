@@ -517,7 +517,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           supabase.auth.signOut().catch(() => {});
           setUser(null);
           localStorage.removeItem("yy_user");
-          localStorage.removeItem("sb-vnspipodxzxuwsailgok-auth-token");
+          localStorage.removeItem("sb-joutnmqckfwtfwicfqrm-auth-token");
         } else {
           console.warn("Supabase auth session warning:", error.message);
         }

@@ -783,7 +783,13 @@ interface Database {
 // Database read/write helpers
 function loadDatabase(): Database {
   if (!fs.existsSync(DB_FILE)) {
-    saveDatabase(initialDB);
+    if (!IS_SERVERLESS) {
+      try {
+        fs.writeFileSync(DB_FILE, JSON.stringify(initialDB, null, 2), 'utf8');
+      } catch (err) {
+        console.error("Failed to write seed db.json", err);
+      }
+    }
     return initialDB;
   }
   try {
@@ -847,8 +853,14 @@ async function pullFromSupabase() {
       }
       if (anyMerged) {
         db = tempDb;
-        // Cache to local filesystem
-        fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+        // Cache to local filesystem (Only if not serverless)
+        if (!IS_SERVERLESS) {
+          try {
+            fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+          } catch (err) {
+            console.error("Failed to write updated db.json", err);
+          }
+        }
         return true;
       }
     } else {

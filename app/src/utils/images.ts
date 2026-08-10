@@ -26,7 +26,7 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
   
   // NEW Supabase project - Free plan does not support Image Transformations,
   // so return the direct public object URL to prevent broken images.
-  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/')) {
+  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co')) {
     return url;
   }
   
@@ -60,7 +60,7 @@ export function generateSrcSet(url: string | undefined, maxWidth: number = 800):
   }
   
   // NEW Supabase project - Free plan does not support Image Transformations
-  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/')) {
+  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co')) {
     return '';
   }
   

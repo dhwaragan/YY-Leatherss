@@ -29,6 +29,16 @@
       "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJsKR2zfPReKO6w4k8oXrYTo1r4iUizbdVeJmy5D-zjUZoAGQ=s96-c",
       "address": "vinayagapuram, frist street",
       "created_at": "2026-08-09T08:45:02.155Z"
+    },
+    {
+      "id": "cust-1786377229772",
+      "email": "dhwaragandhwaragan9@gmail.com",
+      "name": "DHWARAGANDHWARAGAN9",
+      "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop",
+      "phone": "",
+      "role": "customer",
+      "address": "",
+      "created_at": "2026-08-10T15:53:49.772Z"
     }
   ],
   "products": [
@@ -38,11 +48,11 @@
       "name": "Black - Mafia Italian Chelsea",
       "price": 1799,
       "images": [
-        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/nns99t4oz9n-1783966342602.jpg",
-        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/xbfvy74813j-1783966344155.jpg",
-        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/e9gpmlos05-1783966345413.jpg",
-        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/sjaxjcmvdk-1783966345908.jpg",
-        "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/t575mm43r9i-1783966346446.jpg"
+        "https://via.placeholder.com/800x800/e5e5e5/999999?text=YY+Leathers",
+        "https://via.placeholder.com/800x800/e5e5e5/999999?text=YY+Leathers",
+        "https://via.placeholder.com/800x800/e5e5e5/999999?text=YY+Leathers",
+        "https://via.placeholder.com/800x800/e5e5e5/999999?text=YY+Leathers",
+        "https://via.placeholder.com/800x800/e5e5e5/999999?text=YY+Leathers"
       ],
       "category": "CHELSEA BOOT",
       "sizeMRPs": {
@@ -4762,6 +4772,11 @@
       "id": "cb-maintenance_message",
       "key": "maintenance_message",
       "value": "\"We're currently updating our store. Please check back soon.\""
+    },
+    {
+      "id": "cb-site_reviews",
+      "key": "site_reviews",
+      "value": "[{\"name\":\"Vishal Veeramani\",\"quote\":\"Really happy with this purchase 😊 The shoes quality is very good, super comfortable and soft to wear. Perfect fitting and nice finishing too. Also the owner was very kind and spoke very politely. Had a good experience overall. Highly recommended 👍\",\"rating\":5},{\"name\":\"Nivethan Sakthi\",\"quote\":\"It's been a long time since I purchased from YY Leathers and I must say their collection still impresses. I bought Clarks formal, Boss inspired and a Chelsea and all of them provide exceptional comfort and quality.\",\"rating\":5},{\"name\":\"Aravindhan\",\"quote\":\"Bought a pair of Chelsea boots from here and I'm beyond impressed. The leather is top quality with a beautiful, premium finish, and the sole is super soft and comfortable at a reasonable price. The shop owner was very genuine, friendly, and took great care to explain the details of the footwear to ensure I was satisfied. Highly recommend this shop👍🏻\",\"rating\":5}]"
     }
   ]
 }

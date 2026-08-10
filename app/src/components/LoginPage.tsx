@@ -94,6 +94,73 @@ export const LoginPage: React.FC = () => {
             />
             <span className="font-bold">Continue with Google</span>
           </button>
+
+          {/* Localhost testing tools */}
+          {window.location.hostname === "localhost" && (
+            <div className="mt-8 pt-6 border-t border-neutral-100 space-y-4">
+              <p className="text-[10px] uppercase font-extrabold tracking-widest text-neutral-400 text-center">
+                🛠️ Localhost Authentication tools
+              </p>
+              
+              <div className="space-y-2">
+                <input
+                  type="email"
+                  id="test-email-input"
+                  placeholder="Enter tester email address..."
+                  className="w-full border p-3 rounded-xl text-xs bg-neutral-50 focus:bg-white focus:outline-none"
+                  onKeyDown={async (e) => {
+                    if (e.key === "Enter") {
+                      const email = e.currentTarget.value.trim();
+                      if (email) {
+                        setLoading(true);
+                        try {
+                          const res = await fetch(`${window.location.origin}/api/auth/profile/${email}`);
+                          if (res.ok) {
+                            const profile = await res.json();
+                            localStorage.setItem("yy_user", JSON.stringify(profile));
+                            window.location.reload();
+                          } else {
+                            setErrorMsg("Failed to query tester profile");
+                          }
+                        } catch (err) {
+                          setErrorMsg("Local server is unreachable");
+                        } finally {
+                          setLoading(false);
+                        }
+                      }
+                    }
+                  }}
+                />
+                <p className="text-[9px] text-neutral-400 text-center uppercase tracking-wider">
+                  Press Enter to sign in with tester email
+                </p>
+              </div>
+
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const profile = {
+                      id: "admin-id",
+                      email: "dhwaragandhwaragan9@gmail.com",
+                      name: "Store Administrator",
+                      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+                      phone: "+91 93441 78585",
+                      role: "admin",
+                      address: "YY Leathers, Chennai",
+                      created_at: new Date().toISOString()
+                    };
+                    localStorage.setItem("yy_user", JSON.stringify(profile));
+                    localStorage.setItem("yy_admin_pass", "YYLeathers@SecureAdmin2026!");
+                    window.location.reload();
+                  }}
+                  className="flex-1 py-2 text-[10px] font-extrabold uppercase tracking-wider border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded-xl cursor-pointer text-center"
+                >
+                  🔐 Admin Quick Login
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-8 text-center text-[10px] text-white/50 uppercase tracking-widest">

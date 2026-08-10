@@ -782,13 +782,14 @@ interface Database {
 
 // Database read/write helpers
 function loadDatabase(): Database {
+  if (IS_SERVERLESS) {
+    return initialDB;
+  }
   if (!fs.existsSync(DB_FILE)) {
-    if (!IS_SERVERLESS) {
-      try {
-        fs.writeFileSync(DB_FILE, JSON.stringify(initialDB, null, 2), 'utf8');
-      } catch (err) {
-        console.error("Failed to write seed db.json", err);
-      }
+    try {
+      fs.writeFileSync(DB_FILE, JSON.stringify(initialDB, null, 2), 'utf8');
+    } catch (err) {
+      console.error("Failed to write seed db.json", err);
     }
     return initialDB;
   }

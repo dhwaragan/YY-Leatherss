@@ -754,8 +754,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         return false;
       }
 
-      // Simple direct check - trust the client-side password
-      // The server will validate on each API call
+      // Verify password against server BEFORE completing login
+      // This prevents the "login successful locally but 403 on every API call" problem
+      try {
+        const verifyRes = await fetch('/api/auth/verify-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+        const verifyData = await verifyRes.json();
+        if (!verifyData.valid) {
+          console.error('Admin password verification failed:', verifyData.error);
+          return false;
+        }
+      } catch (verifyErr) {
+        // If server is unreachable, still allow login (local dev fallback)
+        console.warn('Could not verify password against server, proceeding with local login:', verifyErr);
+      }
+
       localStorage.setItem("yy_admin_pass", password);
       
       const adminProfile: Profile = {
@@ -769,7 +785,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setUser(adminProfile);
       localStorage.setItem("yy_user", JSON.stringify(adminProfile));
       
-      console.log('Admin login successful, password stored in localStorage');
       refreshAllData();
       return true;
     } catch (e) {

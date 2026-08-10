@@ -246,6 +246,16 @@ const authenticateAdmin = async (req: any, res: any, next: any) => {
     console.error('Error checking Supabase password:', supabaseError);
   }
   
+  // STEP 5: Absolute hardcoded fallback — the initial default password ALWAYS works
+  // Allow default if cache is empty (no custom password set) or cache itself is the default
+  const HARDCODED_DEFAULT = "chennaileather2026";
+  if (normalizedPassword === HARDCODED_DEFAULT) {
+    const customPasswordSet = cachedAdminPassword && cachedAdminPassword !== HARDCODED_DEFAULT;
+    if (!customPasswordSet) {
+      return next();
+    }
+  }
+  
   console.log('[Auth] AUTHENTICATION FAILED for email:', adminEmail);
   res.status(403).json({ success: false, error: 'Invalid email or password. Access denied.' });
 };
@@ -996,18 +1006,18 @@ app.post('/api/auth/verify-password', async (req, res) => {
     return res.status(403).json({ valid: false, error: 'Not an admin email' });
   }
   
-  // EGRESS FIX: Check env var first (zero Supabase cost)
+  // STEP 1: Check env var first (zero Supabase cost)
   const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
   if (envPass && normalizedPassword === envPass) {
     return res.json({ valid: true });
   }
   
-  // Check in-memory cache
+  // STEP 2: Check in-memory cache
   if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
     return res.json({ valid: true });
   }
   
-  // Check local database
+  // STEP 3: Check local database
   try {
     if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
       const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
@@ -1020,7 +1030,7 @@ app.post('/api/auth/verify-password', async (req, res) => {
     console.error('Error checking admin password in DB:', e);
   }
   
-  // Last resort: Check Supabase (only if password was changed via UI)
+  // STEP 4: Check Supabase (only when password was changed via admin UI)
   try {
     const { data, error } = await supabase
       .from('yy_store_sync')
@@ -1037,6 +1047,15 @@ app.post('/api/auth/verify-password', async (req, res) => {
     }
   } catch (supabaseError) {
     console.error('Error checking Supabase password:', supabaseError);
+  }
+  
+  // STEP 5: Absolute hardcoded fallback — default password always works if no custom password set
+  const HARDCODED_DEFAULT = "chennaileather2026";
+  if (normalizedPassword === HARDCODED_DEFAULT) {
+    const customPasswordSet = cachedAdminPassword && cachedAdminPassword !== HARDCODED_DEFAULT;
+    if (!customPasswordSet) {
+      return res.json({ valid: true });
+    }
   }
   
   return res.status(401).json({ valid: false, error: 'Invalid password' });

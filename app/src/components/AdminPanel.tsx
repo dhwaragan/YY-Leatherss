@@ -832,14 +832,23 @@ export const AdminPanel: React.FC = () => {
     setTimeout(() => setMaintFeedback(''), 4000);
   };
 
+  const [loginLoading, setLoginLoading] = useState(false);
+
   const handleAdminBypass = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!enteredEmail) {
       setLoginFeedback("Please enter your admin email.");
       return;
     }
+    if (!enteredPassword) {
+      setLoginFeedback("Please enter your admin password.");
+      return;
+    }
+    setLoginLoading(true);
+    setLoginFeedback('Verifying credentials...');
     const ok = await bypassAdminLogin(enteredEmail, enteredPassword);
-    if (!ok) setLoginFeedback("Invalid email or password. Access denied.");
+    setLoginLoading(false);
+    if (!ok) setLoginFeedback("❌ Invalid password. Please check and try again.");
     else setLoginFeedback('');
   };
 
@@ -880,10 +889,10 @@ export const AdminPanel: React.FC = () => {
                 minLength={6}
                 className="w-full text-xs p-3 border border-neutral-250 rounded focus:outline-none focus:border-gold font-sans" 
               />
-              {loginFeedback && <p className="text-[11px] text-red-500 mt-1">{loginFeedback}</p>}
+              {loginFeedback && <p className={`text-[11px] mt-1 ${loginLoading ? 'text-amber-500' : 'text-red-500'}`}>{loginFeedback}</p>}
             </div>
-            <button type="submit" className="w-full bg-leather hover:bg-gold text-white font-sans text-xs uppercase tracking-widest font-bold py-3.5 rounded transition-colors cursor-pointer">
-              Authenticate
+            <button type="submit" disabled={loginLoading} className="w-full bg-leather hover:bg-gold text-white font-sans text-xs uppercase tracking-widest font-bold py-3.5 rounded transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              {loginLoading ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Verifying...</> : 'Authenticate'}
             </button>
           </form>
           <div className="p-3.5 bg-neutral-50 rounded border text-[10px] text-neutral-500 leading-relaxed">

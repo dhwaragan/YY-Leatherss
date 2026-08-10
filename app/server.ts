@@ -1618,6 +1618,12 @@ async function startServer() {
 
 if (!IS_SERVERLESS) {
   startServer();
+} else {
+  // Serverless environment: initialize password cache and trigger sync immediately on file import
+  initializePasswordCache();
+  pullFromSupabase().catch(err => {
+    console.error("Initial Serverless Supabase pull failed:", err);
+  });
 }
 
 export default app;

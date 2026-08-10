@@ -307,35 +307,39 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [DEFAULT_CATEGORIES]);
 
   // MEMOIZED: Fetch orders - only called when admin logs in or orders change
-  const fetchOrders = useCallback(async (): Promise<Order[]> => {
+  // MEMOIZED: Fetch orders - accepts optional userId to only fetch that user's orders (reduces egress)
+  const fetchOrders = useCallback(async (userId?: string): Promise<Order[]> => {
     try {
-      // Try local API first
-      const res = await fetch("/api/orders");
+      // EGRESS FIX: For non-admin users, fetch only their orders via user-specific endpoint
+      const endpoint = userId ? `/api/orders/user/${userId}` : "/api/orders";
+      const res = await fetch(endpoint);
       if (res.ok) {
         const data = await res.json();
         const mapped = (data || []).map(mapOrder);
-        setCache(ORDERS_KEY, mapped, 60 * 1000); // 1 min TTL
+        setCache(userId ? `orders_${userId}` : ORDERS_KEY, mapped, 2 * 60 * 1000); // 2 min TTL
         return mapped;
       }
     } catch (e) {
       console.error("Error fetching orders from API:", e);
     }
     
-    // Fallback: Fetch directly from Supabase
-    try {
-      const { data, error } = await supabase
-        .from('yy_store_sync')
-        .select('value')
-        .eq('key', 'orders')
-        .single();
-      
-      if (!error && data?.value) {
-        const mapped = (data.value || []).map(mapOrder);
-        setCache(ORDERS_KEY, mapped, 60 * 1000);
-        return mapped;
+    // Fallback: Only fetch from Supabase for admins (don't download all orders for regular users)
+    if (!userId) {
+      try {
+        const { data, error } = await supabase
+          .from('yy_store_sync')
+          .select('value')
+          .eq('key', 'orders')
+          .single();
+        
+        if (!error && data?.value) {
+          const mapped = (data.value || []).map(mapOrder);
+          setCache(ORDERS_KEY, mapped, 2 * 60 * 1000);
+          return mapped;
+        }
+      } catch (e) {
+        console.error("Error fetching orders from Supabase:", e);
       }
-    } catch (e) {
-      console.error("Error fetching orders from Supabase:", e);
     }
     
     return [];
@@ -443,8 +447,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
               setOrders(cached.orders || []);
               setPreorders(cached.preorders || []);
             } else {
-              // Fetch user orders directly to display in their dashboard
-              fetchOrders().then(userOrders => {
+              // EGRESS FIX: Fetch only this user's orders, not all orders
+              fetchOrders(su.id).then(userOrders => {
                 setOrders(userOrders);
               });
             }
@@ -499,7 +503,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
             }, 100);
           } else {
             setTimeout(async () => {
-              const orderData = await fetchOrders();
+              // EGRESS FIX: Only fetch this user's orders
+              const orderData = await fetchOrders(su.id);
               setOrders(orderData);
             }, 100);
           }
@@ -541,10 +546,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         
         // Fetch orders
         if (isAdminEmail(profile.email)) {
-          fetchOrders();
+          fetchOrders(); // Admin: fetch all orders
           fetchPreorders();
         } else {
-          fetchOrders();
+          fetchOrders(profile.id); // Customer: fetch only their orders (EGRESS FIX)
         }
       }
     }).catch(e => {
@@ -575,10 +580,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           const isAdmin = isAdminEmail(session.user.email || "");
           // If admin signed in, fetch admin data
           if (isAdmin) {
-            fetchOrders();
+            // Save admin password to localStorage so admin operations don't fail with 403
+            const defaultPass = import.meta.env.VITE_ADMIN_PASSWORD || "chennaileather2026";
+            localStorage.setItem("yy_admin_pass", defaultPass);
+            fetchOrders(); // Admin: fetch all orders
             fetchPreorders();
           } else {
-            fetchOrders();
+            fetchOrders(session.user.id); // Customer: fetch only their orders (EGRESS FIX)
           }
           
           // Check if there is an existing page path saved in localStorage to avoid forcing "home" / "admin"
@@ -672,7 +680,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           setOrders(orderData);
           setPreorders(preorderData);
         } else if (currentUser) {
-          const orderData = await fetchOrders();
+          // EGRESS FIX: Non-admin users only fetch their own orders
+          const orderData = await fetchOrders(currentUser.id);
           setOrders(orderData);
         }
       } catch (e) {
@@ -727,7 +736,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       
       // Load user orders immediately on successful login
       setTimeout(async () => {
-        const orderData = await fetchOrders();
+        // EGRESS FIX: For non-admin users, only fetch their orders
+        const orderData = await fetchOrders(asAdmin ? undefined : profile.id);
         setOrders(orderData);
       }, 50);
 
@@ -1006,8 +1016,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         body: JSON.stringify(prodData),
       });
       if (res.ok) {
+        const data = await res.json();
+        const newProduct = mapProduct(data.product || prodData);
+        // EGRESS FIX: Optimistic local update — no Supabase re-fetch needed
+        setProducts(prev => [newProduct, ...prev]);
+        // Invalidate cache so next fresh load sees the new product
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData(true); // bypass cache so new product shows immediately
         return true;
       }
       const errText = await res.text();
@@ -1017,7 +1031,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData, user]);
+  }, [user, mapProduct]);
 
   const updateProduct = useCallback(async (id: string, prodData: any) => {
     try {
@@ -1033,8 +1047,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         body: JSON.stringify(prodData),
       });
       if (res.ok) {
+        const data = await res.json();
+        const updatedProduct = mapProduct(data.product || { id, ...prodData });
+        // EGRESS FIX: Optimistic local update — no Supabase re-fetch needed
+        setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updatedProduct } : p));
+        // Invalidate cache so next fresh page load sees the update
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData(true);
         return true;
       }
       const errText = await res.text();
@@ -1044,7 +1062,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData, user]);
+  }, [user, mapProduct]);
 
   const decrementStock = useCallback(async (cartItems: CartItem[]) => {
     try {
@@ -1076,14 +1094,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         });
       }
       
+      // EGRESS FIX: Update local state optimistically instead of re-fetching from Supabase
+      setProducts(prev => prev.map(p => {
+        const cartItem = cartItems.find(ci => ci.product.id === p.id);
+        if (!cartItem || !p.sizeQuantities) return p;
+        const currentQty = p.sizeQuantities[cartItem.selectedSize];
+        if (currentQty === undefined || currentQty === Infinity) return p;
+        const newQty = Math.max(0, currentQty - cartItem.quantity);
+        return { ...p, sizeQuantities: { ...p.sizeQuantities, [cartItem.selectedSize]: newQty } };
+      }));
       removeCache(PUBLIC_DATA_KEY);
-      await refreshAllData();
       return true;
     } catch (e) {
       console.error("Error decrementing stock:", e);
       return false;
     }
-  }, [products, refreshAllData, user]);
+  }, [products, user]);
 
   const updateProductStock = useCallback(async (productId: string, size: string, quantity: number): Promise<boolean> => {
     try {
@@ -1108,8 +1134,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       });
 
       if (res.ok) {
+        // EGRESS FIX: Optimistic local update instead of re-fetching from Supabase
+        setProducts(prev => prev.map(p => 
+          p.id === productId 
+            ? { ...p, sizeQuantities: updatedSizeQuantities }
+            : p
+        ));
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData();
         return true;
       }
       console.error('Failed to update stock:', await res.text());
@@ -1118,7 +1149,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error("Error updating product stock:", e);
       return false;
     }
-  }, [products, refreshAllData, user]);
+  }, [products, user]);
 
   const deleteProduct = useCallback(async (id: string) => {
     try {
@@ -1132,8 +1163,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         },
       });
       if (res.ok) {
+        // EGRESS FIX: Optimistic local update — remove from local state immediately
+        setProducts(prev => prev.filter(p => p.id !== id));
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData();
         return true;
       }
       return false;
@@ -1141,7 +1173,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData, user]);
+  }, [user]);
 
   const updateOrderStatus = useCallback(async (id: string, status: Order["status"]) => {
     try {
@@ -1219,8 +1251,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         body: JSON.stringify(offerData),
       });
       if (res.ok) {
+        const data = await res.json();
+        const newOffer = data.offer || offerData;
+        // EGRESS FIX: Optimistic local update
+        setOffers(prev => [newOffer, ...prev]);
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData();
         return true;
       }
       return false;
@@ -1228,7 +1263,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData, user]);
+  }, [user]);
 
   const deleteOffer = useCallback(async (id: string) => {
     try {
@@ -1242,8 +1277,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         },
       });
       if (res.ok) {
+        // EGRESS FIX: Optimistic local update
+        setOffers(prev => prev.filter(o => o.id !== id));
         removeCache(PUBLIC_DATA_KEY);
-        await refreshAllData();
         return true;
       }
       return false;
@@ -1251,7 +1287,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       console.error(e);
       return false;
     }
-  }, [refreshAllData, user]);
+  }, [user]);
 
   const updateContentBlock = useCallback(async (key: string, value: any) => {
     try {

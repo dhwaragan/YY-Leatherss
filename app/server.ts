@@ -124,9 +124,33 @@ app.use((req, res, next) => {
 // Admin emails list
 const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
 
-// Helper to get current admin password (checks Supabase first, then local DB, then env)
+// Helper to get current admin password (env var first - ZERO Supabase egress for auth)
 const getAdminPassword = async () => {
-  // First check Supabase for the most up-to-date password
+  // EGRESS FIX: Check env var FIRST (no Supabase query needed)
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass) {
+    return envPass;
+  }
+  
+  // Check in-memory cache second (no Supabase query)
+  if (cachedAdminPassword) {
+    return cachedAdminPassword;
+  }
+  
+  // Check local DB (no Supabase query)
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      if (contentBlock && contentBlock.value) {
+        cachedAdminPassword = contentBlock.value;
+        return contentBlock.value;
+      }
+    }
+  } catch (e) {
+    console.error('Error reading admin password from local DB:', e);
+  }
+  
+  // Final fallback: Supabase (only used when password was changed via UI)
   try {
     const { data, error } = await supabase
       .from('yy_store_sync')
@@ -137,7 +161,7 @@ const getAdminPassword = async () => {
     if (!error && data?.value && Array.isArray(data.value)) {
       const contentBlock = data.value.find((cb: any) => cb.key === 'admin_password');
       if (contentBlock && contentBlock.value) {
-        console.log('[Auth] Using password from Supabase');
+        cachedAdminPassword = contentBlock.value;
         return contentBlock.value;
       }
     }
@@ -145,37 +169,15 @@ const getAdminPassword = async () => {
     console.error('Error reading admin password from Supabase:', e);
   }
   
-  // Fallback to local database
-  try {
-    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
-      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
-      if (contentBlock && contentBlock.value) {
-        console.log('[Auth] Using password from local DB');
-        return contentBlock.value;
-      }
-    }
-  } catch (e) {
-    console.error('Error reading admin password from local DB:', e);
-  }
-  
-  // Fallback to environment variable
-  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
-  if (envPass) {
-    console.log('[Auth] Using password from environment variable');
-    return envPass;
-  }
-  
-  // Final fallback to default
-  console.log('[Auth] Using default password');
+  // Absolute fallback
   return "chennaileather2026";
 };
 
-// Admin Authentication Middleware (ASYNC to support database password checks)
+// Admin Authentication Middleware
+// EGRESS FIX: Check env var and cache FIRST. Only hit Supabase if user changed password via UI.
 const authenticateAdmin = async (req: any, res: any, next: any) => {
   const adminEmail = req.headers['x-admin-email'] || req.body?.admin_email;
   const adminPassword = req.headers['x-admin-password'] || req.body?.admin_password;
-  
-  console.log('[Auth] Attempt with email:', adminEmail, 'password length:', adminPassword?.length);
   
   // Check if email is in admin list (case-insensitive)
   const isValidAdminEmail = ADMIN_EMAILS.some(
@@ -183,15 +185,39 @@ const authenticateAdmin = async (req: any, res: any, next: any) => {
   );
   
   if (!isValidAdminEmail || !adminPassword) {
-    console.log('[Auth] Failed: invalid email or missing password');
     res.status(403).json({ success: false, error: 'Admin authentication required' });
     return;
   }
   
-  // Normalize password (trim whitespace)
   const normalizedPassword = (adminPassword || '').trim();
   
-  // Check Supabase FIRST (source of truth) - password changes are saved here
+  // STEP 1: Check environment variable (ZERO Supabase egress)
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass && normalizedPassword === envPass) {
+    return next();
+  }
+  
+  // STEP 2: Check in-memory cache (ZERO Supabase egress)
+  if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
+    return next();
+  }
+  
+  // STEP 3: Check local database (ZERO Supabase egress)
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      const localPass = contentBlock?.value;
+      if (localPass && normalizedPassword === localPass) {
+        cachedAdminPassword = localPass;
+        return next();
+      }
+    }
+  } catch (e) {
+    console.error('Error checking admin password in DB:', e);
+  }
+  
+  // STEP 4: Only reach Supabase if password was changed via admin UI (not in env)
+  // This handles the case where admin changed their password through the settings panel
   try {
     const { data, error } = await supabase
       .from('yy_store_sync')
@@ -202,10 +228,17 @@ const authenticateAdmin = async (req: any, res: any, next: any) => {
     if (!error && data?.value && Array.isArray(data.value)) {
       const supabaseBlock = data.value.find((cb: any) => cb.key === 'admin_password');
       const supabasePass = supabaseBlock?.value;
-      
       if (supabasePass && normalizedPassword === supabasePass) {
-        console.log('[Auth] Authenticated via Supabase');
         cachedAdminPassword = supabasePass;
+        // Update local DB to avoid hitting Supabase next time
+        if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+          const idx = db.content_blocks.findIndex((cb: any) => cb.key === 'admin_password');
+          if (idx !== -1) db.content_blocks[idx].value = supabasePass;
+          else db.content_blocks.push({ id: 'cb-admin_password', key: 'admin_password', value: supabasePass });
+          if (!IS_SERVERLESS) {
+            try { fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8'); } catch {}
+          }
+        }
         return next();
       }
     }
@@ -213,45 +246,7 @@ const authenticateAdmin = async (req: any, res: any, next: any) => {
     console.error('Error checking Supabase password:', supabaseError);
   }
   
-  // Try cached password (fastest) - only if Supabase check failed
-  if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
-    console.log('[Auth] Authenticated via cache');
-    return next();
-  }
-  
-  // Fallback: check local database (may be stale after password change)
-  try {
-    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
-      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
-      const localPass = contentBlock?.value;
-      
-      if (localPass && normalizedPassword === localPass) {
-        console.log('[Auth] Authenticated via local DB');
-        cachedAdminPassword = localPass;
-        return next();
-      }
-    }
-  } catch (e) {
-    console.error('Error checking admin password in DB:', e);
-  }
-  
-  // Also check environment variable as final fallback
-  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
-  if (envPass && normalizedPassword === envPass) {
-    console.log('[Auth] Authenticated via env');
-    cachedAdminPassword = envPass;
-    return next();
-  }
-  
-  console.log('[Auth] AUTHENTICATION FAILED');
-  console.log('[Auth] Details:', {
-    supabase: 'checked',
-    cache: !!cachedAdminPassword,
-    localDB: 'checked',
-    env: !!envPass,
-    receivedPassword: normalizedPassword.substring(0, 3) + '...'
-  });
-  
+  console.log('[Auth] AUTHENTICATION FAILED for email:', adminEmail);
   res.status(403).json({ success: false, error: 'Invalid email or password. Access denied.' });
 };
 
@@ -822,19 +817,33 @@ async function syncToSupabase(key: string, value: any) {
   }
 }
 
+// TTL guard: prevent re-pulling Supabase data more than once per 2 minutes (critical for serverless)
+// Each Netlify function invocation is a cold start — without this guard, EVERY request downloads all data.
+let lastPullTime = 0;
+const PULL_COOLDOWN_MS = IS_SERVERLESS ? 120_000 : 300_000; // 2 min serverless, 5 min local
+
 // Global pull on startup
 async function pullFromSupabase() {
-  console.log("[Supabase Sync] Retrieving dynamic cloud records from Supabase PostgreSQL...");
+  // EGRESS FIX: Don't re-pull if we pulled recently (critical for serverless cold starts)
+  const now = Date.now();
+  if (now - lastPullTime < PULL_COOLDOWN_MS) {
+    console.log(`[Supabase Sync] Skipping pull — last pull was ${Math.round((now - lastPullTime)/1000)}s ago (cooldown: ${PULL_COOLDOWN_MS/1000}s)`);
+    return true; // Treat as success — data is fresh enough
+  }
+  
+  console.log("[Supabase Sync] Pulling from Supabase...");
   try {
-    // KEY OPTIMIZATION: Only pull these known keys - avoids downloading unused data
+    // EGRESS FIX: Exclude orders/preorders from public pull — admin panel fetches those separately
+    // orders and preorders can be 100s of KB and are NOT needed on every API request
     const { data, error } = await supabase
       .from('yy_store_sync')
       .select('key, value')
-      .in('key', ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks']);
+      .in('key', ['products', 'offers', 'content_blocks', 'custom_categories']);
     
     if (error) {
       if (error.code === '42P01') {
-        console.warn("[Supabase Sync] 'yy_store_sync' table missing on Supabase. Using local db.json cache storage.");
+        console.warn("[Supabase Sync] 'yy_store_sync' table missing. Using local db.json.");
+        lastPullTime = now; // Don't retry immediately
         return false;
       }
       console.error("[Supabase Sync] Pull error:", error);
@@ -842,7 +851,7 @@ async function pullFromSupabase() {
     }
 
     if (data && data.length > 0) {
-      console.log(`[Supabase Sync] Restoring state for ${data.length} keys from Supabase...`);
+      console.log(`[Supabase Sync] Merging ${data.length} keys from Supabase.`);
       const tempDb = { ...db };
       let anyMerged = false;
       for (const row of data) {
@@ -853,6 +862,11 @@ async function pullFromSupabase() {
       }
       if (anyMerged) {
         db = tempDb;
+        // Update password cache if content_blocks were updated
+        if (db.content_blocks && Array.isArray(db.content_blocks)) {
+          const pwBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+          if (pwBlock?.value) cachedAdminPassword = pwBlock.value;
+        }
         // Cache to local filesystem (Only if not serverless)
         if (!IS_SERVERLESS) {
           try {
@@ -861,15 +875,18 @@ async function pullFromSupabase() {
             console.error("Failed to write updated db.json", err);
           }
         }
+        lastPullTime = now;
         return true;
       }
     } else {
       console.log("[Supabase Sync] Supabase table is empty. Pre-seeding Supabase with local data...");
-      const keysToSync: Array<keyof Database> = ['profiles', 'products', 'orders', 'preorders', 'offers', 'content_blocks'];
+      // Seed minimal public data — NOT orders/preorders (those would be empty on first deploy anyway)
+      const keysToSync: Array<keyof Database> = ['products', 'offers', 'content_blocks'];
       for (const key of keysToSync) {
         await syncToSupabase(key, db[key]);
       }
     }
+    lastPullTime = now;
   } catch (err) {
     console.error("[Supabase Sync] Connection error during initial restore:", err);
   }
@@ -940,16 +957,18 @@ async function invalidatePasswordCache() {
   cachedAdminPassword = null;
 }
 
-let isSupabasePulled = false;
+// EGRESS FIX: In serverless, use the TTL-guarded pullFromSupabase() instead of a simple boolean flag.
+// The old boolean flag reset to false on every cold start, causing a full Supabase download per request.
 app.use(async (req, res, next) => {
   if (req.url.startsWith('/.netlify/functions/api')) {
     req.url = req.url.replace('/.netlify/functions/api', '/api');
   }
   
-  if (IS_SERVERLESS && !isSupabasePulled && req.url.startsWith('/api')) {
+  // In serverless mode, pullFromSupabase() is TTL-guarded internally (2 min cooldown)
+  // It will skip the actual fetch if data was pulled recently
+  if (IS_SERVERLESS && req.url.startsWith('/api')) {
     try {
       await pullFromSupabase();
-      isSupabasePulled = true;
     } catch (e) {
       console.error("Serverless Supabase pull failed", e);
     }
@@ -969,7 +988,6 @@ app.post('/api/auth/verify-password', async (req, res) => {
   
   const normalizedPassword = (password || '').trim();
   
-  // Check if email is admin
   const isAdmin = ADMIN_EMAILS.some(
     adminEmail => adminEmail.toLowerCase() === email.toLowerCase()
   );
@@ -978,7 +996,31 @@ app.post('/api/auth/verify-password', async (req, res) => {
     return res.status(403).json({ valid: false, error: 'Not an admin email' });
   }
   
-  // Check Supabase FIRST (source of truth)
+  // EGRESS FIX: Check env var first (zero Supabase cost)
+  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
+  if (envPass && normalizedPassword === envPass) {
+    return res.json({ valid: true });
+  }
+  
+  // Check in-memory cache
+  if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
+    return res.json({ valid: true });
+  }
+  
+  // Check local database
+  try {
+    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
+      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
+      if (contentBlock && contentBlock.value && normalizedPassword === contentBlock.value) {
+        cachedAdminPassword = contentBlock.value;
+        return res.json({ valid: true });
+      }
+    }
+  } catch (e) {
+    console.error('Error checking admin password in DB:', e);
+  }
+  
+  // Last resort: Check Supabase (only if password was changed via UI)
   try {
     const { data, error } = await supabase
       .from('yy_store_sync')
@@ -989,34 +1031,12 @@ app.post('/api/auth/verify-password', async (req, res) => {
     if (!error && data?.value && Array.isArray(data.value)) {
       const supabaseBlock = data.value.find((cb: any) => cb.key === 'admin_password');
       if (supabaseBlock && supabaseBlock.value && normalizedPassword === supabaseBlock.value) {
+        cachedAdminPassword = supabaseBlock.value;
         return res.json({ valid: true });
       }
     }
   } catch (supabaseError) {
     console.error('Error checking Supabase password:', supabaseError);
-  }
-  
-  // Check cached password
-  if (cachedAdminPassword && normalizedPassword === cachedAdminPassword) {
-    return res.json({ valid: true });
-  }
-  
-  // Check local database
-  try {
-    if (db && db.content_blocks && Array.isArray(db.content_blocks)) {
-      const contentBlock = db.content_blocks.find((cb: any) => cb.key === 'admin_password');
-      if (contentBlock && contentBlock.value && normalizedPassword === contentBlock.value) {
-        return res.json({ valid: true });
-      }
-    }
-  } catch (e) {
-    console.error('Error checking admin password in DB:', e);
-  }
-  
-  // Check environment variable
-  const envPass = process.env.VITE_ADMIN_PASSWORD || process.env.VITE_DATABASE_PASSWORD;
-  if (envPass && normalizedPassword === envPass) {
-    return res.json({ valid: true });
   }
   
   return res.status(401).json({ valid: false, error: 'Invalid password' });
@@ -1579,7 +1599,8 @@ async function startServer() {
   // Initialize password cache synchronously
   initializePasswordCache();
   
-  // Sync state from Supabase on launch
+  // Sync state from Supabase on launch (TTL-guarded — won't double-pull)
+  // Note: pullFromSupabase() has a 5-minute cooldown for local dev
   try {
     await pullFromSupabase();
   } catch (e) {
@@ -1619,11 +1640,10 @@ async function startServer() {
 if (!IS_SERVERLESS) {
   startServer();
 } else {
-  // Serverless environment: initialize password cache and trigger sync immediately on file import
+  // Serverless environment: initialize password cache on file import
+  // NOTE: pullFromSupabase() is called per-request in the middleware above, with TTL guard.
+  // We do NOT call it here again to avoid double-download on the first request.
   initializePasswordCache();
-  pullFromSupabase().catch(err => {
-    console.error("Initial Serverless Supabase pull failed:", err);
-  });
 }
 
 export default app;

@@ -754,7 +754,6 @@ export const AdminPanel: React.FC = () => {
     );
 
     if (!error) {
-      await refreshAllData(true);
       setFestivalFeedback('✅ Festival settings updated and synced successfully!');
     } else {
       setFestivalFeedback('⚠️ Settings saved locally but cloud sync failed.');
@@ -769,7 +768,7 @@ export const AdminPanel: React.FC = () => {
     setIsFestivalActive(newState);
     localStorage.setItem('yy_festival_active', String(newState));
     await updateContentBlock('festival_active', newState);
-    await refreshAllData(true);
+    // Don't call refreshAllData - contentBlocks already updated in context via updateContentBlock
   };
 
   const handleSaveMaintenance = async (e: React.FormEvent) => {
@@ -822,7 +821,6 @@ export const AdminPanel: React.FC = () => {
     );
 
     if (!error) {
-      await refreshAllData(true);
       setMaintFeedback(isMaintMode 
         ? "🔴 Website is currently under maintenance. Customers cannot access the storefront." 
         : "🟢 Website is online! Customers can access the storefront."

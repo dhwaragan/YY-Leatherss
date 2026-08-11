@@ -309,6 +309,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   // MEMOIZED: Fetch orders - only called when admin logs in or orders change
   // MEMOIZED: Fetch orders - accepts optional userId to only fetch that user's orders (reduces egress)
   const fetchOrders = useCallback(async (userId?: string): Promise<Order[]> => {
+    const cacheKey = userId ? `orders_${userId}` : ORDERS_KEY;
+    const cachedData = getCache<Order[]>(cacheKey, 5 * 60 * 1000); // 5 min TTL
+    if (cachedData) {
+      return cachedData;
+    }
+
     try {
       // EGRESS FIX: For non-admin users, fetch only their orders via user-specific endpoint
       const endpoint = userId ? `/api/orders/user/${userId}` : "/api/orders";
@@ -316,7 +322,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       if (res.ok) {
         const data = await res.json();
         const mapped = (data || []).map(mapOrder);
-        setCache(userId ? `orders_${userId}` : ORDERS_KEY, mapped, 2 * 60 * 1000); // 2 min TTL
+        setCache(cacheKey, mapped, 5 * 60 * 1000);
         return mapped;
       }
     } catch (e) {
@@ -334,7 +340,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         
         if (!error && data?.value) {
           const mapped = (data.value || []).map(mapOrder);
-          setCache(ORDERS_KEY, mapped, 2 * 60 * 1000);
+          setCache(ORDERS_KEY, mapped, 5 * 60 * 1000);
           return mapped;
         }
       } catch (e) {
@@ -347,13 +353,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // MEMOIZED: Fetch preorders - only called when admin logs in or preorders change
   const fetchPreorders = useCallback(async (): Promise<Preorder[]> => {
+    const cachedData = getCache<Preorder[]>(PREORDERS_KEY, 5 * 60 * 1000); // 5 min TTL
+    if (cachedData) {
+      return cachedData;
+    }
+
     try {
       // Try local API first
       const res = await fetch("/api/preorders");
       if (res.ok) {
         const data = await res.json();
         const mapped = (data || []).map(mapPreorder);
-        setCache(PREORDERS_KEY, mapped, 60 * 1000); // 1 min TTL
+        setCache(PREORDERS_KEY, mapped, 5 * 60 * 1000);
         return mapped;
       }
     } catch (e) {
@@ -370,7 +381,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       
       if (!error && data?.value) {
         const mapped = (data.value || []).map(mapPreorder);
-        setCache(PREORDERS_KEY, mapped, 60 * 1000);
+        setCache(PREORDERS_KEY, mapped, 5 * 60 * 1000);
         return mapped;
       }
     } catch (e) {

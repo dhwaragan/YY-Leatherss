@@ -24,15 +24,10 @@ export function optimizeImage(url: string | undefined, width: number = 600): str
     }
   }
   
-  // NEW Supabase project - Free plan does not support Image Transformations,
-  // so return the direct public object URL to prevent broken images.
-  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co')) {
+  // Supabase Storage URLs - Free plans do not support image transformation,
+  // so return the direct public URL to prevent broken images.
+  if (url.includes('.supabase.co')) {
     return url;
-  }
-  
-  // OLD Supabase project (down/quota exceeded) - use placeholder
-  if (url.includes('supabase.co/storage/v1/object/public/')) {
-    return `https://via.placeholder.com/${width}x${width}/e5e5e5/999999?text=YY+Leathers`;
   }
   
   return url;
@@ -59,13 +54,8 @@ export function generateSrcSet(url: string | undefined, maxWidth: number = 800):
     }
   }
   
-  // NEW Supabase project - Free plan does not support Image Transformations
-  if (url.includes('joutnmqckfwtfwicfqrm.supabase.co')) {
-    return '';
-  }
-  
-  // OLD Supabase project (down) - no srcset, just placeholder
-  if (url.includes('supabase.co/storage/v1/object/public/')) {
+  // Supabase Storage URLs - Free plans do not support image transformation
+  if (url.includes('.supabase.co')) {
     return '';
   }
   

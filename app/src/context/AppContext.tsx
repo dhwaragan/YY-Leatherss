@@ -127,7 +127,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 // Admin emails list - exported so AdminPanel can use it
-const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
+const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com", "stanislauscbe@gmail.com"];
 
 export const isAdminEmail = (email: string): boolean => {
   return ADMIN_EMAILS.some(adminEmail => adminEmail.toLowerCase() === email.toLowerCase());
@@ -315,6 +315,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       return cachedData;
     }
 
+    let apiData: Order[] | null = null;
     try {
       // EGRESS FIX: For non-admin users, fetch only their orders via user-specific endpoint
       const endpoint = userId ? `/api/orders/user/${userId}` : "/api/orders";
@@ -322,14 +323,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       if (res.ok) {
         const data = await res.json();
         const mapped = (data || []).map(mapOrder);
-        setCache(cacheKey, mapped, 5 * 60 * 1000);
-        return mapped;
+        // For non-admin users, always use API result (even if empty)
+        if (userId) {
+          setCache(cacheKey, mapped, 5 * 60 * 1000);
+          return mapped;
+        }
+        // For admin (all orders): only trust API result if it has data
+        // If API returns empty, fall through to Supabase (serverless may not have orders loaded)
+        if (mapped.length > 0) {
+          setCache(cacheKey, mapped, 5 * 60 * 1000);
+          return mapped;
+        }
+        apiData = mapped; // remember it was empty
       }
     } catch (e) {
       console.error("Error fetching orders from API:", e);
     }
     
     // Fallback: Only fetch from Supabase for admins (don't download all orders for regular users)
+    // Also runs when API returned empty [] — serverless may not have orders in memory
     if (!userId) {
       try {
         const { data, error } = await supabase
@@ -338,7 +350,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
           .eq('key', 'orders')
           .single();
         
-        if (!error && data?.value) {
+        if (!error && data?.value && Array.isArray(data.value) && data.value.length > 0) {
           const mapped = (data.value || []).map(mapOrder);
           setCache(ORDERS_KEY, mapped, 5 * 60 * 1000);
           return mapped;
@@ -348,8 +360,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       }
     }
     
+    // If both API and Supabase returned empty, cache the empty result to avoid hammering
+    if (!userId && apiData !== null) {
+      setCache(cacheKey, [], 60 * 1000); // only cache empty for 1 min (not 5)
+    }
     return [];
   }, [mapOrder]);
+
 
   // MEMOIZED: Fetch preorders - only called when admin logs in or preorders change
   const fetchPreorders = useCallback(async (): Promise<Preorder[]> => {
@@ -647,6 +664,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     // Always clear cache when doing a forced refresh
     if (bypassCache) {
       removeCache(PUBLIC_DATA_KEY);
+      removeCache(ORDERS_KEY);
+      removeCache('preorders');
     }
     
     const promise = (async () => {

@@ -244,6 +244,9 @@ export const AdminPanel: React.FC = () => {
 
   const [rejectModalOrder, setRejectModalOrder] = useState<Order | null>(null);
   const [rejectReason, setRejectReason] = useState('');
+  const [testOrderCreating, setTestOrderCreating] = useState(false);
+  const [testOrderType, setTestOrderType] = useState<'normal' | 'birthday' | 'buyback' | 'student'>('normal');
+  const [lastTestOrderId, setLastTestOrderId] = useState<string | null>(null);
 
   // Use context data (already fetched once) instead of making 7+ duplicate Supabase queries
   const hasInitializedRef = useRef(false);
@@ -290,6 +293,16 @@ export const AdminPanel: React.FC = () => {
       loadAll();
     }
   }, [user?.email]); // Only re-run when user email changes
+
+  // Auto-refresh new orders every 30 seconds when on the 'new' tab
+  useEffect(() => {
+    if (!user || !isAdminEmail(user.email)) return;
+    if (activeTab !== 'new') return;
+    const interval = setInterval(() => {
+      refreshAllData(true); // bypass cache to pick up fresh orders
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [user, activeTab, refreshAllData]);
 
   // Keep local admin panel state in sync with context updates (orders/offers/products)
   useEffect(() => {
@@ -876,7 +889,7 @@ export const AdminPanel: React.FC = () => {
                 required
                 className="w-full text-xs p-3 border border-neutral-300 rounded bg-white focus:outline-none focus:border-gold text-neutral-800" 
               />
-              <p className="text-[9px] text-neutral-400 mt-1">Authorized: dhwaragandhwaragan9@gmail.com, Yomeyom786@gmail.com</p>
+              <p className="text-[9px] text-neutral-400 mt-1">Authorized: dhwaragandhwaragan9@gmail.com, Yomeyom786@gmail.com, stanislauscbe@gmail.com</p>
             </div>
             <div className="space-y-1">
               <label className="text-xs font-semibold text-neutral-600 block">Secure Password</label>
@@ -1095,6 +1108,104 @@ export const AdminPanel: React.FC = () => {
     setRejectModalOrder(null);
     setRejectReason('');
     await refreshAllData(true);
+  };
+
+  // ── TEST ORDER CREATOR ──
+  const handleCreateTestOrder = async () => {
+    setTestOrderCreating(true);
+    setLastTestOrderId(null);
+    try {
+      // Pick a real product from inventory if available, else use a placeholder
+      const sampleProduct = products.length > 0 ? products[Math.floor(Math.random() * products.length)] : null;
+      const fakeNames = ['Arjun Kumar', 'Priya Sharma', 'Ravi Chandran', 'Deepa Nair', 'Vikram Bose'];
+      const fakeEmails = ['test1@example.com', 'demo@yyleathers.com', 'customer@test.in'];
+      const fakeAddresses = [
+        'No 12, Anna Nagar, Chennai - 600040',
+        'Flat 3B, T Nagar, Chennai - 600017',
+        'No 45, Velachery Main Road, Chennai - 600042',
+        'No 8, Adyar, Chennai - 600020',
+      ];
+      const productItem = sampleProduct ? {
+        product: sampleProduct,
+        quantity: 1,
+        selectedSize: sampleProduct.sizes?.[0] || '42',
+      } : {
+        product: {
+          id: 'test-prod-001',
+          name: 'Classic Derby (Test)',
+          price: 1799,
+          images: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400'],
+          category: 'FORMAL - DERBY',
+          sizes: ['40', '41', '42', '43'],
+          stock: 10,
+          description: 'Test product',
+          is_featured: false,
+          created_at: new Date().toISOString(),
+        },
+        quantity: 1,
+        selectedSize: '42',
+      };
+      const productPrice = productItem.product.price || 1799;
+      const deliveryCharge = 160;
+      const name = fakeNames[Math.floor(Math.random() * fakeNames.length)];
+      const email = fakeEmails[Math.floor(Math.random() * fakeEmails.length)];
+      const address = fakeAddresses[Math.floor(Math.random() * fakeAddresses.length)];
+
+      let total = productPrice + deliveryCharge;
+      let birthdayDetails = undefined;
+      let buybackDetails = undefined;
+      let studentDetails = undefined;
+
+      if (testOrderType === 'birthday') {
+        total = Math.max(0, total - 250); // birthday ₹250 off
+        birthdayDetails = { gov_id_number: 'TEST1234', dob: '1998-08-12', gov_id_photo_url: '', status: 'Pending' };
+      } else if (testOrderType === 'buyback') {
+        total = Math.round(total * 0.9); // 10% buyback discount
+        buybackDetails = { shoe_details: 'Old Brown Derby (Test)', bill_no: 'YY-TEST-001', bought_date: '2023-01-15', photo_url: '', status: 'Pending' };
+      } else if (testOrderType === 'student') {
+        total = Math.round(total * 0.95); // 5% student discount
+        studentDetails = { college_name: 'Test College', id_photo_url: '', status: 'Pending' };
+      }
+
+      const payload = {
+        user_id: `test-user-${Date.now()}`,
+        customer_name: `[TEST] ${name}`,
+        customer_email: email,
+        phone: '+91 98765 43210',
+        address,
+        items: [productItem],
+        total,
+        delivery_region: 'TN',
+        delivery_charge: deliveryCharge,
+        estimated_weight_kg: 1,
+        razorpay_order_id: `test_order_${Date.now()}`,
+        razorpay_payment_id: `test_pay_${Date.now()}`,
+        birthday_benefit_requested: testOrderType === 'birthday',
+        birthday_benefit_details: birthdayDetails,
+        buyback_requested: testOrderType === 'buyback',
+        buyback_details: buybackDetails,
+        student_discount_requested: testOrderType === 'student',
+        student_discount_details: studentDetails,
+        applied_offer: 'none',
+      };
+
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data.success && data.order?.id) {
+        setLastTestOrderId(data.order.id);
+        await refreshAllData(true);
+      } else {
+        alert('Failed to create test order: ' + (data.message || 'Unknown error'));
+      }
+    } catch (e: any) {
+      alert('Error creating test order: ' + e.message);
+    } finally {
+      setTestOrderCreating(false);
+    }
   };
 
   const handleAddPromoOffer = async (e: React.FormEvent) => {
@@ -1494,7 +1605,12 @@ export const AdminPanel: React.FC = () => {
                 <button className="wb-btn" onClick={() => window.open('/', '_blank')}>
                   🛍️ Live Shop
                 </button>
-                <button className="wb-btn" onClick={() => { setLoadingData(true); refreshAllData().finally(() => setLoadingData(false)); }}>
+                <button className="wb-btn" onClick={async () => { 
+                  setLoadingData(true); 
+                  // Pull latest orders from Supabase (syncs live orders to localhost)
+                  try { await adminFetch('/api/orders/sync-from-supabase'); } catch {}
+                  refreshAllData(true).finally(() => setLoadingData(false)); 
+                }}>
                   <RefreshCw className="w-3.5 h-3.5" /> Refresh
                 </button>
                 <button className="wb-btn gold" onClick={handleTriggerAddProduct}>
@@ -1761,43 +1877,47 @@ export const AdminPanel: React.FC = () => {
                             )}
 
                             {ord.buyback_requested && ord.buyback_details && (
-                              <div className="mt-3 p-3 bg-gold/5 border border-gold/20 rounded text-xs space-y-1.5">
-                                <p className="font-bold text-gold-dark uppercase tracking-wider text-[10px]">BUY BACK OFFER REQUEST</p>
-                                <p><strong>Shoe:</strong> {ord.buyback_details.shoe_details}</p>
-                                <p><strong>Photo:</strong></p>
+                              <div className="mt-3 p-3 bg-gold/5 border border-gold/20 rounded text-xs space-y-2">
+                                <p className="font-bold text-gold-dark uppercase tracking-wider text-[10px]">♻️ BUY BACK OFFER REQUEST</p>
                                 {ord.buyback_details.photo_url ? (
-                                  <img src={ord.buyback_details.photo_url} alt="Buyback photo" className="mt-2 h-24 w-full object-cover rounded border border-neutral-200" />
+                                  <img src={ord.buyback_details.photo_url} alt="Buyback photo" className="mt-1 h-32 w-full object-cover rounded border border-amber-200" onError={(e) => (e.currentTarget.style.display='none')} />
                                 ) : (
-                                  <p className="text-neutral-500">No photo uploaded</p>
+                                  <p className="text-neutral-400 text-[10px]">No photo uploaded</p>
                                 )}
-                                <p><strong>Bill No:</strong> {ord.buyback_details.bill_no}</p>
-                                <p><strong>Purchased Date:</strong> {new Date(ord.buyback_details.bought_date).toLocaleDateString()}</p>
-                                <div className="mt-2 flex items-center justify-between pt-2 border-t border-gold/10">
-                                  <p><strong>Offer Status:</strong> <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${ord.buyback_details.status === 'Confirmed' ? 'bg-green-100 text-green-700' : ord.buyback_details.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'}`}>{ord.buyback_details.status}</span></p>
-                                  {ord.buyback_details.status === 'Pending' && (
-                                    <div className="flex gap-2">
-                                      <button onClick={() => handleUpdateOrderBuyback(ord.id, 'Confirmed')} className="px-2 py-1 bg-green-500 hover:bg-green-600 text-white rounded text-[10px] font-bold uppercase transition-colors cursor-pointer">YES (0% off)</button>
-                                      <button onClick={() => handleUpdateOrderBuyback(ord.id, 'Rejected')} className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-[10px] font-bold uppercase transition-colors cursor-pointer">NO (10% off)</button>
-                                    </div>
-                                  )}
-                                  {ord.buyback_details.status === 'Confirmed' && <p className="font-bold text-green-600 text-[10px] uppercase">✅ Buyback Accepted - 0% Off</p>}
-                                  {ord.buyback_details.status === 'Rejected' && (
-                                    <div>
-                                      <p className="font-bold text-amber-600 text-[10px] uppercase">💸 Buyback Rejected - 10% Off Applied</p>
-                                      {(ord.buyback_details as any).rejection_comment && <p className="text-red-500 text-[9px] mt-1">Reason: {(ord.buyback_details as any).rejection_comment}</p>}
-                                    </div>
-                                  )}
-                                </div>
                               </div>
                             )}
 
                             {ord.birthday_benefit_requested && ord.birthday_benefit_details && (
-                              <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded text-xs space-y-1.5">
-                                <p className="font-bold text-amber-700 uppercase tracking-wider text-[10px]">BIRTHDAY BENEFIT REQUEST</p>
-                                <p><strong>Gov ID:</strong> {ord.birthday_benefit_details.gov_id_number}</p>
-                                <p><strong>Date of Birth:</strong> {new Date(ord.birthday_benefit_details.dob).toLocaleDateString()}</p>
-                                <p><strong>Photo:</strong> <a href={ord.birthday_benefit_details.gov_id_photo_url} target="_blank" rel="noreferrer" className="text-blue-500 underline">View ID</a></p>
-                                <p><strong>Status:</strong> <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${ord.birthday_benefit_details.status === 'Approved' ? 'bg-green-100 text-green-700' : ord.birthday_benefit_details.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'}`}>{ord.birthday_benefit_details.status}</span></p>
+                              <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded text-xs space-y-2">
+                                <p className="font-bold text-amber-700 uppercase tracking-wider text-[10px]">🎂 BIRTHDAY BENEFIT REQUEST</p>
+                                {ord.birthday_benefit_details.gov_id_photo_url ? (
+                                  <img
+                                    src={ord.birthday_benefit_details.gov_id_photo_url}
+                                    alt="Birthday ID proof"
+                                    className="mt-1 h-32 w-full object-cover rounded border border-amber-200"
+                                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block'; }}
+                                  />
+                                ) : null}
+                                <p className="text-neutral-400 text-[10px]" style={{display: ord.birthday_benefit_details.gov_id_photo_url ? 'none' : 'block'}}>
+                                  No photo uploaded
+                                </p>
+                              </div>
+                            )}
+
+                            {(ord as any).student_discount_requested && (ord as any).student_discount_details && (
+                              <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded text-xs space-y-2">
+                                <p className="font-bold text-blue-700 uppercase tracking-wider text-[10px]">🎓 STUDENT DISCOUNT REQUEST</p>
+                                {(ord as any).student_discount_details.id_photo_url ? (
+                                  <img
+                                    src={(ord as any).student_discount_details.id_photo_url}
+                                    alt="Student ID proof"
+                                    className="mt-1 h-32 w-full object-cover rounded border border-blue-200"
+                                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'block'; }}
+                                  />
+                                ) : null}
+                                <p className="text-neutral-400 text-[10px]" style={{display: (ord as any).student_discount_details.id_photo_url ? 'none' : 'block'}}>
+                                  No photo uploaded
+                                </p>
                               </div>
                             )}
                           </div>
@@ -1841,9 +1961,35 @@ export const AdminPanel: React.FC = () => {
 
               {!loadingData && activeTab === 'new-orders' && (
                 <div className="space-y-6">
-                  <div className="pb-4 border-b">
-                    <h3 className="font-serif text-xl font-bold text-neutral-800">New Order Requests</h3>
-                    <p className="text-xs text-neutral-400">Review incoming pending orders. Accept or decline them to move them to the Orders page.</p>
+                  <div className="pb-4 border-b flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <h3 className="font-serif text-xl font-bold text-neutral-800">New Order Requests</h3>
+                      <p className="text-xs text-neutral-400">Review incoming pending orders. Accept or decline them to move them to the Orders page.</p>
+                    </div>
+                    {/* ── TEST ORDER CREATOR ── */}
+                    <div className="flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs">
+                      <span className="font-bold text-amber-700 shrink-0">🧪 Test:</span>
+                      <select
+                        value={testOrderType}
+                        onChange={e => setTestOrderType(e.target.value as any)}
+                        className="border border-amber-300 rounded px-2 py-1 text-xs bg-white text-neutral-700 cursor-pointer"
+                      >
+                        <option value="normal">Normal Order</option>
+                        <option value="birthday">🎂 Birthday Discount</option>
+                        <option value="buyback">♻️ Buyback Request</option>
+                        <option value="student">🎓 Student Discount</option>
+                      </select>
+                      <button
+                        onClick={handleCreateTestOrder}
+                        disabled={testOrderCreating}
+                        className="bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-white font-bold px-3 py-1 rounded cursor-pointer transition-colors whitespace-nowrap"
+                      >
+                        {testOrderCreating ? '⏳ Creating...' : '+ Create Test Order'}
+                      </button>
+                      {lastTestOrderId && (
+                        <span className="text-green-600 font-semibold">✅ {lastTestOrderId}</span>
+                      )}
+                    </div>
                   </div>
                   <div className="space-y-4">
                     {orders.filter(o => o.status === 'Ordered').length === 0 ? <p className="text-xs text-neutral-400 text-center py-12">No new orders right now.</p> : orders.filter(o => o.status === 'Ordered').map((ord) => (
@@ -1873,33 +2019,45 @@ export const AdminPanel: React.FC = () => {
                         </div>
 
                         {ord.buyback_requested && ord.buyback_details && (
-                          <div className="mt-2 p-3 bg-gold/5 border border-gold/20 rounded text-xs space-y-1.5">
-                            <p className="font-bold text-gold-dark uppercase tracking-wider text-[10px]">BUY BACK OFFER REQUEST</p>
-                            <p><strong>Shoe:</strong> {ord.buyback_details.shoe_details}</p>
-                            <p><strong>Photo:</strong> <a href={ord.buyback_details.photo_url} target="_blank" rel="noreferrer" className="text-blue-500 underline">View Photo</a></p>
-                            <p><strong>Bill No:</strong> {ord.buyback_details.bill_no}</p>
-                            <p><strong>Purchased Date:</strong> {new Date(ord.buyback_details.bought_date).toLocaleDateString()}</p>
-                            <div className="mt-2 flex items-center justify-between pt-2 border-t border-gold/10">
-                              <p><strong>Offer Status:</strong> <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${ord.buyback_details.status === 'Confirmed' ? 'bg-green-100 text-green-700' : ord.buyback_details.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'}`}>{ord.buyback_details.status}</span></p>
-                              {ord.buyback_details.status === 'Pending' && (
-                                <div className="flex gap-2">
-                                  <button onClick={() => handleUpdateOrderBuyback(ord.id, 'Confirmed')} className="px-2 py-1 bg-green-500 hover:bg-green-600 text-white rounded text-[10px] font-bold uppercase transition-colors cursor-pointer">YES (0% off)</button>
-                                  <button onClick={() => handleUpdateOrderBuyback(ord.id, 'Rejected')} className="px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-[10px] font-bold uppercase transition-colors cursor-pointer">NO (10% off)</button>
-                                </div>
-                              )}
-                              {ord.buyback_details.status === 'Confirmed' && <p className="font-bold text-green-600 text-[10px] uppercase">✅ Buyback Accepted - 0% Off</p>}
-                              {ord.buyback_details.status === 'Rejected' && <p className="font-bold text-amber-600 text-[10px] uppercase">💸 Buyback Rejected - 10% Off Applied</p>}
-                            </div>
+                          <div className="mt-2 p-3 bg-gold/5 border border-gold/20 rounded text-xs space-y-2">
+                            <p className="font-bold text-gold-dark uppercase tracking-wider text-[10px]">♻️ BUY BACK OFFER REQUEST</p>
+                            {ord.buyback_details.photo_url ? (
+                              <img src={ord.buyback_details.photo_url} alt="Buyback photo" className="mt-1 h-32 w-full object-cover rounded border border-amber-200" onError={(e) => (e.currentTarget.style.display='none')} />
+                            ) : (
+                              <p className="text-neutral-400 text-[10px]">No photo uploaded</p>
+                            )}
                           </div>
                         )}
 
                         {ord.birthday_benefit_requested && ord.birthday_benefit_details && (
-                          <div className="mt-2 p-3 bg-amber-50 border border-amber-200 rounded text-xs space-y-1.5">
-                            <p className="font-bold text-amber-700 uppercase tracking-wider text-[10px]">BIRTHDAY BENEFIT REQUEST</p>
-                            <p><strong>Gov ID:</strong> {ord.birthday_benefit_details.gov_id_number}</p>
-                            <p><strong>Date of Birth:</strong> {new Date(ord.birthday_benefit_details.dob).toLocaleDateString()}</p>
-                            <p><strong>Photo:</strong> <a href={ord.birthday_benefit_details.gov_id_photo_url} target="_blank" rel="noreferrer" className="text-blue-500 underline">View ID</a></p>
-                            <p><strong>Status:</strong> <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold ${ord.birthday_benefit_details.status === 'Approved' ? 'bg-green-100 text-green-700' : ord.birthday_benefit_details.status === 'Rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'}`}>{ord.birthday_benefit_details.status}</span></p>
+                          <div className="mt-2 p-3 bg-amber-50 border border-amber-200 rounded text-xs space-y-2">
+                            <p className="font-bold text-amber-700 uppercase tracking-wider text-[10px]">🎂 BIRTHDAY BENEFIT REQUEST</p>
+                            {ord.birthday_benefit_details.gov_id_photo_url ? (
+                              <img
+                                src={ord.birthday_benefit_details.gov_id_photo_url}
+                                alt="Birthday ID proof"
+                                className="mt-1 h-32 w-full object-cover rounded border border-amber-200"
+                                onError={(e) => (e.currentTarget.style.display='none')}
+                              />
+                            ) : (
+                              <p className="text-neutral-400 text-[10px]">No photo uploaded</p>
+                            )}
+                          </div>
+                        )}
+
+                        {(ord as any).student_discount_requested && (ord as any).student_discount_details && (
+                          <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded text-xs space-y-2">
+                            <p className="font-bold text-blue-700 uppercase tracking-wider text-[10px]">🎓 STUDENT DISCOUNT REQUEST</p>
+                            {(ord as any).student_discount_details.id_photo_url ? (
+                              <img
+                                src={(ord as any).student_discount_details.id_photo_url}
+                                alt="Student ID proof"
+                                className="mt-1 h-32 w-full object-cover rounded border border-blue-200"
+                                onError={(e) => (e.currentTarget.style.display='none')}
+                              />
+                            ) : (
+                              <p className="text-neutral-400 text-[10px]">No photo uploaded</p>
+                            )}
                           </div>
                         )}
 

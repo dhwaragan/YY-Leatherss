@@ -4177,6 +4177,233 @@
   ],
   "orders": [
     {
+      "id": "YY-ORD-92523",
+      "user_id": "test-user-1786555306763",
+      "customer_name": "[TEST] Deepa Nair",
+      "customer_email": "customer@test.in",
+      "phone": "+91 98765 43210",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1785337028775",
+            "mrp": 1899,
+            "name": "Black - Penny Loafer Plain",
+            "price": 1399,
+            "images": [
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/5cndn833q4s-1786389778655.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/nzs4z3mdnw-1786389978935.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/yfuv4zyncj-1786389985260.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/lz4jt2xksvq-1786389989997.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/msdr8a45ky-1786389995462.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/0zprgxarci5o-1786390001272.JPG"
+            ],
+            "category": "PENNY - LOAFERS",
+            "sizeMRPs": {
+              "7": 1899,
+              "8": 1899,
+              "9": 1899
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-29T14:57:08.775Z",
+            "sizePrices": {
+              "7": 1399,
+              "8": 1399,
+              "9": 1399
+            },
+            "description": "Black Flat Penny Loafers – Italian Cow Soft Leather\n\nTimeless elegance meets exceptional craftsmanship in our Black Flat Penny Loafers, handcrafted from premium Italian crust leather. Featuring a rich hand-burnished burgundy finish, these loafers develop a unique patina over time, giving every pair its own distinctive character.\n\nDesigned with the iconic penny strap and a sleek apron-toe silhouette, they offer a refined yet versatile look suitable for every occasion. The soft genuine leather lining and cushioned footbed provide superior comfort, while the lightweight flat outsole ensures flexibility and confident everyday wear.\n\nWhether paired with a tailored suit, chinos, or premium denim, these loafers deliver effortless sophistication from the office to evening events.\n\nKey Features\nPremium Italian cow soft leather upper\nHand-burnished black finish with a rich natural patina\nClassic penny strap design\nRefined apron-toe construction\nSoft genuine leather lining for breathable comfort\nCushioned footbed for all-day support\nLightweight, durable flat outsole with anti-slip grip\nSlip-on design for effortless wear\nHandcrafted with premium Italian craftsmanship\nPerfect for business, formal, wedding, smart-casual, and evening wear",
+            "sizeWeights": {
+              "7": 2,
+              "8": 2,
+              "9": 2
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": true,
+            "sizeQuantities": {
+              "7": 5,
+              "8": 5,
+              "9": 5
+            }
+          },
+          "quantity": 1,
+          "selectedSize": "42"
+        }
+      ],
+      "total": 1481,
+      "status": "Ordered",
+      "address": "Flat 3B, T Nagar, Chennai - 600017",
+      "razorpay_order_id": "test_order_1786555306763",
+      "razorpay_payment_id": "test_pay_1786555306763",
+      "delivery_region": "TN",
+      "delivery_charge": 160,
+      "estimated_weight_kg": 1,
+      "student_discount_requested": true,
+      "student_discount_details": {
+        "college_name": "Test College",
+        "id_photo_url": "",
+        "status": "Pending"
+      },
+      "birthday_benefit_requested": false,
+      "birthday_benefit_details": null,
+      "buyback_requested": false,
+      "buyback_details": null,
+      "applied_offer": "none",
+      "created_at": "2026-08-12T17:21:46.765Z"
+    },
+    {
+      "id": "YY-ORD-34679",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1784103507142",
+            "mrp": 4999,
+            "name": "Black- Luxury Chelsea Belt Texture",
+            "price": 3500,
+            "images": [
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/5gaurzowf2y-1784103498745.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/4j8r1ipvkkj-1784103502608.JPG",
+              "https://vnspipodxzxuwsailgok.supabase.co/storage/v1/object/public/yy-images/products/aay2lfkn2kt-1784103503338.JPG"
+            ],
+            "category": "LUXURY",
+            "sizeMRPs": {
+              "6": 4999,
+              "7": 4999,
+              "8": 4999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-15T08:18:27.142Z",
+            "sizePrices": {
+              "6": 3500,
+              "7": 3500,
+              "8": 3500
+            },
+            "description": "Key Features\nPremium full-grain crust leather upper\nElegant reptile-embossed textured finish\nStylish side buckle accent for a refined look\nPremium gold-tone YKK side zipper for smooth and durable closure\nSleek square toe design with a modern silhouette\nSoft leather lining for breathable, all-day comfort\nCushioned footbed for superior support\nDurable outsole with excellent grip and longevity\nRear pull tab for easy on and off\nExpertly handcrafted with premium attention to detail\n\nColor: Black\nMaterial: Premium Full-Grain Crust Leather\nTexture: Reptile Embossed\nClosure: Gold YKK Side Zipper\nStyle: Textured Buckle Chelsea Boot\nOccasion: Formal | Business | Smart Casual | Evening | Luxury Wear",
+            "sizeWeights": {
+              "6": 1,
+              "7": 1,
+              "8": 1
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": false,
+            "sizeQuantities": {
+              "6": 1,
+              "7": 2,
+              "8": 2
+            }
+          },
+          "quantity": 1,
+          "selectedSize": "42"
+        }
+      ],
+      "phone": "+91 98765 43210",
+      "total": 3294,
+      "status": "Ordered",
+      "address": "No 45, Velachery Main Road, Chennai - 600042",
+      "user_id": "test-user-1786555282820",
+      "created_at": "2026-08-12T17:21:23.128Z",
+      "applied_offer": "none",
+      "customer_name": "[TEST] Ravi Chandran",
+      "customer_email": "customer@test.in",
+      "buyback_details": {
+        "status": "Pending",
+        "bill_no": "YY-TEST-001",
+        "photo_url": "",
+        "bought_date": "2023-01-15",
+        "shoe_details": "Old Brown Derby (Test)"
+      },
+      "delivery_charge": 160,
+      "delivery_region": "TN",
+      "buyback_requested": true,
+      "razorpay_order_id": "test_order_1786555282820",
+      "estimated_weight_kg": 1,
+      "razorpay_payment_id": "test_pay_1786555282820",
+      "birthday_benefit_details": null,
+      "student_discount_details": null,
+      "birthday_benefit_requested": false,
+      "student_discount_requested": false
+    },
+    {
+      "id": "YY-ORD-91998",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1784550833048",
+            "mrp": 2999,
+            "name": "Black - Italian Double Monk",
+            "price": 1799,
+            "images": [
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/6txtg44221-1786396802377.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/klv3uj13jz-1786396822648.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/514tlgxa8hs-1786396823136.JPG",
+              "https://joutnmqckfwtfwicfqrm.supabase.co/storage/v1/object/public/yy-images/products/ucvr0wn7n2k-1786396823602.JPG"
+            ],
+            "category": "MONKS",
+            "sizeMRPs": {
+              "6": 2999,
+              "7": 2999,
+              "8": 2999,
+              "9": 2999
+            },
+            "weight_kg": 2,
+            "created_at": "2026-07-20T12:33:53.048Z",
+            "sizePrices": {
+              "6": 1799,
+              "7": 1799,
+              "8": 1799,
+              "9": 1799
+            },
+            "description": "Key Features\nPremium Italian Crust Leather with a hand-finished black patina.\nSignature Double Monk Strap design with premium metal buckles.\nSleek Italian cut silhouette for a refined, contemporary look.\nSoft leather lining for breathability and superior comfort.\nCushioned insole for all-day support.\nDurable, lightweight outsole with excellent grip and longevity.\nHandcrafted with precision for exceptional quality and finish.\nPerfect For\nBusiness meetings and executive wear\nWeddings and formal celebrations\nCorporate events and evening occasions\nPremium smart-casual styling",
+            "sizeWeights": {
+              "6": 2,
+              "7": 2,
+              "8": 2,
+              "9": 2
+            },
+            "is_published": true,
+            "customer_email": "",
+            "is_best_seller": false,
+            "is_new_arrival": false,
+            "sizeQuantities": {
+              "6": 5,
+              "7": 5,
+              "8": 5,
+              "9": 4
+            }
+          },
+          "quantity": 1,
+          "selectedSize": "42"
+        }
+      ],
+      "phone": "+91 98765 43210",
+      "total": 1709,
+      "status": "Pending",
+      "address": "No 45, Velachery Main Road, Chennai - 600042",
+      "user_id": "test-user-1786555269923",
+      "created_at": "2026-08-12T17:21:10.231Z",
+      "applied_offer": "none",
+      "customer_name": "[TEST] Arjun Kumar",
+      "customer_email": "customer@test.in",
+      "buyback_details": null,
+      "delivery_charge": 160,
+      "delivery_region": "TN",
+      "buyback_requested": false,
+      "razorpay_order_id": "test_order_1786555269923",
+      "estimated_weight_kg": 1,
+      "razorpay_payment_id": "test_pay_1786555269923",
+      "birthday_benefit_details": {
+        "dob": "1998-08-12",
+        "status": "Pending",
+        "gov_id_number": "TEST1234",
+        "gov_id_photo_url": ""
+      },
+      "student_discount_details": null,
+      "birthday_benefit_requested": true,
+      "student_discount_requested": false
+    },
+    {
       "id": "YY-ORD-19549",
       "items": [
         {

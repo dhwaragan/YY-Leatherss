@@ -372,7 +372,7 @@ export const Navbar: React.FC = () => {
                     className="w-full text-center px-4 py-3 bg-neutral-50 border border-neutral-300 focus:border-[#8B5A2B] focus:ring-1 focus:ring-[#8B5A2B] rounded-lg text-sm transition-all text-neutral-900 outline-none"
                     required
                   />
-                  <p className="text-[9px] text-neutral-400 mt-2">Authorized emails: dhwaragandhwaragan9@gmail.com, Yomeyom786@gmail.com</p>
+                  <p className="text-[9px] text-neutral-400 mt-2">Authorized emails: dhwaragandhwaragan9@gmail.com, Yomeyom786@gmail.com, stanislauscbe@gmail.com</p>
                 </div>
                 <div>
                   <input

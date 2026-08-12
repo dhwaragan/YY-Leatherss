@@ -122,7 +122,7 @@ app.use((req, res, next) => {
 });
 
 // Admin emails list
-const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com"];
+const ADMIN_EMAILS = ["dhwaragandhwaragan9@gmail.com", "Yomeyom786@gmail.com", "stanislauscbe@gmail.com"];
 
 // Helper to get current admin password (env var first - ZERO Supabase egress for auth)
 const getAdminPassword = async () => {
@@ -1147,8 +1147,51 @@ app.delete('/api/products/:id', authenticateAdmin, (req, res) => {
 
 
 // ---------------- ORDERS ----------------
-app.get('/api/orders', (req, res) => {
+app.get('/api/orders', async (req, res) => {
+  // If local db has no orders, pull from Supabase (localhost dev scenario)
+  // This lets you see live orders from the Netlify deployment on your local machine
+  if (!db.orders || db.orders.length === 0) {
+    try {
+      console.log('[Orders] Local db has no orders — pulling from Supabase...');
+      const { data, error } = await supabase
+        .from('yy_store_sync')
+        .select('value')
+        .eq('key', 'orders')
+        .single();
+      if (!error && data?.value && Array.isArray(data.value) && data.value.length > 0) {
+        db.orders = data.value;
+        // Cache to local db.json so subsequent requests are instant
+        if (!IS_SERVERLESS) {
+          try { fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8'); } catch {}
+        }
+        console.log(`[Orders] Synced ${db.orders.length} orders from Supabase.`);
+      }
+    } catch (e) {
+      console.warn('[Orders] Could not pull orders from Supabase:', e);
+    }
+  }
   res.json(db.orders);
+});
+
+// Admin: force-sync orders from Supabase (useful for localhost to see live orders)
+app.get('/api/orders/sync-from-supabase', authenticateAdmin, async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('yy_store_sync')
+      .select('value')
+      .eq('key', 'orders')
+      .single();
+    if (!error && data?.value && Array.isArray(data.value)) {
+      db.orders = data.value;
+      if (!IS_SERVERLESS) {
+        try { fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8'); } catch {}
+      }
+      return res.json({ success: true, count: db.orders.length, message: `Synced ${db.orders.length} orders from Supabase.` });
+    }
+    res.json({ success: false, message: 'No orders in Supabase or fetch failed.', error });
+  } catch (e: any) {
+    res.status(500).json({ success: false, message: e.message });
+  }
 });
 
 app.get('/api/orders/user/:userId', (req, res) => {
@@ -1201,10 +1244,10 @@ app.post('/api/orders', (req, res) => {
 
 app.put('/api/orders/:id', authenticateAdmin, (req, res) => {
   const { id } = req.params;
-  const { status } = req.body;
   const index = db.orders.findIndex(o => o.id === id);
   if (index !== -1) {
-    db.orders[index].status = status;
+    // Merge all fields from the request body (status, buyback_details, total, etc.)
+    db.orders[index] = { ...db.orders[index], ...req.body };
     saveDatabase(db, 'orders');
     return res.json({ success: true, order: db.orders[index] });
   }

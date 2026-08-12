@@ -5,6 +5,59 @@ export const generateInvoiceHTML = (ord: any) => {
     year: 'numeric'
   });
 
+  const itemsSubtotal = (ord.items || []).reduce((acc: number, item: any) => acc + (Number(item.product?.price) || Number(item.price) || 0) * item.quantity, 0);
+  const itemsCount = (ord.items || []).reduce((acc: number, item: any) => acc + item.quantity, 0);
+  
+  const appliedOffer = ord.applied_offer || 'none';
+  const isBirthday = appliedOffer === 'birthday' || !!ord.birthday_benefit_requested;
+  const isStudent = appliedOffer === 'student' || !!ord.student_discount_requested;
+  const isBuyback = appliedOffer === 'buyback' || !!ord.buyback_requested;
+  const isBoth = appliedOffer === 'both';
+
+  let discountLabel = '';
+  let discountAmount = 0;
+  let taxSavedAmount = 0;
+
+  if (isBirthday) {
+    discountLabel = '🎂 Birthday Discount';
+    discountAmount = 250;
+    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+  } else if (isStudent) {
+    discountLabel = '🎓 Student Discount';
+    discountAmount = Math.round(itemsSubtotal * 0.10);
+    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+  } else if (isBuyback) {
+    discountLabel = '♻️ Buyback Discount';
+    discountAmount = Math.round(itemsSubtotal * 0.10);
+    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+  } else if (isBoth) {
+    discountLabel = '🎓 Student & ♻️ Buyback Discount';
+    discountAmount = Math.round(itemsSubtotal * 0.10) + 100;
+    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+  } else {
+    // If no specific offer is set but a discount exists:
+    const diff = (itemsSubtotal + (ord.delivery_charge || 0)) - ord.total;
+    if (diff > 0) {
+      discountLabel = '🎁 Applied Offer Discount';
+      taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+      discountAmount = diff - taxSavedAmount;
+      if (discountAmount < 0) {
+        discountAmount = 0;
+        taxSavedAmount = diff;
+      }
+    }
+  }
+
+  // Guarantee the printed breakdown math adds up perfectly:
+  if (discountAmount > 0 || taxSavedAmount > 0) {
+    const expectedTotal = itemsSubtotal - discountAmount - taxSavedAmount + (ord.delivery_charge || 0);
+    const discrepancy = expectedTotal - ord.total;
+    discountAmount += discrepancy;
+    if (discountAmount < 0) {
+      discountAmount = 0;
+    }
+  }
+
   const itemsRows = (ord.items || []).map((item: any, idx: number) => `
     <tr class="item-row">
       <td style="text-align: center;">${idx + 1}</td>
@@ -229,8 +282,8 @@ export const generateInvoiceHTML = (ord: any) => {
             <h3>Seller Information</h3>
             <div class="info-text">
               <strong>YY Leathers Atelier HQ</strong><br>
-              No. 12, Leather Craft Complex<br>
-              Chennai, Tamil Nadu - 600001<br>
+              No 56, Surapet Main road<br>
+              chennai 99<br>
               Phone: +91 93441 78585
             </div>
           </div>
@@ -263,9 +316,21 @@ export const generateInvoiceHTML = (ord: any) => {
         <div class="totals-section">
           <table class="totals-table">
             <tr>
-              <td>Subtotal</td>
-              <td style="text-align: right;">₹${(ord.total - (ord.delivery_charge || 0)).toLocaleString('en-IN')}</td>
+              <td>Subtotal (${itemsCount} item${itemsCount > 1 ? 's' : ''})</td>
+              <td style="text-align: right;">₹${itemsSubtotal.toLocaleString('en-IN')}</td>
             </tr>
+            ${discountAmount > 0 ? `
+            <tr>
+              <td style="color: #10b981; font-weight: 500;">${discountLabel}</td>
+              <td style="text-align: right; color: #10b981; font-weight: 500;">-₹${discountAmount.toLocaleString('en-IN')}</td>
+            </tr>
+            ` : ''}
+            ${taxSavedAmount > 0 ? `
+            <tr>
+              <td style="color: #10b981; font-weight: 500;">✨ 5% Tax Gone (GST Waived)</td>
+              <td style="text-align: right; color: #10b981; font-weight: 500;">-₹${taxSavedAmount.toLocaleString('en-IN')}</td>
+            </tr>
+            ` : ''}
             <tr>
               <td>Delivery Charges</td>
               <td style="text-align: right;">₹${(ord.delivery_charge || 0).toLocaleString('en-IN')}</td>

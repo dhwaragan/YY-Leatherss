@@ -23,6 +23,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
   const [qty, setQty] = useState(1);
   const [isBuyingNow, setIsBuyingNow] = useState(false);
   const [buyNowAddress, setBuyNowAddress] = useState(user?.address || '');
+  const [selectedState, setSelectedState] = useState('Tamil Nadu');
   
   // Get available stock for selected size
   const getAvailableStock = (size: string): number => {
@@ -113,6 +114,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
     setSelectedColor(colorName);
     setActiveImage(colorImg);
   };
+
+  const currentPrice = product.sizePrices && selectedSize ? (product.sizePrices as any)[selectedSize] ?? product.price : product.price;
+  const currentMRP = product.sizeMRPs && selectedSize ? (product.sizeMRPs as any)[selectedSize] ?? product.mrp : product.mrp;
+  const showMRP = currentMRP != null && currentMRP > currentPrice;
+  const totalValue = currentPrice * qty;
+  const sitewideDiscountedPrice = sitewideDiscount > 0 ? Math.round(currentPrice * (1 - sitewideDiscount / 100)) : currentPrice;
+
+  const totalValueWithBuyback = includeBuyBack
+    ? Math.round(totalValue * 0.9)
+    : includeBirthdayBenefit
+    ? Math.max(0, totalValue - 250)
+    : totalValue;
+
+
+
 
   const handleAddToCart = () => {
     for (let i = 0; i < qty; i++) {
@@ -212,16 +228,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
   const getSizeQuantity = (size: string) => {
     return (product as any).sizeQuantities?.[size] ?? Infinity; // Infinity means unlimited stock
   };
-  const currentPrice = product.sizePrices && selectedSize ? (product.sizePrices as any)[selectedSize] ?? product.price : product.price;
-  const currentMRP = product.sizeMRPs && selectedSize ? (product.sizeMRPs as any)[selectedSize] ?? product.mrp : product.mrp;
-  const showMRP = currentMRP != null && currentMRP > currentPrice;
-  const totalValue = currentPrice * qty;
-  const sitewideDiscountedPrice = sitewideDiscount > 0 ? Math.round(currentPrice * (1 - sitewideDiscount / 100)) : currentPrice;
-  const totalValueWithBuyback = includeBuyBack
-    ? Math.round(totalValue * 0.9)
-    : includeBirthdayBenefit
-    ? Math.max(0, totalValue - 250)
-    : totalValue;
+
 
   const [isEditingDescription, setIsEditingDescription] = useState(false);
   const [editedDescription, setEditedDescription] = useState(product.description);
@@ -404,7 +411,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
                   <p className="text-sm text-neutral-700 leading-relaxed whitespace-pre-line">{product.description}</p>
                 )}
               </div>
-
               {/* Offer Toggles - simplified to show only titles without detailed text */}
               <div className="space-y-2.5 bg-neutral-50 p-4 rounded-xl">
                 <h4 className="text-xs font-bold text-neutral-600 uppercase tracking-wider flex items-center gap-2 mb-2">
@@ -470,7 +476,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, o
                       </>
                     ) : (
                       <>
-                        🔥 Buy Now — ₹{(includeBuyBack ? totalValueWithBuyback : (sitewideDiscount > 0 ? Math.round(totalValue * (1 - sitewideDiscount / 100)) : totalValue)).toLocaleString('en-IN')}
+                        🔥 Buy Now — ₹{totalValueWithBuyback.toLocaleString('en-IN')}
                       </>
                     )}
                   </button>

@@ -1242,8 +1242,15 @@ app.post('/api/orders', (req, res) => {
   res.json({ success: true, order: newOrder });
 });
 
-app.put('/api/orders/:id', authenticateAdmin, (req, res) => {
+app.put('/api/orders/:id', authenticateAdmin, async (req, res) => {
   const { id } = req.params;
+  
+  // In serverless, always fetch the latest to avoid overwriting concurrent orders
+  if (IS_SERVERLESS) {
+    const { data } = await supabase.from('yy_store_sync').select('value').eq('key', 'orders').single();
+    if (data?.value) db.orders = data.value;
+  }
+  
   const index = db.orders.findIndex(o => o.id === id);
   if (index !== -1) {
     // Merge all fields from the request body (status, buyback_details, total, etc.)
@@ -1254,8 +1261,14 @@ app.put('/api/orders/:id', authenticateAdmin, (req, res) => {
   res.status(404).json({ success: false, message: "Order records not found." });
 });
 
-app.delete('/api/orders/:id', authenticateAdmin, (req, res) => {
+app.delete('/api/orders/:id', authenticateAdmin, async (req, res) => {
   const { id } = req.params;
+  
+  if (IS_SERVERLESS) {
+    const { data } = await supabase.from('yy_store_sync').select('value').eq('key', 'orders').single();
+    if (data?.value) db.orders = data.value;
+  }
+  
   const index = db.orders.findIndex(o => o.id === id);
   if (index !== -1) {
     db.orders.splice(index, 1);
@@ -1405,9 +1418,15 @@ app.post('/api/preorders', (req, res) => {
   res.json({ success: true, preorder: preorderData });
 });
 
-app.put('/api/preorders/:id', (req, res) => {
+app.put('/api/preorders/:id', async (req, res) => {
   const { id } = req.params;
   const { status, admin_note, estimated_delivery } = req.body;
+  
+  if (IS_SERVERLESS) {
+    const { data } = await supabase.from('yy_store_sync').select('value').eq('key', 'preorders').single();
+    if (data?.value) db.preorders = data.value;
+  }
+  
   const index = db.preorders.findIndex(p => p.id === id);
   if (index !== -1) {
     if (status) db.preorders[index].status = status;

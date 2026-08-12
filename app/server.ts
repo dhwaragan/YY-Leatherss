@@ -176,8 +176,8 @@ const getAdminPassword = async () => {
 // Admin Authentication Middleware
 // EGRESS FIX: Check env var and cache FIRST. Only hit Supabase if user changed password via UI.
 const authenticateAdmin = async (req: any, res: any, next: any) => {
-  const adminEmail = req.headers['x-admin-email'] || req.body?.admin_email;
-  const adminPassword = req.headers['x-admin-password'] || req.body?.admin_password;
+  const adminEmail = req.headers['x-admin-email'] || req.body?.admin_email || req.query?.admin_email;
+  const adminPassword = req.headers['x-admin-password'] || req.body?.admin_password || req.query?.admin_password;
   
   // Check if email is in admin list (case-insensitive)
   const isValidAdminEmail = ADMIN_EMAILS.some(

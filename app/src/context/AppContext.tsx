@@ -1224,14 +1224,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const adminPass = localStorage.getItem('yy_admin_pass') || '';
       const adminEmail = user?.email || '';
-      const res = await fetch(`/api/orders/${id}`, {
+      const url = `/api/orders/${id}?admin_email=${encodeURIComponent(adminEmail)}&admin_password=${encodeURIComponent(adminPass)}`;
+      const res = await fetch(url, {
         method: "PUT",
         headers: { 
           "Content-Type": "application/json",
           "x-admin-email": adminEmail,
           "x-admin-password": adminPass,
         },
-        body: JSON.stringify({ status }),
+        body: JSON.stringify({ status, admin_email: adminEmail, admin_password: adminPass }),
       });
       if (res.ok) {
         // Update local state - DON'T refetch everything

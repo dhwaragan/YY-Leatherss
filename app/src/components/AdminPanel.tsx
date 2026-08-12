@@ -333,8 +333,12 @@ export const AdminPanel: React.FC = () => {
       'x-admin-password': adminPassword,
       ...(options.headers as Record<string, string> || {}),
     };
+
+    // Append to query string to bypass Netlify header stripping
+    const separator = url.includes('?') ? '&' : '?';
+    const finalUrl = `${url}${separator}admin_email=${encodeURIComponent(adminEmail)}&admin_password=${encodeURIComponent(adminPassword)}`;
     
-    return fetch(url, { ...options, headers });
+    return fetch(finalUrl, { ...options, headers });
   }, [user, currentAdminPass]);
 
   const fetchSupabaseStatus = async () => {

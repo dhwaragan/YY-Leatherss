@@ -1194,9 +1194,19 @@ app.get('/api/orders/sync-from-supabase', authenticateAdmin, async (req, res) =>
   }
 });
 
-app.get('/api/orders/user/:userId', (req, res) => {
+app.get('/api/orders/user/:userId', async (req, res) => {
   const { userId } = req.params;
-  const userOrders = db.orders.filter(o => o.user_id === userId);
+  let currentOrders = db.orders;
+  
+  if (IS_SERVERLESS) {
+    const { data } = await supabase.from('yy_store_sync').select('value').eq('key', 'orders').single();
+    if (data?.value) {
+      currentOrders = data.value;
+      db.orders = currentOrders;
+    }
+  }
+  
+  const userOrders = currentOrders.filter((o: any) => o.user_id === userId);
   res.json(userOrders);
 });
 
@@ -1400,9 +1410,19 @@ app.get('/api/preorders', (req, res) => {
   res.json(db.preorders);
 });
 
-app.get('/api/preorders/user/:userId', (req, res) => {
+app.get('/api/preorders/user/:userId', async (req, res) => {
   const { userId } = req.params;
-  const userPreorders = db.preorders.filter(p => p.user_id === userId);
+  let currentPreorders = db.preorders;
+  
+  if (IS_SERVERLESS) {
+    const { data } = await supabase.from('yy_store_sync').select('value').eq('key', 'preorders').single();
+    if (data?.value) {
+      currentPreorders = data.value;
+      db.preorders = currentPreorders;
+    }
+  }
+  
+  const userPreorders = currentPreorders.filter((p: any) => p.user_id === userId);
   res.json(userPreorders);
 });
 

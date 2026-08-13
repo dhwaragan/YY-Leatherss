@@ -12,46 +12,50 @@ export const generateInvoiceHTML = (ord: any) => {
   const isBirthday = appliedOffer === 'birthday' || !!ord.birthday_benefit_requested;
   const isStudent = appliedOffer === 'student' || !!ord.student_discount_requested;
   const isBuyback = appliedOffer === 'buyback' || !!ord.buyback_requested;
-  const isBoth = appliedOffer === 'both';
+  const isBoth = appliedOffer === 'both' || (isStudent && isBuyback);
 
   let discountLabel = '';
   let discountAmount = 0;
-  let taxSavedAmount = 0;
+  let gstAmount = 0;
 
   if (isBirthday) {
     discountLabel = '🎂 Birthday Discount';
     discountAmount = 250;
-    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
-  } else if (isStudent) {
-    discountLabel = '🎓 Student Discount';
-    discountAmount = Math.round(itemsSubtotal * 0.10);
-    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
-  } else if (isBuyback) {
-    discountLabel = '♻️ Buyback Discount';
-    discountAmount = Math.round(itemsSubtotal * 0.10);
-    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+    gstAmount = Math.round((itemsSubtotal - discountAmount) * 0.05);
   } else if (isBoth) {
     discountLabel = '🎓 Student & ♻️ Buyback Discount';
     discountAmount = Math.round(itemsSubtotal * 0.10) + 100;
-    taxSavedAmount = Math.round(itemsSubtotal * 0.05);
+    gstAmount = Math.round((itemsSubtotal - discountAmount) * 0.05);
+  } else if (isStudent) {
+    discountLabel = '🎓 Student Discount';
+    discountAmount = 100;
+    gstAmount = Math.round((itemsSubtotal - discountAmount) * 0.05);
+  } else if (isBuyback) {
+    discountLabel = '♻️ Buyback Discount';
+    discountAmount = Math.round(itemsSubtotal * 0.10);
+    gstAmount = Math.round((itemsSubtotal - discountAmount) * 0.05);
   } else {
     // If no specific offer is set but a discount exists:
-    const diff = (itemsSubtotal + (ord.delivery_charge || 0)) - ord.total;
-    if (diff > 0) {
+    // In Checkout.tsx: orderTotal = (subtotal - discount) + GST + delivery
+    // GST is 5% of (subtotal - discount)
+    // ord.total = (subtotal - discount) * 1.05 + delivery
+    // (ord.total - delivery) = (subtotal - discount) * 1.05
+    const totalWithoutDelivery = ord.total - (ord.delivery_charge || 0);
+    const taxableAmount = Math.round(totalWithoutDelivery / 1.05);
+    gstAmount = totalWithoutDelivery - taxableAmount;
+    discountAmount = itemsSubtotal - taxableAmount;
+    
+    if (discountAmount > 0) {
       discountLabel = '🎁 Applied Offer Discount';
-      taxSavedAmount = Math.round(itemsSubtotal * 0.05);
-      discountAmount = diff - taxSavedAmount;
-      if (discountAmount < 0) {
-        discountAmount = 0;
-        taxSavedAmount = diff;
-      }
+    } else {
+      discountAmount = 0;
     }
   }
 
   // Guarantee the printed breakdown math adds up perfectly:
-  if (discountAmount > 0 || taxSavedAmount > 0) {
-    const expectedTotal = itemsSubtotal - discountAmount - taxSavedAmount + (ord.delivery_charge || 0);
-    const discrepancy = expectedTotal - ord.total;
+  const expectedTotal = itemsSubtotal - discountAmount + gstAmount + (ord.delivery_charge || 0);
+  const discrepancy = expectedTotal - ord.total;
+  if (Math.abs(discrepancy) > 0) {
     discountAmount += discrepancy;
     if (discountAmount < 0) {
       discountAmount = 0;
@@ -325,10 +329,10 @@ export const generateInvoiceHTML = (ord: any) => {
               <td style="text-align: right; color: #10b981; font-weight: 500;">-₹${discountAmount.toLocaleString('en-IN')}</td>
             </tr>
             ` : ''}
-            ${taxSavedAmount > 0 ? `
+            ${gstAmount > 0 ? `
             <tr>
-              <td style="color: #10b981; font-weight: 500;">✨ 5% Tax Gone (GST Waived)</td>
-              <td style="text-align: right; color: #10b981; font-weight: 500;">-₹${taxSavedAmount.toLocaleString('en-IN')}</td>
+              <td style="color: #4b5563;">5% GST</td>
+              <td style="text-align: right; color: #4b5563;">+₹${gstAmount.toLocaleString('en-IN')}</td>
             </tr>
             ` : ''}
             <tr>

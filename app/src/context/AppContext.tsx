@@ -105,6 +105,7 @@ interface AppContextType {
 
   // Refetch Helpers
   refreshAllData: (bypassCache?: boolean) => Promise<void>;
+  refreshOrdersOnly: (bypassCache?: boolean) => Promise<void>;
 
   // Sitewide Discount
   sitewideDiscount: number;
@@ -369,10 +370,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
 
   // MEMOIZED: Fetch preorders - only called when admin logs in or preorders change
-  const fetchPreorders = useCallback(async (): Promise<Preorder[]> => {
-    const cachedData = getCache<Preorder[]>(PREORDERS_KEY, 5 * 60 * 1000); // 5 min TTL
-    if (cachedData) {
-      return cachedData;
+  const fetchPreorders = useCallback(async (bypassCache = false): Promise<Preorder[]> => {
+    if (!bypassCache) {
+      const cachedData = getCache<Preorder[]>(PREORDERS_KEY, 5 * 60 * 1000); // 5 min TTL
+      if (cachedData) {
+        return cachedData;
+      }
     }
 
     try {
@@ -666,6 +669,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       removeCache(PUBLIC_DATA_KEY);
       removeCache(ORDERS_KEY);
       removeCache('preorders');
+      if (user?.id) {
+        removeCache(`orders_${user.id}`);
+        removeCache(`preorders_${user.id}`);
+      }
     }
     
     const promise = (async () => {
@@ -706,12 +713,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
         }
         
         if (isAdmin) {
-          const [orderData, preorderData] = await Promise.all([fetchOrders(), fetchPreorders()]);
+          const [orderData, preorderData] = await Promise.all([fetchOrders(undefined, bypassCache), fetchPreorders(bypassCache)]);
           setOrders(orderData);
           setPreorders(preorderData);
         } else if (currentUser) {
           // EGRESS FIX: Non-admin users only fetch their own orders
-          const orderData = await fetchOrders(currentUser.id);
+          const orderData = await fetchOrders(currentUser.id, bypassCache);
           setOrders(orderData);
         }
       } catch (e) {
@@ -728,6 +735,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchInFlightRef.current = null;
     }
   }, [user, isAdminEmail, fetchPublicData, mapProduct, fetchOrders, fetchPreorders]);
+
+  const refreshOrdersOnly = useCallback(async (bypassCache = false) => {
+    if (bypassCache) {
+      removeCache(ORDERS_KEY);
+      removeCache('preorders');
+      if (user?.id) {
+        removeCache(`orders_${user.id}`);
+        removeCache(`preorders_${user.id}`);
+      }
+    }
+    try {
+      const currentUser = user;
+      const isAdmin = currentUser ? isAdminEmail(currentUser.email) : false;
+      if (isAdmin) {
+        const [orderData, preorderData] = await Promise.all([fetchOrders(undefined, bypassCache), fetchPreorders(bypassCache)]);
+        setOrders(orderData);
+        setPreorders(preorderData);
+      } else if (currentUser) {
+        const orderData = await fetchOrders(currentUser.id, bypassCache);
+        setOrders(orderData);
+      }
+    } catch (e) {
+      console.error("Error refreshing orders:", e);
+    }
+  }, [user, isAdminEmail, fetchOrders, fetchPreorders]);
 
   // Auth Operations
   const loginAsUser = useCallback(async (email: string, asAdmin = false) => {
@@ -1422,6 +1454,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     setContentBlocks,
     decrementStock,
     refreshAllData,
+    refreshOrdersOnly,
     setSitewideDiscount,
     festivalName,
     festivalCombineWithOffers,
@@ -1437,7 +1470,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     loginAsUser, logout, updateUserProfile, bypassAdminLogin, addToCart, removeFromCart,
     updateCartQuantity, clearCart, updateProductStock, submitPreorder, checkout,
     addProduct, updateProduct, deleteProduct, updateOrderStatus, evaluatePreorder,
-    addOffer, deleteOffer, updateContentBlock, decrementStock, refreshAllData,
+    addOffer, deleteOffer, updateContentBlock, decrementStock, refreshAllData, refreshOrdersOnly,
     festivalName, festivalCombineWithOffers, isFestivalActive, isMaintenanceMode,
     maintenanceTitle, maintenanceMessage, isAdminEmail,
   ]);

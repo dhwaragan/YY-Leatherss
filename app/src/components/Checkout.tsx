@@ -392,7 +392,7 @@ export const Checkout: React.FC = () => {
         await decrementStock(cart);
         
         // Refresh orders instantly so user can see it in "My Orders"
-        refreshAllData();
+        refreshAllData(true);
       }
 
       setOrderId(paymentId);

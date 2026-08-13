@@ -177,6 +177,7 @@ export const AdminPanel: React.FC = () => {
     contentBlocks,
     setContentBlocks,
     refreshAllData,
+    refreshOrdersOnly,
     sitewideDiscount: globalSitewideDiscount,
     setSitewideDiscount: setGlobalSitewideDiscount,
     setSelectedProductDetail,
@@ -299,10 +300,10 @@ export const AdminPanel: React.FC = () => {
     if (!user || !isAdminEmail(user.email)) return;
     if (activeTab !== 'new') return;
     const interval = setInterval(() => {
-      refreshAllData(true); // bypass cache to pick up fresh orders
+      refreshOrdersOnly(true); // bypass cache to pick up fresh orders only
     }, 30000);
     return () => clearInterval(interval);
-  }, [user, activeTab, refreshAllData]);
+  }, [user, activeTab, refreshOrdersOnly]);
 
   // Keep local admin panel state in sync with context updates (orders/offers/products)
   useEffect(() => {

@@ -85,6 +85,45 @@ export const MultiImageUploader: React.FC<MultiImageUploaderProps> = ({
            )}
         </div>
       </div>
+      
+      {/* ADD BY URL FEATURE */}
+      <div className="mt-3 flex gap-2 max-w-sm">
+        <input 
+          type="text" 
+          placeholder="Paste Cloudinary / Imgur image URL here..." 
+          className="text-xs p-2 border rounded flex-1"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const val = e.currentTarget.value.trim();
+              if (val && (val.startsWith('http://') || val.startsWith('https://'))) {
+                onChange([...value, val]);
+                e.currentTarget.value = '';
+              } else if (val) {
+                setError('Must be a valid http(s) URL');
+              }
+            }
+          }}
+        />
+        <button 
+          type="button"
+          className="bg-black text-white px-3 text-xs rounded hover:bg-gold transition-colors"
+          onClick={(e) => {
+            const input = e.currentTarget.previousElementSibling as HTMLInputElement;
+            const val = input.value.trim();
+            if (val && (val.startsWith('http://') || val.startsWith('https://'))) {
+              onChange([...value, val]);
+              input.value = '';
+              setError('');
+            } else if (val) {
+              setError('Must be a valid http(s) URL');
+            }
+          }}
+        >
+          Add
+        </button>
+      </div>
+
       <input type="file" multiple ref={inputRef} onChange={handleFile} accept="image/*" className="hidden" />
       {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
